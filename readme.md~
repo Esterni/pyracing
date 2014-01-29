@@ -5,6 +5,7 @@ You can use this class to send requests to iRacing service and get some valuable
 USAGE
 
 from client import iRWebStats
+
 irw = iRWebStats()
 irw.login('username', 'password')
 print irw.cars_driven()  # cars driven by user
