@@ -1,0 +1,14 @@
+IDEAR sistema de gestion de ensayos de laboratorio
+
+jjmc82 at gmail 
+
+2013
+DEPS
+
+xhtml2pdf
+    
+INSTALL
+configure settings HOME_PATH
+configure pdf base link in sgel.views #TODO change this
+permissions to bd, to media, etc
+
