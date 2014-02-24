@@ -27,7 +27,7 @@ if __name__ == '__main__':
     if args.list:
         l = inspect.getmembers(iRWebStats)
         o = '\n'.join(["%s: %s"%(f[0], inspect.getdoc(f[1])) for f in l[3:]])
-        print o
+        print(o)
 
     elif args.method:
         f = args.method
@@ -47,20 +47,20 @@ if __name__ == '__main__':
                     else:
                         irw.login() #No login provided, maybe there's a valid cookie
                     r = func(**res) #execute
-                    print json.dumps(r) #Output result using json format
-                except Exception, e:
-                    print "Error: ", e
+                    print(json.dumps(r)) #Output result using json format
+                except Exception as e:
+                    print("Error: ", e)
 
             else: #Print args
                 pprint ("%s : %s"%(f, inspect.getdoc(func)))
-                print "\n"
-                print "Parameters: "
+                print("\n")
+                print("Parameters: ")
                 for ind, i in enumerate(a.args):
                     if i not in ('self',):
                         df = ''
                         if a.defaults is not None and len(a.defaults) >= ind:
                             df = "(default: %s)"%(str(a.defaults[ind-1]))
-                        print "%s %s"%(i, df)
+                        print("%s %s"%(i, df))
  
         else:
-            print "Error: %s is not a member of iRWebstat"
+            print("Error: %s is not a member of iRWebstat")

@@ -4,16 +4,22 @@ __author__ = "Jeyson Molina"
 __email__ = "jjmc82@gmail.com"
 __version__ = "1.0"
 
+
 import urllib
-from urllib import unquote
-from StringIO import StringIO
+
+try:
+    import urllib.parse
+    encode = urllib.parse.urlencode  # python3
+except:
+    encode = urllib.urlencode  # python2
+
+from io import StringIO
 import requests
 import constants as ct
 import datetime
 import csv
 import time
 import json
-import pdb
 from util import *
 
 
@@ -22,7 +28,7 @@ class iRWebStats:
     """ Use this class to connect to iRacing website and request some stats
         from drivers, races and series. It needs to be logged in the
         iRacing membersite so valid login crendentials (user, password)
-        are required. Most of the data is returned in JSON format and
+        are required. Most  data is returned in JSON format and
         converted to python dicts. """
 
     def __init__(self, verbose=True):
@@ -95,7 +101,7 @@ class iRWebStats:
                         credentials" % (username), self.verbose)
                 self.logged = False
 
-        except Exception, e:
+        except Exception as e:
             pprint(("Error on Login Request", e), self.verbose)
             self.logged = False
         return self.logged
@@ -156,7 +162,7 @@ class iRWebStats:
                     o = {ele['id']: ele for ele in o}
                 setattr(self, i, o)  # i.e self.TRACKS = o
 
-            except Exception, e:
+            except Exception as e:
                 pprint(("Error ocurred. Couldn't get", i), self.verbose)
 
     @logged_in
@@ -210,7 +216,7 @@ class iRWebStats:
         """ Personal data of driver  using its name in the request 
             (i.e drivername="Victor Beltran"). """
 
-        r = self.__req(ct.URL_DRIVER_STATUS % (urllib.urlencode({
+        r = self.__req(ct.URL_DRIVER_STATUS % (encode({
             'searchTerms': drivername})), cookie=self.last_cookie)
         # tofile(r)
         return parse(r)
@@ -275,7 +281,7 @@ class iRWebStats:
                 drivers = res['d']['r']
             drivers = format_results(drivers, header)
 
-        except Exception, e:
+        except Exception as e:
             pprint(("Error fetching driver search data. Error:", e),
                    self.verbose)
 
@@ -454,8 +460,8 @@ class iRWebStats:
         data = [x for x in csv.reader(StringIO(r), delimiter=',',
                                       quotechar='"')]
         header_ev, header_res = data[0], data[3]
-        event_info = dict(zip(header_ev, data[1]))
-        results = [dict(zip(header_res, x)) for x in data[4:]]
+        event_info = dict(list(zip(header_ev, data[1])))
+        results = [dict(list(zip(header_res, x))) for x in data[4:]]
 
         return event_info, results
 
@@ -463,4 +469,4 @@ if __name__ == '__main__':
     irw = iRWebStats()
     user, passw = ('username', 'password')
     irw.login(user, passw)
-    print "Cars Driven", irw.cars_driven()  # example usage
+    print("Cars Driven", irw.cars_driven())  # example usage

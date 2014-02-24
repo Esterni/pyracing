@@ -5,3 +5,4 @@
 *.rar
 *.html~
 *.htm~
+__pycache__

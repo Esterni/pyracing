@@ -1,7 +1,11 @@
 import inspect
 import decorator
 import json
-from urllib import unquote
+try:
+    from urllib.parse import unquote  # python3
+except:
+    from urllib import unquote  # python2
+
 
 def tofile(data):
     a = open('output.html', 'w')
@@ -13,7 +17,7 @@ def format_results(results, header):
     newres = []
     for row in results:
         newr = {}
-        for k, v in row.iteritems():
+        for k, v in row.items():
             newr[header[k]] = v
         newres.append(newr)
     return newres
@@ -39,7 +43,7 @@ def logged_in(func):
 
 def pprint(string, v=True):
     if v:
-        print ' '.join(str(string).split())
+        print(' '.join(str(string).split()))
 
 
 def parse(data):

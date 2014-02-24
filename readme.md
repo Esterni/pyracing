@@ -10,14 +10,14 @@ irw = iRWebStats()
 
 irw.login('username', 'password')
 
-print irw.cars_driven()  # cars driven by user
+print (irw.cars_driven())  # cars driven by user
 
 
 FILES
 
-client.py : This is where the class is defined.
+client.py : This is where the main class is defined.
 
-examples.py : Somes examples.
+examples.py : Some examples.
 
 constants.py : Useful constants used in request fields sent to the service.
 
@@ -25,13 +25,4 @@ util.py : Helper functions.
 
 REQUIREMENTS
 
-Python 2.7 (with network permissions)
-
-
-CONTACT
-
-Jeyson Molina
-
-Write me to jjmc82 at gmail if you need assistance.
-
-2014
+Python 2.7/3 (with network permissions)
