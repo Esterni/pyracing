@@ -18,6 +18,7 @@ from util import *
 
 
 class iRWebStats:
+
     """ Use this class to connect to iRacing website and request some stats
         from drivers, races and series. It needs to be logged in the
         iRacing membersite so valid login crendentials (user, password)
@@ -70,10 +71,10 @@ class iRWebStats:
                 #  If previous cookie is valid
                 pprint("Previous cookie valid", self.verbose)
                 self.logged = True
-                #Load iracing info
+                # Load iracing info
                 self.__get_irservice_info(self.__req(ct.URL_IRACING_HOME,
                                                      cookie=self.last_cookie))
-                #TODO Should we cache this?
+                # TODO Should we cache this?
                 return self.logged
             self.custid = ''
             r = self.__req(ct.URL_IRACING_LOGIN, grab_cookie=True)
@@ -88,7 +89,7 @@ class iRWebStats:
                 self.logged = True
                 self.__get_irservice_info(r)
                 self.__save_cookie()
-                pprint ("Log in succesful", self.verbose)
+                pprint("Log in succesful", self.verbose)
             else:
                 pprint("Invalid Login (user: %s). Please check your\
                         credentials" % (username), self.verbose)
@@ -115,7 +116,7 @@ class iRWebStats:
         """ Creates and sends the HTTP requests to iRacing site """
 
         # Sleep/wait to avoid flooding the service with requests
-        time.sleep(ct.WAIT_TIME)  # 0.3 seconds  
+        time.sleep(ct.WAIT_TIME)  # 0.3 seconds
         h = ct.HEADERS.copy()
         if cookie is not None:  # Send the cookie
             h['Cookie'] = cookie
@@ -185,7 +186,7 @@ class iRWebStats:
         """ Gets yearly stats (top5, top 10, etc.) of driver (custid)."""
         r = self.__req(ct.URL_YEARLY_STATS % (custid),
                        cookie=self.last_cookie)
-        #tofile(r)
+        # tofile(r)
         return parse(r)
 
     @logged_in
@@ -193,7 +194,7 @@ class iRWebStats:
         """ Gets list of cars driven by driver (custid)."""
         r = self.__req(ct.URL_CARS_DRIVEN % (custid),
                        cookie=self.last_cookie)
-        #tofile(r)
+        # tofile(r)
         return parse(r)
 
     @logged_in
@@ -211,7 +212,7 @@ class iRWebStats:
 
         r = self.__req(ct.URL_DRIVER_STATUS % (urllib.urlencode({
             'searchTerms': drivername})), cookie=self.last_cookie)
-        #tofile(r)
+        # tofile(r)
         return parse(r)
 
     @logged_in
@@ -340,7 +341,7 @@ class iRWebStats:
             data['starttime_low'] = tc(date_range[0])  # multiplied by 1000
             data['starttime_high'] = tc(date_range[1])
 
-        #License levels
+        # License levels
         lic_vars = {ct.LIC_ROOKIE: 'showrookie', ct.LIC_A: 'showclassa',
                     ct.LIC_B: 'showclassb', ct.LIC_C: 'showclassc',
                     ct.LIC_D: 'showclassd', ct.LIC_PRO: 'showpro',
@@ -408,7 +409,7 @@ class iRWebStats:
             data['sessionname'] = session_name
 
         if date_range is not None:
-            #Date range
+            # Date range
             tc = lambda s:\
                 time.mktime(datetime.datetime.strptime(s, "%Y-%m-%d").
                             timetuple()) * 1000
@@ -417,7 +418,7 @@ class iRWebStats:
             data['starttime_upperbound'] = tc(date_range[1])
 
         r = self.__req(ct.URL_HOSTED_RESULTS, data=data)
-        #tofile(r)
+        # tofile(r)
         res = parse(r)
         total_results = res['rowcount']
         results = res['rows']  # doesn't need format_results
