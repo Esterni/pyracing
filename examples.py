@@ -10,6 +10,8 @@ password = 'your password'
 irw = iRWebStats()
 irw.login(user, password)
 if not irw.logged:
+    print (
+        "Couldn't log in to iRacing Membersite. Please check your credentials")
     exit()
 
 # Cars driven by user
