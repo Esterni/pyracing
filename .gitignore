@@ -6,3 +6,4 @@
 *.html~
 *.htm~
 __pycache__
+*.tmp
