@@ -271,7 +271,7 @@ class iRWebStats:
             r = self.__req(ct.URL_DRIVER_STATS, data=data,
                            cookie=self.last_cookie)
             res = parse(r)
-            total_results = res['d']['33']
+            total_results = res['d']['32']
 
             header = res['m']
             f = res['d']['r'][0]
