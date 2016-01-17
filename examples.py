@@ -1,8 +1,8 @@
 #!/usr/bin/python
 """ Example usage of iRWebStats """
-import constants as ct
-from client import iRWebStats
-from util import clean
+from ir_webstats import constants as ct
+from ir_webstats.client import iRWebStats
+from ir_webstats.util import clean
 
 
 user = 'your username'  # iRacing username and password

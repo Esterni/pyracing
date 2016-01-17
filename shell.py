@@ -4,12 +4,12 @@ __author__ = "Jeyson Molina"
 __email__ = "jjmc82@gmail.com"
 __version__ = "1.0"
 
-from client import iRWebStats
-import constants as ct
 import argparse as ap
 import inspect
 import json
-from util import *
+
+from ir_webstats.client import iRWebStats
+from ir_webstats.util import *
 
 if __name__ == '__main__':
 
