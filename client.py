@@ -130,14 +130,18 @@ class iRWebStats:
             h['Cookie'] = self.last_cookie
 
         if (data is None) or useget:
-            req = requests.get(url, headers=h, params=data)
+            resp = requests.get(url, headers=h, params=data)
         else:
             h['Content-Type'] = 'application/x-www-form-urlencoded;\
                     charset=UTF-8'
-            req = requests.post(url, data=data, headers=h)
-        if 'Set-Cookie' in req.headers and grab_cookie:
-            self.last_cookie = req.headers['Set-Cookie']
-        html = req.text
+            resp = requests.post(url, data=data, headers=h)
+        if 'Set-Cookie' in resp.headers and grab_cookie:
+            self.last_cookie = resp.headers['Set-Cookie']
+            # Must get irsso_members from another header
+            if 'cookie' in resp.request.headers:
+                resp_req_cookie = resp.request.headers['cookie']
+                self.last_cookie += ';' + resp_req_cookie
+        html = resp.text
         return html
 
     def __get_irservice_info(self, resp):
