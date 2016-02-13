@@ -1,6 +1,8 @@
 import inspect
-import decorator
 import json
+
+from ir_webstats import decorator
+
 try:
     from urllib.parse import unquote  # python3
 except:
