@@ -5,8 +5,6 @@ __email__ = "jjmc82@gmail.com"
 __version__ = "1.0"
 
 import argparse as ap
-import inspect
-import json
 
 from ir_webstats.client import iRWebStats
 from ir_webstats.util import *
