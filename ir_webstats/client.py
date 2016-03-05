@@ -391,7 +391,7 @@ class iRWebStats:
         """
         pprint("Getting iRacing Seasons with Stats")
         resp = self.__req(ct.URL_SEASON_STANDINGS2)
-        return self._load_irservice_var("SeasonListing", resp, 2)
+        return self._load_irservice_var("SeasonListing", resp)
 
     @logged_in
     def season_standings(self, season, carclass, club=ct.ALL, raceweek=ct.ALL,
