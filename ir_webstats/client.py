@@ -168,6 +168,18 @@ class iRWebStats:
             except Exception as e:
                 pprint(("Error ocurred. Couldn't get", i), self.verbose)
 
+    def _load_irservice_var(self, varname, resp, appear=1):
+        str2find = "var " + varname + " = extractJSON('"
+        ind1 = -1
+        for _ in range(appear):
+            ind1 = resp.index(str2find, ind1+1)
+        json_o = resp[ind1 + len(str2find): resp.index("');", ind1)]\
+            .replace('+', ' ')
+        o = json.loads(json_o)
+        if varname not in ("SeasonListing", "YEARANDQUARTER"):
+            o = {ele['id']: ele for ele in o}
+        return o
+
     @logged_in
     def iratingchart(self, custid=None, category=ct.IRATING_ROAD_CHART):
         """ Gets the irating data of a driver using its custom id (custid) 
@@ -372,6 +384,14 @@ class iRWebStats:
             results = format_results(results, header)
 
         return results, total_results
+
+    @logged_in
+    def all_seasons(self):
+        """ Get All season data available at Series Stats page
+        """
+        pprint("Getting iRacing Seasons with Stats")
+        resp = self.__req(ct.URL_SEASON_STANDINGS2)
+        return self._load_irservice_var("SeasonListing", resp)
 
     @logged_in
     def season_standings(self, season, carclass, club=ct.ALL, raceweek=ct.ALL,
