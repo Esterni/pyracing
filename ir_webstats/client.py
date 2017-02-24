@@ -4,21 +4,23 @@ __author__ = "Jeyson Molina"
 __email__ = "jjmc82@gmail.com"
 __version__ = "1.0"
 
-
+import sys
 import urllib
-
-try:
+if (sys.version_info > (3, 0)):
     import urllib.parse
-    encode = urllib.parse.urlencode  # python3
-except:
-    encode = urllib.urlencode  # python2
+    encode = urllib.parse.urlencode
+    from io import StringIO
 
-from io import StringIO
+else:
+    encode = urllib.urlencode
+    from StringIO import StringIO
+
 import requests
-from ir_webstats import constants as ct
 import datetime
 import csv
 import time
+
+from ir_webstats import constants as ct
 from ir_webstats.util import *
 
 
@@ -39,8 +41,8 @@ class iRWebStats:
             {}, {}, {}, {}
 
     def __save_cookie(self):
-        """ Saves the current cookie to disk from a successful login to avoid 
-            future login procedures and save time. A cookie usually last  
+        """ Saves the current cookie to disk from a successful login to avoid
+            future login procedures and save time. A cookie usually last
             at least a couple of hours """
 
         pprint("Saving cookie for future use", self.verbose)
@@ -59,10 +61,10 @@ class iRWebStats:
         except:
             return False
 
-    def login(self, username='', password=''):
-        """ Log in to iRacing members site. If there is a valid cookie saved 
-            then it tries to use it to avoid a new login request. Returns 
-            True is the login was succesful and stores the customer id 
+    def login(self, username='', password='', get_info=False):
+        """ Log in to iRacing members site. If there is a valid cookie saved
+            then it tries to use it to avoid a new login request. Returns
+            True is the login was succesful and stores the customer id
             (custid) of the current login in self.custid. """
 
         if self.logged:
@@ -76,9 +78,10 @@ class iRWebStats:
                 #  If previous cookie is valid
                 pprint("Previous cookie valid", self.verbose)
                 self.logged = True
-                # Load iracing info
-                self.__get_irservice_info(self.__req(ct.URL_IRACING_HOME,
-                                                     cookie=self.last_cookie))
+                if get_info:
+                  # Load iracing info
+                  self.__get_irservice_info(self.__req(ct.URL_IRACING_HOME,
+                                                       cookie=self.last_cookie))
                 # TODO Should we cache this?
                 return self.logged
             self.custid = ''
@@ -144,8 +147,8 @@ class iRWebStats:
         return html
 
     def __get_irservice_info(self, resp):
-        """ Gets general information from iracing service like current tracks, 
-            cars, series, etc. Check self.TRACKS, self.CARS, self.DIVISION 
+        """ Gets general information from iracing service like current tracks,
+            cars, series, etc. Check self.TRACKS, self.CARS, self.DIVISION
             , self.CARCLASS, self.CLUB. """
 
         pprint("Getting iRacing Service info (cars, tracks, etc.)",
@@ -166,7 +169,7 @@ class iRWebStats:
                 setattr(self, i, o)  # i.e self.TRACKS = o
 
             except Exception as e:
-                pprint(("Error ocurred. Couldn't get", i), self.verbose)
+                pprint("Error ocurred. Couldn't get {}".format(i), self.verbose)
 
     def _load_irservice_var(self, varname, resp, appear=1):
         str2find = "var " + varname + " = extractJSON('"
@@ -182,7 +185,7 @@ class iRWebStats:
 
     @logged_in
     def iratingchart(self, custid=None, category=ct.IRATING_ROAD_CHART):
-        """ Gets the irating data of a driver using its custom id (custid) 
+        """ Gets the irating data of a driver using its custom id (custid)
             that generates the chart located in the driver's profile. """
 
         r = self.__req(ct.URL_STATS_CHART % (custid, category),
@@ -220,7 +223,7 @@ class iRWebStats:
 
     @logged_in
     def personal_best(self, custid=None, carid=0):
-        """ Personal best times of driver (custid) using car 
+        """ Personal best times of driver (custid) using car
             (carid. check self.CARS) set in official events."""
         r = self.__req(ct.URL_PERSONAL_BEST % (carid, custid),
                        cookie=self.last_cookie)
@@ -228,7 +231,7 @@ class iRWebStats:
 
     @logged_in
     def driverdata(self, drivername):
-        """ Personal data of driver  using its name in the request 
+        """ Personal data of driver  using its name in the request
             (i.e drivername="Victor Beltran"). """
 
         r = self.__req(ct.URL_DRIVER_STATUS % (encode({
@@ -250,11 +253,11 @@ class iRWebStats:
                       avg_finish=(0, ct.ALL), avg_points=(0, ct.ALL),
                       avg_incs=(0, ct.ALL), active=False,
                       sort=ct.SORT_IRATING, page=1, order=ct.ORDER_DESC):
-        """Search drivers using several search fields. A tuple represent a 
-           range (i.e irating=(1000, 2000) gets drivers with irating 
-           between 1000 and 2000). Use ct.ALL used in the lower or 
-           upperbound of a range disables that limit. Returns a tuple 
-           (results, total_results) so if you want all results you should 
+        """Search drivers using several search fields. A tuple represent a
+           range (i.e irating=(1000, 2000) gets drivers with irating
+           between 1000 and 2000). Use ct.ALL used in the lower or
+           upperbound of a range disables that limit. Returns a tuple
+           (results, total_results) so if you want all results you should
            request different pages (using page) until you gather all
            total_results. Each page has 25 (ct.NUM_ENTRIES) results max."""
 
@@ -286,11 +289,16 @@ class iRWebStats:
             r = self.__req(ct.URL_DRIVER_STATS, data=data,
                            cookie=self.last_cookie)
             res = parse(r)
-            total_results = res['d']['32']
+            if (sys.version_info > (3, 0)):
+                total_results = res['d'][list(res['m'].keys())[list(res['m'].values()).index('rowcount')]]
+                custid_id = list(res['m'].keys())[list(res['m'].values()).index('rowcount')]
+            else:
+                total_results = res['d'][res['m'].keys()[res['m'].values().index('rowcount')]]
+                custid_id = res['m'].keys()[res['m'].values().index('rowcount')]
 
             header = res['m']
             f = res['d']['r'][0]
-            if int(f['29']) == int(self.custid):  # 29 is custid
+            if int(f[custid_id]) == int(self.custid):
                 drivers = res['d']['r'][1:]
             else:
                 drivers = res['d']['r']
@@ -309,12 +317,12 @@ class iRWebStats:
     def results_archive(self, custid=None, race_type=ct.RACE_TYPE_ROAD,
                         event_types=ct.ALL, official=ct.ALL,
                         license_level=ct.ALL, car=ct.ALL, track=ct.ALL,
-                        series=ct.ALL, season=(2014, 1, ct.ALL),
+                        series=ct.ALL, season=(2016, 3, ct.ALL),
                         date_range=ct.ALL, page=1, sort=ct.SORT_TIME,
                         order= ct.ORDER_DESC):
-        """ Search race results using various fields. Returns a tuple 
-            (results, total_results) so if you want all results you should 
-            request different pages (using page). Each page has 25 
+        """ Search race results using various fields. Returns a tuple
+            (results, total_results) so if you want all results you should
+            request different pages (using page). Each page has 25
             (ct.NUM_ENTRIES) results max."""
 
         format_ = 'json'
@@ -376,9 +384,12 @@ class iRWebStats:
         r = self.__req(ct.URL_RESULTS_ARCHIVE, data=data,
                        cookie=self.last_cookie)
         res = parse(r)
-        total_results, results = 0, []
-        if len(res['d']):
-            total_results = res['d']['46']
+        if (sys.version_info > (3, 0)):
+            total_results = res['d'][list(res['m'].keys())[list(res['m'].values()).index('rowcount')]]
+        else:
+            total_results = res['d'][res['m'].keys()[res['m'].values().index('rowcount')]]
+        results = []
+        if total_results > 0:
             results = res['d']['r']
             header = res['m']
             results = format_results(results, header)
@@ -397,9 +408,9 @@ class iRWebStats:
     def season_standings(self, season, carclass, club=ct.ALL, raceweek=ct.ALL,
                          division=ct.ALL, sort=ct.SORT_POINTS,
                          order=ct.ORDER_DESC, page=1):
-        """ Search season standings using various fields. season, carclass 
-            and club are ids.  Returns a tuple (results, total_results) so 
-            if you want all results you should request different pages 
+        """ Search season standings using various fields. season, carclass
+            and club are ids.  Returns a tuple (results, total_results) so
+            if you want all results you should request different pages
             (using page)  until you gather all total_results. Each page has
             25 results max."""
 
@@ -411,7 +422,10 @@ class iRWebStats:
                 'division': division, 'start': lowerbound, 'end': upperbound}
         r = self.__req(ct.URL_SEASON_STANDINGS, data=data)
         res = parse(r)
-        total_results = res['d']['27']
+        if (sys.version_info > (3, 0)):
+            total_results = res['d'][list(res['m'].keys())[list(res['m'].values()).index('rowcount')]]
+        else:
+            total_results = res['d'][res['m'].keys()[res['m'].values().index('rowcount')]]
         results = res['d']['r']
         header = res['m']
         results = format_results(results, header)
@@ -423,8 +437,8 @@ class iRWebStats:
                        date_range=None, sort=ct .SORT_TIME,
                        order=ct.ORDER_DESC, page=1):
         """ Search hosted races results using various fields. Returns a tuple
-            (results, total_results) so if you want all results you should 
-            request different pages (using page) until you gather all 
+            (results, total_results) so if you want all results you should
+            request different pages (using page) until you gather all
             total_results. Each page has 25 (ct.NUM_ENTRIES) results max."""
 
         lowerbound = ct.NUM_ENTRIES * (page - 1) + 1
@@ -455,38 +469,94 @@ class iRWebStats:
 
     @logged_in
     def session_times(self, series_season, start, end):
-        """ Gets Current and future sessions (qualy, practice, race) 
+        """ Gets Current and future sessions (qualy, practice, race)
             of series_season """
         r = self.__req(ct.URL_SESSION_TIMES, data={'start': start, 'end': end,
                        'season': series_season}, useget=True)
         return parse(r)
 
     @logged_in
-    def series_raceresults(self, season, raceweek):
-        """ Gets races results of all races of season in specified raceweek """
+    def season_race_sessions(self, season, raceweek):
+        """ Gets races sessions for season in specified raceweek """
 
         r = self.__req(ct.URL_SERIES_RACERESULTS, data={'seasonid': season,
                        'raceweek': raceweek})  # TODO no bounds?
         res = parse(r)
-        header = res['m']
-        results = res['d']
-        results = format_results(results, header)
-        return results
+        try:
+            header = res['m']
+            results = res['d']
+            results = format_results(results, header)
+            return results
+        except TypeError:
+            print(res)
+            return None
 
     @logged_in
     def event_results(self, subsession, sessnum=0):
         """ Gets the event results (table of positions, times, etc.). The
             event is identified by a subsession id. """
 
-        r = self.__req(ct.URL_GET_EVENTRESULTS % (subsession, sessnum))\
-                .encode('utf8')
-        data = [x for x in csv.reader(StringIO(r), delimiter=',',
-                                      quotechar='"')]
-        header_ev, header_res = data[0], data[3]
+        r = self.__req(ct.URL_GET_EVENTRESULTS % (subsession, sessnum)).encode('utf8').decode('utf-8')
+        data = [x for x in csv.reader(StringIO(r), delimiter=',', quotechar='"')]
+        header_res = []
+        for header in data[3]:
+            header_res.append("".join([c for c in header.lower() if ord(c) > 96 and ord(c) < 123]))
+        header_ev = data[0]
+        for i in range(4, len(data)):
+            for j in range(len(data[i])):
+                if data[i][j] == '':
+                    data[i][j] = None
+                elif data[i][j].isnumeric():
+                    data[i][j] = int(data[i][j])
         event_info = dict(list(zip(header_ev, data[1])))
         results = [dict(list(zip(header_res, x))) for x in data[4:]]
 
         return event_info, results
+
+    @logged_in
+    def event_results2(self, subsession, custid):
+        """ Get the event results from the web page rather than CSV.
+        Required to get ttRating for time trials """
+
+        r = self.__req(ct.URL_GET_EVENTRESULTS2 % (subsession, custid))
+
+        resp = re.sub('\t+',' ',r)
+        resp = re.sub('\r\r\n+',' ',resp)
+        resp = re.sub('\s+',' ',resp)
+
+        str2find = "var resultOBJ ="
+        ind1 = resp.index(str2find)
+        ind2 = resp.index("};", ind1) + 1
+        resp = resp[ind1 + len(str2find): ind2].replace('+', ' ')
+
+        ttitems = ("custid", "isOfficial", "carID", "avglaptime", "fastestlaptime", "fastestlaptimems", "fastestlapnum", "bestnlapstime", "bestnlapsnum", "lapscomplete", "incidents", "newttRating", "oldttRating", "sr_new", "sr_old", "reasonOutName")
+        out = ""
+        for ttitem in ttitems:
+            ind1 = resp.index(ttitem)
+            ind2 = resp.index(",", ind1) + 1
+            out = out + resp[ind1: ind2]
+
+        out = re.sub(r"{\s*(\w)", r'{"\1', out)
+        out = re.sub(r",\s*(\w)", r',"\1', out)
+        out = re.sub(r"(\w):", r'\1":', out)
+        out = re.sub(r":\"(\d)\":", r':"\1:', out)
+        out = re.sub(r"parseFloat\((\"\d\.\d\d\")\)", r'\1', out)
+
+        out = out.strip().rstrip(',')
+        out = "{\"" + out + "}"
+        out = json.loads(out)
+
+        return out
+
+    def subsession_results(self, subsession):
+        """ Get the results for a time trial event from the web page.
+        """
+
+        r = self.__req(ct.URL_GET_SUBSESSRESULTS % (subsession), useget=True)
+
+        out = parse(r)['rows']
+
+        return out
 
 if __name__ == '__main__':
     irw = iRWebStats()
