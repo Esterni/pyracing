@@ -14,8 +14,8 @@ import datetime
 import csv
 import time
 
-from ir_webstats import constants as ct
-from ir_webstats.util import *
+from ir_webstats_rc import constants as ct
+from ir_webstats_rc.util import *
 
 
 class iRWebStats:
