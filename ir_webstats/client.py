@@ -4,16 +4,10 @@ __author__ = "Jeyson Molina"
 __email__ = "jjmc82@gmail.com"
 __version__ = "1.0"
 
-import sys
 import urllib
-if (sys.version_info > (3, 0)):
-    import urllib.parse
-    encode = urllib.parse.urlencode
-    from io import StringIO
-
-else:
-    encode = urllib.urlencode
-    from StringIO import StringIO
+import urllib.parse
+encode = urllib.parse.urlencode
+from io import StringIO
 
 import requests
 import datetime
@@ -289,13 +283,8 @@ class iRWebStats:
             r = self.__req(ct.URL_DRIVER_STATS, data=data,
                            cookie=self.last_cookie)
             res = parse(r)
-            if (sys.version_info > (3, 0)):
-                total_results = res['d'][list(res['m'].keys())[list(res['m'].values()).index('rowcount')]]
-                custid_id = list(res['m'].keys())[list(res['m'].values()).index('rowcount')]
-            else:
-                total_results = res['d'][res['m'].keys()[res['m'].values().index('rowcount')]]
-                custid_id = res['m'].keys()[res['m'].values().index('rowcount')]
-
+            total_results = res['d'][list(res['m'].keys())[list(res['m'].values()).index('rowcount')]]
+            custid_id = list(res['m'].keys())[list(res['m'].values()).index('rowcount')]
             header = res['m']
             f = res['d']['r'][0]
             if int(f[custid_id]) == int(self.custid):
@@ -384,10 +373,7 @@ class iRWebStats:
         r = self.__req(ct.URL_RESULTS_ARCHIVE, data=data,
                        cookie=self.last_cookie)
         res = parse(r)
-        if (sys.version_info > (3, 0)):
-            total_results = res['d'][list(res['m'].keys())[list(res['m'].values()).index('rowcount')]]
-        else:
-            total_results = res['d'][res['m'].keys()[res['m'].values().index('rowcount')]]
+        total_results = res['d'][list(res['m'].keys())[list(res['m'].values()).index('rowcount')]]
         results = []
         if total_results > 0:
             results = res['d']['r']
@@ -422,10 +408,7 @@ class iRWebStats:
                 'division': division, 'start': lowerbound, 'end': upperbound}
         r = self.__req(ct.URL_SEASON_STANDINGS, data=data)
         res = parse(r)
-        if (sys.version_info > (3, 0)):
-            total_results = res['d'][list(res['m'].keys())[list(res['m'].values()).index('rowcount')]]
-        else:
-            total_results = res['d'][res['m'].keys()[res['m'].values().index('rowcount')]]
+        total_results = res['d'][list(res['m'].keys())[list(res['m'].values()).index('rowcount')]]
         results = res['d']['r']
         header = res['m']
         results = format_results(results, header)
