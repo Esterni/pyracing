@@ -542,47 +542,47 @@ class iRWebStats:
         return out
 
     def event_laps_single(self, subsession, custid, sessnum=0):
-        """ Get the lap times for an event from the web page. 
+        """ Get the lap times for an event from the web page.
         """
 
         r = self.__req(ct.URL_GET_LAPS_SINGLE % (subsession, custid, sessnum))
-                         
+
         out = parse(r)
 
         return out
 
     def event_laps_all(self, subsession):
-        """ Get the lap times for an event from the web page. 
+        """ Get the lap times for an event from the web page.
         """
 
         r = self.__req(ct.URL_GET_LAPS_ALL % subsession)
-                         
+
         out = parse(r)
 
         return out
 
     def best_lap(self, subsessionid, custid):
-        """ Get the best lap time for a driver from an event. 
+        """ Get the best lap time for a driver from an event.
         """
-        
+
         laptime = self.event_laps_single(subsessionid, custid)['drivers'][0]['bestlaptime']
-        
+
         return laptime
 
     def world_record(self, seasonyear, seasonquarter, carid, trackid, custid):
-        """ Get the world record lap time for certain car in a season. 
+        """ Get the world record lap time for certain car in a season.
         """
 
         r = self.__req(ct.URL_GET_WORLDRECORD % (seasonyear, seasonquarter, carid, trackid, custid))
         res = parse(r)
-        
+
         header = res['m']
         try:
             results = res['d']['r'][1]
             newr = dict()
             for k, v  in results.items():
                 newr[header[k]] = v
-                
+
             if newr['race'].find("%3A") > -1:
                 t = datetime.datetime.strptime(newr['race'], "%M%%3A%S.%f")
                 record = (t.minute * 60) + t.second + (t.microsecond / 1000000)
@@ -590,9 +590,9 @@ class iRWebStats:
                 record = float(newr['race'])
         except:
             record = None
-        
-        return record    
-    
+
+        return record
+
 if __name__ == '__main__':
     irw = iRWebStats()
     user, passw = ('username', 'password')

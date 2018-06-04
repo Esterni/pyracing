@@ -23,7 +23,7 @@ LIC_PRO_WC  = 7
 SORT_IRATING = 'irating'
 SORT_TIME = 'start_time'
 SORT_POINTS = 'points'
-ORDER_DESC  = 'desc' 
+ORDER_DESC  = 'desc'
 ORDER_ASC = 'asc'
 
 
@@ -52,6 +52,20 @@ FLAG_INTERPOLATED_CROSSING = 512
 FLAG_CLOCK_SMASH = 1024
 FLAG_TOW = 2048
 
+INC_FLAGS = {
+    0: "clean",
+    2: "pitted",
+    4: "off track",
+    8: "black flag",
+    16: "car reset",
+    32: "contact",
+    64: "car contact",
+    128: "lost control",
+    256: "discontinuity",
+    512: "interpolated crossing",
+    1024: "clock smash",
+    2048: "tow"
+}
 
 #URLS
 URL_IRACING_LOGIN = 'https://members.iracing.com/membersite/login.jsp'

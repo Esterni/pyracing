@@ -8,3 +8,4 @@
 *.htm~
 __pycache__
 *.tmp
+.env
