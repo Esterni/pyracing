@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='ir_webstats_rc',
-      version='1.1',
+      version='1.2',
       description='A version of ir_webstats hacked on by Rob Crouch',
       url='http://github.com/fuzzwah/ir_webstats_rc',
       author='Rob Crouch',
