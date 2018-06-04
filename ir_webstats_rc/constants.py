@@ -60,6 +60,12 @@ URL_SERIES_RACERESULTS = 'http://members.iracing.com/memberstats/member/GetSerie
 
 URL_GET_EVENTRESULTS = 'http://members.iracing.com/membersite/member/GetEventResultsAsCSV?subsessionid=%s&simsesnum=%s&includeSummary=1' #simsesnum 0 race, -1 qualy or practice, -2 practice
 
+URL_GET_LAPS_SINGLE = 'https://members.iracing.com/membersite/member/GetLaps?&subsessionid=%s&groupid=%s&simsessnum=%s'
+URL_GET_LAPS_ALL = 'https://members.iracing.com/membersite/member/GetLapChart?&subsessionid=%s&carclassid=-1'
+
+URL_GET_PASTSERIES = 'https://members.iracing.com/membersite/member/PreviousSeasons.do'
+
+URL_GET_WORLDRECORD = 'https://members.iracing.com/memberstats/member/GetWorldRecords?seasonyear=%s&seasonquarter=%s&carid=%s&trackid=%s&custid=%s&format=json&upperbound=1'
 
 
 HEADERS = { 'User-Agent' : 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1312.52 Safari/537.17'
