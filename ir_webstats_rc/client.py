@@ -13,6 +13,8 @@ import requests
 import datetime
 import csv
 import time
+import re
+import ast
 
 from ir_webstats_rc import constants as ct
 from ir_webstats_rc.util import *
@@ -457,6 +459,22 @@ class iRWebStats:
         r = self.__req(ct.URL_SESSION_TIMES, data={'start': start, 'end': end,
                        'season': series_season}, useget=True)
         return parse(r)
+
+    @logged_in
+    def current_series_images(self):
+        """ Gets Current series images
+        """
+
+        resp = self.__req(ct.URL_CURRENT_SERIES, useget=True)
+
+        series_images = {}
+        seriesobjs = re.findall(r'seriesobj=([^;]*);', resp)
+        for seriesobj in seriesobjs:
+            seasonid = re.findall(r'seasonID:([0-9]*),', seriesobj)[0]
+            image = re.findall(r'col_color_img:".+members/member_images/series/([^"]*)"', seriesobj)[0]
+            series_images[seasonid] = image
+
+        return series_images
 
     @logged_in
     def season_race_sessions(self, season, raceweek):

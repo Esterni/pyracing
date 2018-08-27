@@ -71,6 +71,7 @@ INC_FLAGS = {
 URL_IRACING_LOGIN = 'https://members.iracing.com/membersite/login.jsp'
 URL_IRACING_LOGIN2 = 'https://members.iracing.com/membersite/Login'
 URL_IRACING_HOME = 'http://members.iracing.com/membersite/member/Home.do'
+URL_CURRENT_SERIES = 'http://members.iracing.com/membersite/member/Series.do'
 URL_STATS_CHART = 'http://members.iracing.com/memberstats/member/GetChartData?custId=%s&catId=%s&chartType=1'
 URL_DRIVER_COUNTS = 'http://members.iracing.com/membersite/member/GetDriverCounts'
 URL_CAREER_STATS = 'http://members.iracing.com/memberstats/member/GetCareerStats?custid=%s'
