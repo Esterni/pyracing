@@ -2,7 +2,7 @@
 """ iRWebStats class. Check examples.py for example usage. """
 __author__ = "Jeyson Molina"
 __email__ = "jjmc82@gmail.com"
-__version__ = "1.0"
+__version__ = "1.3"
 
 import urllib
 import urllib.parse
