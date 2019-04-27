@@ -29,14 +29,20 @@ ORDER_ASC = 'asc'
 
 
 #OTHER
-EVENT_RACE = 1
-EVENT_QUALY = 2
-EVENT_PRACTICE = 3
+EVENT_TEST = 1
+EVENT_PRACTICE = 2
+EVENT_QUALY = 3
 EVENT_TTRIAL = 4
+EVENT_RACE = 5
 
 EVENT_OFFICIAL = 6
 EVENT_UNOFFICIAL = 7
 
+{id:1,full:"Test",short:"T"},
+{id:2,full:"Practice",short:"P"},
+{id:3,full:"Qualify",short:"Q"},
+{id:5,full:"Race",short:"R"},
+{id:4,full:"Time Trial",short:"TT"}
 
 #INCIDENT FLAGS
 #these are used in the laps data
