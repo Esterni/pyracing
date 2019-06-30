@@ -18,15 +18,11 @@ LIC_A = 5
 LIC_PRO = 6
 LIC_PRO_WC  = 7
 
-
-
 SORT_IRATING = 'irating'
 SORT_TIME = 'start_time'
 SORT_POINTS = 'points'
 ORDER_DESC  = 'desc'
 ORDER_ASC = 'asc'
-
-
 
 #OTHER
 EVENT_TEST = 1
@@ -34,15 +30,8 @@ EVENT_PRACTICE = 2
 EVENT_QUALY = 3
 EVENT_TTRIAL = 4
 EVENT_RACE = 5
-
 EVENT_OFFICIAL = 6
 EVENT_UNOFFICIAL = 7
-
-{id:1,full:"Test",short:"T"},
-{id:2,full:"Practice",short:"P"},
-{id:3,full:"Qualify",short:"Q"},
-{id:5,full:"Race",short:"R"},
-{id:4,full:"Time Trial",short:"TT"}
 
 #INCIDENT FLAGS
 #these are used in the laps data
@@ -108,8 +97,6 @@ URL_GET_WORLDRECORD = 'https://members.iracing.com/memberstats/member/GetWorldRe
 HEADERS = { 'User-Agent' : 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1312.52 Safari/537.17'
         , 'Referer': 'https://members.iracing.com/membersite/login.jsp', 'Connection': 'keep-alive',
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8','Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3','Cache-Control': 'max-age=0', 'Host': 'members.iracing.com','Accept-Encoding': 'gzip,deflate,sdch', 'Origin': 'members.iracing.com', 'Accept-Language': 'en-US,en;q=0.8'}
-
-
 
 
 #LOCATIONS
