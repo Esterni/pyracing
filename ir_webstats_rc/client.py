@@ -471,7 +471,10 @@ class iRWebStats:
         seriesobjs = re.findall(r'seriesobj=([^;]*);', resp)
         for seriesobj in seriesobjs:
             seasonid = re.findall(r'seasonID:([0-9]*),', seriesobj)[0]
-            image = re.findall(r'col_color_img:".+members/member_images/series/([^"]*)"', seriesobj)[0]
+            try:
+                image = re.findall(r'col_color_img:".+members/member_images/series/([^"]*)"', seriesobj)[0]
+            except:
+                image = "default.jpg"
             series_images[seasonid] = image
 
         return series_images
