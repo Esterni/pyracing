@@ -6,8 +6,8 @@ __version__ = "1.0"
 
 import argparse as ap
 
-from ir_webstats.client import iRWebStats
-from ir_webstats.util import *
+from ir_webstats_rc.client import iRWebStats
+from ir_webstats_rc.util import *
 
 if __name__ == '__main__':
 
