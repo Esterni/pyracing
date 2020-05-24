@@ -84,7 +84,8 @@ URL_SELECT_SERIES = 'https://members.iracing.com/membersite/member/SelectSeries.
 URL_SESSION_TIMES = 'https://members.iracing.com/membersite/member/GetSessionTimes'#T-m-d
 URL_SERIES_RACERESULTS = 'https://members.iracing.com/memberstats/member/GetSeriesRaceResults'
 
-URL_GET_EVENTRESULTS = 'https://members.iracing.com/membersite/member/GetEventResultsAsCSV?subsessionid=%s&simsesnum=%s&includeSummary=1' #simsesnum 0 race, -1 qualy or practice, -2 practice
+URL_GET_EVENTRESULTS_CSV = 'https://members.iracing.com/membersite/member/GetEventResultsAsCSV?subsessionid=%s&simsesnum=%s&includeSummary=1'
+URL_GET_EVENTRESULTS = 'https://members.iracing.com/membersite/member/EventResult.do?&subsessionid=%s'
 
 URL_GET_LAPS_SINGLE = 'https://members.iracing.com/membersite/member/GetLaps?&subsessionid=%s&groupid=%s&simsessnum=%s'
 URL_GET_LAPS_ALL = 'https://members.iracing.com/membersite/member/GetLapChart?&subsessionid=%s&carclassid=-1'

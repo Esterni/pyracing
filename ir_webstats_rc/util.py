@@ -1,13 +1,8 @@
 import inspect
 import json
+from urllib.parse import unquote  # python3
 
-from ir_webstats_rc import decorator
-
-try:
-    from urllib.parse import unquote  # python3
-except:
-    from urllib import unquote  # python2
-
+from . import decorator
 
 def tofile(data):
     a = open('output.html', 'w')

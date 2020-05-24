@@ -15,10 +15,13 @@ import csv
 import time
 import re
 import ast
+import inspect
+import json
 
-from ir_webstats_rc import constants as ct
-from ir_webstats_rc.util import *
-
+from . import constants as ct
+from .util import *
+from .decorator import decorator
+from urllib.parse import unquote
 
 class iRWebStats:
 
@@ -80,17 +83,21 @@ class iRWebStats:
                                                        cookie=self.last_cookie))
                 # TODO Should we cache this?
                 return self.logged
+            else:
+                pprint("No cookie", self.verbose)
+
             self.custid = ''
             r = self.__req(ct.URL_IRACING_LOGIN, grab_cookie=True)
             r = self.__req(ct.URL_IRACING_LOGIN2, data,
                            cookie=self.last_cookie, grab_cookie=True)
+            pprint(r) 
 
-            if 'irsso_members' in self.last_cookie:
+            if 'irsso_membersv2' in self.last_cookie:
+                self.logged = True
+                r = self.__req(ct.URL_IRACING_HOME, cookie=self.last_cookie)
                 ind = r.index('js_custid')
                 custid = int(r[ind + 11: r.index(';', ind)])
                 self.custid = custid
-                pprint(("CUSTID", self.custid), self.verbose)
-                self.logged = True
                 self.__get_irservice_info(r)
                 self.__save_cookie()
                 pprint("Log in succesful", self.verbose)
@@ -500,7 +507,7 @@ class iRWebStats:
         """ Gets the event results (table of positions, times, etc.). The
             event is identified by a subsession id. """
 
-        r = self.__req(ct.URL_GET_EVENTRESULTS % (subsession, sessnum)).encode('utf8').decode('utf-8')
+        r = self.__req(ct.URL_GET_EVENTRESULTS_CSV % (subsession, sessnum)).encode('utf8').decode('utf-8')
         data = [x for x in csv.reader(StringIO(r), delimiter=',', quotechar='"')]
         header_res = []
         for header in data[3]:
@@ -518,11 +525,11 @@ class iRWebStats:
         return event_info, results
 
     @logged_in
-    def event_results2(self, subsession, custid):
+    def event_results_web(self, subsession):
         """ Get the event results from the web page rather than CSV.
         Required to get ttRating for time trials """
 
-        r = self.__req(ct.URL_GET_EVENTRESULTS2 % (subsession, custid))
+        r = self.__req(ct.URL_GET_EVENTRESULTS % (subsession))
 
         resp = re.sub('\t+',' ',r)
         resp = re.sub('\r\r\n+',' ',resp)
@@ -551,6 +558,28 @@ class iRWebStats:
         out = json.loads(out)
 
         return out
+
+    @logged_in
+    def get_qual_sessnum(self, subsession):
+        """ Get the qualifying session number from the results web page """
+
+        r = self.__req(ct.URL_GET_EVENTRESULTS % (subsession))
+
+        resp = re.sub('\t+',' ',r)
+        resp = re.sub('\r\r\n+',' ',resp)
+        resp = re.sub('\s+',' ',resp)
+
+        str2find = "var resultOBJ ="
+        ind1 = resp.index(str2find)
+        ind2 = resp.index("};", ind1) + 1
+        resp = resp[ind1 + len(str2find): ind2].replace('+', ' ')
+
+        m = re.search(r'simSessNum:(-?\d+), simSesName:"(\w+)",', resp)
+        if m:
+            if m.group(2) == "PRACTICE":
+                return int(m.group(1)) + 1            
+        else:
+            return None
 
     def subsession_results(self, subsession):
         """ Get the results for a time trial event from the web page.
