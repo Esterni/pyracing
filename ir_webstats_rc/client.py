@@ -102,8 +102,8 @@ class iRWebStats:
                 self.__save_cookie()
                 pprint("Log in succesful", self.verbose)
             else:
-                pprint("Invalid Login (user: %s). Please check your\
-                        credentials" % (username), self.verbose)
+                pprint(f"Invalid Login (user: {username}). Please check your\
+                        credentials", self.verbose)
                 self.logged = False
 
         except Exception as e:
@@ -191,7 +191,7 @@ class iRWebStats:
         """ Gets the irating data of a driver using its custom id (custid)
             that generates the chart located in the driver's profile. """
 
-        r = self.__req(ct.URL_STATS_CHART % (custid, category),
+        r = self.__req(ct.URL_STATS_CHART,
                        cookie=self.last_cookie)
         return parse(r)
 
@@ -204,14 +204,14 @@ class iRWebStats:
     @logged_in
     def career_stats(self, custid=None):
         """ Gets career stats (top5, top 10, etc.) of driver (custid)."""
-        r = self.__req(ct.URL_CAREER_STATS % (custid),
+        r = self.__req(ct.URL_CAREER_STATS,
                        cookie=self.last_cookie)
         return parse(r)[0]
 
     @logged_in
     def yearly_stats(self, custid=None):
         """ Gets yearly stats (top5, top 10, etc.) of driver (custid)."""
-        r = self.__req(ct.URL_YEARLY_STATS % (custid),
+        r = self.__req(ct.URL_YEARLY_STATS,
                        cookie=self.last_cookie)
         # tofile(r)
         return parse(r)
@@ -219,7 +219,7 @@ class iRWebStats:
     @logged_in
     def cars_driven(self, custid=None):
         """ Gets list of cars driven by driver (custid)."""
-        r = self.__req(ct.URL_CARS_DRIVEN % (custid),
+        r = self.__req(ct.URL_CARS_DRIVEN,
                        cookie=self.last_cookie)
         # tofile(r)
         return parse(r)
@@ -228,8 +228,8 @@ class iRWebStats:
     def personal_best(self, custid=None, carid=0):
         """ Personal best times of driver (custid) using car
             (carid. check self.CARS) set in official events."""
-        r = self.__req(ct.URL_PERSONAL_BEST % (carid, custid),
-                       cookie=self.last_cookie)
+        r = self.__req(ct.URL_PERSONAL_BEST,
+                        cookie=self.last_cookie)
         return parse(r)
 
     @logged_in
@@ -245,7 +245,7 @@ class iRWebStats:
     @logged_in
     def lastrace_stats(self, custid=None):
         """ Gets stats of last races (10 max?) of driver (custid)."""
-        r = self.__req(ct.URL_LASTRACE_STATS % (custid),
+        r = self.__req(ct.URL_LASTRACE_STATS,
                        cookie=self.last_cookie)
         return parse(r)
 
@@ -507,7 +507,7 @@ class iRWebStats:
         """ Gets the event results (table of positions, times, etc.). The
             event is identified by a subsession id. """
 
-        r = self.__req(ct.URL_GET_EVENTRESULTS_CSV % (subsession, sessnum)).encode('utf8').decode('utf-8')
+        r = self.__req(ct.URL_GET_EVENTRESULTS_CSV).encode('utf8').decode('utf-8')
         data = [x for x in csv.reader(StringIO(r), delimiter=',', quotechar='"')]
         header_res = []
         for header in data[3]:
@@ -529,7 +529,7 @@ class iRWebStats:
         """ Get the event results from the web page rather than CSV.
         Required to get ttRating for time trials """
 
-        r = self.__req(ct.URL_GET_EVENTRESULTS % (subsession))
+        r = self.__req(ct.URL_GET_EVENTRESULTS)
 
         resp = re.sub('\t+',' ',r)
         resp = re.sub('\r\r\n+',' ',resp)
@@ -563,7 +563,7 @@ class iRWebStats:
     def get_qual_sessnum(self, subsession):
         """ Get the qualifying session number from the results web page """
 
-        r = self.__req(ct.URL_GET_EVENTRESULTS % (subsession))
+        r = self.__req(ct.URL_GET_EVENTRESULTS)
 
         resp = re.sub('\t+',' ',r)
         resp = re.sub('\r\r\n+',' ',resp)
@@ -595,7 +595,7 @@ class iRWebStats:
         """ Get the lap times for an event from the web page.
         """
 
-        r = self.__req(ct.URL_GET_LAPS_SINGLE % (subsession, custid, sessnum))
+        r = self.__req(ct.URL_GET_LAPS_SINGLE)
 
         out = parse(r)
 
@@ -605,7 +605,7 @@ class iRWebStats:
         """ Get the lap times for an event from the web page.
         """
 
-        r = self.__req(ct.URL_GET_LAPS_ALL % subsession)
+        r = self.__req(ct.URL_GET_LAPS_ALL)
 
         out = parse(r)
 
@@ -623,7 +623,7 @@ class iRWebStats:
         """ Get the world record lap time for certain car in a season.
         """
 
-        r = self.__req(ct.URL_GET_WORLDRECORD % (seasonyear, seasonquarter, carid, trackid, custid))
+        r = self.__req(ct.URL_GET_WORLDRECORD)
         res = parse(r)
 
         header = res['m']
