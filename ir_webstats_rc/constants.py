@@ -62,38 +62,58 @@ INC_FLAGS = {
     2048: "tow"
 }
 
+#initilized variables for string formatting 
+custid = ''
+category = ''
+carid = ''
+trackid = ''
+seasonID = ''
+subsession = ''
+sessnum = ''
+seasonquarter = ''
+year = ''
+series = ''
+event = ''
+unixMs = ''
+
 #URLS
 URL_IRACING_LOGIN = 'https://members.iracing.com/membersite/login.jsp'
 URL_IRACING_LOGIN2 = 'https://members.iracing.com/membersite/Login'
 URL_IRACING_HOME = 'https://members.iracing.com/membersite/member/Home.do'
 URL_CURRENT_SERIES = 'https://members.iracing.com/membersite/member/Series.do'
-URL_STATS_CHART = 'https://members.iracing.com/memberstats/member/GetChartData?custId=%s&catId=%s&chartType=1'
+URL_STATS_CHART = f'https://members.iracing.com/memberstats/member/GetChartData?custId={custid}&catId={category}&chartType=1'
 URL_DRIVER_COUNTS = 'https://members.iracing.com/membersite/member/GetDriverCounts'
-URL_CAREER_STATS = 'https://members.iracing.com/memberstats/member/GetCareerStats?custid=%s'
-URL_YEARLY_STATS = 'https://members.iracing.com/memberstats/member/GetYearlyStats?custid=%s'
-URL_CARS_DRIVEN = 'https://members.iracing.com/memberstats/member/GetCarsDriven?custid=%s'
-URL_PERSONAL_BEST = 'https://members.iracing.com/memberstats/member/GetPersonalBests?carid=%s&custid=%s'
+URL_CAREER_STATS = f'https://members.iracing.com/memberstats/member/GetCareerStats?custid={custid}'
+URL_YEARLY_STATS = f'https://members.iracing.com/memberstats/member/GetYearlyStats?custid={custid}'
+URL_CARS_DRIVEN = f'https://members.iracing.com/memberstats/member/GetCarsDriven?custid={custid}'
+URL_PERSONAL_BEST = f'https://members.iracing.com/memberstats/member/GetPersonalBests?carid={carid}&custid={custid}'
+
+#unable to return results utlizing var "drivername" in GetDriverStatus
+#using "?friends=1&studied=1&blacklisted=1" returned results -JA
 URL_DRIVER_STATUS = 'https://members.iracing.com/membersite/member/GetDriverStatus?%s'
+
 URL_DRIVER_STATS = 'https://members.iracing.com/memberstats/member/GetDriverStats'
-URL_LASTRACE_STATS = 'https://members.iracing.com/memberstats/member/GetLastRacesStats?custid=%s'
+URL_LASTRACE_STATS = f'https://members.iracing.com/memberstats/member/GetLastRacesStats?custid={custid}'
 URL_RESULTS_ARCHIVE = 'https://members.iracing.com/memberstats/member/GetResults'
 URL_SEASON_STANDINGS = 'https://members.iracing.com/memberstats/member/GetSeasonStandings'
 URL_SEASON_STANDINGS2 = 'https://members.iracing.com/membersite/member/statsseries.jsp'
 URL_HOSTED_RESULTS = 'https://members.iracing.com/memberstats/member/GetPrivateSessionResults'
-URL_SELECT_SERIES = 'https://members.iracing.com/membersite/member/SelectSeries.do?&season=%s&view=undefined&nocache=%s'
-URL_SESSION_TIMES = 'https://members.iracing.com/membersite/member/GetSessionTimes'#T-m-d
+URL_SELECT_SERIES = f'https://members.iracing.com/membersite/member/SelectSeries.do?&season={seasonID}&view=undefined&nocache=%s'
+URL_SESSION_TIMES = f'https://members.iracing.com/membersite/member/GetSessionTimes?season={seasonID}'#T-m-d
 URL_SERIES_RACERESULTS = 'https://members.iracing.com/memberstats/member/GetSeriesRaceResults'
 
-URL_GET_EVENTRESULTS_CSV = 'https://members.iracing.com/membersite/member/GetEventResultsAsCSV?subsessionid=%s&simsesnum=%s&includeSummary=1'
-URL_GET_EVENTRESULTS = 'https://members.iracing.com/membersite/member/EventResult.do?&subsessionid=%s'
+URL_GET_EVENTRESULTS_CSV = f'https://members.iracing.com/membersite/member/GetEventResultsAsCSV?subsessionid={subsession}&simsesnum={sessnum}&includeSummary=1'
+URL_GET_EVENTRESULTS = f'https://members.iracing.com/membersite/member/EventResult.do?&subsessionid={subsession}'
 
-URL_GET_LAPS_SINGLE = 'https://members.iracing.com/membersite/member/GetLaps?&subsessionid=%s&groupid=%s&simsessnum=%s'
-URL_GET_LAPS_ALL = 'https://members.iracing.com/membersite/member/GetLapChart?&subsessionid=%s&carclassid=-1'
+URL_GET_LAPS_SINGLE = f'https://members.iracing.com/membersite/member/GetLaps?&subsessionid={subsession}&groupid={custid}&simsessnum={sessnum}'
+URL_GET_LAPS_ALL = f'https://members.iracing.com/membersite/member/GetLapChart?&subsessionid={subsession}&carclassid=-1'
 
 URL_GET_PASTSERIES = 'https://members.iracing.com/membersite/member/PreviousSeasons.do'
 
-URL_GET_WORLDRECORD = 'https://members.iracing.com/memberstats/member/GetWorldRecords?seasonyear=%s&seasonquarter=%s&carid=%s&trackid=%s&custid=%s&format=json&upperbound=1'
+URL_GET_WORLDRECORD = f'https://members.iracing.com/memberstats/member/GetWorldRecords?seasonyear={year}&seasonquarter={seasonquarter}&carid={carid}&trackid={trackid}&custid={custid}&format=json&upperbound=1'
 
+#with provided seriesID, eventType (5 for race), and unix time (in milliseconds) it returns next session ID & regcount
+URL_GET_NEXTEVENT = f'https://members.iracing.com/membersite/member/GetNextEvent?seriesID={series}&evtType={event}&date={unixMs}'
 
 HEADERS = { 'User-Agent' : 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1312.52 Safari/537.17'
         , 'Referer': 'https://members.iracing.com/membersite/login.jsp', 'Connection': 'keep-alive',
