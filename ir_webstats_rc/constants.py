@@ -24,7 +24,7 @@ SORT_POINTS = 'points'
 ORDER_DESC  = 'desc'
 ORDER_ASC = 'asc'
 
-#OTHER
+#eventType (Type of sim session)
 EVENT_TEST = 1
 EVENT_PRACTICE = 2
 EVENT_QUALY = 3
