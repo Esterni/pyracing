@@ -47,7 +47,8 @@ if sys.version >= '3':
         return cls.__init__
 else:
     class getfullargspec(object):
-        "A quick and dirty replacement for getfullargspec for Python 2.X"
+        """A quick and dirty replacement for getfullargspec for Python 2.X
+        """
 
         def __init__(self, f):
             self.args, self.varargs, self.varkw, self.defaults = \
@@ -69,10 +70,9 @@ DEF = re.compile('\s*def\s*([_\w][_\w\d]*)\s*\(')
 
 # basic functionality
 class FunctionMaker(object):
-    """
-    An object with the ability to create functions with a given signature.
-    It has attributes name, doc, module, signature, defaults, dict and
-    methods update and make.
+    """ An object with the ability to create functions with a given signature.
+        It has attributes name, doc, module, signature, defaults, dict and
+        methods update and make.
     """
     def __init__(self, func=None, name=None, signature=None,
                  defaults=None, doc=None, module=None, funcdict=None):
@@ -132,7 +132,8 @@ class FunctionMaker(object):
             raise TypeError('You are decorating a non function: %s' % func)
 
     def update(self, func, **kw):
-        "Update the signature of func with the data in self"
+        """Update the signature of func with the data in self
+        """
         func.__name__ = self.name
         func.__doc__ = getattr(self, 'doc', None)
         func.__dict__ = getattr(self, 'dict', {})
@@ -144,7 +145,8 @@ class FunctionMaker(object):
         func.__dict__.update(kw)
 
     def make(self, src_templ, evaldict=None, addsource=False, **attrs):
-        "Make a new function from a given template and update the signature"
+        """Make a new function from a given template and update the signature
+        """
         src = src_templ % vars(self)  # expand name and signature
         evaldict = evaldict or {}
         mo = DEF.match(src)
@@ -174,13 +176,21 @@ class FunctionMaker(object):
         return func
 
     @classmethod
-    def create(cls, obj, body, evaldict, defaults=None,
-               doc=None, module=None, addsource=True, **attrs):
-        """
-        Create a function from the strings name, signature and body.
-        evaldict is the evaluation dictionary. If addsource is true an
-        attribute __source__ is added to the result. The attributes
-        attrs are added, if any.
+    def create(
+        cls,
+        obj,
+        body,
+        evaldict,
+        defaults=None,
+        doc=None,
+        module=None,
+        addsource=True,
+        **attrs
+    ):
+        """ Create a function from the strings name, signature and body.
+            evaldict is the evaluation dictionary. If addsource is true an
+            attribute __source__ is added to the result. The attributes
+            attrs are added, if any.
         """
         if isinstance(obj, str):  # "name(signature)"
             name, rest = obj.strip().split('(', 1)
@@ -192,14 +202,14 @@ class FunctionMaker(object):
             func = obj
         self = cls(func, name, signature, defaults, doc, module)
         ibody = '\n'.join('    ' + line for line in body.splitlines())
+
         return self.make('def %(name)s(%(signature)s):\n' + ibody,
                          evaldict, addsource, **attrs)
 
 
 def decorator(caller, func=None):
-    """
-    decorator(caller) converts a caller function into a decorator;
-    decorator(caller, func) decorates a function using a caller.
+    """ decorator(caller) converts a caller function into a decorator;
+        decorator(caller, func) decorates a function using a caller.
     """
     if func is not None:  # returns a decorated function
         evaldict = func.__globals__.copy()
