@@ -2,7 +2,7 @@ import inspect
 import json
 from urllib.parse import unquote  # python3
 
-import decorator
+from . import decorator
 
 
 def tofile(data):
