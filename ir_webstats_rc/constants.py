@@ -30,7 +30,7 @@ SORT_POINTS = 'points'
 ORDER_DESC = 'desc'
 ORDER_ASC = 'asc'
 
-#OTHER
+# List of session eventType
 EVENT_TEST = 1
 EVENT_PRACTICE = 2
 EVENT_QUALY = 3
@@ -82,7 +82,7 @@ series = ''
 event = ''
 unixMs = ''
 
-# URLS
+# URLS to retrieve data
 URL_IRACING_LOGIN = 'https://members.iracing.com/membersite/login.jsp'
 URL_IRACING_LOGIN2 = 'https://members.iracing.com/membersite/Login'
 URL_IRACING_HOME = 'https://members.iracing.com/membersite/member/Home.do'
