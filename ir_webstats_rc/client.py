@@ -23,7 +23,6 @@ from .util import *
 from .decorator import decorator
 from urllib.parse import unquote
 
-
 class iRWebStats:
 
     """ Use this class to connect to iRacing website and request some stats
