@@ -82,52 +82,93 @@ series = ''
 event = ''
 unixMs = ''
 
-# URLS to retrieve data
+mSite = 'https://members.iracing.com/membersite/member'
+mStats = 'https://members.iracing.com/memberstats/member'
+
+
+# GENERAL URLS
+
 URL_IRACING_LOGIN = 'https://members.iracing.com/membersite/login.jsp'
 URL_IRACING_LOGIN2 = 'https://members.iracing.com/membersite/Login'
 URL_IRACING_HOME = 'https://members.iracing.com/membersite/member/Home.do'
-URL_CURRENT_SERIES = 'https://members.iracing.com/membersite/member/Series.do'
 URL_IRACING_LOGOUT = 'https://members.iracing.com/membersite/LogOut'
-URL_STATS_CHART = f'https://members.iracing.com/memberstats/member/GetChartData?custId={custid}&catId={category}&chartType=1'
-URL_DRIVER_COUNTS = 'https://members.iracing.com/membersite/member/GetDriverCounts'
-URL_CAREER_STATS = f'https://members.iracing.com/memberstats/member/GetCareerStats?custid={custid}'
-URL_YEARLY_STATS = f'https://members.iracing.com/memberstats/member/GetYearlyStats?custid={custid}'
-URL_CARS_DRIVEN = f'https://members.iracing.com/memberstats/member/GetCarsDriven?custid={custid}'
-URL_PERSONAL_BEST = f'https://members.iracing.com/memberstats/member/GetPersonalBests?carid={carid}&custid={custid}'
 
-# Unable to return results utlizing var "drivername" in GetDriverStatus
-# Using "?friends=1&studied=1&blacklisted=1" returned results -JA
-URL_DRIVER_STATUS = 'https://members.iracing.com/membersite/member/GetDriverStatus?%s'
 
-URL_DRIVER_STATS = 'https://members.iracing.com/memberstats/member/GetDriverStats'
-URL_LASTRACE_STATS = f'https://members.iracing.com/memberstats/member/GetLastRacesStats?custid={custid}'
-URL_RESULTS_ARCHIVE = 'https://members.iracing.com/memberstats/member/GetResults'
-URL_SEASON_STANDINGS = 'https://members.iracing.com/memberstats/member/GetSeasonStandings'
-URL_SEASON_STANDINGS2 = 'https://members.iracing.com/membersite/member/statsseries.jsp'
-URL_HOSTED_RESULTS = 'https://members.iracing.com/memberstats/member/GetPrivateSessionResults'
-URL_SELECT_SERIES = f'https://members.iracing.com/membersite/member/SelectSeries.do?&season={seasonID}&view=undefined&nocache=%s'
-URL_SESSION_TIMES = f'https://members.iracing.com/membersite/member/GetSessionTimes?season={seasonID}'  # T-m-d
-URL_SERIES_RACERESULTS = 'https://members.iracing.com/memberstats/member/GetSeriesRaceResults'
+# /MEMBERSITE URLS
+URL_DRIVER_COUNTS = mSite + '/GetDriverCounts'
 
-URL_GET_EVENTRESULTS_CSV = f'https://members.iracing.com/membersite/member/GetEventResultsAsCSV?subsessionid={subsession}&simsesnum={sessnum}&includeSummary=1'
-URL_GET_EVENTRESULTS = f'https://members.iracing.com/membersite/member/EventResult.do?&subsessionid={subsession}'
-
-URL_GET_LAPS_SINGLE = f'https://members.iracing.com/membersite/member/GetLaps?&subsessionid={subsession}&groupid={custid}&simsessnum={sessnum}'
-URL_GET_LAPS_ALL = f'https://members.iracing.com/membersite/member/GetLapChart?&subsessionid={subsession}&carclassid=-1'
-
-URL_GET_PASTSERIES = 'https://members.iracing.com/membersite/member/PreviousSeasons.do'
-
-URL_GET_WORLDRECORD = f'https://members.iracing.com/memberstats/member/GetWorldRecords?seasonyear={year}&seasonquarter={seasonquarter}&carid={carid}&trackid={trackid}&custid={custid}&format=json&upperbound=1'
+# Unable to return results with "drivername" in GetDriverStatus
+# Should it be "?friends=1&studied=1&blacklisted=1" ?
+URL_DRIVER_STATUS = mSite + '/GetDriverStatus?'\
+                            '%s'
+URL_CURRENT_SERIES = mSite + '/Series.do'
+URL_SELECT_SERIES = mSite + '/SelectSeries.do?'\
+                            f'season={seasonID}'\
+                            '&view=undefined'\
+                            '&nocache=%s'
+URL_SESSION_TIMES = mSite + '/GetSessionTimes?'\
+                            f'season={seasonID}'
+URL_GET_EVENTRESULTS = mSite + '/EventResult.do?'\
+                               f'subsessionid={subsession}'
+URL_GET_EVENTRESULTS_CSV = mSite + '/GetEventResultsAsCSV?'\
+                                   f'subsessionid={subsession}'\
+                                   f'&simsesnum={sessnum}'\
+                                   '&includeSummary=1'
+URL_GET_LAPS_SINGLE = mSite + '/GetLaps?'\
+                              f'subsessionid={subsession}'\
+                              f'&groupid={custid}'\
+                              f'&simsessnum={sessnum}'
+URL_GET_LAPS_ALL = mSite + f'/GetLapChart?'\
+                           f'subsessionid={subsession}'\
+                           '&carclassid=-1'
+URL_GET_PASTSERIES = mSite + '/PreviousSeasons.do'
 
 # Returns next session ID & regcount - Unix time is milleseconds
-URL_GET_NEXTEVENT = f'https://members.iracing.com/membersite/member/GetNextEvent?seriesID={series}&evtType={event}&date={unixMs}'
+URL_GET_NEXTEVENT = mSite + f'/GetNextEvent?'\
+                            f'seriesID={series}'\
+                            f'&evtType={event}'\
+                            f'&date={unixMs}'
+URL_SEASON_STANDINGS2 = mSite + '/statsseries.jsp'
+
+
+# /MEMBERSTATS URLS
+URL_STATS_CHART = mStats + '/GetChartData?'\
+                           f'custId={custid}'\
+                           f'&catId={category}'\
+                           '&chartType=1'
+URL_CAREER_STATS = mStats + '/GetCareerStats?'\
+                            f'custid={custid}'
+URL_YEARLY_STATS = mStats + '/GetYearlyStats?'\
+                            f'custid={custid}'
+URL_CARS_DRIVEN = mStats + '/GetCarsDriven?'\
+                           f'custid={custid}'
+URL_PERSONAL_BEST = mStats + '/GetPersonalBests?'\
+                             f'&carid={carid}'\
+                             f'&custid={custid}'
+URL_DRIVER_STATS = mStats + '/GetDriverStats'
+URL_LASTRACE_STATS = mStats + '/GetLastRacesStats'\
+                            f'?custid={custid}'
+URL_RESULTS_ARCHIVE = mStats + '/GetResults'
+URL_SEASON_STANDINGS = mStats + '/GetSeasonStandings'
+URL_HOSTED_RESULTS = mStats + '/GetPrivateSessionResults'
+URL_SERIES_RACERESULTS = mStats + '/GetSeriesRaceResults'
+URL_GET_WORLDRECORD = mStats + '/GetWorldRecords?'\
+                               f'seasonyear={year}'\
+                               f'&seasonquarter={seasonquarter}'\
+                               f'&carid={carid}'\
+                               f'&trackid={trackid}'\
+                               f'&custid={custid}'\
+                               '&format=json'\
+                               '&upperbound=1'
+
 
 HEADERS = {
     'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) Apple\
         WebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1312.52 Safari/537.17',
     'Referer': 'https://members.iracing.com/membersite/login.jsp',
     'Connection': 'keep-alive',
-    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+    'Accept': 'text/html,application/xhtml+xml,'
+              'application/xml;q=0.9,*/*;q=0.8',
     'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
     'Cache-Control': 'max-age=0',
     'Host': 'members.iracing.com',
