@@ -9,6 +9,7 @@
 __pycache__
 *.tmp
 .env
+.vscode
 
 build
 dist
