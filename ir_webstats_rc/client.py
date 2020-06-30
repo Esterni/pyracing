@@ -800,7 +800,8 @@ class iRWebStats:
     @logged_in
     def event_results(self, subsession, sessnum=0):
         """ Gets the event results (table of positions, times, etc.). The
-            event is identified by a subsession id. """
+            event is identified by a subsession id.
+        """
 
         r = self.__req(
             ct.URL_GET_EVENTRESULTS_CSV).encode('utf8').decode('utf-8')
@@ -836,7 +837,8 @@ class iRWebStats:
     @logged_in
     def event_results_web(self, subsession):
         """ Get the event results from the web page rather than CSV.
-        Required to get ttRating for time trials """
+            Required to get ttRating for time trials
+        """
 
         r = self.__req(ct.URL_GET_EVENTRESULTS)
 
