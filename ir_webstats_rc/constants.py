@@ -1,8 +1,14 @@
 # _*_ coding: utf_8 _*_
 
 ALL = -1
-NUM_ENTRIES = 25  # Entries per page. This is the ammount set in iRacing site. We shouldn't increase it.
-WAIT_TIME = 0.3  # Minimum time in seconds between two consecutive requests to iRacing site (we don't want to flood/abuse the service). I'm not sure about the minimum value for this, I'll have to ask a dev.
+# Entries per page. This is the ammount set
+# in iRacing site. We shouldn't increase it.
+NUM_ENTRIES = 25
+
+# Minimum time in seconds between two consecutive requests to iRacing site
+# (we don't want to flood/abuse the service).
+# I'm not sure about the minimum value for this, I'll have to ask a dev.
+WAIT_TIME = 0.3
 
 IRATING_OVAL_CHART = 1
 IRATING_ROAD_CHART = 2
@@ -16,15 +22,15 @@ LIC_C = 3
 LIC_B = 4
 LIC_A = 5
 LIC_PRO = 6
-LIC_PRO_WC  = 7
+LIC_PRO_WC = 7
 
 SORT_IRATING = 'irating'
 SORT_TIME = 'start_time'
 SORT_POINTS = 'points'
-ORDER_DESC  = 'desc'
+ORDER_DESC = 'desc'
 ORDER_ASC = 'asc'
 
-#eventType (Type of sim session)
+# EventType (Type of sim session)
 EVENT_TEST = 1
 EVENT_PRACTICE = 2
 EVENT_QUALY = 3
@@ -33,8 +39,8 @@ EVENT_RACE = 5
 EVENT_OFFICIAL = 6
 EVENT_UNOFFICIAL = 7
 
-#INCIDENT FLAGS
-#these are used in the laps data
+# INCIDENT FLAGS
+# These are used in the laps data
 FLAG_PITTED = 2
 FLAG_OFF_TRACK = 4
 FLAG_BLACK_FLAG = 8
@@ -62,7 +68,7 @@ INC_FLAGS = {
     2048: "tow"
 }
 
-#initilized variables for string formatting 
+# Initilized variables for string formatting
 custid = ''
 category = ''
 carid = ''
@@ -76,7 +82,7 @@ series = ''
 event = ''
 unixMs = ''
 
-#URLS
+# URLS
 URL_IRACING_LOGIN = 'https://members.iracing.com/membersite/login.jsp'
 URL_IRACING_LOGIN2 = 'https://members.iracing.com/membersite/Login'
 URL_IRACING_HOME = 'https://members.iracing.com/membersite/member/Home.do'
@@ -89,8 +95,8 @@ URL_YEARLY_STATS = f'https://members.iracing.com/memberstats/member/GetYearlySta
 URL_CARS_DRIVEN = f'https://members.iracing.com/memberstats/member/GetCarsDriven?custid={custid}'
 URL_PERSONAL_BEST = f'https://members.iracing.com/memberstats/member/GetPersonalBests?carid={carid}&custid={custid}'
 
-#unable to return results utlizing var "drivername" in GetDriverStatus
-#using "?friends=1&studied=1&blacklisted=1" returned results -JA
+# Unable to return results utlizing var "drivername" in GetDriverStatus
+# Using "?friends=1&studied=1&blacklisted=1" returned results -JA
 URL_DRIVER_STATUS = 'https://members.iracing.com/membersite/member/GetDriverStatus?%s'
 
 URL_DRIVER_STATS = 'https://members.iracing.com/memberstats/member/GetDriverStats'
@@ -100,7 +106,7 @@ URL_SEASON_STANDINGS = 'https://members.iracing.com/memberstats/member/GetSeason
 URL_SEASON_STANDINGS2 = 'https://members.iracing.com/membersite/member/statsseries.jsp'
 URL_HOSTED_RESULTS = 'https://members.iracing.com/memberstats/member/GetPrivateSessionResults'
 URL_SELECT_SERIES = f'https://members.iracing.com/membersite/member/SelectSeries.do?&season={seasonID}&view=undefined&nocache=%s'
-URL_SESSION_TIMES = f'https://members.iracing.com/membersite/member/GetSessionTimes?season={seasonID}'#T-m-d
+URL_SESSION_TIMES = f'https://members.iracing.com/membersite/member/GetSessionTimes?season={seasonID}'  # T-m-d
 URL_SERIES_RACERESULTS = 'https://members.iracing.com/memberstats/member/GetSeriesRaceResults'
 
 URL_GET_EVENTRESULTS_CSV = f'https://members.iracing.com/membersite/member/GetEventResultsAsCSV?subsessionid={subsession}&simsesnum={sessnum}&includeSummary=1'
@@ -113,15 +119,25 @@ URL_GET_PASTSERIES = 'https://members.iracing.com/membersite/member/PreviousSeas
 
 URL_GET_WORLDRECORD = f'https://members.iracing.com/memberstats/member/GetWorldRecords?seasonyear={year}&seasonquarter={seasonquarter}&carid={carid}&trackid={trackid}&custid={custid}&format=json&upperbound=1'
 
-#with provided seriesID, eventType (5 for race), and unix time (in milliseconds) it returns next session ID & regcount
+# Returns next session ID & regcount - Unix time is milleseconds
 URL_GET_NEXTEVENT = f'https://members.iracing.com/membersite/member/GetNextEvent?seriesID={series}&evtType={event}&date={unixMs}'
 
-HEADERS = { 'User-Agent' : 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1312.52 Safari/537.17'
-        , 'Referer': 'https://members.iracing.com/membersite/login.jsp', 'Connection': 'keep-alive',
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8','Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3','Cache-Control': 'max-age=0', 'Host': 'members.iracing.com','Accept-Encoding': 'gzip,deflate,sdch', 'Origin': 'members.iracing.com', 'Accept-Language': 'en-US,en;q=0.8'}
+HEADERS = {
+    'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) Apple\
+        WebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1312.52 Safari/537.17',
+    'Referer': 'https://members.iracing.com/membersite/login.jsp',
+    'Connection': 'keep-alive',
+    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+    'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
+    'Cache-Control': 'max-age=0',
+    'Host': 'members.iracing.com',
+    'Accept-Encoding': 'gzip,deflate,sdch',
+    'Origin': 'members.iracing.com',
+    'Accept-Language': 'en-US,en;q=0.8'
+}
 
 
-#LOCATIONS
+# LOCATIONS
 LOC_ALL = 'null'
 LOC_AFGHANISTAN = 'AF'
 LOC_ALAND_ISLANDS = 'AX'
@@ -370,8 +386,8 @@ LOC_YEMEN = 'YE'
 LOC_ZAMBIA = 'ZM'
 LOC_ZIMBABWE = 'ZW'
 
-#list of SIDs (SeriesID) listed in order from /GetRaceGuide 
-#note: removed any dashs due to errors
+# List of SIDs (SeriesID) listed in order from /GetRaceGuide
+# Note: removed any dashs due to errors
 SID_Carburetor_Cup = 116
 SID_DIRTcar_Street_Stock_Series_Fixed = 290
 SID_Fanatec_Global_Mazda_MX5_Cup = 139

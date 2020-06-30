@@ -4,6 +4,7 @@ from urllib.parse import unquote  # python3
 
 import decorator
 
+
 def tofile(data):
     a = open('output.html', 'w')
     a.write(data)

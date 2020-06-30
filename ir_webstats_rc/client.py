@@ -23,13 +23,15 @@ from .util import *
 from .decorator import decorator
 from urllib.parse import unquote
 
+
 class iRWebStats:
 
     """ Use this class to connect to iRacing website and request some stats
         from drivers, races and series. It needs to be logged in the
         iRacing membersite so valid login crendentials (user, password)
         are required. Most  data is returned in JSON format and
-        converted to python dicts. """
+        converted to python dicts.
+    """
 
     def __init__(self, verbose=True):
         self.last_cookie = ''
@@ -68,19 +70,29 @@ class iRWebStats:
 
         if self.logged:
             return True
-        data = {"username": username, "password": password, 'utcoffset': 300,
-                'todaysdate': ''}
+        data = {
+            "username": username,
+            "password": password,
+            'utcoffset': 300,
+            'todaysdate': ''
+        }
         try:
             pprint("Loggin in...", self.verbose)
+
             # Check if there's a previous cookie
             if (self.__load_cookie() and self.__check_cookie()):
-                #  If previous cookie is valid
+
                 pprint("Previous cookie valid", self.verbose)
                 self.logged = True
+
                 if get_info:
-                  # Load iracing info
-                  self.__get_irservice_info(self.__req(ct.URL_IRACING_HOME,
-                                                       cookie=self.last_cookie))
+                    # Load iracing info
+                    self.__get_irservice_info(
+                        self.__req(
+                            ct.URL_IRACING_HOME,
+                            cookie=self.last_cookie
+                        )
+                    )
                 # TODO Should we cache this?
                 return self.logged
             else:
@@ -101,10 +113,14 @@ class iRWebStats:
                 self.__get_irservice_info(r)
                 self.__save_cookie()
                 pprint("Log in succesful", self.verbose)
+
             else:
-                pprint(f"Invalid Login (user: {username}). Please check your\
-                        credentials", self.verbose)
                 self.logged = False
+
+                pprint(
+                    f'Invalid Login (user: {username}).
+                    Please check your credentials', self.verbose
+                )
 
         except Exception as e:
             pprint(("Error on Login Request", e), self.verbose)
@@ -154,12 +170,21 @@ class iRWebStats:
             cars, series, etc. Check self.TRACKS, self.CARS, self.DIVISION
             , self.CARCLASS, self.CLUB. """
 
-        pprint("Getting iRacing Service info (cars, tracks, etc.)",
-               self.verbose)
-        items = {"TRACKS":  "TrackListing", "CARS": "CarListing",
-                 "CARCLASS":  "CarClassListing", "CLUBS": "ClubListing",
-                 "SEASON": "SeasonListing", "DIVISION": "DivisionListing",
-                 "YEARANDQUARTER": "YearAndQuarterListing"}
+        pprint(
+            "Getting iRacing Service info (cars, tracks, etc.)",
+            self.verbose
+        )
+
+        items = {
+            "TRACKS": "TrackListing",
+            "CARS": "CarListing",
+            "CARCLASS": "CarClassListing",
+            "CLUBS": "ClubListing",
+            "SEASON": "SeasonListing",
+            "DIVISION": "DivisionListing",
+            "YEARANDQUARTER": "YearAndQuarterListing"
+        }
+
         for i in items:
             str2find = "var " + items[i] + " = extractJSON('"
             try:
