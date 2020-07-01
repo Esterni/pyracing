@@ -16,10 +16,11 @@ import re
 import ast
 import inspect
 import json
+import os
 
-from . import constants as ct
-from .util import *
-from .decorator import decorator
+import ir_webstats_rc.constants as ct
+from ir_webstats_rc.util import *
+from ir_webstats_rc.decorator import decorator
 from urllib.parse import unquote
 
 encode = urllib.parse.urlencode
