@@ -84,11 +84,22 @@ class iRWebStats:
             return True
 
         data = {
-            "username": username,
-            "password": password,
+            "username": os.getenv('IRACING_USERNAME'),
+            "password": os.getenv('IRACING_PASSWORD'),
             'utcoffset': 300,
             'todaysdate': ''
         }
+        
+        try: 
+            if data["username"] or data["password"]:
+                pass
+
+        except KeyError:
+            print('Please create enironment variables to store credentials:\n'
+                  'IRACING_USERNAME\n'
+                  'IRACING_PASSWORD')
+            
+            return False
 
         try:
             pprint("Loggin in...", self.verbose)
