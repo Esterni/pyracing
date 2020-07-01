@@ -80,7 +80,10 @@ seasonquarter = ''
 year = ''
 series = ''
 event = ''
-unixMs = ''
+unixMs = ''  # iRacing rounds down to the 5 minute mark
+quarter = ''
+raceweek = ''
+carclass = ''
 
 mSite = 'https://members.iracing.com/membersite/member'
 mStats = 'https://members.iracing.com/memberstats/member'
@@ -95,12 +98,15 @@ URL_IRACING_LOGOUT = 'https://members.iracing.com/membersite/LogOut'
 
 
 # /MEMBERSITE URLS
+
+# DriverCounts and Status are 'friends list'
+# Unable to return results with "drivername"
+URL_DRIVER_STATUS = mSite + '/GetDriverStatus?'\
+                            'friends=1'\
+                            '&studied=1'\
+                            '&blacklisted=1'
 URL_DRIVER_COUNTS = mSite + '/GetDriverCounts'
 
-# Unable to return results with "drivername" in GetDriverStatus
-# Should it be "?friends=1&studied=1&blacklisted=1" ?
-URL_DRIVER_STATUS = mSite + '/GetDriverStatus?'\
-                            '%s'
 URL_CURRENT_SERIES = mSite + '/Series.do'
 URL_SELECT_SERIES = mSite + '/SelectSeries.do?'\
                             f'season={seasonID}'\
@@ -108,8 +114,14 @@ URL_SELECT_SERIES = mSite + '/SelectSeries.do?'\
                             '&nocache=%s'
 URL_SESSION_TIMES = mSite + '/GetSessionTimes?'\
                             f'season={seasonID}'
+
+# \GetSubSessionResults is the JSON source for /EventResult.do
 URL_GET_EVENTRESULTS = mSite + '/EventResult.do?'\
                                f'subsessionid={subsession}'
+URL_GET_SSRESULTS = mSite + '/GetSubsessionResults?'\
+                            f'subsessionID={subsession}'\
+                            f'&custid={custid}'
+
 URL_GET_EVENTRESULTS_CSV = mSite + '/GetEventResultsAsCSV?'\
                                    f'subsessionid={subsession}'\
                                    f'&simsesnum={sessnum}'\
@@ -118,20 +130,63 @@ URL_GET_LAPS_SINGLE = mSite + '/GetLaps?'\
                               f'subsessionid={subsession}'\
                               f'&groupid={custid}'\
                               f'&simsessnum={sessnum}'
-URL_GET_LAPS_ALL = mSite + f'/GetLapChart?'\
+URL_GET_LAPS_ALL = mSite + '/GetLapChart?'\
                            f'subsessionid={subsession}'\
                            '&carclassid=-1'
 URL_GET_PASTSERIES = mSite + '/PreviousSeasons.do'
 
-# Returns next session ID & regcount - Unix time is milleseconds
+# NEW Returns SubsessionID of member's split. 
+URL_GET_SSID = mSite + '/GetSubsessionForMember?'\
+                               f'sessionID={sessnum}'
+
+# NEW Returns next session ID & regcount - Unix time is in milleseconds.
 URL_GET_NEXTEVENT = mSite + f'/GetNextEvent?'\
                             f'seriesID={series}'\
                             f'&evtType={event}'\
                             f'&date={unixMs}'
+
+# NEW Returns registered drivers for all series, by seasonID
+URL_GET_TOTALREGISTERED = mSite + '/GetTotalSessionJoinedCountsBySeason'
+
+# NEW 'hideNot' means 'show only'
+URL_GET_RACEGUIDE = mSite + '/GetRaceGuide?'\
+                            f'at={unixMs}'\
+                            '&showRookie=1'\
+                            '&showClassD=1'\
+                            '&showClassC=1'\
+                            '&showClassB=1'\
+                            '&showClassA=1'\
+                            '&showPro=1'\
+                            '&showProWC=1'\
+                            '&showOval=1'\
+                            '&showRoad=1'\
+                            '&showDirtOval=1'\
+                            '&showDirtRoad=1'\
+                            '&hideNotFixedSetup=0'\
+                            '&hideNotMultiClass=0'\
+                            '&meetsMPR=0'\
+                            '&hideUnpopulated=0'\
+                            '&hideIneligible=0'\
+                            '&showOfficial=1'
+
+# /GetSeasonStandings is the JSON site for /statsseries
 URL_SEASON_STANDINGS2 = mSite + '/statsseries.jsp'
+URL_SEASON_STANDINGS = mStats + '/GetSeasonStandings?'\
+                                f'seasonid={seasonID}'\
+                                f'&carclassid={carclass}'\
+                                '&clubid=-1'\
+                                f'&raceweek={raceweek}'\
+                                '&division=2'\
+                                '&start=1'\
+                                f'&end={NUM_ENTRIES}'\
+                                '&sort=points'\
+                                '&order=desc'
 
 
-# /MEMBERSTATS URLS
+
+
+
+# MEMBER STATS
 URL_STATS_CHART = mStats + '/GetChartData?'\
                            f'custId={custid}'\
                            f'&catId={category}'\
@@ -145,13 +200,45 @@ URL_CARS_DRIVEN = mStats + '/GetCarsDriven?'\
 URL_PERSONAL_BEST = mStats + '/GetPersonalBests?'\
                              f'&carid={carid}'\
                              f'&custid={custid}'
-URL_DRIVER_STATS = mStats + '/GetDriverStats'
+
+# RACE STATS
 URL_LASTRACE_STATS = mStats + '/GetLastRacesStats'\
                             f'?custid={custid}'
-URL_RESULTS_ARCHIVE = mStats + '/GetResults'
-URL_SEASON_STANDINGS = mStats + '/GetSeasonStandings'
+# Category 1-4 = Start Pos Range, Finish Pos, Inc Range, Champ Points Range
+URL_RESULTS_ARCHIVE = mStats + '/GetResults'\
+                                'custid={custid}'\
+                                '&showraces=1'\
+                                '&showquals=0'\
+                                '&showtts=0'\
+                                '&showops=0'\
+                                '&showofficial=1'\
+                                '&showunofficial=0'\
+                                '&showrookie=1'\
+                                '&showclassd=1'\
+                                '&showclassc=1'\
+                                '&showclassb=1'\
+                                '&showclassa=1'\
+                                '&showpro=1'\
+                                '&showprowc=1'\
+                                '&lowerbound=0'\
+                                f'&upperbound={NUM_ENTRIES}'\
+                                '&sort=start_time'\
+                                '&order=desc'\
+                                '&format=json'\
+                                '&category%5B%5D=1'\
+                                '&category%5B%5D=2'\
+                                '&category%5B%5D=3'\
+                                '&category%5B%5D=4'\
+                                f'&seasonyear={year}'\
+                                f'&seasonquarter={quarter}'\
+                                f'&raceweek={raceweek}'\
+                                f'&trackid={trackid}'\
+                                f'&carclassid={carclass}'\
+                                f'&carid={carid}'
 URL_HOSTED_RESULTS = mStats + '/GetPrivateSessionResults'
-URL_SERIES_RACERESULTS = mStats + '/GetSeriesRaceResults'
+URL_SERIES_RACERESULTS = mStats + '/GetSeriesRaceResults'\
+                                  f'?seasonid={seasonID}'\
+                                  f'&raceweek={raceweek}'
 URL_GET_WORLDRECORD = mStats + '/GetWorldRecords?'\
                                f'seasonyear={year}'\
                                f'&seasonquarter={seasonquarter}'\
@@ -161,6 +248,41 @@ URL_GET_WORLDRECORD = mStats + '/GetWorldRecords?'\
                                '&format=json'\
                                '&upperbound=1'
 
+
+# TODO Add these
+URL_GET_SEASONS = 'https://members.iracing.com/membersite/member'\
+    '/GetSeasons?onlyActive=0&fields=year,quarter,seriesshortname,seriesid,active,catid,licenseeligible,islite,carclasses,tracks,start,end,cars,raceweek,category,serieslicgroupid,carid,seasonid,seriesid'
+URL_GET_MDIVISION = '/GetMembersDivision?'\
+                    f'seasonid={seasonID}'\
+                    f'&custid={custid}'\
+                    '&pointstype=race'
+URL_DRIVER_STATS = mStats + '/GetDriverStats?'\
+                            'search=null'\
+                            '&friend=-1'\
+                            '&watched=-1'\
+                            '&recent=-1'\
+                            '&country=null'\
+                            '&category=1'\
+                            '&classlow=-1'\
+                            '&classhigh=-1'\
+                            '&iratinglow=-1'\
+                            '&iratinghigh=-1'\
+                            '&ttratinglow=-1'\
+                            '&ttratinghigh=-1'\
+                            '&avgstartlow=-1'\
+                            '&avgstarthigh=-1'\
+                            '&avgfinishlow=-1'\
+                            '&avgfinishhigh=-1'\
+                            '&avgpointslow=-1'\
+                            '&avgpointshigh=-1'\
+                            '&avgincidentslow=-1'\
+                            '&avgincidentshigh=-1'\
+                            '&custid=435144'\
+                            '&lowerbound=1'\
+                            '&upperbound=25'\
+                            '&sort=irating'\
+                            '&order=desc'\
+                            '&active=1'
 
 HEADERS = {
     'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) Apple\
