@@ -137,10 +137,10 @@ URL_GET_PASTSERIES = mSite + '/PreviousSeasons.do'
 
 # NEW Returns SubsessionID of member's split. 
 URL_GET_SSID = mSite + '/GetSubsessionForMember?'\
-                               f'sessionID={sessnum}'
+                       f'sessionID={sessnum}'
 
 # NEW Returns next session ID & regcount - Unix time is in milleseconds.
-URL_GET_NEXTEVENT = mSite + f'/GetNextEvent?'\
+URL_GET_NEXTEVENT = mSite + '/GetNextEvent?'\
                             f'seriesID={series}'\
                             f'&evtType={event}'\
                             f'&date={unixMs}'
@@ -181,9 +181,6 @@ URL_SEASON_STANDINGS = mStats + '/GetSeasonStandings?'\
                                 f'&end={NUM_ENTRIES}'\
                                 '&sort=points'\
                                 '&order=desc'
-
-
-
 
 
 # MEMBER STATS
@@ -250,8 +247,9 @@ URL_GET_WORLDRECORD = mStats + '/GetWorldRecords?'\
 
 
 # TODO Add these
-URL_GET_SEASONS = 'https://members.iracing.com/membersite/member'\
-    '/GetSeasons?onlyActive=0&fields=year,quarter,seriesshortname,seriesid,active,catid,licenseeligible,islite,carclasses,tracks,start,end,cars,raceweek,category,serieslicgroupid,carid,seasonid,seriesid'
+URL_GET_SEASONS = mSite + '/GetSeasons?'\
+                          'onlyActive=0'\
+                          '&fields=year,quarter,seriesshortname,seriesid,active,catid,licenseeligible,islite,carclasses,tracks,start,end,cars,raceweek,category,serieslicgroupid,carid,seasonid,seriesid'
 URL_GET_MDIVISION = '/GetMembersDivision?'\
                     f'seasonid={seasonID}'\
                     f'&custid={custid}'\
