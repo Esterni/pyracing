@@ -73,7 +73,7 @@ class iRWebStats:
         except:
             return False
 
-    def login(self, username='', password='', get_info=False):
+    def login(self, username=os.getenv('IRACING_USERNAME'), password=os.getenv('IRACING_PASSWORD'), get_info=False):
         """ Log in to iRacing members site. If there is a valid cookie saved
             then it tries to use it to avoid a new login request. Returns
             True is the login was succesful and stores the customer id
@@ -84,8 +84,8 @@ class iRWebStats:
             return True
 
         data = {
-            "username": os.getenv('IRACING_USERNAME'),
-            "password": os.getenv('IRACING_PASSWORD'),
+            "username": username,
+            "password": password,
             'utcoffset': 300,
             'todaysdate': ''
         }
@@ -292,7 +292,7 @@ class iRWebStats:
         varname,
         resp,
         appear=1
-    ):
+        ):
         str2find = "var " + varname + " = extractJSON('"
         ind1 = -1
 
@@ -989,9 +989,11 @@ class iRWebStats:
 
         return record
 
-
+username = 'IRACING_USERNAME'
+password = 'IRACING_PASSWORD'
 if __name__ == '__main__':
     irw = iRWebStats()
-    user, passw = ('username', 'password')
+    user = (os.getenv(username))
+    passw = (os.getenv(password))
     irw.login(user, passw)
     print("Cars Driven", irw.cars_driven())  # example usage
