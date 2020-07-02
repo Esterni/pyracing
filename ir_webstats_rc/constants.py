@@ -254,7 +254,7 @@ URL_GET_WORLDRECORD = (mStats + '/GetWorldRecords?'
 # TODO Add these
 URL_GET_SEASONS = (mSite + '/GetSeasons?'
                            'onlyActive=0'
-                           '&fields=-1year,quarter,seriesshortname,seriesid,active,catid,licenseeligible,islite,carclasses,tracks,start,end,cars,raceweek,category,serieslicgroupid,carid,seasonid,seriesid')
+                           '&fields=year,quarter,seriesshortname,seriesid,active,catid,licenseeligible,islite,carclasses,tracks,start,end,cars,raceweek,category,serieslicgroupid,carid,seasonid,seriesid')
 URL_GET_MDIVISION = (mSite + '/GetMembersDivision?'
                              f'seasonid={seasonID}'
                              f'&custid={custid}'
