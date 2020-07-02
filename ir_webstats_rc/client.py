@@ -89,8 +89,8 @@ class iRWebStats:
             'utcoffset': 300,
             'todaysdate': ''
         }
-        
-        try: 
+
+        try:
             if data["username"] or data["password"]:
                 pass
 
@@ -98,7 +98,7 @@ class iRWebStats:
             print('Please create enironment variables to store credentials:\n'
                   'IRACING_USERNAME\n'
                   'IRACING_PASSWORD')
-            
+
             return False
 
         try:
