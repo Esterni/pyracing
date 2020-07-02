@@ -122,8 +122,8 @@ URL_SERIES_RACERESULTS = (mStats + '/GetSeriesRaceResults'
 
 
 # RECENT HISTORICAL
-URL_LASTRACE_STATS = (mStats + '/GetLastRacesStats'
-                               f'?custid={custid}')
+URL_LASTRACE_STATS = (mStats + '/GetLastRacesStats?'
+                               f'custid={custid}')
 URL_LAST_SERIES = (mStats + '/GetLastSeries?'
                             f'custid={custid}')
 URL_RESULTS_ARCHIVE = (mStats + '/GetResults?'
@@ -294,32 +294,6 @@ URL_SELECT_SERIES = (mSite + '/SelectSeries.do?'
 # Doesn't work. Loads a page but redirects back to home
 URL_GET_PASTSERIES = (mSite + '/PreviousSeasons.do')
 URL_SEASON_STANDINGS2 = (mSite + '/statsseries.jsp')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
