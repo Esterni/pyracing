@@ -9,8 +9,8 @@
 __pycache__
 *.tmp
 .env
-.vscode
-.code-workspace
+*.vscode
+*.code-workspace
 
 build
 dist
