@@ -69,21 +69,20 @@ INC_FLAGS = {
 }
 
 # Initilized variables for string formatting
-custid = ''
-category = ''
-carid = ''
-trackid = ''
-seasonID = ''
-subsession = ''
-sessnum = ''
-seasonquarter = ''
-year = ''
-series = ''
-event = ''
-unixMs = ''  # iRacing rounds down to the 5 minute mark
-quarter = ''
-raceweek = ''
-carclass = ''
+custid =
+category =
+carid =
+trackid =
+subsession =
+sessnum =
+seasonquarter =
+year =
+series =
+event =
+unixMs =   # iRacing rounds down to the 5 minute mark
+quarter =
+raceweek =
+carclass =
 
 mSite = 'https://members.iracing.com/membersite/member'
 mStats = 'https://members.iracing.com/memberstats/member'
@@ -108,10 +107,10 @@ URL_DRIVER_STATUS = mSite + '/GetDriverStatus?'\
 URL_DRIVER_COUNTS = mSite + '/GetDriverCounts'
 
 URL_CURRENT_SERIES = mSite + '/Series.do'
-URL_SELECT_SERIES = mSite + '/SelectSeries.do?'\
-                            f'season={seasonID}'\
-                            '&view=undefined'\
-                            '&nocache=%s'
+URL_SELECT_SERIES = (mSite + '/SelectSeries.do?'
+                            f'season={seasonID}'
+                             '&view=undefined'
+                             '&nocache=%s')
 URL_SESSION_TIMES = mSite + '/GetSessionTimes?'\
                             f'season={seasonID}'
 
@@ -135,7 +134,7 @@ URL_GET_LAPS_ALL = mSite + '/GetLapChart?'\
                            '&carclassid=-1'
 URL_GET_PASTSERIES = mSite + '/PreviousSeasons.do'
 
-# NEW Returns SubsessionID of member's split. 
+# NEW Returns SubsessionID of member's split.
 URL_GET_SSID = mSite + '/GetSubsessionForMember?'\
                        f'sessionID={sessnum}'
 
@@ -281,7 +280,11 @@ URL_DRIVER_STATS = mStats + '/GetDriverStats?'\
                             '&sort=irating'\
                             '&order=desc'\
                             '&active=1'
-
+URL_ACTIVEOP_COUNT = mSite + '/GetActiveOpenPracticeCount'\
+                             '?maxcount=250'\
+                             '&include_empty=y'\
+                             '&excludeLite=0'\
+                             '&custid=435144?'
 HEADERS = {
     'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) Apple\
         WebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1312.52 Safari/537.17',
