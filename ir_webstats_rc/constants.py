@@ -70,7 +70,8 @@ INC_FLAGS = {
     2048: "tow"
 }
 
-# Initilized variables for string formatting
+# Initialized Variables for URLS (WiP)
+# TODO Polish this up / Better naming
 custid = 435144
 category = -1
 carid = -1
@@ -82,7 +83,7 @@ seasonquarter = 2
 year = 2020
 series = 284
 event = 5
-# iRacing rounds down to the 5 minute mark
+# iRacing rounds down to the 5 minute mark - Do not change
 unixMs = int(math.floor(time.time()/300)*300)*1000
 quarter = 2
 raceweek = -1
@@ -92,90 +93,19 @@ cDiv = -1  # Club Division
 mSite = 'https://members.iracing.com/membersite/member'
 mStats = 'https://members.iracing.com/memberstats/member'
 
-
-# GENERAL URLS
-
+# IRACING SERVICE URLS
 URL_IRACING_LOGIN = 'https://members.iracing.com/membersite/login.jsp'
 URL_IRACING_LOGIN2 = 'https://members.iracing.com/membersite/Login'
-URL_IRACING_HOME = 'https://members.iracing.com/membersite/member/Home.do'
 URL_IRACING_LOGOUT = 'https://members.iracing.com/membersite/LogOut'
+URL_IRACING_HOME = 'https://members.iracing.com/membersite/member/Home.do'
 
-
-# /MEMBERSITE URLS
-
-# DriverCounts and Status are 'friends list'
-# Unable to return results with "drivername"
-URL_DRIVER_STATUS = (mSite + '/GetDriverStatus?'
-                             'friends=1'
-                             '&studied=1'
-                             '&blacklisted=1')
-URL_DRIVER_COUNTS = (mSite + '/GetDriverCounts')
-
-URL_CURRENT_SERIES = (mSite + '/Series.do')
-URL_SELECT_SERIES = (mSite + '/SelectSeries.do?'
-                             f'season={seasonID}'
-                             '&view=undefined'
-                             '&nocache=%s')
-URL_SESSION_TIMES = (mSite + '/GetSessionTimes?'
-                             f'season={seasonID}')
-
-# /GetSubSessionResults is the JSON source for /EventResult.do
-URL_GET_EVENTRESULTS = (mSite + '/EventResult.do?'
-                                f'subsessionid={subsession}')
-URL_GET_SSRESULTS = (mSite + '/GetSubsessionResults?'
+# THE BIG ONES
+URL_SSESS_RESULTS = (mSite + '/GetSubsessionResults?'
                              f'subsessionID={subsession}'
                              f'&custid={custid}')
-URL_GET_EVENTRESULTS_CSV = (mSite + '/GetEventResultsAsCSV?'
-                                    f'subsessionid={subsession}'
-                                    f'&simsesnum={sessnum}'
-                                    '&includeSummary=1')
-
-URL_GET_LAPS_SINGLE = (mSite + '/GetLaps?'
-                               f'subsessionid={subsession}'
-                               f'&groupid={custid}'
-                               f'&simsessnum={sessnum}')
-URL_GET_LAPS_ALL = (mSite + '/GetLapChart?'
-                            f'subsessionid={subsession}'
-                            '&carclassid=-1')
-# Doesn't work. Loads a page but redirects back to home
-URL_GET_PASTSERIES = (mSite + '/PreviousSeasons.do')
-
-# NEW Returns SubsessionID of member's split.
-URL_GET_SSID = (mSite + '/GetSubsessionForMember?'
-                        f'sessionID={sessnum}')
-
-# NEW Returns next session ID & regcount.
-URL_GET_NEXTEVENT = (mSite + '/GetNextEvent?'
-                             f'seriesID={series}'
-                             f'&evtType={event}'
-                             f'&date={unixMs}')
-
-# NEW Returns registered drivers for all series, by seasonID
-URL_GET_TOTALREGISTERED = (mSite + '/GetTotalSessionJoinedCountsBySeason')
-
-# NEW 'hideNot' means 'show only'
-URL_GET_RACEGUIDE = (mSite + '/GetRaceGuide?'
-                             f'at={unixMs}'
-                             '&showRookie=1'
-                             '&showClassD=1'
-                             '&showClassC=1'
-                             '&showClassB=1'
-                             '&showClassA=1'
-                             '&showPro=1'
-                             '&showProWC=1'
-                             '&showOval=1'
-                             '&showRoad=1'
-                             '&showDirtOval=1'
-                             '&showDirtRoad=1'
-                             '&hideNotFixedSetup=0'
-                             '&hideNotMultiClass=0'
-                             '&meetsMPR=0'
-                             '&hideUnpopulated=0'
-                             '&hideIneligible=0'
-                             '&showOfficial=1')
-
-# /GetSeasonStandings is the JSON site for /statsseries
-URL_SEASON_STANDINGS2 = (mSite + '/statsseries.jsp')
+URL_CURRENT_SEASONS = (mSite + '/GetSeasons?' # TODO Shorten
+                           'onlyActive=0'
+                           '&fields=year,quarter,seriesshortname,seriesid,active,catid,licenseeligible,islite,carclasses,tracks,start,end,cars,raceweek,category,serieslicgroupid,carid,seasonid,seriesid')
 URL_SEASON_STANDINGS = (mStats + '/GetSeasonStandings?'
                                  f'seasonid={seasonID}'
                                  f'&carclassid={carclass}'
@@ -186,29 +116,18 @@ URL_SEASON_STANDINGS = (mStats + '/GetSeasonStandings?'
                                  f'&end={NUM_ENTRIES}'
                                  '&sort=points'
                                  '&order=desc')
+URL_SERIES_RACERESULTS = (mStats + '/GetSeriesRaceResults'
+                                   f'?seasonid={seasonID}'
+                                   f'&raceweek={raceweek}')
 
 
-# MEMBER STATS
-URL_STATS_CHART = (mStats + '/GetChartData?'
-                            f'custId={custid}'
-                            f'&catId={category}'
-                            '&chartType=1')
-URL_CAREER_STATS = (mStats + '/GetCareerStats?'
-                             f'custid={custid}')
-URL_YEARLY_STATS = (mStats + '/GetYearlyStats?'
-                             f'custid={custid}')
-URL_CARS_DRIVEN = (mStats + '/GetCarsDriven?'
-                            f'custid={custid}')
-URL_PERSONAL_BEST = (mStats + '/GetPersonalBests?'
-                              f'&carid={carid}'
-                              f'&custid={custid}')
-
-# RACE STATS
+# RECENT HISTORICAL
 URL_LASTRACE_STATS = (mStats + '/GetLastRacesStats'
                                f'?custid={custid}')
-# Category 1-4 = Start Pos Range, Finish Pos, Inc Range, Champ Points Range
-URL_RESULTS_ARCHIVE = (mStats + '/GetResults'
-                                'custid={custid}'
+URL_LAST_SERIES = (mStats + '/GetLastSeries?'
+                            f'custid={custid}')
+URL_RESULTS_ARCHIVE = (mStats + '/GetResults?'
+                                f'custid={custid}'  # custid required
                                 '&showraces=1'
                                 '&showquals=0'
                                 '&showtts=0'
@@ -237,10 +156,6 @@ URL_RESULTS_ARCHIVE = (mStats + '/GetResults'
                                 f'&trackid={trackid}'
                                 f'&carclassid={carclass}'
                                 f'&carid={carid}')
-URL_HOSTED_RESULTS = (mStats + '/GetPrivateSessionResults')
-URL_SERIES_RACERESULTS = (mStats + '/GetSeriesRaceResults'
-                                   f'?seasonid={seasonID}'
-                                   f'&raceweek={raceweek}')
 URL_GET_WORLDRECORD = (mStats + '/GetWorldRecords?'
                                 f'seasonyear={year}'
                                 f'&seasonquarter={seasonquarter}'
@@ -251,14 +166,65 @@ URL_GET_WORLDRECORD = (mStats + '/GetWorldRecords?'
                                 '&upperbound=1')
 
 
-# TODO Add these
-URL_GET_SEASONS = (mSite + '/GetSeasons?'
-                           'onlyActive=0'
-                           '&fields=year,quarter,seriesshortname,seriesid,active,catid,licenseeligible,islite,carclasses,tracks,start,end,cars,raceweek,category,serieslicgroupid,carid,seasonid,seriesid')
-URL_GET_MDIVISION = (mSite + '/GetMembersDivision?'
-                             f'seasonid={seasonID}'
-                             f'&custid={custid}'
-                             '&pointstype=race')
+# UPCOMING SESSIONS
+URL_SESSION_TIMES = (mSite + '/GetSessionTimes?'
+                             f'season={seasonID}')
+URL_GET_NEXTEVENT = (mSite + '/GetNextEvent?'
+                             f'seriesID={series}'
+                             f'&evtType={event}'
+                             f'&date={unixMs}')
+URL_GET_TOTALREGISTERED = (mSite + '/GetTotalSessionJoinedCountsBySeason')
+URL_GET_RACEGUIDE = (mSite + '/GetRaceGuide?'
+                             f'at={unixMs}'
+                             '&showRookie=1'
+                             '&showClassD=1'
+                             '&showClassC=1'
+                             '&showClassB=1'
+                             '&showClassA=1'
+                             '&showPro=1'
+                             '&showProWC=1'
+                             '&showOval=1'
+                             '&showRoad=1'
+                             '&showDirtOval=1'
+                             '&showDirtRoad=1'
+                             '&hideNotFixedSetup=0'
+                             '&hideNotMultiClass=0'
+                             '&meetsMPR=0'
+                             '&hideUnpopulated=0'
+                             '&hideIneligible=0'
+                             '&showOfficial=1')
+URL_ACTIVEOP_COUNT = (mSite + '/GetActiveOpenPracticeCount?'
+                              'maxcount=250'
+                              '&include_empty=y'
+                              '&excludeLite=0'
+                              f'&custid={custid}?')
+
+
+# DRIVER PROFILE STATS
+URL_STATS_CHART = (mStats + '/GetChartData?'
+                            f'custId={custid}'
+                            f'&catId={category}'
+                            '&chartType=1')
+URL_CAREER_STATS = (mStats + '/GetCareerStats?'
+                             f'custid={custid}')
+URL_YEARLY_STATS = (mStats + '/GetYearlyStats?'
+                             f'custid={custid}')
+URL_PERSONAL_BEST = (mStats + '/GetPersonalBests?'
+                              f'&carid={carid}'
+                              f'&custid={custid}')
+
+
+# RACE SPECIFIC RESULTS
+URL_GET_LAPS_SINGLE = (mSite + '/GetLaps?'
+                               f'subsessionid={subsession}'
+                               f'&groupid={custid}'
+                               f'&simsessnum={sessnum}')
+URL_GET_LAPS_ALL = (mSite + '/GetLapChart?'
+                            f'subsessionid={subsession}'
+                            '&carclassid=-1')
+
+
+# UTILITY ?
 URL_DRIVER_STATS = (mStats + '/GetDriverStats?'
                              'search=null'
                              '&friend=-1'
@@ -286,11 +252,79 @@ URL_DRIVER_STATS = (mStats + '/GetDriverStats?'
                              '&sort=irating'
                              '&order=desc'
                              '&active=1')
-URL_ACTIVEOP_COUNT = (mSite + '/GetActiveOpenPracticeCount?'
-                              'maxcount=250'
-                              '&include_empty=y'
-                              '&excludeLite=0'
-                              f'&custid={custid}?')
+URL_GET_SSID = (mSite + '/GetSubsessionForMember?'
+                        f'sessionID={sessnum}')
+URL_CARS_DRIVEN = (mStats + '/GetCarsDriven?'
+                            f'custid={custid}')
+URL_HOSTED_RESULTS = (mStats + '/GetPrivateSessionResults')
+
+
+
+# ESSENTIALLY USELESS URLS
+
+# DriverCounts and Status is iRacing 'friends list'
+# Unable to return results with "drivername" , replaced with:
+URL_DRIVER_STATUS = (mSite + '/GetDriverStatus?'
+                             'friends=1'
+                             '&studied=1'
+                             '&blacklisted=1')
+URL_DRIVER_COUNTS = (mSite + '/GetDriverCounts')
+URL_GET_MDIVISION = (mSite + '/GetMembersDivision?'
+                             f'seasonid={seasonID}'
+                             f'&custid={custid}'
+                             '&pointstype=race')
+
+
+# THESE URLS DO NOT RETURN JSON
+# THESE URLS DO NOT RETURN JSON
+# THESE URLS DO NOT RETURN JSON
+
+URL_GET_EVENTRESULTS = (mSite + '/EventResult.do?'
+                                f'subsessionid={subsession}')
+URL_GET_EVENTRESULTS_CSV = (mSite + '/GetEventResultsAsCSV?'
+                                    f'subsessionid={subsession}'
+                                    f'&simsesnum={sessnum}'
+                                    '&includeSummary=1')
+URL_CURRENT_SERIES = (mSite + '/Series.do')
+URL_SELECT_SERIES = (mSite + '/SelectSeries.do?'
+                             f'season={seasonID}'
+                             '&view=undefined'
+                             '&nocache=%s')
+
+# Doesn't work. Loads a page but redirects back to home
+URL_GET_PASTSERIES = (mSite + '/PreviousSeasons.do')
+URL_SEASON_STANDINGS2 = (mSite + '/statsseries.jsp')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 HEADERS = {
     'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) Apple\
         WebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1312.52 Safari/537.17',
