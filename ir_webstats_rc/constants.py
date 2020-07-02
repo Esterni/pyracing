@@ -286,11 +286,11 @@ URL_DRIVER_STATS = (mStats + '/GetDriverStats?'
                              '&sort=irating'
                              '&order=desc'
                              '&active=1')
-URL_ACTIVEOP_COUNT = (mSite + '/GetActiveOpenPracticeCount'
-                              '?maxcount=250'
+URL_ACTIVEOP_COUNT = (mSite + '/GetActiveOpenPracticeCount?'
+                              'maxcount=250'
                               '&include_empty=y'
                               '&excludeLite=0'
-                              '&custid=435144?')
+                              f'&custid={custid}?')
 HEADERS = {
     'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) Apple\
         WebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1312.52 Safari/537.17',

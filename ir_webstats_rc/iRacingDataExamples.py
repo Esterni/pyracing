@@ -960,2127 +960,6 @@ GetLapsAll = {
             "sesTime": 3244907,
             "flags": 0
         },
-        {
-            "lapnum": 2,
-            "custid": 454550,
-            "carnum": "7",
-            "sesTime": 3260625,
-            "flags": 68
-        },
-        {
-            "lapnum": 2,
-            "custid": 395849,
-            "carnum": "8",
-            "sesTime": 3278559,
-            "flags": 68
-        },
-        {
-            "lapnum": 2,
-            "custid": 382704,
-            "carnum": "9",
-            "sesTime": 3314331,
-            "flags": 68
-        },
-        {
-            "lapnum": 2,
-            "custid": 358676,
-            "carnum": "11",
-            "sesTime": 3330581,
-            "flags": 0
-        },
-        {
-            "lapnum": 2,
-            "custid": 520127,
-            "carnum": "10",
-            "sesTime": 3346803,
-            "flags": 0
-        },
-        {
-            "lapnum": 3,
-            "custid": 347102,
-            "carnum": "1",
-            "sesTime": 4101488,
-            "flags": 0
-        },
-        {
-            "lapnum": 3,
-            "custid": 405091,
-            "carnum": "2",
-            "sesTime": 4144502,
-            "flags": 0
-        },
-        {
-            "lapnum": 3,
-            "custid": 285106,
-            "carnum": "6",
-            "sesTime": 4184456,
-            "flags": 0
-        },
-        {
-            "lapnum": 3,
-            "custid": 435144,
-            "carnum": "4",
-            "sesTime": 4186902,
-            "flags": 0
-        },
-        {
-            "lapnum": 3,
-            "custid": 219484,
-            "carnum": "3",
-            "sesTime": 4217283,
-            "flags": 0
-        },
-        {
-            "lapnum": 3,
-            "custid": 454550,
-            "carnum": "7",
-            "sesTime": 4264264,
-            "flags": 0
-        },
-        {
-            "lapnum": 3,
-            "custid": 384749,
-            "carnum": "5",
-            "sesTime": 4276862,
-            "flags": 4
-        },
-        {
-            "lapnum": 3,
-            "custid": 395849,
-            "carnum": "8",
-            "sesTime": 4292909,
-            "flags": 0
-        },
-        {
-            "lapnum": 3,
-            "custid": 382704,
-            "carnum": "9",
-            "sesTime": 4350850,
-            "flags": 0
-        },
-        {
-            "lapnum": 3,
-            "custid": 358676,
-            "carnum": "11",
-            "sesTime": 4379897,
-            "flags": 0
-        },
-        {
-            "lapnum": 4,
-            "custid": 347102,
-            "carnum": "1",
-            "sesTime": 5075269,
-            "flags": 0
-        },
-        {
-            "lapnum": 4,
-            "custid": 405091,
-            "carnum": "2",
-            "sesTime": 5130612,
-            "flags": 0
-        },
-        {
-            "lapnum": 4,
-            "custid": 435144,
-            "carnum": "4",
-            "sesTime": 5176098,
-            "flags": 0
-        },
-        {
-            "lapnum": 4,
-            "custid": 285106,
-            "carnum": "6",
-            "sesTime": 5186777,
-            "flags": 0
-        },
-        {
-            "lapnum": 4,
-            "custid": 219484,
-            "carnum": "3",
-            "sesTime": 5204976,
-            "flags": 0
-        },
-        {
-            "lapnum": 4,
-            "custid": 454550,
-            "carnum": "7",
-            "sesTime": 5255780,
-            "flags": 0
-        },
-        {
-            "lapnum": 4,
-            "custid": 384749,
-            "carnum": "5",
-            "sesTime": 5267953,
-            "flags": 0
-        },
-        {
-            "lapnum": 4,
-            "custid": 395849,
-            "carnum": "8",
-            "sesTime": 5301125,
-            "flags": 0
-        },
-        {
-            "lapnum": 3,
-            "custid": 520127,
-            "carnum": "10",
-            "sesTime": 5367833,
-            "flags": 2447
-        },
-        {
-            "lapnum": 4,
-            "custid": 382704,
-            "carnum": "9",
-            "sesTime": 5375444,
-            "flags": 0
-        },
-        {
-            "lapnum": 4,
-            "custid": 358676,
-            "carnum": "11",
-            "sesTime": 5428958,
-            "flags": 0
-        },
-        {
-            "lapnum": 5,
-            "custid": 347102,
-            "carnum": "1",
-            "sesTime": 6048152,
-            "flags": 0
-        },
-        {
-            "lapnum": 5,
-            "custid": 405091,
-            "carnum": "2",
-            "sesTime": 6111096,
-            "flags": 0
-        },
-        {
-            "lapnum": 5,
-            "custid": 435144,
-            "carnum": "4",
-            "sesTime": 6160811,
-            "flags": 0
-        },
-        {
-            "lapnum": 5,
-            "custid": 285106,
-            "carnum": "6",
-            "sesTime": 6174419,
-            "flags": 0
-        },
-        {
-            "lapnum": 5,
-            "custid": 219484,
-            "carnum": "3",
-            "sesTime": 6185130,
-            "flags": 0
-        },
-        {
-            "lapnum": 5,
-            "custid": 454550,
-            "carnum": "7",
-            "sesTime": 6243809,
-            "flags": 0
-        },
-        {
-            "lapnum": 5,
-            "custid": 384749,
-            "carnum": "5",
-            "sesTime": 6254420,
-            "flags": 0
-        },
-        {
-            "lapnum": 5,
-            "custid": 382704,
-            "carnum": "9",
-            "sesTime": 6406108,
-            "flags": 0
-        },
-        {
-            "lapnum": 5,
-            "custid": 395849,
-            "carnum": "8",
-            "sesTime": 6406675,
-            "flags": 132
-        },
-        {
-            "lapnum": 5,
-            "custid": 358676,
-            "carnum": "11",
-            "sesTime": 6471232,
-            "flags": 0
-        },
-        {
-            "lapnum": 6,
-            "custid": 347102,
-            "carnum": "1",
-            "sesTime": 7022197,
-            "flags": 0
-        },
-        {
-            "lapnum": 6,
-            "custid": 405091,
-            "carnum": "2",
-            "sesTime": 7094601,
-            "flags": 0
-        },
-        {
-            "lapnum": 6,
-            "custid": 435144,
-            "carnum": "4",
-            "sesTime": 7143826,
-            "flags": 0
-        },
-        {
-            "lapnum": 6,
-            "custid": 285106,
-            "carnum": "6",
-            "sesTime": 7161904,
-            "flags": 0
-        },
-        {
-            "lapnum": 6,
-            "custid": 219484,
-            "carnum": "3",
-            "sesTime": 7165935,
-            "flags": 0
-        },
-        {
-            "lapnum": 6,
-            "custid": 454550,
-            "carnum": "7",
-            "sesTime": 7233400,
-            "flags": 0
-        },
-        {
-            "lapnum": 6,
-            "custid": 384749,
-            "carnum": "5",
-            "sesTime": 7241140,
-            "flags": 0
-        },
-        {
-            "lapnum": 6,
-            "custid": 382704,
-            "carnum": "9",
-            "sesTime": 7430769,
-            "flags": 0
-        },
-        {
-            "lapnum": 6,
-            "custid": 395849,
-            "carnum": "8",
-            "sesTime": 7434033,
-            "flags": 0
-        },
-        {
-            "lapnum": 6,
-            "custid": 358676,
-            "carnum": "11",
-            "sesTime": 7506124,
-            "flags": 0
-        },
-        {
-            "lapnum": 7,
-            "custid": 347102,
-            "carnum": "1",
-            "sesTime": 7991589,
-            "flags": 0
-        },
-        {
-            "lapnum": 7,
-            "custid": 405091,
-            "carnum": "2",
-            "sesTime": 8076590,
-            "flags": 0
-        },
-        {
-            "lapnum": 7,
-            "custid": 435144,
-            "carnum": "4",
-            "sesTime": 8128920,
-            "flags": 0
-        },
-        {
-            "lapnum": 7,
-            "custid": 285106,
-            "carnum": "6",
-            "sesTime": 8144349,
-            "flags": 0
-        },
-        {
-            "lapnum": 7,
-            "custid": 219484,
-            "carnum": "3",
-            "sesTime": 8150605,
-            "flags": 4
-        },
-        {
-            "lapnum": 7,
-            "custid": 454550,
-            "carnum": "7",
-            "sesTime": 8218175,
-            "flags": 0
-        },
-        {
-            "lapnum": 7,
-            "custid": 384749,
-            "carnum": "5",
-            "sesTime": 8234633,
-            "flags": 0
-        },
-        {
-            "lapnum": 7,
-            "custid": 395849,
-            "carnum": "8",
-            "sesTime": 8451315,
-            "flags": 0
-        },
-        {
-            "lapnum": 7,
-            "custid": 382704,
-            "carnum": "9",
-            "sesTime": 8466434,
-            "flags": 0
-        },
-        {
-            "lapnum": 7,
-            "custid": 358676,
-            "carnum": "11",
-            "sesTime": 8551379,
-            "flags": 0
-        },
-        {
-            "lapnum": 8,
-            "custid": 347102,
-            "carnum": "1",
-            "sesTime": 9016538,
-            "flags": 0
-        },
-        {
-            "lapnum": 8,
-            "custid": 405091,
-            "carnum": "2",
-            "sesTime": 9053476,
-            "flags": 0
-        },
-        {
-            "lapnum": 8,
-            "custid": 435144,
-            "carnum": "4",
-            "sesTime": 9111686,
-            "flags": 0
-        },
-        {
-            "lapnum": 8,
-            "custid": 285106,
-            "carnum": "6",
-            "sesTime": 9129821,
-            "flags": 0
-        },
-        {
-            "lapnum": 8,
-            "custid": 219484,
-            "carnum": "3",
-            "sesTime": 9138870,
-            "flags": 0
-        },
-        {
-            "lapnum": 8,
-            "custid": 454550,
-            "carnum": "7",
-            "sesTime": 9197535,
-            "flags": 0
-        },
-        {
-            "lapnum": 8,
-            "custid": 384749,
-            "carnum": "5",
-            "sesTime": 9225478,
-            "flags": 0
-        },
-        {
-            "lapnum": 8,
-            "custid": 395849,
-            "carnum": "8",
-            "sesTime": 9450091,
-            "flags": 0
-        },
-        {
-            "lapnum": 8,
-            "custid": 382704,
-            "carnum": "9",
-            "sesTime": 9487884,
-            "flags": 0
-        },
-        {
-            "lapnum": 8,
-            "custid": 358676,
-            "carnum": "11",
-            "sesTime": 9582146,
-            "flags": 0
-        },
-        {
-            "lapnum": 9,
-            "custid": 347102,
-            "carnum": "1",
-            "sesTime": 9992187,
-            "flags": 0
-        },
-        {
-            "lapnum": 9,
-            "custid": 405091,
-            "carnum": "2",
-            "sesTime": 10032057,
-            "flags": 0
-        },
-        {
-            "lapnum": 9,
-            "custid": 285106,
-            "carnum": "6",
-            "sesTime": 10118339,
-            "flags": 0
-        },
-        {
-            "lapnum": 9,
-            "custid": 219484,
-            "carnum": "3",
-            "sesTime": 10120307,
-            "flags": 0
-        },
-        {
-            "lapnum": 9,
-            "custid": 435144,
-            "carnum": "4",
-            "sesTime": 10151166,
-            "flags": 4
-        },
-        {
-            "lapnum": 9,
-            "custid": 454550,
-            "carnum": "7",
-            "sesTime": 10181734,
-            "flags": 0
-        },
-        {
-            "lapnum": 9,
-            "custid": 384749,
-            "carnum": "5",
-            "sesTime": 10238300,
-            "flags": 4
-        },
-        {
-            "lapnum": 9,
-            "custid": 395849,
-            "carnum": "8",
-            "sesTime": 10449348,
-            "flags": 0
-        },
-        {
-            "lapnum": 9,
-            "custid": 382704,
-            "carnum": "9",
-            "sesTime": 10512954,
-            "flags": 0
-        },
-        {
-            "lapnum": 9,
-            "custid": 358676,
-            "carnum": "11",
-            "sesTime": 10615070,
-            "flags": 0
-        },
-        {
-            "lapnum": 10,
-            "custid": 347102,
-            "carnum": "1",
-            "sesTime": 10967041,
-            "flags": 0
-        },
-        {
-            "lapnum": 10,
-            "custid": 405091,
-            "carnum": "2",
-            "sesTime": 11014653,
-            "flags": 0
-        },
-        {
-            "lapnum": 10,
-            "custid": 219484,
-            "carnum": "3",
-            "sesTime": 11096240,
-            "flags": 0
-        },
-        {
-            "lapnum": 10,
-            "custid": 285106,
-            "carnum": "6",
-            "sesTime": 11114246,
-            "flags": 0
-        },
-        {
-            "lapnum": 10,
-            "custid": 435144,
-            "carnum": "4",
-            "sesTime": 11132069,
-            "flags": 0
-        },
-        {
-            "lapnum": 10,
-            "custid": 454550,
-            "carnum": "7",
-            "sesTime": 11162849,
-            "flags": 0
-        },
-        {
-            "lapnum": 10,
-            "custid": 384749,
-            "carnum": "5",
-            "sesTime": 11224551,
-            "flags": 0
-        },
-        {
-            "lapnum": 10,
-            "custid": 395849,
-            "carnum": "8",
-            "sesTime": 11443758,
-            "flags": 0
-        },
-        {
-            "lapnum": 10,
-            "custid": 382704,
-            "carnum": "9",
-            "sesTime": 11523263,
-            "flags": 0
-        },
-        {
-            "lapnum": 10,
-            "custid": 358676,
-            "carnum": "11",
-            "sesTime": 11654345,
-            "flags": 0
-        },
-        {
-            "lapnum": 11,
-            "custid": 347102,
-            "carnum": "1",
-            "sesTime": 11943485,
-            "flags": 0
-        },
-        {
-            "lapnum": 11,
-            "custid": 405091,
-            "carnum": "2",
-            "sesTime": 11992757,
-            "flags": 0
-        },
-        {
-            "lapnum": 11,
-            "custid": 219484,
-            "carnum": "3",
-            "sesTime": 12073998,
-            "flags": 0
-        },
-        {
-            "lapnum": 11,
-            "custid": 285106,
-            "carnum": "6",
-            "sesTime": 12098457,
-            "flags": 0
-        },
-        {
-            "lapnum": 11,
-            "custid": 435144,
-            "carnum": "4",
-            "sesTime": 12111957,
-            "flags": 0
-        },
-        {
-            "lapnum": 11,
-            "custid": 454550,
-            "carnum": "7",
-            "sesTime": 12146010,
-            "flags": 0
-        },
-        {
-            "lapnum": 11,
-            "custid": 384749,
-            "carnum": "5",
-            "sesTime": 12211332,
-            "flags": 0
-        },
-        {
-            "lapnum": 11,
-            "custid": 395849,
-            "carnum": "8",
-            "sesTime": 12436630,
-            "flags": 0
-        },
-        {
-            "lapnum": 11,
-            "custid": 382704,
-            "carnum": "9",
-            "sesTime": 12549227,
-            "flags": 0
-        },
-        {
-            "lapnum": 11,
-            "custid": 358676,
-            "carnum": "11",
-            "sesTime": 12696315,
-            "flags": 0
-        },
-        {
-            "lapnum": 12,
-            "custid": 347102,
-            "carnum": "1",
-            "sesTime": 12912149,
-            "flags": 0
-        },
-        {
-            "lapnum": 12,
-            "custid": 405091,
-            "carnum": "2",
-            "sesTime": 12974717,
-            "flags": 0
-        },
-        {
-            "lapnum": 12,
-            "custid": 219484,
-            "carnum": "3",
-            "sesTime": 13052087,
-            "flags": 0
-        },
-        {
-            "lapnum": 12,
-            "custid": 285106,
-            "carnum": "6",
-            "sesTime": 13082752,
-            "flags": 0
-        },
-        {
-            "lapnum": 12,
-            "custid": 435144,
-            "carnum": "4",
-            "sesTime": 13088456,
-            "flags": 0
-        },
-        {
-            "lapnum": 12,
-            "custid": 454550,
-            "carnum": "7",
-            "sesTime": 13129747,
-            "flags": 0
-        },
-        {
-            "lapnum": 12,
-            "custid": 384749,
-            "carnum": "5",
-            "sesTime": 13203235,
-            "flags": 0
-        },
-        {
-            "lapnum": 12,
-            "custid": 395849,
-            "carnum": "8",
-            "sesTime": 13438937,
-            "flags": 0
-        },
-        {
-            "lapnum": 12,
-            "custid": 382704,
-            "carnum": "9",
-            "sesTime": 13568262,
-            "flags": 0
-        },
-        {
-            "lapnum": 12,
-            "custid": 358676,
-            "carnum": "11",
-            "sesTime": 13743270,
-            "flags": 0
-        },
-        {
-            "lapnum": 13,
-            "custid": 347102,
-            "carnum": "1",
-            "sesTime": 13882620,
-            "flags": 0
-        },
-        {
-            "lapnum": 13,
-            "custid": 405091,
-            "carnum": "2",
-            "sesTime": 13950427,
-            "flags": 0
-        },
-        {
-            "lapnum": 13,
-            "custid": 219484,
-            "carnum": "3",
-            "sesTime": 14028296,
-            "flags": 0
-        },
-        {
-            "lapnum": 13,
-            "custid": 435144,
-            "carnum": "4",
-            "sesTime": 14074104,
-            "flags": 0
-        },
-        {
-            "lapnum": 13,
-            "custid": 454550,
-            "carnum": "7",
-            "sesTime": 14110270,
-            "flags": 0
-        },
-        {
-            "lapnum": 13,
-            "custid": 285106,
-            "carnum": "6",
-            "sesTime": 14185943,
-            "flags": 0
-        },
-        {
-            "lapnum": 13,
-            "custid": 384749,
-            "carnum": "5",
-            "sesTime": 14211309,
-            "flags": 0
-        },
-        {
-            "lapnum": 13,
-            "custid": 395849,
-            "carnum": "8",
-            "sesTime": 14435671,
-            "flags": 0
-        },
-        {
-            "lapnum": 13,
-            "custid": 382704,
-            "carnum": "9",
-            "sesTime": 14593183,
-            "flags": 0
-        },
-        {
-            "lapnum": 13,
-            "custid": 358676,
-            "carnum": "11",
-            "sesTime": 14782699,
-            "flags": 0
-        },
-        {
-            "lapnum": 14,
-            "custid": 347102,
-            "carnum": "1",
-            "sesTime": 14850309,
-            "flags": 0
-        },
-        {
-            "lapnum": 14,
-            "custid": 405091,
-            "carnum": "2",
-            "sesTime": 14926982,
-            "flags": 0
-        },
-        {
-            "lapnum": 14,
-            "custid": 219484,
-            "carnum": "3",
-            "sesTime": 15006279,
-            "flags": 0
-        },
-        {
-            "lapnum": 14,
-            "custid": 435144,
-            "carnum": "4",
-            "sesTime": 15046382,
-            "flags": 0
-        },
-        {
-            "lapnum": 14,
-            "custid": 454550,
-            "carnum": "7",
-            "sesTime": 15095460,
-            "flags": 0
-        },
-        {
-            "lapnum": 14,
-            "custid": 384749,
-            "carnum": "5",
-            "sesTime": 15200022,
-            "flags": 0
-        },
-        {
-            "lapnum": 14,
-            "custid": 395849,
-            "carnum": "8",
-            "sesTime": 15432902,
-            "flags": 0
-        },
-        {
-            "lapnum": 14,
-            "custid": 285106,
-            "carnum": "6",
-            "sesTime": 15460974,
-            "flags": 2
-        },
-        {
-            "lapnum": 14,
-            "custid": 382704,
-            "carnum": "9",
-            "sesTime": 15612197,
-            "flags": 0
-        },
-        {
-            "lapnum": 14,
-            "custid": 358676,
-            "carnum": "11",
-            "sesTime": 15817962,
-            "flags": 0
-        },
-        {
-            "lapnum": 15,
-            "custid": 347102,
-            "carnum": "1",
-            "sesTime": 15829539,
-            "flags": 0
-        },
-        {
-            "lapnum": 15,
-            "custid": 405091,
-            "carnum": "2",
-            "sesTime": 15909407,
-            "flags": 0
-        },
-        {
-            "lapnum": 15,
-            "custid": 219484,
-            "carnum": "3",
-            "sesTime": 15982166,
-            "flags": 0
-        },
-        {
-            "lapnum": 15,
-            "custid": 435144,
-            "carnum": "4",
-            "sesTime": 16018837,
-            "flags": 0
-        },
-        {
-            "lapnum": 15,
-            "custid": 454550,
-            "carnum": "7",
-            "sesTime": 16079634,
-            "flags": 0
-        },
-        {
-            "lapnum": 15,
-            "custid": 384749,
-            "carnum": "5",
-            "sesTime": 16189675,
-            "flags": 0
-        },
-        {
-            "lapnum": 15,
-            "custid": 395849,
-            "carnum": "8",
-            "sesTime": 16431992,
-            "flags": 256
-        },
-        {
-            "lapnum": 15,
-            "custid": 285106,
-            "carnum": "6",
-            "sesTime": 16459165,
-            "flags": 0
-        },
-        {
-            "lapnum": 15,
-            "custid": 382704,
-            "carnum": "9",
-            "sesTime": 16646414,
-            "flags": 0
-        },
-        {
-            "lapnum": 15,
-            "custid": 358676,
-            "carnum": "11",
-            "sesTime": 16871470,
-            "flags": 0
-        },
-        {
-            "lapnum": 16,
-            "custid": 347102,
-            "carnum": "1",
-            "sesTime": 16922526,
-            "flags": 0
-        },
-        {
-            "lapnum": 16,
-            "custid": 219484,
-            "carnum": "3",
-            "sesTime": 16957902,
-            "flags": 0
-        },
-        {
-            "lapnum": 16,
-            "custid": 405091,
-            "carnum": "2",
-            "sesTime": 17004843,
-            "flags": 4
-        },
-        {
-            "lapnum": 16,
-            "custid": 454550,
-            "carnum": "7",
-            "sesTime": 17059836,
-            "flags": 0
-        },
-        {
-            "lapnum": 16,
-            "custid": 435144,
-            "carnum": "4",
-            "sesTime": 17100311,
-            "flags": 0
-        },
-        {
-            "lapnum": 16,
-            "custid": 384749,
-            "carnum": "5",
-            "sesTime": 17298027,
-            "flags": 0
-        },
-        {
-            "lapnum": 16,
-            "custid": 285106,
-            "carnum": "6",
-            "sesTime": 17461253,
-            "flags": 0
-        },
-        {
-            "lapnum": 16,
-            "custid": 395849,
-            "carnum": "8",
-            "sesTime": 17555758,
-            "flags": 0
-        },
-        {
-            "lapnum": 16,
-            "custid": 382704,
-            "carnum": "9",
-            "sesTime": 17817330,
-            "flags": 0
-        },
-        {
-            "lapnum": 16,
-            "custid": 358676,
-            "carnum": "11",
-            "sesTime": 17910766,
-            "flags": 0
-        },
-        {
-            "lapnum": 17,
-            "custid": 454550,
-            "carnum": "7",
-            "sesTime": 18048948,
-            "flags": 0
-        },
-        {
-            "lapnum": 17,
-            "custid": 219484,
-            "carnum": "3",
-            "sesTime": 18051205,
-            "flags": 0
-        },
-        {
-            "lapnum": 17,
-            "custid": 347102,
-            "carnum": "1",
-            "sesTime": 18167540,
-            "flags": 2
-        },
-        {
-            "lapnum": 17,
-            "custid": 405091,
-            "carnum": "2",
-            "sesTime": 18259774,
-            "flags": 2
-        },
-        {
-            "lapnum": 17,
-            "custid": 435144,
-            "carnum": "4",
-            "sesTime": 18356631,
-            "flags": 2
-        },
-        {
-            "lapnum": 17,
-            "custid": 285106,
-            "carnum": "6",
-            "sesTime": 18458744,
-            "flags": 0
-        },
-        {
-            "lapnum": 17,
-            "custid": 384749,
-            "carnum": "5",
-            "sesTime": 18571845,
-            "flags": 2
-        },
-        {
-            "lapnum": 17,
-            "custid": 395849,
-            "carnum": "8",
-            "sesTime": 18887996,
-            "flags": 2
-        },
-        {
-            "lapnum": 17,
-            "custid": 358676,
-            "carnum": "11",
-            "sesTime": 18937251,
-            "flags": 0
-        },
-        {
-            "lapnum": 17,
-            "custid": 382704,
-            "carnum": "9",
-            "sesTime": 19119297,
-            "flags": 2
-        },
-        {
-            "lapnum": 18,
-            "custid": 347102,
-            "carnum": "1",
-            "sesTime": 19149411,
-            "flags": 0
-        },
-        {
-            "lapnum": 18,
-            "custid": 454550,
-            "carnum": "7",
-            "sesTime": 19161405,
-            "flags": 0
-        },
-        {
-            "lapnum": 18,
-            "custid": 405091,
-            "carnum": "2",
-            "sesTime": 19244587,
-            "flags": 0
-        },
-        {
-            "lapnum": 18,
-            "custid": 219484,
-            "carnum": "3",
-            "sesTime": 19289740,
-            "flags": 2
-        },
-        {
-            "lapnum": 18,
-            "custid": 435144,
-            "carnum": "4",
-            "sesTime": 19342025,
-            "flags": 0
-        },
-        {
-            "lapnum": 18,
-            "custid": 285106,
-            "carnum": "6",
-            "sesTime": 19453471,
-            "flags": 0
-        },
-        {
-            "lapnum": 18,
-            "custid": 384749,
-            "carnum": "5",
-            "sesTime": 19578121,
-            "flags": 0
-        },
-        {
-            "lapnum": 18,
-            "custid": 395849,
-            "carnum": "8",
-            "sesTime": 19907871,
-            "flags": 0
-        },
-        {
-            "lapnum": 18,
-            "custid": 358676,
-            "carnum": "11",
-            "sesTime": 19968046,
-            "flags": 0
-        },
-        {
-            "lapnum": 19,
-            "custid": 347102,
-            "carnum": "1",
-            "sesTime": 20137179,
-            "flags": 0
-        },
-        {
-            "lapnum": 18,
-            "custid": 382704,
-            "carnum": "9",
-            "sesTime": 20183433,
-            "flags": 0
-        },
-        {
-            "lapnum": 19,
-            "custid": 405091,
-            "carnum": "2",
-            "sesTime": 20222530,
-            "flags": 0
-        },
-        {
-            "lapnum": 19,
-            "custid": 219484,
-            "carnum": "3",
-            "sesTime": 20268863,
-            "flags": 0
-        },
-        {
-            "lapnum": 19,
-            "custid": 435144,
-            "carnum": "4",
-            "sesTime": 20326017,
-            "flags": 0
-        },
-        {
-            "lapnum": 19,
-            "custid": 454550,
-            "carnum": "7",
-            "sesTime": 20422333,
-            "flags": 2
-        },
-        {
-            "lapnum": 19,
-            "custid": 285106,
-            "carnum": "6",
-            "sesTime": 20444177,
-            "flags": 0
-        },
-        {
-            "lapnum": 19,
-            "custid": 384749,
-            "carnum": "5",
-            "sesTime": 20568960,
-            "flags": 0
-        },
-        {
-            "lapnum": 19,
-            "custid": 395849,
-            "carnum": "8",
-            "sesTime": 20911880,
-            "flags": 0
-        },
-        {
-            "lapnum": 20,
-            "custid": 347102,
-            "carnum": "1",
-            "sesTime": 21117584,
-            "flags": 0
-        },
-        {
-            "lapnum": 19,
-            "custid": 358676,
-            "carnum": "11",
-            "sesTime": 21140960,
-            "flags": 0
-        },
-        {
-            "lapnum": 20,
-            "custid": 405091,
-            "carnum": "2",
-            "sesTime": 21203101,
-            "flags": 0
-        },
-        {
-            "lapnum": 19,
-            "custid": 382704,
-            "carnum": "9",
-            "sesTime": 21214241,
-            "flags": 0
-        },
-        {
-            "lapnum": 20,
-            "custid": 219484,
-            "carnum": "3",
-            "sesTime": 21249455,
-            "flags": 0
-        },
-        {
-            "lapnum": 20,
-            "custid": 435144,
-            "carnum": "4",
-            "sesTime": 21310038,
-            "flags": 0
-        },
-        {
-            "lapnum": 20,
-            "custid": 454550,
-            "carnum": "7",
-            "sesTime": 21406334,
-            "flags": 0
-        },
-        {
-            "lapnum": 20,
-            "custid": 285106,
-            "carnum": "6",
-            "sesTime": 21434386,
-            "flags": 0
-        },
-        {
-            "lapnum": 20,
-            "custid": 384749,
-            "carnum": "5",
-            "sesTime": 21558038,
-            "flags": 0
-        },
-        {
-            "lapnum": 20,
-            "custid": 395849,
-            "carnum": "8",
-            "sesTime": 21919978,
-            "flags": 0
-        },
-        {
-            "lapnum": 21,
-            "custid": 347102,
-            "carnum": "1",
-            "sesTime": 22098156,
-            "flags": 0
-        },
-        {
-            "lapnum": 21,
-            "custid": 405091,
-            "carnum": "2",
-            "sesTime": 22182968,
-            "flags": 0
-        },
-        {
-            "lapnum": 21,
-            "custid": 219484,
-            "carnum": "3",
-            "sesTime": 22236611,
-            "flags": 0
-        },
-        {
-            "lapnum": 20,
-            "custid": 382704,
-            "carnum": "9",
-            "sesTime": 22271091,
-            "flags": 0
-        },
-        {
-            "lapnum": 21,
-            "custid": 435144,
-            "carnum": "4",
-            "sesTime": 22290949,
-            "flags": 0
-        },
-        {
-            "lapnum": 21,
-            "custid": 454550,
-            "carnum": "7",
-            "sesTime": 22392618,
-            "flags": 0
-        },
-        {
-            "lapnum": 21,
-            "custid": 285106,
-            "carnum": "6",
-            "sesTime": 22521637,
-            "flags": 0
-        },
-        {
-            "lapnum": 20,
-            "custid": 358676,
-            "carnum": "11",
-            "sesTime": 22523224,
-            "flags": 2
-        },
-        {
-            "lapnum": 21,
-            "custid": 384749,
-            "carnum": "5",
-            "sesTime": 22549849,
-            "flags": 257
-        },
-        {
-            "lapnum": 21,
-            "custid": 395849,
-            "carnum": "8",
-            "sesTime": 22928730,
-            "flags": 0
-        },
-        {
-            "lapnum": 22,
-            "custid": 347102,
-            "carnum": "1",
-            "sesTime": 23076261,
-            "flags": 0
-        },
-        {
-            "lapnum": 22,
-            "custid": 405091,
-            "carnum": "2",
-            "sesTime": 23163862,
-            "flags": 0
-        },
-        {
-            "lapnum": 22,
-            "custid": 219484,
-            "carnum": "3",
-            "sesTime": 23213501,
-            "flags": 0
-        },
-        {
-            "lapnum": 22,
-            "custid": 435144,
-            "carnum": "4",
-            "sesTime": 23278510,
-            "flags": 0
-        },
-        {
-            "lapnum": 21,
-            "custid": 382704,
-            "carnum": "9",
-            "sesTime": 23321878,
-            "flags": 4
-        },
-        {
-            "lapnum": 22,
-            "custid": 454550,
-            "carnum": "7",
-            "sesTime": 23379156,
-            "flags": 0
-        },
-        {
-            "lapnum": 22,
-            "custid": 285106,
-            "carnum": "6",
-            "sesTime": 23513891,
-            "flags": 0
-        },
-        {
-            "lapnum": 22,
-            "custid": 384749,
-            "carnum": "5",
-            "sesTime": 23551794,
-            "flags": 0
-        },
-        {
-            "lapnum": 21,
-            "custid": 358676,
-            "carnum": "11",
-            "sesTime": 23585430,
-            "flags": 0
-        },
-        {
-            "lapnum": 22,
-            "custid": 395849,
-            "carnum": "8",
-            "sesTime": 23950952,
-            "flags": 0
-        },
-        {
-            "lapnum": 23,
-            "custid": 347102,
-            "carnum": "1",
-            "sesTime": 24051246,
-            "flags": 0
-        },
-        {
-            "lapnum": 23,
-            "custid": 405091,
-            "carnum": "2",
-            "sesTime": 24144893,
-            "flags": 0
-        },
-        {
-            "lapnum": 23,
-            "custid": 219484,
-            "carnum": "3",
-            "sesTime": 24189555,
-            "flags": 0
-        },
-        {
-            "lapnum": 23,
-            "custid": 435144,
-            "carnum": "4",
-            "sesTime": 24258086,
-            "flags": 0
-        },
-        {
-            "lapnum": 22,
-            "custid": 382704,
-            "carnum": "9",
-            "sesTime": 24332009,
-            "flags": 0
-        },
-        {
-            "lapnum": 23,
-            "custid": 454550,
-            "carnum": "7",
-            "sesTime": 24367428,
-            "flags": 0
-        },
-        {
-            "lapnum": 23,
-            "custid": 285106,
-            "carnum": "6",
-            "sesTime": 24506691,
-            "flags": 0
-        },
-        {
-            "lapnum": 23,
-            "custid": 384749,
-            "carnum": "5",
-            "sesTime": 24541344,
-            "flags": 0
-        },
-        {
-            "lapnum": 22,
-            "custid": 358676,
-            "carnum": "11",
-            "sesTime": 24625274,
-            "flags": 0
-        },
-        {
-            "lapnum": 23,
-            "custid": 395849,
-            "carnum": "8",
-            "sesTime": 24953000,
-            "flags": 0
-        },
-        {
-            "lapnum": 24,
-            "custid": 347102,
-            "carnum": "1",
-            "sesTime": 25022553,
-            "flags": 0
-        },
-        {
-            "lapnum": 24,
-            "custid": 405091,
-            "carnum": "2",
-            "sesTime": 25126777,
-            "flags": 0
-        },
-        {
-            "lapnum": 24,
-            "custid": 219484,
-            "carnum": "3",
-            "sesTime": 25165171,
-            "flags": 0
-        },
-        {
-            "lapnum": 24,
-            "custid": 435144,
-            "carnum": "4",
-            "sesTime": 25238802,
-            "flags": 0
-        },
-        {
-            "lapnum": 24,
-            "custid": 454550,
-            "carnum": "7",
-            "sesTime": 25354077,
-            "flags": 0
-        },
-        {
-            "lapnum": 23,
-            "custid": 382704,
-            "carnum": "9",
-            "sesTime": 25364127,
-            "flags": 0
-        },
-        {
-            "lapnum": 24,
-            "custid": 285106,
-            "carnum": "6",
-            "sesTime": 25495364,
-            "flags": 0
-        },
-        {
-            "lapnum": 24,
-            "custid": 384749,
-            "carnum": "5",
-            "sesTime": 25531383,
-            "flags": 0
-        },
-        {
-            "lapnum": 23,
-            "custid": 358676,
-            "carnum": "11",
-            "sesTime": 25650606,
-            "flags": 0
-        },
-        {
-            "lapnum": 24,
-            "custid": 395849,
-            "carnum": "8",
-            "sesTime": 25956301,
-            "flags": 0
-        },
-        {
-            "lapnum": 25,
-            "custid": 347102,
-            "carnum": "1",
-            "sesTime": 25998115,
-            "flags": 0
-        },
-        {
-            "lapnum": 25,
-            "custid": 405091,
-            "carnum": "2",
-            "sesTime": 26105008,
-            "flags": 0
-        },
-        {
-            "lapnum": 25,
-            "custid": 219484,
-            "carnum": "3",
-            "sesTime": 26144068,
-            "flags": 4
-        },
-        {
-            "lapnum": 25,
-            "custid": 435144,
-            "carnum": "4",
-            "sesTime": 26212161,
-            "flags": 0
-        },
-        {
-            "lapnum": 25,
-            "custid": 454550,
-            "carnum": "7",
-            "sesTime": 26343485,
-            "flags": 0
-        },
-        {
-            "lapnum": 24,
-            "custid": 382704,
-            "carnum": "9",
-            "sesTime": 26395678,
-            "flags": 0
-        },
-        {
-            "lapnum": 25,
-            "custid": 285106,
-            "carnum": "6",
-            "sesTime": 26483178,
-            "flags": 0
-        },
-        {
-            "lapnum": 25,
-            "custid": 384749,
-            "carnum": "5",
-            "sesTime": 26517925,
-            "flags": 257
-        },
-        {
-            "lapnum": 24,
-            "custid": 358676,
-            "carnum": "11",
-            "sesTime": 26681688,
-            "flags": 0
-        },
-        {
-            "lapnum": 25,
-            "custid": 395849,
-            "carnum": "8",
-            "sesTime": 26966847,
-            "flags": 0
-        },
-        {
-            "lapnum": 26,
-            "custid": 347102,
-            "carnum": "1",
-            "sesTime": 26970623,
-            "flags": 0
-        },
-        {
-            "lapnum": 26,
-            "custid": 405091,
-            "carnum": "2",
-            "sesTime": 27077798,
-            "flags": 0
-        },
-        {
-            "lapnum": 26,
-            "custid": 219484,
-            "carnum": "3",
-            "sesTime": 27115809,
-            "flags": 0
-        },
-        {
-            "lapnum": 26,
-            "custid": 435144,
-            "carnum": "4",
-            "sesTime": 27184776,
-            "flags": 0
-        },
-        {
-            "lapnum": 26,
-            "custid": 454550,
-            "carnum": "7",
-            "sesTime": 27328622,
-            "flags": 0
-        },
-        {
-            "lapnum": 25,
-            "custid": 382704,
-            "carnum": "9",
-            "sesTime": 27420371,
-            "flags": 0
-        },
-        {
-            "lapnum": 26,
-            "custid": 285106,
-            "carnum": "6",
-            "sesTime": 27464784,
-            "flags": 0
-        },
-        {
-            "lapnum": 26,
-            "custid": 384749,
-            "carnum": "5",
-            "sesTime": 27505578,
-            "flags": 0
-        },
-        {
-            "lapnum": 25,
-            "custid": 358676,
-            "carnum": "11",
-            "sesTime": 27707614,
-            "flags": 0
-        },
-        {
-            "lapnum": 27,
-            "custid": 347102,
-            "carnum": "1",
-            "sesTime": 27941464,
-            "flags": 0
-        },
-        {
-            "lapnum": 27,
-            "custid": 405091,
-            "carnum": "2",
-            "sesTime": 28052265,
-            "flags": 0
-        },
-        {
-            "lapnum": 27,
-            "custid": 219484,
-            "carnum": "3",
-            "sesTime": 28172007,
-            "flags": 128
-        },
-        {
-            "lapnum": 27,
-            "custid": 435144,
-            "carnum": "4",
-            "sesTime": 28177498,
-            "flags": 0
-        },
-        {
-            "lapnum": 26,
-            "custid": 395849,
-            "carnum": "8",
-            "sesTime": 28191083,
-            "flags": 132
-        },
-        {
-            "lapnum": 27,
-            "custid": 454550,
-            "carnum": "7",
-            "sesTime": 28314821,
-            "flags": 0
-        },
-        {
-            "lapnum": 26,
-            "custid": 382704,
-            "carnum": "9",
-            "sesTime": 28445895,
-            "flags": 0
-        },
-        {
-            "lapnum": 27,
-            "custid": 285106,
-            "carnum": "6",
-            "sesTime": 28454298,
-            "flags": 0
-        },
-        {
-            "lapnum": 27,
-            "custid": 384749,
-            "carnum": "5",
-            "sesTime": 28527421,
-            "flags": 4
-        },
-        {
-            "lapnum": 26,
-            "custid": 358676,
-            "carnum": "11",
-            "sesTime": 28732020,
-            "flags": 0
-        },
-        {
-            "lapnum": 28,
-            "custid": 347102,
-            "carnum": "1",
-            "sesTime": 28966663,
-            "flags": 0
-        },
-        {
-            "lapnum": 28,
-            "custid": 405091,
-            "carnum": "2",
-            "sesTime": 29031521,
-            "flags": 0
-        },
-        {
-            "lapnum": 28,
-            "custid": 219484,
-            "carnum": "3",
-            "sesTime": 29152452,
-            "flags": 0
-        },
-        {
-            "lapnum": 28,
-            "custid": 435144,
-            "carnum": "4",
-            "sesTime": 29159782,
-            "flags": 0
-        },
-        {
-            "lapnum": 28,
-            "custid": 454550,
-            "carnum": "7",
-            "sesTime": 29310886,
-            "flags": 0
-        },
-        {
-            "lapnum": 28,
-            "custid": 285106,
-            "carnum": "6",
-            "sesTime": 29446404,
-            "flags": 0
-        },
-        {
-            "lapnum": 27,
-            "custid": 382704,
-            "carnum": "9",
-            "sesTime": 29476003,
-            "flags": 0
-        },
-        {
-            "lapnum": 27,
-            "custid": 395849,
-            "carnum": "8",
-            "sesTime": 29503266,
-            "flags": 2
-        },
-        {
-            "lapnum": 28,
-            "custid": 384749,
-            "carnum": "5",
-            "sesTime": 29522550,
-            "flags": 0
-        },
-        {
-            "lapnum": 27,
-            "custid": 358676,
-            "carnum": "11",
-            "sesTime": 29764209,
-            "flags": 0
-        },
-        {
-            "lapnum": 29,
-            "custid": 347102,
-            "carnum": "1",
-            "sesTime": 29939659,
-            "flags": 0
-        },
-        {
-            "lapnum": 29,
-            "custid": 405091,
-            "carnum": "2",
-            "sesTime": 30006785,
-            "flags": 0
-        },
-        {
-            "lapnum": 29,
-            "custid": 219484,
-            "carnum": "3",
-            "sesTime": 30126740,
-            "flags": 0
-        },
-        {
-            "lapnum": 29,
-            "custid": 435144,
-            "carnum": "4",
-            "sesTime": 30143519,
-            "flags": 0
-        },
-        {
-            "lapnum": 29,
-            "custid": 454550,
-            "carnum": "7",
-            "sesTime": 30311255,
-            "flags": 0
-        },
-        {
-            "lapnum": 29,
-            "custid": 285106,
-            "carnum": "6",
-            "sesTime": 30430905,
-            "flags": 0
-        },
-        {
-            "lapnum": 28,
-            "custid": 382704,
-            "carnum": "9",
-            "sesTime": 30499627,
-            "flags": 0
-        },
-        {
-            "lapnum": 29,
-            "custid": 384749,
-            "carnum": "5",
-            "sesTime": 30523286,
-            "flags": 0
-        },
-        {
-            "lapnum": 28,
-            "custid": 395849,
-            "carnum": "8",
-            "sesTime": 30574081,
-            "flags": 4
-        },
-        {
-            "lapnum": 28,
-            "custid": 358676,
-            "carnum": "11",
-            "sesTime": 30795089,
-            "flags": 0
-        },
-        {
-            "lapnum": 30,
-            "custid": 347102,
-            "carnum": "1",
-            "sesTime": 30909138,
-            "flags": 0
-        },
-        {
-            "lapnum": 30,
-            "custid": 405091,
-            "carnum": "2",
-            "sesTime": 30983349,
-            "flags": 0
-        },
-        {
-            "lapnum": 30,
-            "custid": 219484,
-            "carnum": "3",
-            "sesTime": 31109291,
-            "flags": 0
-        },
-        {
-            "lapnum": 30,
-            "custid": 435144,
-            "carnum": "4",
-            "sesTime": 31191725,
-            "flags": 13
-        },
-        {
-            "lapnum": 30,
-            "custid": 454550,
-            "carnum": "7",
-            "sesTime": 31311902,
-            "flags": 0
-        },
-        {
-            "lapnum": 30,
-            "custid": 285106,
-            "carnum": "6",
-            "sesTime": 31415879,
-            "flags": 0
-        },
-        {
-            "lapnum": 30,
-            "custid": 384749,
-            "carnum": "5",
-            "sesTime": 31518845,
-            "flags": 0
-        },
-        {
-            "lapnum": 29,
-            "custid": 382704,
-            "carnum": "9",
-            "sesTime": 31535808,
-            "flags": 0
-        },
-        {
-            "lapnum": 29,
-            "custid": 395849,
-            "carnum": "8",
-            "sesTime": 31603365,
-            "flags": 0
-        },
-        {
-            "lapnum": 29,
-            "custid": 358676,
-            "carnum": "11",
-            "sesTime": 31829895,
-            "flags": 0
-        },
-        {
-            "lapnum": 31,
-            "custid": 347102,
-            "carnum": "1",
-            "sesTime": 31879970,
-            "flags": 0
-        },
-        {
-            "lapnum": 31,
-            "custid": 405091,
-            "carnum": "2",
-            "sesTime": 31954827,
-            "flags": 0
-        },
-        {
-            "lapnum": 31,
-            "custid": 219484,
-            "carnum": "3",
-            "sesTime": 32087319,
-            "flags": 0
-        },
-        {
-            "lapnum": 31,
-            "custid": 435144,
-            "carnum": "4",
-            "sesTime": 32242299,
-            "flags": 9
-        },
-        {
-            "lapnum": 31,
-            "custid": 454550,
-            "carnum": "7",
-            "sesTime": 32298299,
-            "flags": 0
-        },
-        {
-            "lapnum": 31,
-            "custid": 285106,
-            "carnum": "6",
-            "sesTime": 32398276,
-            "flags": 0
-        },
-        {
-            "lapnum": 31,
-            "custid": 384749,
-            "carnum": "5",
-            "sesTime": 32515434,
-            "flags": 0
-        },
-        {
-            "lapnum": 30,
-            "custid": 382704,
-            "carnum": "9",
-            "sesTime": 32560740,
-            "flags": 0
-        },
-        {
-            "lapnum": 30,
-            "custid": 395849,
-            "carnum": "8",
-            "sesTime": 32617114,
-            "flags": 0
-        },
-        {
-            "lapnum": 30,
-            "custid": 358676,
-            "carnum": "11",
-            "sesTime": 32863210,
-            "flags": 0
-        },
-        {
-            "lapnum": 32,
-            "custid": 347102,
-            "carnum": "1",
-            "sesTime": 32864156,
-            "flags": 16384
-        },
-        {
-            "lapnum": 32,
-            "custid": 405091,
-            "carnum": "2",
-            "sesTime": 32991679,
-            "flags": 16384
-        },
-        {
-            "lapnum": 32,
-            "custid": 219484,
-            "carnum": "3",
-            "sesTime": 33080778,
-            "flags": 16384
-        },
-        {
-            "lapnum": 32,
-            "custid": 435144,
-            "carnum": "4",
-            "sesTime": 33281038,
-            "flags": 16393
-        },
-        {
-            "lapnum": 32,
-            "custid": 454550,
-            "carnum": "7",
-            "sesTime": 33334895,
-            "flags": 16388
-        },
-        {
-            "lapnum": 32,
-            "custid": 285106,
-            "carnum": "6",
-            "sesTime": 33496247,
-            "flags": 16516
-        },
-        {
-            "lapnum": 32,
-            "custid": 384749,
-            "carnum": "5",
-            "sesTime": 33549925,
-            "flags": 16388
-        },
-        {
-            "lapnum": 31,
-            "custid": 382704,
-            "carnum": "9",
-            "sesTime": 33587793,
-            "flags": 16384
-        },
-        {
-            "lapnum": 31,
-            "custid": 395849,
-            "carnum": "8",
-            "sesTime": 33625793,
-            "flags": 16384
-        },
-        {
-            "lapnum": 31,
-            "custid": 358676,
-            "carnum": "11",
-            "sesTime": 33935619,
-            "flags": 16384
-        }
     ]
 }
 GetLapsSingle = {
@@ -3332,3 +1211,1615 @@ GetLapsSingle = {
     ]
 }
 GetSubsessionForMember = 33204934  # Returns a single number with no container
+# Not JSON formatted...?
+GetTotalSessionJoinedCountsBySeason = [
+    {seasonid: 2817,registered: 1
+    },
+    {seasonid: 2822,registered: 67
+    },
+    {seasonid: 2823,registered: 97
+    },
+    {seasonid: 2824,registered: 5
+    },
+    {seasonid: 2825,registered: 1
+    },
+    {seasonid: 2826,registered: 7
+    },
+    {seasonid: 2827,registered: 9
+    },
+    {seasonid: 2828,registered: 1
+    },
+    {seasonid: 2829,registered: 0
+    },
+    {seasonid: 2830,registered: 25
+    },
+    {seasonid: 2831,registered: 5
+    },
+    {seasonid: 2832,registered: 7
+    },
+    {seasonid: 2833,registered: 4
+    },
+    {seasonid: 2834,registered: 2
+    },
+    {seasonid: 2835,registered: 0
+    },
+    {seasonid: 2836,registered: 2
+    },
+    {seasonid: 2837,registered: 0
+    },
+    {seasonid: 2838,registered: 0
+    },
+    {seasonid: 2839,registered: 1
+    },
+    {seasonid: 2840,registered: 5
+    },
+    {seasonid: 2841,registered: 0
+    },
+    {seasonid: 2842,registered: 10
+    },
+    {seasonid: 2714,registered: 3
+    },
+    {seasonid: 2715,registered: 4
+    },
+    {seasonid: 2843,registered: 3
+    },
+    {seasonid: 2844,registered: 7
+    },
+    {seasonid: 2716,registered: 8
+    },
+    {seasonid: 2717,registered: 2
+    },
+    {seasonid: 2845,registered: 0
+    },
+    {seasonid: 2846,registered: 14
+    },
+    {seasonid: 2847,registered: 12
+    },
+    {seasonid: 2848,registered: 5
+    },
+    {seasonid: 2849,registered: 1
+    },
+    {seasonid: 2721,registered: 0
+    },
+    {seasonid: 2850,registered: 14
+    },
+    {seasonid: 2851,registered: 12
+    },
+    {seasonid: 2852,registered: 0
+    },
+    {seasonid: 2853,registered: 2
+    },
+    {seasonid: 2854,registered: 6
+    },
+    {seasonid: 2855,registered: 0
+    },
+    {seasonid: 2856,registered: 0
+    },
+    {seasonid: 2857,registered: 13
+    },
+    {seasonid: 2858,registered: 79
+    },
+    {seasonid: 2859,registered: 0
+    },
+    {seasonid: 2860,registered: 12
+    },
+    {seasonid: 2861,registered: 8
+    },
+    {seasonid: 2862,registered: 1
+    },
+    {seasonid: 2863,registered: 0
+    },
+    {seasonid: 2864,registered: 82
+    },
+    {seasonid: 2865,registered: 4
+    },
+    {seasonid: 2866,registered: 0
+    },
+    {seasonid: 2867,registered: 0
+    },
+    {seasonid: 2868,registered: 35
+    },
+    {seasonid: 2869,registered: 5
+    },
+    {seasonid: 2870,registered: 1
+    },
+    {seasonid: 2871,registered: 0
+    },
+    {seasonid: 2872,registered: 32
+    },
+    {seasonid: 2873,registered: 12
+    },
+    {seasonid: 2874,registered: 1
+    },
+    {seasonid: 2875,registered: 0
+    },
+    {seasonid: 2876,registered: 30
+    },
+    {seasonid: 2877,registered: 0
+    },
+    {seasonid: 2878,registered: 0
+    },
+    {seasonid: 2879,registered: 0
+    },
+    {seasonid: 2880,registered: 1
+    },
+    {seasonid: 2881,registered: 2
+    },
+    {seasonid: 2882,registered: 1
+    },
+    {seasonid: 2883,registered: 4
+    },
+    {seasonid: 2884,registered: 3
+    },
+    {seasonid: 2885,registered: 1
+    },
+    {seasonid: 2886,registered: 0
+    },
+    {seasonid: 2887,registered: 0
+    },
+    {seasonid: 2888,registered: 2
+    },
+    {seasonid: 2889,registered: 5
+    },
+    {seasonid: 2906,registered: 0
+    },
+    {seasonid: 2907,registered: 3
+    },
+    {seasonid: 2908,registered: 0
+    },
+    {seasonid: 2911,registered: 0
+    },
+    {seasonid: 2812,registered: 0
+    }
+]
+# Example of 1 series. Full RaceGuide is 400k characters. Filters recommended. 
+GetRaceGuide = {
+    "date": 1593669600000,
+    "series": [
+        {
+            "catID": 1,
+            "image": "member_images%2Fseries%2Fseriesid_116%2Flogo.jpg",
+            "seasonSchedules": [
+                {
+                    "seasonStartDate": 1591660800000,
+                    "multiClass": false,
+                    "seasonID": 2867,
+                    "licenseGroup": 1,
+                    "fixedSetup": true,
+                    "carClasses": [
+                        50
+                    ],
+                    "races": [
+                        {
+                            "preRegCount": 0,
+                            "weatherType": 3,
+                            "weatherRelativeHumidity": 55,
+                            "weatherWindSpeedValue": 2,
+                            "trackID": 245,
+                            "raceWeekCars": {
+                                "0": {
+                                    "103": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "56": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "110": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    }
+                                },
+                                "1": {
+                                    "103": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "56": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "110": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    }
+                                },
+                                "2": {
+                                    "103": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "56": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "110": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    }
+                                },
+                                "3": {
+                                    "103": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "56": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "110": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    }
+                                },
+                                "4": {
+                                    "103": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "56": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "110": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    }
+                                },
+                                "5": {
+                                    "103": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "56": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "110": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    }
+                                },
+                                "6": {
+                                    "103": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "56": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "110": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    }
+                                },
+                                "7": {
+                                    "103": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "56": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "110": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    }
+                                },
+                                "8": {
+                                    "103": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "56": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "110": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    }
+                                },
+                                "9": {
+                                    "103": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "56": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "110": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    }
+                                },
+                                "10": {
+                                    "103": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "56": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "110": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    }
+                                },
+                                "11": {
+                                    "103": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "56": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "110": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    }
+                                },
+                                "12": {
+                                    "103": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "56": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "110": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    }
+                                },
+                                "13": {
+                                    "103": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "56": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "110": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    }
+                                }
+                            },
+                            "sessionTypeID": 278,
+                            "sessionID": 133559749,
+                            "trackName": "Autodromo+Nazionale+Monza",
+                            "weatherTempUnits": 0,
+                            "weatherTempValue": 78,
+                            "standingStart": false,
+                            "evttype": 5,
+                            "regCount": 0,
+                            "startTime": 1593672300000,
+                            "trackRaceGuideImg": "",
+                            "earth_rotation_speedup": 1,
+                            "raceTimeLimitMinutes": -1,
+                            "specialeventtype": 0,
+                            "trackConfigName": "Oval+-+Left+turning",
+                            "weatherVarOngoing": 0,
+                            "weatherSkies": 1,
+                            "raceLapLimit": 15,
+                            "weatherWindDir": 0,
+                            "raceWeekNum": 3,
+                            "rubberSettings": {
+                                "rubberLevelWarmUp": "-1",
+                                "rubberLevelRace": "-1",
+                                "leaveMarbles": true,
+                                "rubberLevelQualify": "-1",
+                                "rubberLevelPractice": "-1"
+                            },
+                            "weatherFogDensity": 0,
+                            "simulatedstarttime": "2019-05-21+14%3A50",
+                            "weatherVarInitial": 0,
+                            "endTime": 1593673136000,
+                            "weatherWindSpeedUnits": 0,
+                            "timeOfDay": 0
+                        },
+                        {
+                            "preRegCount": 0,
+                            "weatherType": 3,
+                            "weatherRelativeHumidity": 55,
+                            "weatherWindSpeedValue": 2,
+                            "trackID": 245,
+                            "raceWeekCars": {
+                                "0": {
+                                    "103": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "56": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "110": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    }
+                                },
+                                "1": {
+                                    "103": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "56": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "110": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    }
+                                },
+                                "2": {
+                                    "103": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "56": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "110": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    }
+                                },
+                                "3": {
+                                    "103": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "56": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "110": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    }
+                                },
+                                "4": {
+                                    "103": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "56": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "110": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    }
+                                },
+                                "5": {
+                                    "103": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "56": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "110": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    }
+                                },
+                                "6": {
+                                    "103": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "56": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "110": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    }
+                                },
+                                "7": {
+                                    "103": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "56": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "110": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    }
+                                },
+                                "8": {
+                                    "103": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "56": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "110": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    }
+                                },
+                                "9": {
+                                    "103": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "56": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "110": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    }
+                                },
+                                "10": {
+                                    "103": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "56": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "110": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    }
+                                },
+                                "11": {
+                                    "103": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "56": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "110": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    }
+                                },
+                                "12": {
+                                    "103": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "56": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "110": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    }
+                                },
+                                "13": {
+                                    "103": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "56": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "110": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    }
+                                }
+                            },
+                            "sessionTypeID": 278,
+                            "sessionID": -1,
+                            "trackName": "Autodromo+Nazionale+Monza",
+                            "weatherTempUnits": 0,
+                            "weatherTempValue": 78,
+                            "standingStart": false,
+                            "evttype": 5,
+                            "regCount": 0,
+                            "startTime": 1593675900000,
+                            "trackRaceGuideImg": "",
+                            "earth_rotation_speedup": 1,
+                            "raceTimeLimitMinutes": -1,
+                            "specialeventtype": 0,
+                            "trackConfigName": "Oval+-+Left+turning",
+                            "weatherVarOngoing": 0,
+                            "weatherSkies": 1,
+                            "raceLapLimit": 15,
+                            "weatherWindDir": 0,
+                            "raceWeekNum": 3,
+                            "rubberSettings": {
+                                "rubberLevelWarmUp": "-1",
+                                "rubberLevelRace": "-1",
+                                "leaveMarbles": true,
+                                "rubberLevelQualify": "-1",
+                                "rubberLevelPractice": "-1"
+                            },
+                            "weatherFogDensity": 0,
+                            "simulatedstarttime": "2019-05-21+14%3A50",
+                            "weatherVarInitial": 0,
+                            "endTime": 1593676736000,
+                            "weatherWindSpeedUnits": 0,
+                            "timeOfDay": 0
+                        },
+                        {
+                            "preRegCount": 0,
+                            "weatherType": 3,
+                            "weatherRelativeHumidity": 55,
+                            "weatherWindSpeedValue": 2,
+                            "trackID": 245,
+                            "raceWeekCars": {
+                                "0": {
+                                    "103": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "56": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "110": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    }
+                                },
+                                "1": {
+                                    "103": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "56": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "110": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    }
+                                },
+                                "2": {
+                                    "103": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "56": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "110": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    }
+                                },
+                                "3": {
+                                    "103": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "56": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "110": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    }
+                                },
+                                "4": {
+                                    "103": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "56": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "110": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    }
+                                },
+                                "5": {
+                                    "103": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "56": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "110": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    }
+                                },
+                                "6": {
+                                    "103": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "56": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "110": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    }
+                                },
+                                "7": {
+                                    "103": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "56": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "110": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    }
+                                },
+                                "8": {
+                                    "103": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "56": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "110": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    }
+                                },
+                                "9": {
+                                    "103": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "56": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "110": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    }
+                                },
+                                "10": {
+                                    "103": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "56": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "110": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    }
+                                },
+                                "11": {
+                                    "103": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "56": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "110": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    }
+                                },
+                                "12": {
+                                    "103": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "56": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "110": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    }
+                                },
+                                "13": {
+                                    "103": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "56": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    },
+                                    "110": {
+                                        "maxPctFuelFill": "null",
+                                        "maxDryTireSets": "null",
+                                        "weightPenaltyKG": "null",
+                                        "powerAdjustPct": "null"
+                                    }
+                                }
+                            },
+                            "sessionTypeID": 278,
+                            "sessionID": -1,
+                            "trackName": "Autodromo+Nazionale+Monza",
+                            "weatherTempUnits": 0,
+                            "weatherTempValue": 78,
+                            "standingStart": false,
+                            "evttype": 5,
+                            "regCount": 0,
+                            "startTime": 1593679500000,
+                            "trackRaceGuideImg": "",
+                            "earth_rotation_speedup": 1,
+                            "raceTimeLimitMinutes": -1,
+                            "specialeventtype": 0,
+                            "trackConfigName": "Oval+-+Left+turning",
+                            "weatherVarOngoing": 0,
+                            "weatherSkies": 1,
+                            "raceLapLimit": 15,
+                            "weatherWindDir": 0,
+                            "raceWeekNum": 3,
+                            "rubberSettings": {
+                                "rubberLevelWarmUp": "-1",
+                                "rubberLevelRace": "-1",
+                                "leaveMarbles": true,
+                                "rubberLevelQualify": "-1",
+                                "rubberLevelPractice": "-1"
+                            },
+                            "weatherFogDensity": 0,
+                            "simulatedstarttime": "2019-05-21+14%3A50",
+                            "weatherVarInitial": 0,
+                            "endTime": 1593680336000,
+                            "weatherWindSpeedUnits": 0,
+                            "timeOfDay": 0
+                        }
+                    ],
+                    "openPracticeDrivers": 0,
+                    "openPracticeSessions": 9
+                }
+            ],
+            "seriesName": "Carburetor+Cup",
+            "eligible": true,
+            "seriesID": 116,
+            "mpr": 0
+        },
+    ]
+}
+GetSeasonStandings = {
+    "m": {
+        "1": "country",
+        "2": "week",
+        "3": "irating",
+        "4": "countrycode",
+        "5": "dropped",
+        "6": "clubid",
+        "7": "laps",
+        "8": "avgstart",
+        "9": "avgfinish",
+        "10": "points",
+        "11": "division",
+        "12": "topfive",
+        "13": "incidents",
+        "14": "rank",
+        "15": "starts",
+        "16": "custrow",
+        "17": "wins",
+        "18": "rowcount",
+        "19": "poles",
+        "20": "helmpattern",
+        "21": "maxlicenselevel",
+        "22": "helmcolor3",
+        "23": "clubname",
+        "24": "lapslead",
+        "25": "helmcolor1",
+        "26": "displayname",
+        "27": "helmcolor2",
+        "28": "custid",
+        "29": "sublevel",
+        "30": "pos",
+        "31": "rn",
+        "32": "displaycountry"
+    },
+    "d": {
+        "16": 17,
+        "18": 243,
+        "r": [
+            {
+                "22": "46b8f4",
+                "23": "UK+and+I",
+                "24": 150,
+                "25": "0116bf",
+                "26": "Mark+Ussher",
+                "27": "ffffff",
+                "28": 55441,
+                "29": "+4.99",
+                "30": 1,
+                "31": 1,
+                "10": 544,
+                "32": "United+Kingdom",
+                "11": 0,
+                "12": 5,
+                "13": 25,
+                "14": 1,
+                "15": 7,
+                "17": 4,
+                "19": 4,
+                "1": "United+Kingdom",
+                "2": 3,
+                "3": 5644,
+                "4": "GB",
+                "5": 0,
+                "6": 36,
+                "7": 213,
+                "8": 2,
+                "9": 8,
+                "20": 14,
+                "21": 20
+            },
+            {
+                "22": "000000",
+                "23": "Italy",
+                "24": 80,
+                "25": "D4AF37",
+                "26": "Marco+Sanfilippo",
+                "27": "FFFFFF",
+                "28": 297304,
+                "29": "+4.94",
+                "30": 2,
+                "31": 2,
+                "10": 512,
+                "32": "Italy",
+                "11": 0,
+                "12": 5,
+                "13": 30,
+                "14": 2,
+                "15": 8,
+                "17": 2,
+                "19": 3,
+                "1": "Italy",
+                "2": 3,
+                "3": 4666,
+                "4": "IT",
+                "5": 0,
+                "6": 41,
+                "7": 264,
+                "8": 3,
+                "9": 4,
+                "20": 64,
+                "21": 20
+            },
+            
+        ]
+    }
+}
+# example of 1 Season
+GetSeasons = [
+    {
+        "serieslicgroupid": 3,
+        "year": 2020,
+        "start": 1591660800000,
+        "active": true,
+        "islite": false,
+        "seriesid": 231,
+        "carclasses": [
+            {
+                "relspeed": 33,
+                "lowername": "mazda+mx-5+cup+2016",
+                "custid": 0,
+                "name": "Mazda+MX-5+Cup+2016",
+                "max_dry_tire_sets": 0,
+                "carsinclass": [
+                    {
+                        "name": "Global+Mazda+MX-5+Cup",
+                        "id": 67
+                    }
+                ],
+                "id": 74,
+                "shortname": "MX5+Cup+2016"
+            }
+        ],
+        "tracks": [
+            {
+                "lowername": "road+atlanta",
+                "name": "Road+Atlanta",
+                "id": 127,
+                "pkgid": 67,
+                "priority": 1,
+                "raceweek": 0,
+                "config": "Full+Course",
+                "timeOfDay": 0
+            },
+            {
+                "lowername": "circuit+gilles+villeneuve",
+                "name": "Circuit+Gilles+Villeneuve",
+                "id": 218,
+                "pkgid": 145,
+                "priority": 0,
+                "raceweek": 1,
+                "config": "",
+                "timeOfDay": 2
+            },
+            {
+                "lowername": "road+america",
+                "name": "Road+America",
+                "id": 18,
+                "pkgid": 11,
+                "priority": 1,
+                "raceweek": 2,
+                "config": "Full+Course",
+                "timeOfDay": 1
+            },
+            {
+                "lowername": "lime+rock+park",
+                "name": "Lime+Rock+Park",
+                "id": 353,
+                "pkgid": 304,
+                "priority": 1,
+                "raceweek": 3,
+                "config": "Grand+Prix",
+                "timeOfDay": 0
+            },
+            {
+                "lowername": "barber+motorsports+park",
+                "name": "Barber+Motorsports+Park",
+                "id": 46,
+                "pkgid": 33,
+                "priority": 1,
+                "raceweek": 4,
+                "config": "Full+Course",
+                "timeOfDay": 2
+            },
+            {
+                "lowername": "suzuka+international+racing+course",
+                "name": "Suzuka+International+Racing+Course",
+                "id": 168,
+                "pkgid": 114,
+                "priority": 0,
+                "raceweek": 5,
+                "config": "Grand+Prix",
+                "timeOfDay": 1
+            },
+            {
+                "lowername": "n%C3%BCrburgring+combined",
+                "name": "N%C3%BCrburgring+Combined",
+                "id": 263,
+                "pkgid": 186,
+                "priority": 0,
+                "raceweek": 6,
+                "config": "Gesamtstrecke+Short+w%2Fout+Arena",
+                "timeOfDay": 0
+            },
+            {
+                "lowername": "brands+hatch+circuit",
+                "name": "Brands+Hatch+Circuit",
+                "id": 145,
+                "pkgid": 91,
+                "priority": 1,
+                "raceweek": 7,
+                "config": "Grand+Prix",
+                "timeOfDay": 2
+            },
+            {
+                "lowername": "autodromo+internazionale+enzo+e+dino+ferrari",
+                "name": "Autodromo+Internazionale+Enzo+e+Dino+Ferrari",
+                "id": 266,
+                "pkgid": 197,
+                "priority": 0,
+                "raceweek": 8,
+                "config": "Grand+Prix",
+                "timeOfDay": 1
+            },
+            {
+                "lowername": "watkins+glen+international",
+                "name": "Watkins+Glen+International",
+                "id": 107,
+                "pkgid": 56,
+                "priority": 2,
+                "raceweek": 9,
+                "config": "Boot",
+                "timeOfDay": 0
+            },
+            {
+                "lowername": "sebring+international+raceway",
+                "name": "Sebring+International+Raceway",
+                "id": 95,
+                "pkgid": 40,
+                "priority": 1,
+                "raceweek": 10,
+                "config": "International",
+                "timeOfDay": 2
+            },
+            {
+                "lowername": "autodromo+nazionale+monza",
+                "name": "Autodromo+Nazionale+Monza",
+                "id": 239,
+                "pkgid": 172,
+                "priority": 1,
+                "raceweek": 11,
+                "config": "Grand+Prix",
+                "timeOfDay": 1
+            },
+            {
+                "lowername": "mount+panorama+circuit",
+                "name": "Mount+Panorama+Circuit",
+                "id": 219,
+                "pkgid": 146,
+                "priority": 0,
+                "raceweek": 12,
+                "config": "",
+                "timeOfDay": 0
+            }
+        ],
+        "licenseEligible": true,
+        "catid": 2,
+        "cars": [
+            {
+                "lowername": "global+mazda+mx-5+cup",
+                "name": "Global+Mazda+MX-5+Cup",
+                "id": 67,
+                "pkgid": 182,
+                "sku": 10394
+            }
+        ],
+        "seasonid": 2846,
+        "seriesshortname": "Advanced+Mazda+MX-5+Cup+Series",
+        "end": 1599523200000,
+        "category": 2,
+        "raceweek": 4,
+        "quarter": 3
+    },
+    {
+        "serieslicgroupid": 4,
+        "year": 2020,
+        "start": 1591660800000,
+        "active": true,
+        "islite": false,
+        "seriesid": 309,
+        "carclasses": [
+            {
+                "relspeed": 90,
+                "lowername": "dirt+sprintcar+-+410wingless",
+                "custid": 0,
+                "name": "Dirt+SprintCar+-+410wingless",
+                "max_dry_tire_sets": 0,
+                "carsinclass": [
+                    {
+                        "name": "Dirt+Sprint+Car+-+410+Non-Winged",
+                        "id": 89
+                    }
+                ],
+                "id": 94,
+                "shortname": "DSC+410W"
+            }
+        ],
+        "tracks": [
+            {
+                "lowername": "williams+grove+speedway",
+                "name": "Williams+Grove+Speedway",
+                "id": 274,
+                "pkgid": 214,
+                "priority": 0,
+                "raceweek": 0,
+                "config": "",
+                "timeOfDay": 3
+            },
+            {
+                "lowername": "fairbury+speedway",
+                "name": "Fairbury+Speedway",
+                "id": 344,
+                "pkgid": 289,
+                "priority": 0,
+                "raceweek": 1,
+                "config": "",
+                "timeOfDay": 8
+            },
+            {
+                "lowername": "volusia+speedway+park",
+                "name": "Volusia+Speedway+Park",
+                "id": 279,
+                "pkgid": 233,
+                "priority": 0,
+                "raceweek": 2,
+                "config": "",
+                "timeOfDay": 3
+            },
+            {
+                "lowername": "lernerville+speedway",
+                "name": "Lernerville+Speedway",
+                "id": 351,
+                "pkgid": 303,
+                "priority": 0,
+                "raceweek": 3,
+                "config": "",
+                "timeOfDay": 8
+            },
+            {
+                "lowername": "knoxville+raceway",
+                "name": "Knoxville+Raceway",
+                "id": 305,
+                "pkgid": 251,
+                "priority": 0,
+                "raceweek": 4,
+                "config": "",
+                "timeOfDay": 3
+            },
+            {
+                "lowername": "eldora+speedway",
+                "name": "Eldora+Speedway",
+                "id": 273,
+                "pkgid": 213,
+                "priority": 0,
+                "raceweek": 5,
+                "config": "",
+                "timeOfDay": 3
+            },
+            {
+                "lowername": "kokomo+speedway",
+                "name": "Kokomo+Speedway",
+                "id": 320,
+                "pkgid": 264,
+                "priority": 0,
+                "raceweek": 6,
+                "config": "",
+                "timeOfDay": 3
+            },
+            {
+                "lowername": "limaland+motorsports+park",
+                "name": "Limaland+Motorsports+Park",
+                "id": 303,
+                "pkgid": 248,
+                "priority": 0,
+                "raceweek": 7,
+                "config": "",
+                "timeOfDay": 3
+            },
+            {
+                "lowername": "the+dirt+track+at+charlotte",
+                "name": "The+Dirt+Track+at+Charlotte",
+                "id": 314,
+                "pkgid": 256,
+                "priority": 0,
+                "raceweek": 8,
+                "config": "",
+                "timeOfDay": 0
+            },
+            {
+                "lowername": "lernerville+speedway",
+                "name": "Lernerville+Speedway",
+                "id": 351,
+                "pkgid": 303,
+                "priority": 0,
+                "raceweek": 9,
+                "config": "",
+                "timeOfDay": 3
+            },
+            {
+                "lowername": "lanier+national+speedway",
+                "name": "Lanier+National+Speedway",
+                "id": 288,
+                "pkgid": 8,
+                "priority": 0,
+                "raceweek": 10,
+                "config": "Dirt",
+                "timeOfDay": 3
+            },
+            {
+                "lowername": "kokomo+speedway",
+                "name": "Kokomo+Speedway",
+                "id": 320,
+                "pkgid": 264,
+                "priority": 0,
+                "raceweek": 11,
+                "config": "",
+                "timeOfDay": 3
+            },
+            {
+                "lowername": "fairbury+speedway",
+                "name": "Fairbury+Speedway",
+                "id": 344,
+                "pkgid": 289,
+                "priority": 0,
+                "raceweek": 12,
+                "config": "",
+                "timeOfDay": 3
+            }
+        ],
+        "licenseEligible": false,
+        "catid": 3,
+        "cars": [
+            {
+                "lowername": "dirt+sprint+car+-+410+non-winged",
+                "name": "Dirt+Sprint+Car+-+410+Non-Winged",
+                "id": 89,
+                "pkgid": 231,
+                "sku": 10426
+            }
+        ],
+        "seasonid": 2887,
+        "seriesshortname": "AMSOIL+USAC+Sprint+Car",
+        "end": 1599523200000,
+        "category": 3,
+        "raceweek": 4,
+        "quarter": 3
+    },
+]
