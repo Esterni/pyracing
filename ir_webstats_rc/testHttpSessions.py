@@ -10,146 +10,185 @@ import time
 # Retrieve credentials from OS Environment Variables.
 username = os.getenv('IRACING_USERNAME')
 password = os.getenv('IRACING_PASSWORD')
+
+# Create a global instance of Session() from the requests module.
 login_session = requests.Session()
 
+# Loads cookies from file. Defaults to filename 'cookie.'
+grabCookie = load_cookies()
 
-def save_cookies(session, filename='cookie.tmp'):
+
+def save_cookies(session, filename='cookie'):
+    '''Saves all cookies from a session object to file
+    utilizing the pickle module for serialization
+    '''
+
     with open(filename, 'wb') as f:
         pickle.dump(session.cookies, f)
+        f.close()
+    return True
 
 
-def load_cookies(filename='cookie.tmp'):
+def load_cookies(filename='cookie'):
     with open(filename, 'rb') as f:
         content = pickle.load(f)
+        f.close()
         return content
 
 
-grabCookie = load_cookies()
-
 def inital_login():
 
+    # Calculate utcoffset from local time
     utcoffset = round(
         abs(time.localtime().tm_gmtoff / 60))
 
     loginData = {
-        'username': ct.username,
-        'password': ct.password,
+        'username': username,
+        'password': password,
         'utcoffset': utcoffset,
         'todaysdate': ''
         }
 
-    login_session.post(ct.URL_IRACING_LOGIN2, data=loginData)
+    login_session.post(ct.URL_LOGIN2, data=loginData)
     save_cookies(login_session)
 
+
+def activeOPCounts():
+    response = login_session.get(ct.URL_ACTIVEOP_COUNT, cookies=grabCookie)
+
+    return response.json()
+
+
+def careerStats():
+    response = login_session.get(ct.URL_CAREER_STATS, cookies=grabCookie)
+
+    return response.json()
+
+
+def currentSeasons():
+    response = login_session.get(ct.URL_CURRENT_SEASONS, cookies=grabCookie)
+
+    return response.json()
+
+
+def driverStats():
+    response = login_session.get(ct.URL_DRIVER_STATS, cookies=grabCookie)
+
+    return response.json()
+
+
+def hostedResults():
+    response = login_session.get(ct.URL_HOSTED_RESULTS, cookies=grabCookie)
+
+    return response.json
+
+
 def lastRaceStats():
-    r = login_session.get(ct.URL_LASTRACE_STATS, cookies=grabCookie)
+    response = login_session.get(ct.URL_LASTRACE_STATS, cookies=grabCookie)
 
-    return r.text
-
-'''
-class iRWebStats:
-
-    def __init__(self, verbose=True):
-        self.last_cookie = ''
-        self.custid = 0
-        self.verbose = verbose
-        self.TRACKS = {},
-        self.CARS = {},
-        self.DIVISION = {},
-        self.CARCLASS = {},
-        self.CLUB = {}
-
-    def __save_cookie(self):
-
-        o = open('cookie.tmp', 'w')
-        o.write(self.last_cookie)
-        o.write('\n' + str(self.custid))
-        o.close()
-
-    def __load_cookie(self):
-        try:
-            o = open('cookie.tmp', 'r')
-            self.last_cookie, self.custid = o.read().split('\n')
-            o.close()
-            return True
-        except Exception:
-            print(Exception)
-            return False
-
-    def login(self):
+    return response.json()
 
 
-        try:
-            if self.__load_cookie():
-                return True
+def lastSeries():
+    response = login_session.get(ct.URL_LAST_SERIES, cookies=grabCookie)
 
-            r = self.__req(
-                ct.URL_IRACING_LOGIN,
-                grab_cookie=True
-                )
+    return response.json()
 
-            print(r)
 
-            r = self.__req(
-                ct.URL_IRACING_LOGIN2,
-                loginData,
-                cookie=self.last_cookie,
-                grab_cookie=True
-                )
+def memberCarsDriven():
+    response = login_session.get(ct.URL_CARS_DRIVEN, cookies=grabCookie)
 
-            print(r)
+    return response.json()
 
-            if 'irsso_membersv2' in self.last_cookie:
 
-                r = self.__req(
-                    ct.URL_IRACING_HOME,
-                    cookie=self.last_cookie
-                    )
-                r = r.text
-                self.__save_cookie()
-                return True
+def memberSubSession():
+    response = login_session.get(ct.URL_MEM_SUBSESSID, cookies=grabCookie)
 
-            else:
-                return False
+    return response.json()
 
-        except Exception as e:
 
-            return e, False
+def nextEvent():
+    response = login_session.get(ct.URL_NEXT_EVENT, cookies=grabCookie)
 
-    def __req(
-        self,
-        url,
-        data=None,
-        cookie=None,
-        grab_cookie=False,
-        useget=False
-        ):
+    return response.json()
 
-        header = ct.HEADERS.copy()
 
-        if (data is None) or useget:
-            resp = requests.get(
-                url,
-                headers=header,
-                params=data
-                )
+def personalBestTimes():
+    response = login_session.get(ct.URL_PERSONAL_BESTS, cookies=grabCookie)
 
-        else:
-            header['Content-Type'] = 'application/x-www-form-urlencoded;\
-                                    charset=UTF-8'
-            resp = requests.post(
-                url,
-                data=data,
-                headers=header
-                )
+    return response.json()
 
-        if 'Set-Cookie' in resp.headers and grab_cookie:
-            self.last_cookie = resp.headers['Set-Cookie']
 
-            if 'cookie' in resp.request.headers:
-                resp_req_cookie = resp.request.headers['cookie']
+def raceGuide():
+    response = login_session.get(ct.URL_RACEGUIDE, cookies=grabCookie)
 
-                self.last_cookie += ';' + resp_req_cookie
+    return response.json()
 
-        return resp
-'''
+
+def raceLapsAll():
+    response = login_session.get(ct.URL_LAPS_ALL, cookies=grabCookie)
+
+    return response.json()
+
+
+def raceLapsDriver():
+    response = login_session.get(ct.URL_LAPS_SINGLE, cookies=grabCookie)
+
+    return response.json()
+
+
+def results():
+    response = login_session.get(ct.URL_RESULTS, cookies=grabCookie)
+
+    return response.json()
+
+
+def seasonStandings():
+    response = login_session.get(ct.URL_SEASON_STANDINGS, cookies=grabCookie)
+
+    return response.json()
+
+
+def seriesRaceResults():
+    response = login_session.get(ct.URL_SERIES_RACERESULTS, cookies=grabCookie)
+
+    return response.json()
+
+
+def sessionTimes():
+    response = login_session.get(ct.URL_SESSION_TIMES, cookies=grabCookie)
+
+    return response.json()
+
+
+def statsChart():
+    response = login_session.get(ct.URL_STATS_CHART, cookies=grabCookie)
+
+    return response.json()
+
+
+def subSessResults():
+    response = login_session.get(ct.URL_SUBS_RESULTS, cookies=grabCookie)
+
+    return response.json()
+
+
+def totalRegisteredAll():
+    response = login_session.get(ct.URL_TOTALREGISTERED, cookies=grabCookie)
+
+    return response.json()
+
+
+def worldRecords():
+    response = login_session.get(ct.URL_WORLD_RECORDS, cookies=grabCookie)
+
+    return response.json()
+
+
+def yearlyStats():
+    response = login_session.get(ct.URL_YEARLY_STATS, cookies=grabCookie)
+
+    return response.json()
+
+
+
