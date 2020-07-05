@@ -3,9 +3,6 @@ import time
 import math
 import os
 
-username = os.getenv('IRACING_USERNAME')
-password = os.getenv('IRACING_PASSWORD')
-
 ALL = -1
 # Entries per page. This is the ammount set
 # in iRacing site. We shouldn't increase it.

@@ -7,6 +7,9 @@ import os
 import json
 import time
 
+# Retrieve credentials from OS Environment Variables.
+username = os.getenv('IRACING_USERNAME')
+password = os.getenv('IRACING_PASSWORD')
 login_session = requests.Session()
 
 
