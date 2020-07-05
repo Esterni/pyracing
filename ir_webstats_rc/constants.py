@@ -95,13 +95,13 @@ mSite = 'https://members.iracing.com/membersite/member'
 mStats = 'https://members.iracing.com/memberstats/member'
 
 # IRACING SERVICE URLS
-URL_IRACING_LOGIN = 'https://members.iracing.com/membersite/login.jsp'
-URL_IRACING_LOGIN2 = 'https://members.iracing.com/membersite/Login'
-URL_IRACING_LOGOUT = 'https://members.iracing.com/membersite/LogOut'
-URL_IRACING_HOME = 'https://members.iracing.com/membersite/member/Home.do'
+URL_LOGIN = 'https://members.iracing.com/membersite/login.jsp'
+URL_LOGIN2 = 'https://members.iracing.com/membersite/Login'
+URL_LOGOUT = 'https://members.iracing.com/membersite/LogOut'
+URL_HOME = 'https://members.iracing.com/membersite/member/Home.do'
 
 # THE BIG ONES
-URL_SSESS_RESULTS = (mSite + '/GetSubsessionResults?'
+URL_SUBS_RESULTS = (mSite + '/GetSubsessionResults?'
                              f'subsessionID={subsession}'
                              f'&custid={custid}')
 URL_CURRENT_SEASONS = (mSite + '/GetSeasons?' # TODO Shorten
@@ -127,7 +127,7 @@ URL_LASTRACE_STATS = (mStats + '/GetLastRacesStats?'
                                f'custid={custid}')
 URL_LAST_SERIES = (mStats + '/GetLastSeries?'
                             f'custid={custid}')
-URL_RESULTS_ARCHIVE = (mStats + '/GetResults?'
+URL_RESULTS = (mStats + '/GetResults?'
                                 f'custid={custid}'  # custid required
                                 '&showraces=1'
                                 '&showquals=0'
@@ -157,7 +157,7 @@ URL_RESULTS_ARCHIVE = (mStats + '/GetResults?'
                                 f'&trackid={trackid}'
                                 f'&carclassid={carclass}'
                                 f'&carid={carid}')
-URL_GET_WORLDRECORD = (mStats + '/GetWorldRecords?'
+URL_WORLD_RECORDS = (mStats + '/GetWorldRecords?'
                                 f'seasonyear={year}'
                                 f'&seasonquarter={seasonquarter}'
                                 f'&carid={carid}'
@@ -170,12 +170,12 @@ URL_GET_WORLDRECORD = (mStats + '/GetWorldRecords?'
 # UPCOMING SESSIONS
 URL_SESSION_TIMES = (mSite + '/GetSessionTimes?'
                              f'season={seasonID}')
-URL_GET_NEXTEVENT = (mSite + '/GetNextEvent?'
+URL_NEXT_EVENT = (mSite + '/GetNextEvent?'
                              f'seriesID={series}'
                              f'&evtType={event}'
                              f'&date={unixMs}')
-URL_GET_TOTALREGISTERED = (mSite + '/GetTotalSessionJoinedCountsBySeason')
-URL_GET_RACEGUIDE = (mSite + '/GetRaceGuide?'
+URL_TOTALREGISTERED = (mSite + '/GetTotalSessionJoinedCountsBySeason')
+URL_RACEGUIDE = (mSite + '/GetRaceGuide?'
                              f'at={unixMs}'
                              '&showRookie=1'
                              '&showClassD=1'
@@ -210,17 +210,17 @@ URL_CAREER_STATS = (mStats + '/GetCareerStats?'
                              f'custid={custid}')
 URL_YEARLY_STATS = (mStats + '/GetYearlyStats?'
                              f'custid={custid}')
-URL_PERSONAL_BEST = (mStats + '/GetPersonalBests?'
+URL_PERSONAL_BESTS = (mStats + '/GetPersonalBests?'
                               f'&carid={carid}'
                               f'&custid={custid}')
 
 
 # RACE SPECIFIC RESULTS
-URL_GET_LAPS_SINGLE = (mSite + '/GetLaps?'
+URL_LAPS_SINGLE = (mSite + '/GetLaps?'
                                f'subsessionid={subsession}'
                                f'&groupid={custid}'
                                f'&simsessnum={sessnum}')
-URL_GET_LAPS_ALL = (mSite + '/GetLapChart?'
+URL_LAPS_ALL = (mSite + '/GetLapChart?'
                             f'subsessionid={subsession}'
                             '&carclassid=-1')
 
@@ -253,7 +253,7 @@ URL_DRIVER_STATS = (mStats + '/GetDriverStats?'
                              '&sort=irating'
                              '&order=desc'
                              '&active=1')
-URL_GET_SSID = (mSite + '/GetSubsessionForMember?'
+URL_MEM_SUBSESSID = (mSite + '/GetSubsessionForMember?'
                         f'sessionID={sessnum}')
 URL_CARS_DRIVEN = (mStats + '/GetCarsDriven?'
                             f'custid={custid}')
@@ -270,7 +270,7 @@ URL_DRIVER_STATUS = (mSite + '/GetDriverStatus?'
                              '&studied=1'
                              '&blacklisted=1')
 URL_DRIVER_COUNTS = (mSite + '/GetDriverCounts')
-URL_GET_MDIVISION = (mSite + '/GetMembersDivision?'
+URL_MEM_DIVISION = (mSite + '/GetMembersDivision?'
                              f'seasonid={seasonID}'
                              f'&custid={custid}'
                              '&pointstype=race')
@@ -280,9 +280,9 @@ URL_GET_MDIVISION = (mSite + '/GetMembersDivision?'
 # THESE URLS DO NOT RETURN JSON
 # THESE URLS DO NOT RETURN JSON
 
-URL_GET_EVENTRESULTS = (mSite + '/EventResult.do?'
+URL_EVENT_RESULT = (mSite + '/EventResult.do?'
                                 f'subsessionid={subsession}')
-URL_GET_EVENTRESULTS_CSV = (mSite + '/GetEventResultsAsCSV?'
+URL_EVENT_RESULTS_CSV = (mSite + '/GetEventResultsAsCSV?'
                                     f'subsessionid={subsession}'
                                     f'&simsesnum={sessnum}'
                                     '&includeSummary=1')
@@ -291,10 +291,10 @@ URL_SELECT_SERIES = (mSite + '/SelectSeries.do?'
                              f'season={seasonID}'
                              '&view=undefined'
                              '&nocache=%s')
+URL_SEASON_STANDINGS2 = (mSite + '/statsseries.jsp')
 
 # Doesn't work. Loads a page but redirects back to home
 URL_GET_PASTSERIES = (mSite + '/PreviousSeasons.do')
-URL_SEASON_STANDINGS2 = (mSite + '/statsseries.jsp')
 
 
 
