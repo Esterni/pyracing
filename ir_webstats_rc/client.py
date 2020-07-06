@@ -117,7 +117,7 @@ class iRWebStats:
                     # Load iracing info
                     self.__get_irservice_info(
                         self.__req(
-                            ct.URL_IRACING_HOME,
+                            ct.URL_HOME,
                             cookie=self.last_cookie
                         )
                     )
@@ -131,12 +131,12 @@ class iRWebStats:
 
             self.custid = ''
             r = self.__req(
-                ct.URL_IRACING_LOGIN,
+                ct.URL_LOGIN,
                 grab_cookie=True
             )
 
             r = self.__req(
-                ct.URL_IRACING_LOGIN2,
+                ct.URL_LOGIN2,
                 data,
                 cookie=self.last_cookie,
                 grab_cookie=True
@@ -148,7 +148,7 @@ class iRWebStats:
                 self.logged = True
 
                 r = self.__req(
-                    ct.URL_IRACING_HOME,
+                    ct.URL_HOME,
                     cookie=self.last_cookie
                 )
 
@@ -371,7 +371,7 @@ class iRWebStats:
             (carid. check self.CARS) set in official events.
         """
         r = self.__req(
-            ct.URL_PERSONAL_BEST,
+            ct.URL_PERSONAL_BESTS,
             cookie=self.last_cookie
         )
 
@@ -627,7 +627,7 @@ class iRWebStats:
             data[lic_vars[v]] = 1
 
         r = self.__req(
-            ct.URL_RESULTS_ARCHIVE,
+            ct.URL_RESULTS,
             data=data,
             cookie=self.last_cookie
         )
@@ -816,7 +816,7 @@ class iRWebStats:
         """
 
         r = self.__req(
-            ct.URL_GET_EVENTRESULTS_CSV).encode('utf8').decode('utf-8')
+            ct.URL_EVENT_RESULTS_CSV).encode('utf8').decode('utf-8')
 
         data = [x for x in csv.reader(
             StringIO(r),
@@ -852,7 +852,7 @@ class iRWebStats:
             Required to get ttRating for time trials
         """
 
-        r = self.__req(ct.URL_GET_EVENTRESULTS)
+        r = self.__req(ct.URL_EVENT_RESULT)
 
         resp = re.sub('\t+', ' ', r)
         resp = re.sub('\r\r\n+', ' ', resp)
@@ -905,7 +905,7 @@ class iRWebStats:
         """ Get the qualifying session number from the results web page
         """
 
-        r = self.__req(ct.URL_GET_EVENTRESULTS)
+        r = self.__req(ct.URL_EVENT_RESULT)
 
         resp = re.sub('\t+', ' ', r)
         resp = re.sub('\r\r\n+', ' ', resp)
@@ -927,7 +927,7 @@ class iRWebStats:
         """ Get the results for a time trial event from the web page.
         """
 
-        r = self.__req(ct.URL_GET_SUBSESSRESULTS % (subsession), useget=True)
+        r = self.__req(ct.URL_SUBS_RESULTS % (subsession), useget=True)
 
         out = parse(r)['rows']
         return out
@@ -936,7 +936,7 @@ class iRWebStats:
         """ Get the lap times for an event from the web page.
         """
 
-        r = self.__req(ct.URL_GET_LAPS_SINGLE)
+        r = self.__req(ct.URL_LAPS_SINGLE)
         out = parse(r)
 
         return out
@@ -945,7 +945,7 @@ class iRWebStats:
         """ Get the lap times for an event from the web page.
         """
 
-        r = self.__req(ct.URL_GET_LAPS_ALL)
+        r = self.__req(ct.URL_LAPS_ALL)
         out = parse(r)
 
         return out
@@ -968,7 +968,7 @@ class iRWebStats:
         """ Get the world record lap time for certain car in a season.
         """
 
-        r = self.__req(ct.URL_GET_WORLDRECORD)
+        r = self.__req(ct.URL_WORLD_RECORDS)
         res = parse(r)
 
         header = res['m']
