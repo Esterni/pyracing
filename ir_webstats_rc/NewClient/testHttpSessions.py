@@ -1,5 +1,4 @@
-import ir_webstats_rc.constants as ct
-from ir_webstats_rc.util import pprint
+import ir_webstats_rc.NewClient.constants as ct
 
 import requests
 import pickle
@@ -417,7 +416,7 @@ def sessionTimes(seasonID):
     return r
 
 
-def statsChart(catergory, custID=custID):
+def statsChart(category, custID=custID):
 
     payload = {
         'custId': custID,
