@@ -71,26 +71,12 @@ INC_FLAGS = {
     2048: "tow"
 }
 
-# Initialized Variables for URLS (WiP)
-# TODO Polish this up / Better naming
 custid = 435144
-category = 2
-carid = -1
-trackid = -1
-seasonID = 2866
-subsession = 33204934
-sessnum = 133411985
-quarter = 2
-year = 2020
-series = 284
-event = 5
+
 # iRacing rounds down to the 5 minute mark - Do not change
 now_unix_ms = int(math.floor(time.time()/300)*300)*1000
-quarter = 2
-raceweek = -1
-carclass = -1
-cDiv = -1  # Club Division
 
+# Context sites for the 2 types of endpoints
 mSite = 'https://members.iracing.com/membersite/member'
 mStats = 'https://members.iracing.com/memberstats/member'
 
@@ -149,7 +135,7 @@ URL_SESSION_TIMES = (mSite + '/GetSessionTimes')
 URL_NEXT_EVENT = (mSite + '/GetNextEvent')
 URL_TOTALREGISTERED = (mSite + '/GetTotalSessionJoinedCountsBySeason')
 URL_RACEGUIDE = (mSite + '/GetRaceGuide?'
-                             f'at={unixMs}'
+                             f'at={now_unix_ms}'
                              '&showRookie=1'
                              '&showClassD=1'
                              '&showClassC=1'
@@ -243,25 +229,6 @@ URL_SEASON_STANDINGS2 = (mSite + '/statsseries.jsp')
 
 # Doesn't work. Loads a page but redirects back to home
 URL_GET_PASTSERIES = (mSite + '/PreviousSeasons.do')
-
-
-
-
-
-HEADERS = {
-    'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) Apple\
-        WebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1312.52 Safari/537.17',
-    'Referer': 'https://members.iracing.com/membersite/login.jsp',
-    'Connection': 'keep-alive',
-    'Accept': 'text/html,application/xhtml+xml,'
-              'application/xml;q=0.9,*/*;q=0.8',
-    'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
-    'Cache-Control': 'max-age=0',
-    'Host': 'members.iracing.com',
-    'Accept-Encoding': 'gzip,deflate,sdch',
-    'Origin': 'members.iracing.com',
-    'Accept-Language': 'en-US,en;q=0.8'
-}
 
 
 # LOCATIONS
