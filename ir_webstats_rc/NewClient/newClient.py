@@ -6,6 +6,24 @@ import os
 import json
 import time
 
+
+# This module authenticates, builds, and sends URL queries to iRacing URLs.
+# Each function is set with only the variables required for the respective
+# endpoint to return the desired data. Compared to the previous client.py,
+# this module does not attempt to parse any of the data received. Instead,
+# each function returns the response object from requests.Session() to
+# provide more versatility from a function.
+
+# Response objects include the .json() method, which is the same result
+# that was found in util.py as parse(). Since new endpoints have been found,
+# there is no longer a need for regex, drastically reducing the complexity
+# of the code.
+
+# Cookies are handled by the Session() object behind the scenes, only
+# requiring them to be stored in a file if a session is closed.
+
+
+
 # Retrieve credentials from OS Environment Variables.
 username = os.getenv('IRACING_USERNAME')
 password = os.getenv('IRACING_PASSWORD')

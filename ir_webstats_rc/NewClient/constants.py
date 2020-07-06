@@ -73,7 +73,7 @@ INC_FLAGS = {
 
 custid = 435144
 
-# iRacing rounds down to the 5 minute mark - Do not change
+# iRacing rounds down to the 5 minute mark - DO NOT CHANGE
 now_unix_ms = int(math.floor(time.time()/300)*300)*1000
 
 # Context sites for the 2 types of endpoints
