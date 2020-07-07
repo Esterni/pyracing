@@ -1,4 +1,4 @@
-# URL_DRIVER_STATUS
+# URL_DRIVER_STATUS - Normal Keys
 GetDriverStatus = {
     "blacklisted": true,
     "search": 0,
@@ -252,10 +252,11 @@ GetDriverStatus = {
             "userRole": 0
         }
     ],
-    "friends": true}
+    "friends": true
+}
 
-# URL_ACTIVEOP_COUNT
-GetActiveOpenPractiveCount = {
+# URL_ACTIVEOP_COUNT - Mapped Keys
+GetActiveOpenPracticeCount = {
     "m": {
         "1": "weather_temp_units",
         "2": "weather_wind_dir",
@@ -359,9 +360,10 @@ GetActiveOpenPractiveCount = {
             "42": "28",
             "43": 1
         }
-    ]}
+    ]
+}
 
-# URL_GET_SSRESULTS
+# URL_GET_SSRESULTS - Normal Keys
 GetSubsessionResults = {
     "nleadchanges": 2,
     "weather_wind_dir": 3,
@@ -517,9 +519,10 @@ GetSubsessionResults = {
             "bestquallapnum": -1,
             "newlicenselevel": 20
         }
-    ]}
+    ]
+}
 
-# URL_GET_LAPS_ALL
+# URL_GET_LAPS_ALL - Normal Keys
 GetLapsAll = {
     "details": {
         "eventDate": "2020-06-29",
@@ -964,9 +967,10 @@ GetLapsAll = {
             "sesTime": 3244907,
             "flags": 0
         },
-    ]}
+    ]
+}
 
-# URL_GET_LAPS_SINGLE
+# URL_GET_LAPS_SINGLE - Normal Keys
 GetLapsSingle = {
     "lapData": [
         {
@@ -1213,9 +1217,10 @@ GetLapsSingle = {
             "helm_color3": "172c59",
             "helm_color2": "65b82f"
         }
-    ]}
+    ]
+}
 
-# URL_GET_TOTALREGISTERED (Not JSON formatted)
+# URL_GET_TOTALREGISTERED (Not JSON formatted) - Normal Keys
 GetTotalSessionJoinedCountsBySeason = [
     {seasonid: 2817,registered: 1
     },
@@ -1374,9 +1379,10 @@ GetTotalSessionJoinedCountsBySeason = [
     {seasonid: 2911,registered: 0
     },
     {seasonid: 2812,registered: 0
-    }]
+    }
+]
 
-# URL_GET_RACEGUIDE (Note: Full guide is 400k chracters)
+# URL_GET_RACEGUIDE (Note: Full guide is 400k chracters) - Normal Keys
 GetRaceGuide = {
     "date": 1593669600000,
     "series": [
@@ -2367,9 +2373,10 @@ GetRaceGuide = {
             "seriesID": 116,
             "mpr": 0
         },
-    ]}
+    ]
+}
 
-# URL_SEASON_STANDINGS
+# URL_SEASON_STANDINGS - Mapped Keys
 GetSeasonStandings = {
     "m": {
         "1": "country",
@@ -2474,9 +2481,10 @@ GetSeasonStandings = {
                 "21": 20
             },
         ]
-    }}
+    }
+}
 
-# URL_GET_SEASONS (e.g. 1 season)
+# URL_GET_SEASONS (e.g. 1 season) - Normal Keys
 GetSeasons = [
     {
         "serieslicgroupid": 3,
@@ -2825,16 +2833,18 @@ GetSeasons = [
         "category": 3,
         "raceweek": 4,
         "quarter": 3
-    },]
+    },
+]
 
-# URL_GET_NEXTEVENT (e.g. ?seriesID=260&evtType=5&date=1593674100000)
+# URL_GET_NEXTEVENT - Normal Keys
 GetNextEvent = {
     "start_time": 1593676800000,
     "seasonid": 2866,
     "sessionid": 133562833,
-    "drivercount": 0}
+    "drivercount": 0
+}
 
-# URL_SERIES_RACERESULTS
+# URL_SERIES_RACERESULTS - Mapped Keys
 GetSeriesRaceResults = {
     "m": {
         "1": "start_time",
@@ -3237,9 +3247,10 @@ GetSeriesRaceResults = {
             "7": 1,
             "8": 826
         }
-    ]}
+    ]
+}
 
-# URL_LASTRACE_STATS
+# URL_LASTRACE_STATS - Normal Keys
 GetLastRacesStats = [
     {
         "date": "2020-06-29",
@@ -3570,9 +3581,10 @@ GetLastRacesStats = [
         "lapsLed": 0,
         "time": 1592894700000,
         "finishPos": 4
-    }]
+    }
+]
 
-# URL_SESSION_TIMES - Using seasonID 2866
+# URL_SESSION_TIMES - Using seasonID 2866 - Mapped Keys
 GetSessionTimes = {
     "m": {
         "1": "maxtodisplay",
@@ -3953,9 +3965,10 @@ GetSessionTimes = {
                 "21": 78
             }
         ]
-    }}
+    }
+}
 
-# URL_GET_WORLDRECORD
+# URL_GET_WORLDRECORD - Mapped Keys
 GetWorldRecords = {
     "m": {
         "1": "timetrial_subsessionid",
@@ -4260,9 +4273,10 @@ GetWorldRecords = {
                 "21": 0
             }
         ]
-    }}
+    }
+}
 
-# URL_RESULTS_ARCHIVE
+# URL_RESULTS_ARCHIVE - Mapped Keys
 GetResults = {
     "m": {
         "1": "helm_color1",
@@ -4514,9 +4528,10 @@ GetResults = {
                 "43": 48
             }
         ]
-    }}
+    }
+}
 
-# URL_STATS_CHART
+# URL_STATS_CHART - No descriptions [Time, iRating]
 GetChartData = [
     [
         1581724800000,
@@ -4597,9 +4612,10 @@ GetChartData = [
     [
         1593475200000,
         2092
-    ]]
+    ]
+]
 
-# URL_CAREER_STATS
+# URL_CAREER_STATS - Normal Keys
 GetCareerStats = [
     {
         "wins": 5,
@@ -4668,9 +4684,10 @@ GetCareerStats = [
         "lapsLedPerc": 0,
         "category": "Dirt+Oval",
         "starts": 1
-    }]
+    }
+]
 
-# URL_YEARLY_STATS
+# URL_YEARLY_STATS - Normal Keys
 GetYearlyStats = [
     {
         "wins": 5,
@@ -4743,9 +4760,10 @@ GetYearlyStats = [
         "lapsLedPerc": 0,
         "category": "Dirt+Oval",
         "starts": 1
-    }]
+    }
+]
 
-# URL_CARS_DRIVEN
+# URL_CARS_DRIVEN [List of carIDs]
 GetCarsDriven = [
     109,
     41,
@@ -4769,9 +4787,10 @@ GetCarsDriven = [
     1,
     36,
     91,
-    33]
+    33
+]
 
-# URL_PERSONAL_BEST (carID: 33)
+# URL_PERSONAL_BEST (carID: 33) - Normal Keys
 GetPersonalBests = [
     {
         "trackconfigname": "Grand+Prix",
@@ -4989,9 +5008,10 @@ GetPersonalBests = [
         "trackid": 41,
         "bestlaptimeformatted": "1%3A22.436",
         "trackname": "%5BLegacy%5D+Silverstone+Circuit+-+2008"
-    }]
+    }
+]
 
-# URL_DRIVER_STATS
+# URL_DRIVER_STATS - Mapped Keys
 GetDriverStats = {
     "m": {
         "1": "top25pcnt",
@@ -5273,13 +5293,15 @@ GetDriverStats = {
                 "21": 2859
             }
         ]
-    }}
+    }
+}
 
-# URL_GET_MDIVISION
+# URL_GET_MDIVISION - Normal Keys
 GetMembersDivision = {
-    division: 2,isProjected: 0}
+    division: 2,isProjected: 0
+}
 
-# URL_LAST_SERIES
+# URL_LAST_SERIES - Normal Keys
 GetLastSeries = [
     {
         "champPoints": 281,
@@ -5343,7 +5365,11 @@ GetLastSeries = [
         "starts": 1,
         "seriesShortName": "Classic+Lotus+Grand+Prix",
         "carClass": 22
-    }]
+    }
+]
 
 # URL_GET_SSID (exactly as returned)
 GetSubsessionForMember = 33204934
+
+
+

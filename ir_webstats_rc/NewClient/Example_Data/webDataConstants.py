@@ -59182,9 +59182,7 @@ weatherTempMin = 65
 weatherTempMax = 90
 weatherRHMin = 0
 weatherRHMax = 100
-"/member/GetTickerSessions",
-"/member/GetSeasonForSession?sessionID=" + '+sessionID,'
-"/member/GetCarClassById" + 'carclassid:id'
+
 TimesOfDayListing = [
     {
         "ID": 5,
@@ -59473,7 +59471,7 @@ IRACING_constants = {
 	'JS_version':"20200617092711",
 	'ks':"members.iracing.com/membersite/getkeys",
 	'setupsrv':"members.iracing.com/membersite/getsetups",
-    
+
 	'category_oval':1,
 	'category_road':2,
 	'category_dirt_oval':3,
