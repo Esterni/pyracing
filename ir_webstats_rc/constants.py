@@ -3,11 +3,6 @@ import time
 import math
 import os
 
-IRATING_OVAL_CHART = 1
-IRATING_ROAD_CHART = 2
-RACE_TYPE_OVAL = 1
-RACE_TYPE_ROAD = 2
-
 custid = 435144
 
 # iRacing rounds down to the 5 minute mark - DO NOT CHANGE
