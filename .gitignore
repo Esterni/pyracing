@@ -15,3 +15,7 @@ __pycache__
 build
 dist
 *.egg-info
+<<<<<<< Updated upstream
+=======
+ir_webstats_rc/NewClient/cookie
+>>>>>>> Stashed changes
