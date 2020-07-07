@@ -100,6 +100,19 @@ def activeOPCounts(custID=custID, maxCount=250):
     return r
 
 
+def carClassByID(carClassID):
+
+    payload = {'carclassid': carClassID}
+
+    r = login_session.get(
+        ct.URL_CAREER_STATS,
+        cookies=grabCookie,
+        params=payload
+        )
+
+    return r
+
+
 def careerStats(custID=custID):
     '''Returns driver career stats
     '''
@@ -376,6 +389,23 @@ def results(custID=custID):
     return r
 
 
+def seasonForSession(sessionID):
+    '''Returns the seasonID for a given sessionID
+    '''
+
+    payload = {
+        'sessionID': sessionID
+    }
+
+    r = login_session.get(
+        ct.URL_SEASON_FOR_SESSION,
+        cookies=grabCookie,
+        params=payload
+        )
+
+    return r
+
+
 def seasonStandings(
     seasonID,
     carClassID=-1,
@@ -459,6 +489,17 @@ def subSessResults(subSessID, custID=custID):
 
     r = login_session.get(
         ct.URL_SUBS_RESULTS,
+        cookies=grabCookie,
+        params=payload
+        )
+    return r
+
+def tickerSessions():
+
+    payload = {}
+
+    r = login_session.get(
+        ct.URL_TICKER_SESSIONS,
         cookies=grabCookie,
         params=payload
         )
