@@ -172,12 +172,12 @@ URL_GET_PASTSERIES = (mSite + '/PreviousSeasons.do')
 
 LIC_CLASS = {
     'rookie': 1,
-    'D': 2,
-    'C': 3,
-    'B': 4,
-    'A': 5,
-    'Pro': 6,
-    'ProWC': 7
+    'd': 2,
+    'c': 3,
+    'b': 4,
+    'a': 5,
+    'pro': 6,
+    'prowc': 7
     }
 
 # LOCATIONS (AKA Country Code)
@@ -448,13 +448,13 @@ CHART = {
 
 # List of session eventType
 EVENT = {
-    'TEST': 1,
-    'PRACTICE': 2,
-    'QUALY': 3,
-    'TTRIAL': 4,
-    'RACE': 5,
-    'OFFICIAL': 6,  # Official/Unofficial don't feel right here...
-    'UNOFFICIAL': 7
+    'test': 1,
+    'practice': 2,
+    'qualy': 3,
+    'ttrial': 4,
+    'race': 5,
+    'official': 6,  # Official/Unofficial don't feel right here...
+    'unofficial': 7
     }
 
 # Flags for lap data
@@ -475,11 +475,11 @@ INC_FLAGS = {
 
 # Flags for sorting data received
 SORT = {
-    'SORT_IRATING': 'irating',
-    'SORT_TIME': 'start_time',
-    'SORT_POINTS': 'points',
-    'ORDER_DESC': 'desc',
-    'ORDER_ASC': 'asc'
+    'irating': 'irating',
+    'time': 'start_time',
+    'points': 'points',
+    'desc': 'desc',
+    'asce': 'asc'
     }
 
 # TODO Construct dictionary of seriesIDs from /GetSeasons
