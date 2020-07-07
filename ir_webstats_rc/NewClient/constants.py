@@ -3,73 +3,10 @@ import time
 import math
 import os
 
-ALL = -1
-# Entries per page. This is the ammount set
-# in iRacing site. We shouldn't increase it.
-NUM_ENTRIES = 25
-
-# Minimum time in seconds between two consecutive requests to iRacing site
-# (we don't want to flood/abuse the service).
-# I'm not sure about the minimum value for this, I'll have to ask a dev.
-WAIT_TIME = 0.3
-
 IRATING_OVAL_CHART = 1
 IRATING_ROAD_CHART = 2
-
 RACE_TYPE_OVAL = 1
 RACE_TYPE_ROAD = 2
-
-LIC_ROOKIE = 1
-LIC_D = 2
-LIC_C = 3
-LIC_B = 4
-LIC_A = 5
-LIC_PRO = 6
-LIC_PRO_WC = 7
-
-SORT_IRATING = 'irating'
-SORT_TIME = 'start_time'
-SORT_POINTS = 'points'
-ORDER_DESC = 'desc'
-ORDER_ASC = 'asc'
-
-# List of session eventType
-EVENT_TEST = 1
-EVENT_PRACTICE = 2
-EVENT_QUALY = 3
-EVENT_TTRIAL = 4
-EVENT_RACE = 5
-EVENT_OFFICIAL = 6
-EVENT_UNOFFICIAL = 7
-
-# INCIDENT FLAGS
-# These are used in the laps data
-FLAG_PITTED = 2
-FLAG_OFF_TRACK = 4
-FLAG_BLACK_FLAG = 8
-FLAG_CAR_RESET = 16
-FLAG_CONTACT = 32
-FLAG_CAR_CONTACT = 64
-FLAG_LOST_CONTROL = 128
-FLAG_DISCONTINUITY = 256
-FLAG_INTERPOLATED_CROSSING = 512
-FLAG_CLOCK_SMASH = 1024
-FLAG_TOW = 2048
-
-INC_FLAGS = {
-    0: "clean",
-    2: "pitted",
-    4: "off track",
-    8: "black flag",
-    16: "car reset",
-    32: "contact",
-    64: "car contact",
-    128: "lost control",
-    256: "discontinuity",
-    512: "interpolated crossing",
-    1024: "clock smash",
-    2048: "tow"
-}
 
 custid = 435144
 
@@ -199,7 +136,9 @@ URL_DRIVER_STATS = (mStats + '/GetDriverStats?'
 URL_MEM_SUBSESSID = (mSite + '/GetSubsessionForMember')
 URL_CARS_DRIVEN = (mStats + '/GetCarsDriven')
 URL_HOSTED_RESULTS = (mStats + '/GetPrivateSessionResults')
-
+URL_CAR_CLASS = (mSite + '/GetCarClassById')
+URL_TICKER_SESSIONS = (mSite + '/GetTickerSessions')
+URL_SEASON_FOR_SESSION = (mSite + '/GetSeasonForSession')
 
 
 # ESSENTIALLY USELESS URLS
@@ -230,9 +169,18 @@ URL_SEASON_STANDINGS2 = (mSite + '/statsseries.jsp')
 # Doesn't work. Loads a page but redirects back to home
 URL_GET_PASTSERIES = (mSite + '/PreviousSeasons.do')
 
+LIC_CLASS = {
+    'rookie': 1,
+    'D': 2,
+    'C': 3,
+    'B': 4,
+    'A': 5,
+    'Pro': 6,
+    'ProWC': 7
+    }
 
 # LOCATIONS (AKA Country Code)
-countryCodes = {
+COUNTRY_CODES = {
     'ALL': 'null',
     'AFGHANISTAN': 'AF',
     'ALAND_ISLANDS': 'AX',
@@ -480,90 +428,52 @@ countryCodes = {
     'YEMEN': 'YE',
     'ZAMBIA': 'ZM',
     'ZIMBABWE': 'ZW'
-}
+    }
 
-# List of SIDs (SeriesID) listed in order from /GetRaceGuide
-# Note: removed any dashs due to errors
-SID_Carburetor_Cup = 116
-SID_DIRTcar_Street_Stock_Series_Fixed = 290
-SID_Fanatec_Global_Mazda_MX5_Cup = 139
-SID_Fanatec_Street_Stock_Series_R = 182
-SID_iRacing_Advanced_Legends_Cup = 32
-SID_iRacing_Dirt_Legends_Cup = 315
-SID_PickUp_Cup = 259
-SID_Pro_2_Lite_Truck_Championship = 387
-SID_Rookie_iRacing_Rallycross_Series = 326
-SID_Sling_Mud_for_Fun_Sprint_Cars = 303
-SID_Trak_Racer_Dallara_Dash = 258
-SID_BMW_120_Challenge_Fixed = 397
-SID_BMW_SIM_120_Cup = 400
-SID_DIRTcar_Limited_Late_Model_Series = 291
-SID_Fanatec_DIRTcar_305_Sprint_Car_Series = 292
-SID_Fanatec_Global_Challenge = 210
-SID_iRacing_ARCA_Menards_Series = 167
-SID_iRacing_Formula_Renault_20 = 269
-SID_iRacing_Late_Model_Tour = 33
-SID_iRacing_Rallycross_Series = 325
-SID_iRacing_Spec_Racer_Ford_Challenge = 63
-SID_Lucas_Oil_Off_Road_Racing_Pro_4_Series = 391
-SID_NASCAR_SK_Modified_Weekly_Series = 45
-SID_Nurburgring_Endurance_Championship = 275
-SID_Pure_Driving_School_Formula_Sprint = 384
-SID_Ruf_GT3_Challenge = 277
-SID_SimLab_Production_Car_Challenge = 112
-SID_Skip_Barber_Race_Series = 34
-SID_Advanced_Mazda_MX5_Cup_Series = 231
-SID_DIRTcar_360_Sprint_Car_Series_ = 305
-SID_DIRTcar_Class_C_Street_Stock_Series_Fixed = 311
-SID_DIRTcar_Pro_Late_Model_Series_ = 306
-SID_Fanatec_GT_Challenge = 278
-SID_Grand_Prix_Legends = 201
-SID_IMSA_Michelin_Pilot_Challenge = 386
-SID_IMSA_Sportscar_Championship = 227
-SID_Indy_Pro_2000_Championship = 414
-SID_IndyCar_iRacing_Series = 374
-SID_IndyCar_Series_Oval_Fixed = 165
-SID_iRacing_Dirt_Midget_Cup = 327
-SID_iRacing_Endurance_Series = 408
-SID_iRacing_F3_Championship = 358
-SID_iRacing_Street_Stock_Series_C = 190
-SID_iRacing_Super_Late_Model_Series = 223
-SID_iRacing_Super_Late_Model_Series_Fixed = 416
-SID_Kamel_GT_Championship_ = 285
-SID_Lucas_Oil_Off_Road_Racing_Pro_2_Series = 378
-SID_NASCAR_iRacing_Class_C = 47
-SID_NASCAR_iRacing_Class_C_Fixed = 164
-SID_NASCAR_iRacing_Series_Fixed = 207
-SID_NASCAR_iRacing_Series_Open = 229
-SID_NASCAR_iRacing_Tour_Modified_Series = 102
-SID_NASCAR_iRacing_Tour_Modified_Series_Fixed = 417
-SID_NASCAR_Legends_Series = 413
-SID_Porsche_Esports_Sprint_Challenge = 410
-SID_Porsche_iRacing_Cup = 299
-SID_Radical_Racing_Challenge_C = 74
-SID_Supercars_Series = 399
-SID_Supercars_Series_Australian_Server_Only = 405
-SID_USAC_360_Sprint_Car_Series = 310
-SID_VRS_GT_Endurance_Series = 237
-SID_World_of_Outlaws_Late_Model_Series_Fixed = 369
-SID_AMSOIL_USAC_Sprint_Car = 309
-SID_Classic_Lotus_Grand_Prix = 65
-SID_DIRTcar_UMP_Modified_Series = 316
-SID_IndyCar_Series_Road = 133
-SID_iRacing_Endurance_Le_Mans_Series = 331
-SID_iRacing_Formula_35_Championship = 359
-SID_iRacing_Le_Mans_Series = 330
-SID_iRacing_Silver_Crown_Cup = 53
-SID_iRacing_Sprint_Car_Cup = 131
-SID_NASCAR_iRacing_Class_B = 62
-SID_NASCAR_iRacing_Class_B_Fixed = 103
-SID_VRS_GT_Sprint_Series = 228
-SID_World_of_Outlaws_Late_Model_Series_ = 308
-SID_World_of_Outlaws_Sprint_Car_Series = 307
-SID_iRacing_Grand_Prix_Series = 260
-SID_NASCAR_iRacing_Class_A = 58
-SID_NASCAR_iRacing_Class_A_Fixed_ = 191
-SID_NASCAR_Road_to_Pro = 328
-SID_Porsche_TAG_Heuer_Esports_Supercup = 409
-SID_WoO_Late_Model_WC_Series = 339
-SID_eNASCAR_CocaCola_Series = 402
+# Discipline Categories
+CATEGORIES = {
+    'oval':1,
+	'road':2,
+	'dirt_oval':3,
+	'dirt_road':4
+    }
+
+# List of session eventType
+EVENT = {
+    'TEST': 1,
+    'PRACTICE': 2,
+    'QUALY': 3,
+    'TTRIAL': 4,
+    'RACE': 5,
+    'OFFICIAL': 6,  # Official/Unofficial don't feel right here...
+    'UNOFFICIAL': 7
+    }
+
+# Flags for lap data
+INC_FLAGS = {
+    0: 'clean',
+    2: 'pitted',
+    4: 'off track',
+    8: 'black flag',
+    16: 'car reset',
+    32: 'contact',
+    64: 'car contact',
+    128: 'lost control',
+    256: 'discontinuity',
+    512: 'interpolated crossing',
+    1024: 'clock smash',
+    2048: 'tow'
+    }
+
+# Flags for sorting data received
+SORT = {
+    'SORT_IRATING': 'irating',
+    'SORT_TIME': 'start_time',
+    'SORT_POINTS': 'points',
+    'ORDER_DESC': 'desc',
+    'ORDER_ASC': 'asc'
+    }
+
+# TODO Construct dictionary of seriesIDs from /GetSeasons
+# TODO Construct dictionary of seasonIDs from /GetSeasons
+# TODO Construct dictionary of carIDs
