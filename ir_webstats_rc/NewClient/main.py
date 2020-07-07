@@ -298,15 +298,7 @@ def myRacers(friends=1, studied=1, blacklisted=1):
         'studied': studied,
         'blacklisted': blacklisted
 
-    r = login_session.get(
-        ct.URL_MY_RACERS,
-        cookies=grabCookie,
-        params=payload
-        )
-    return r
-
-
-def nextEvent(seriesID, event=5):
+def nextEvent(seriesID, event=ct.EVENT['race']):
     '''Returns information for the upcoming session with given
     seriesID, evtType, and date.
     '''
