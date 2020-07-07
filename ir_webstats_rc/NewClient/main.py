@@ -138,15 +138,7 @@ def careerStats(custID=custID):
 
     payload = {'custid': custID}
 
-    r = login_session.get(
-        ct.URL_CAREER_STATS,
-        cookies=grabCookie,
-        params=payload
-        )
-    return r
-
-
-def currentSeasons(onlyActive=True):
+def currentSeasons(onlyActive=1):
     '''Returns data about all seasons.
     '''
 
@@ -174,14 +166,14 @@ def currentSeasons(onlyActive=True):
 
     requestedFields = []
     # Iterate through possible fields, adding requested fields to list
-    for field in fieldDict:
-        if fieldDict[field] == 1:
-            requestedFields.append(field)
+    for key in fieldDict:
+        if fieldDict[key] == 1:
+            requestedFields.append(key)
         else:
             continue
 
     payload = {
-        'onlyActive': 1,
+        'onlyActive': onlyActive,
         'fields': (','.join(requestedFields))
         }
     # Include inactive series if kwarg 'onlyActive' set to False
