@@ -1,4 +1,4 @@
-import ir_webstats_rc.NewClient.constants as ct
+import ir_webstats_rc.constants as ct
 
 import requests
 import pickle
@@ -7,7 +7,7 @@ import json
 import time
 
 
-# This module authenticates, builds, and sends URL queries to iRacing URLs.
+# This module authenticates, builds, and sends URL queries to iRacing.
 # Each function is set with only the variables required for the respective
 # endpoint to return the desired data. Compared to the previous client.py,
 # this module does not attempt to parse any of the data received. Instead,

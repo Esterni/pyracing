@@ -1,4 +1,6 @@
-#!/usr/bin/python
+# No longer applicable with current version
+
+'''
 """ Example usage of iRWebStats """
 from ir_webstats_rc import constants as ct
 from ir_webstats_rc.client import iRWebStats
@@ -35,4 +37,4 @@ drivers, total_drv = irw.driver_search(
 print("Total drivers found: %s. Showing the first %s" % (total_drv,
                                                          len(drivers)))
 print("\n".join(["%s - %s: %s" % (i + 1, clean(x['displayname']), x['irating'])
-                for i, x in enumerate(drivers)]))
+                for i, x in enumerate(drivers)]))'''
