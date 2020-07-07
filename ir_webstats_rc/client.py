@@ -23,9 +23,7 @@ import time
 # requiring them to be stored in a file if a session is closed.
 
 
-# Retrieve credentials from OS Environment Variables.
-username = os.getenv('IRACING_USERNAME')
-password = os.getenv('IRACING_PASSWORD')
+
 
 # Create a global instance of Session() from requests module.
 login_session = requests.Session()
@@ -39,6 +37,10 @@ def inital_login():
     # Calculate utcoffset from local time
     utcoffset = round(
         abs(time.localtime().tm_gmtoff / 60))
+
+    # Retrieve credentials from OS Environment Variables.
+    username = os.getenv('IRACING_USERNAME')
+    password = os.getenv('IRACING_PASSWORD')
 
     loginData = {
         'username': username,
