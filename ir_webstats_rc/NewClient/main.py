@@ -52,7 +52,7 @@ def inital_login():
     save_cookies(login_session)
 
 
-def save_cookies(session, filename='cookie'):
+def save_cookies(session, filename='cookie.tmp'):
     '''Saves all cookies from a session object to file
     utilizing the pickle module for serialization
     '''
@@ -63,7 +63,7 @@ def save_cookies(session, filename='cookie'):
     return True
 
 
-def load_cookies(filename='cookie'):
+def load_cookies(filename='cookie.tmp'):
     '''Loads CookieJar object from file if 'cookie' contains data.
     If the file is empty, a new session is created instead.
     '''
