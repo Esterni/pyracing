@@ -23,7 +23,6 @@ import time
 # requiring them to be stored in a file if a session is closed.
 
 
-
 # Retrieve credentials from OS Environment Variables.
 username = os.getenv('IRACING_USERNAME')
 password = os.getenv('IRACING_PASSWORD')
@@ -32,8 +31,7 @@ password = os.getenv('IRACING_PASSWORD')
 login_session = requests.Session()
 
 # TODO Should variables be defined globally or per function?
-custID = None
-
+custID = 435144
 
 def inital_login():
 
@@ -85,63 +83,41 @@ def request(URL_Function):
         return response
     return wrapper
 
-
+@request
 def activeOPCounts(custID=custID, maxCount=250):
-    '''Returns active open practices. Data is in the form
-    of {m:{map}, d:[{data},{data},{data}]}
-    '''
-
+    URL = ct.URL_ACTIVEOP_COUNT
     payload = {
         'custid': custID,
-        'maxcount': 250,
+        'maxcount': maxCount,
         'include_empty': 'n',  # Flag is y/n
         'excludeLite': 0
         }
+    return URL, payload
 
-    r = login_session.get(
-        ct.URL_ACTIVEOP_COUNT,
-        cookies=grabCookie,
-        params=payload
-        )
-    return r
-
-
+@request
 def allSubsessions(subSessID):
-
     payload = {'subsessionid': subSessID}
+    URL = ct.URL_ALL_SUBSESSIONS
+    return URL, payload
 
-    r = login_session.get(
-        ct.URL_ALL_SUBSESSIONS,
-        cookies=grabCookie,
-        params=payload
-        )
-
-    return r
-
-
+@request
 def carClassByID(carClassID):
-
     payload = {'carclassid': carClassID}
+    URL = ct.URL_CAREER_STATS
+    return URL, payload
 
-    r = login_session.get(
-        ct.URL_CAREER_STATS,
-        cookies=grabCookie,
-        params=payload
-        )
-
-    return r
-
-
+@request
 def careerStats(custID=custID):
     '''Returns driver career stats
     '''
-
     payload = {'custid': custID}
+    URL = ct.URL_CAREER_STATS
+    return URL, payload
 
+@request
 def currentSeasons(onlyActive=1):
     '''Returns data about all seasons.
     '''
-
     # List of possible fields. Set any to 1 to return that field.
     fieldDict = {
         'year': 0,
@@ -176,190 +152,114 @@ def currentSeasons(onlyActive=1):
         'onlyActive': onlyActive,
         'fields': (','.join(requestedFields))
         }
-    # Include inactive series if kwarg 'onlyActive' set to False
-    if onlyActive == False:
-        payload['onlyActive'] = 0
-
-    r = login_session.get(
-        ct.URL_CURRENT_SEASONS,
-        cookies=grabCookie,
-        params=payload
-        )
-    return r
+    URL = ct.URL_CURRENT_SEASONS
+    return URL, payload
 
 # TODO Use *kwargs with dictionary for default values? Very long list.
+@request
 def driverStats():
-
     payload = {}
-    r = login_session.get(
-        ct.URL_DRIVER_STATS,
-        cookies=grabCookie,
-        params=payload
-        )
-    return r
+    URL = ct.URL_DRIVER_STATS
+    return URL, payload
 
 # TODO Find query string parameters for this URL
+@request
 def hostedResults():
     '''Currently non-functional
     '''
-
     payload = {}
+    URL = ct.URL_HOSTED_RESULTS
+    return URL, payload
 
-    r = login_session.get(
-        ct.URL_HOSTED_RESULTS,
-        cookies=grabCookie,
-        params=payload
-        )
-    return r
-
-
+@request
 def lastRaceStats(custID=custID):
     '''Returns stat summary for the drivers last 10 races
     '''
-
     payload = {'custid': custID}
+    URL = ct.URL_LASTRACE_STATS
+    return URL, payload
 
-    r = login_session.get(
-        ct.URL_LASTRACE_STATS,
-        cookies=grabCookie,
-        params=payload
-        )
-    return r
-
-
+@request
 def lastSeries(custID=custID):
     '''Returns a summary of stats about a drivers last 3 series.
     '''
-
     payload = {'custid': custID}
+    URL = ct.URL_LAST_SERIES
+    return URL, payload
 
-    r = login_session.get(
-        ct.URL_LAST_SERIES,
-        cookies=grabCookie,
-        params=payload
-        )
-    return r
-
-
+@request
 def memberCarsDriven(custID=custID):
     '''Returns which cars a driver has driven as carID.
     '''
-
     payload = {'custid': custID}
+    URL = ct.URL_CARS_DRIVEN
+    return URL, payload
 
-    r = login_session.get(
-        ct.URL_CARS_DRIVEN,
-        cookies=grabCookie,
-        params=payload
-        )
-    return r
-
-
+@request
 def memberDivision(seasonID, custID=custID):
     '''Returns the drivers division from a seasonid
     '''
+    payload = {'seasonid': seasonID, 'custid': custID, 'pointstype': 'race'}
+    URL = ct.URL_MEM_DIVISION
+    return URL, payload
 
-    payload = {
-        'seasonid': seasonID,
-        'custid': custID,
-        'pointstype': 'race'
-        }
-
-    r = login_session.get(
-        ct.URL_MEM_DIVISION,
-        cookies=grabCookie,
-        params=payload
-        )
-    return r
-
-
+@request
 def memberSubIDFromSession(sessNum, custid=custID):
     '''Returns which SubSession ID that a member was
     in from a given Session ID.
     '''
-
-    payload = {
-        'custid': custID,
-        'sessionID': sessNum
-        }
-
-    r = login_session.get(
-        ct.URL_MEM_SUBSESSID,
-        cookies=grabCookie,
-        params=payload
-        )
-    return r
-
+    payload = {'custid': custID, 'sessionID': sessNum}
+    URL = ct.URL_MEM_SUBSESSID
+    return URL, payload
 
 # Might not be useful. Must be logged in and not affected by custID.
+@request
 def myRacers(friends=1, studied=1, blacklisted=1):
     payload = {
         'friends': friends,
         'studied': studied,
         'blacklisted': blacklisted
+        }
+    URL = ct.URL_MY_RACERS
+    return URL, payload
 
+@request
 def nextEvent(seriesID, event=ct.EVENT['race']):
     '''Returns information for the upcoming session with given
     seriesID, evtType, and date.
     '''
-
     payload = {
         'seriesID': seriesID,
         'evtType': event,
         'date': ct.now_unix_ms
-    }
+        }
+    URL = ct.URL_NEXT_EVENT
+    return URL, payload
 
-    r = login_session.get(
-        ct.URL_NEXT_EVENT,
-        cookies=grabCookie,
-        params=payload
-        )
-    return r
-
-
+@request
 def personalBestTimes(carID, custID=custID):
     '''Returns the drivers best laptimes'''
 
-    payload = {
-        'custid': custID,
-        'carid': carID
-        }
-
-    r = login_session.get(
-        ct.URL_PERSONAL_BESTS,
-        cookies=grabCookie,
-        params=payload
-        )
-    return r
+    payload = {'custid': custID, 'carid': carID}
+    URL = ct.URL_PERSONAL_BESTS
+    return URL, payload
 
 # TODO Dictionary list of all filters possible
+@request
 def raceGuide():
 
     payload = {}
+    URL = ct.URL_RACEGUIDE
+    return URL, payload
 
-    r = login_session.get(
-        ct.URL_RACEGUIDE,
-        cookies=grabCookie,
-        params=payload
-        )
-    return r
-
-
+@request
 def raceLapsAll(subSessID, carClassID=-1):
 
-    payload = {
-        'subsessionid': subSessID,
-        'carclassid': carClassID
-        }
+    payload = {'subsessionid': subSessID, 'carclassid': carClassID}
+    URL = ct.URL_LAPS_ALL
+    return URL, payload
 
-    r = login_session.get(
-        ct.URL_LAPS_ALL,
-        cookies=grabCookie,
-        params=payload
-        )
-    return r
-
-
+@request
 def raceLapsDriver(subSessID, simSessID, custID=custID):
 
     payload = {
@@ -367,46 +267,26 @@ def raceLapsDriver(subSessID, simSessID, custID=custID):
         'simsessnum': simSessID,
         'groupid': custID
         }
-
-    r = login_session.get(
-        ct.URL_LAPS_SINGLE,
-        cookies=grabCookie,
-        params=payload
-        )
-    return r
+    URL = ct.URL_LAPS_SINGLE
+    return URL, payload
 
 # TODO Dictionary list of available flags/filters. custid required
+@request
 def results(custID=custID):
 
-    payload = {
-        'custid': custID
-        }
+    payload = {'custid': custID}
+    URL = ct.URL_RESULTS
+    return URL, payload
 
-    r = login_session.get(
-        ct.URL_RESULTS,
-        cookies=grabCookie,
-        params=payload
-        )
-    return r
-
-
+@request
 def seasonForSession(sessionID):
     '''Returns the seasonID for a given sessionID
     '''
+    payload = {'sessionID': sessionID}
+    URL = ct.URL_SEASON_FOR_SESSION
+    return URL, payload
 
-    payload = {
-        'sessionID': sessionID
-    }
-
-    r = login_session.get(
-        ct.URL_SEASON_FOR_SESSION,
-        cookies=grabCookie,
-        params=payload
-        )
-
-    return r
-
-
+@request
 def seasonStandings(
     seasonID,
     carClassID=-1,
@@ -427,98 +307,61 @@ def seasonStandings(
         'end': end,
         'sort': 'points',
         'order': 'desc'
-    }
+        }
+    URL = ct.URL_SEASON_STANDINGS
+    return URL, payload
 
-    r = login_session.get(
-        ct.URL_SEASON_STANDINGS,
-        cookies=grabCookie,
-        params=payload
-        )
-    return r
-
-
+@request
 def seriesRaceResults(seasonID, raceWeek=-1):
 
-    payload = {
-        'seasonid': seasonID,
-        'raceweek': raceWeek
-    }
+    payload = {'seasonid': seasonID, 'raceweek': raceWeek}
+    URL = ct.URL_SERIES_RACERESULTS
+    return URL, payload
 
-    r = login_session.get(
-        ct.URL_SERIES_RACERESULTS,
-        cookies=grabCookie,
-        params=payload
-        )
-
-    return r
-
-
+@request
 def sessionTimes(seasonID):
 
     payload = {'season': seasonID}
+    URL = ct.URL_SESSION_TIMES
+    return URL, payload
 
-    r = login_session.get(
-        ct.URL_SESSION_TIMES,
-        cookies=grabCookie,
-        params=payload
-        )
-    return r
-
-
+@request
 def statsChart(category, custID=custID, chartType=1):
 
     payload = {
         'custId': custID,
         'catId': category,
         'chartType': chartType
-    }
+        }
+    URL = ct.URL_STATS_CHART
+    return URL, payload
 
-    r = login_session.get(
-        ct.URL_STATS_CHART,
-        cookies=grabCookie,
-        params=payload
-        )
-    return r
-
-
+@request
 def subSessResults(subSessID, custID=custID):
 
     payload = {
         'subsessionID': subSessID,
         'custid': custID
-    }
+        }
+    URL = ct.URL_SUBS_RESULTS
+    return URL, payload
 
-    r = login_session.get(
-        ct.URL_SUBS_RESULTS,
-        cookies=grabCookie,
-        params=payload
-        )
-    return r
-
-
+@request
 def tickerSessions():
 
     payload = {}
-
-    r = login_session.get(
-        ct.URL_TICKER_SESSIONS,
-        cookies=grabCookie,
-        params=payload
-        )
-    return r
+    URL = ct.URL_TICKER_SESSIONS
+    return URL, payload
 
 # TODO Does not return JSON format. Find how to convert.
+@request
 def totalRegisteredAll():
 
-    # No payload (URL query) for this URL
+    payload = {}
+    URL = ct.URL_TOTALREGISTERED
+    return URL, payload
 
-    r = login_session.get(
-        ct.URL_TOTALREGISTERED,
-        cookies=grabCookie
-        )
-    return r.content
-
-
+@request
 def worldRecords(year, quarter, carID, trackID, custID=custID):
 
     payload = {
@@ -530,22 +373,12 @@ def worldRecords(year, quarter, carID, trackID, custID=custID):
         'format': 'json',
         'upperbound': 1
         }
+    URL = ct.URL_WORLD_RECORDS
+    return URL, payload
 
-    r = login_session.get(
-        ct.URL_WORLD_RECORDS,
-        cookies=grabCookie,
-        params=payload
-        )
-    return r
-
-
+@request
 def yearlyStats(custID=custID):
 
     payload = {'custid': custID}
-
-    r = login_session.get(
-        ct.URL_YEARLY_STATS,
-        cookies=grabCookie,
-        params=payload
-        )
-    return r
+    URL = ct.URL_YEARLY_STATS
+    return URL, payload
