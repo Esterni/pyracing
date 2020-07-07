@@ -100,6 +100,19 @@ def activeOPCounts(custID=custID, maxCount=250):
     return r
 
 
+def allSubsessions(subSessID):
+
+    payload = {'subsessionid': subSessID}
+
+    r = login_session.get(
+        ct.URL_ALL_SUBSESSIONS,
+        cookies=grabCookie,
+        params=payload
+        )
+
+    return r
+
+
 def carClassByID(carClassID):
 
     payload = {'carclassid': carClassID}
@@ -464,12 +477,12 @@ def sessionTimes(seasonID):
     return r
 
 
-def statsChart(category, custID=custID):
+def statsChart(category, custID=custID, chartType=1):
 
     payload = {
         'custId': custID,
         'catId': category,
-        'chartType': 1
+        'chartType': chartType
     }
 
     r = login_session.get(
@@ -493,6 +506,7 @@ def subSessResults(subSessID, custID=custID):
         params=payload
         )
     return r
+
 
 def tickerSessions():
 

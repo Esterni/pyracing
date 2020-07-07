@@ -50,7 +50,7 @@ URL_RESULTS = (mStats + '/GetResults?'
                                 '&showpro=1'
                                 '&showprowc=1'
                                 '&lowerbound=0'
-                                f'&upperbound={NUM_ENTRIES}'
+                                f'&upperbound=25'
                                 '&sort=start_time'
                                 '&order=desc'
                                 '&format=json'
@@ -58,12 +58,12 @@ URL_RESULTS = (mStats + '/GetResults?'
                                 '&category%5B%5D=2'
                                 '&category%5B%5D=3'
                                 '&category%5B%5D=4'
-                                f'&seasonyear={year}'
-                                f'&seasonquarter={quarter}'
-                                f'&raceweek={raceweek}'
-                                f'&trackid={trackid}'
-                                f'&carclassid={carclass}'
-                                f'&carid={carid}')
+                                f'&seasonyear=year'
+                                f'&seasonquarter=quarter'
+                                f'&raceweek=raceweek'
+                                f'&trackid=trackid'
+                                f'&carclassid=carclass'
+                                f'&carid=carid')
 URL_WORLD_RECORDS = (mStats + '/GetWorldRecords')
 
 
@@ -139,6 +139,7 @@ URL_HOSTED_RESULTS = (mStats + '/GetPrivateSessionResults')
 URL_CAR_CLASS = (mSite + '/GetCarClassById')
 URL_TICKER_SESSIONS = (mSite + '/GetTickerSessions')
 URL_SEASON_FOR_SESSION = (mSite + '/GetSeasonForSession')
+URL_ALL_SUBSESSIONS = (mSite + '/GetAllSubsessions')
 
 
 # ESSENTIALLY USELESS URLS
@@ -154,14 +155,14 @@ URL_MEM_DIVISION = (mSite + '/GetMembersDivision')
 # THESE URLS DO NOT RETURN JSON
 
 URL_EVENT_RESULT = (mSite + '/EventResult.do?'
-                                f'subsessionid={subsession}')
+                                f'subsessionid=subsession')
 URL_EVENT_RESULTS_CSV = (mSite + '/GetEventResultsAsCSV?'
-                                    f'subsessionid={subsession}'
-                                    f'&simsesnum={sessnum}'
+                                    f'subsessionid=subsession'
+                                    f'&simsesnum=sessnum'
                                     '&includeSummary=1')
 URL_CURRENT_SERIES = (mSite + '/Series.do')
 URL_SELECT_SERIES = (mSite + '/SelectSeries.do?'
-                             f'season={seasonID}'
+                             f'season=seasonID'
                              '&view=undefined'
                              '&nocache=%s')
 URL_SEASON_STANDINGS2 = (mSite + '/statsseries.jsp')
@@ -436,6 +437,13 @@ CATEGORIES = {
 	'road':2,
 	'dirt_oval':3,
 	'dirt_road':4
+    }
+
+# For use in ChartType flag of statsChart()
+CHART = {
+    'iRating': 1,
+    'ttRating': 2,
+    'licenseClass':3
     }
 
 # List of session eventType
