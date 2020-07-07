@@ -58,7 +58,7 @@ def save_cookies(session, filename='cookie.tmp'):
     utilizing the pickle module for serialization
     '''
 
-    with open(filename, 'wb') as f:
+    with open(filename, 'w+') as f:
         pickle.dump(session.cookies, f)
         f.close()
     return True
@@ -68,13 +68,14 @@ def load_cookies(filename='cookie.tmp'):
     '''Loads CookieJar object from file if 'cookie' contains data.
     If the file is empty, a new session is created instead.
     '''
-    if os.path.getsize(filename) > 0:
-        with open(filename, 'rb') as f:
-            content = pickle.load(f)
-            f.close()
-            return content
-    else:
-        inital_login()
+    if os.path.exists(filename):
+        if os.path.getsize(filename) > 0:
+            with open(filename, 'rb') as f:
+                content = pickle.load(f)
+                f.close()
+                return content
+        else:
+            inital_login()
 
 # TODO Add cookie check here?
 # Wrapper for all functions that builds the final session.get()
