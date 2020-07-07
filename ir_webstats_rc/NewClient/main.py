@@ -292,13 +292,11 @@ def memberSubIDFromSession(sessNum, custid=custID):
 
 
 # Might not be useful. Must be logged in and not affected by custID.
-def myRacers():
-
+def myRacers(friends=1, studied=1, blacklisted=1):
     payload = {
-        'friends': 1,
-        'studied': 1,
-        'blacklisted': 1
-    }
+        'friends': friends,
+        'studied': studied,
+        'blacklisted': blacklisted
 
     r = login_session.get(
         ct.URL_MY_RACERS,
