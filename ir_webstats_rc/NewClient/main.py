@@ -75,9 +75,15 @@ def load_cookies(filename='cookie'):
     else:
         inital_login()
 
-
-# Loads cookies from file. Defaults to filename 'cookie.'
-grabCookie = load_cookies()
+# TODO Add cookie check here?
+# Wrapper for all functions that builds the final session.get()
+def request(URL_Function):
+    def wrapper():
+        grabCookie = load_cookies()
+        URL, payload = URL_Function()
+        response = login_session.get(URL, params=payload, cookies=grabCookie)
+        return response
+    return wrapper
 
 
 def activeOPCounts(custID=custID, maxCount=250):
