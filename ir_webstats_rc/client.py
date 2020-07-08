@@ -23,8 +23,6 @@ import time
 # requiring them to be stored in a file if a session is closed.
 
 
-
-
 # Create a global instance of Session() from requests module.
 session = requests.Session()
 
