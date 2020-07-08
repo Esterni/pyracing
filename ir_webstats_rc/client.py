@@ -1,4 +1,4 @@
-import constants as ct
+from . import constants as ct
 
 import requests
 import pickle
