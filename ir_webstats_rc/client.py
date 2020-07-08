@@ -1,4 +1,4 @@
-import ir_webstats_rc.constants as ct
+import constants as ct
 
 import requests
 import pickle
@@ -7,7 +7,7 @@ import json
 import time
 
 
-# This module authenticates, builds, and sends URL queries to iRacing.
+# This module authenticates, builds, and sends url queries to iRacing.
 # Each function is set with only the variables required, for the respective
 # endpoint, to return the desired data.  Compared to the previous client.py,
 # this module does not attempt to parse any of the data received.  Instead,
@@ -26,7 +26,7 @@ import time
 
 
 # Create a global instance of Session() from requests module.
-login_session = requests.Session()
+session = requests.Session()
 
 # TODO Should variables be defined globally or per function?
 custID = 435144
@@ -42,15 +42,15 @@ def inital_login():
     username = os.getenv('IRACING_USERNAME')
     password = os.getenv('IRACING_PASSWORD')
 
-    loginData = {
+    login_data = {
         'username': username,
         'password': password,
         'utcoffset': utcoffset,
         'todaysdate': ''
     }
 
-    login_session.post(ct.URL_LOGIN2, data=loginData)
-    save_cookies(login_session)
+    session.post(ct.URL_LOGIN2, data=login_data)
+    save_cookies(session)
 
 
 def save_cookies(session, filename='cookie.tmp'):
@@ -81,39 +81,39 @@ def load_cookies(filename='cookie.tmp'):
 # Wrapper for all functions that builds the final session.get()
 
 
-def request(URL_Function):
+def request(url_function):
     def wrapper():
-        grabCookie = load_cookies()
-        URL, payload = URL_Function()
-        response = login_session.get(URL, params=payload, cookies=grabCookie)
+        grab_cookie = load_cookies()
+        url, payload = url_function()
+        response = session.get(url, params=payload, cookies=grab_cookie)
         return response
     return wrapper
 
 
 @request
 def active_op_counts(custID=custID, maxCount=250):
-    URL = ct.URL_ACTIVEOP_COUNT
+    url = ct.URL_ACTIVEOP_COUNT
     payload = {
         'custid': custID,
         'maxcount': maxCount,
         'include_empty': 'n',  # Flag is y/n
         'excludeLite': 0
     }
-    return URL, payload
+    return url, payload
 
 
 @request
 def all_subsessions(subSessID):
     payload = {'subsessionid': subSessID}
-    URL = ct.URL_ALL_SUBSESSIONS
-    return URL, payload
+    url = ct.URL_ALL_SUBSESSIONS
+    return url, payload
 
 
 @request
 def car_class_by_id(carClassID):
     payload = {'carclassid': carClassID}
-    URL = ct.URL_CAREER_STATS
-    return URL, payload
+    url = ct.URL_CAREER_STATS
+    return url, payload
 
 
 @request
@@ -121,8 +121,8 @@ def career_stats(custID=custID):
     '''Returns driver career stats
     '''
     payload = {'custid': custID}
-    URL = ct.URL_CAREER_STATS
-    return URL, payload
+    url = ct.URL_CAREER_STATS
+    return url, payload
 
 
 @request
@@ -163,8 +163,8 @@ def current_seasons(onlyActive=1):
         'onlyActive': onlyActive,
         'fields': (','.join(requestedFields))
     }
-    URL = ct.URL_CURRENT_SEASONS
-    return URL, payload
+    url = ct.URL_CURRENT_SEASONS
+    return url, payload
 
 # TODO Use *kwargs with dictionary for default values? Very long list.
 
@@ -172,10 +172,10 @@ def current_seasons(onlyActive=1):
 @request
 def driver_stats():
     payload = {}
-    URL = ct.URL_DRIVER_STATS
-    return URL, payload
+    url = ct.URL_DRIVER_STATS
+    return url, payload
 
-# TODO Find query string parameters for this URL
+# TODO Find query string parameters for this url
 
 
 @request
@@ -183,8 +183,8 @@ def hosted_results():
     '''Currently non-functional
     '''
     payload = {}
-    URL = ct.URL_HOSTED_RESULTS
-    return URL, payload
+    url = ct.URL_HOSTED_RESULTS
+    return url, payload
 
 
 @request
@@ -192,8 +192,8 @@ def last_race_stats(custID=custID):
     '''Returns stat summary for the drivers last 10 races
     '''
     payload = {'custid': custID}
-    URL = ct.URL_LASTRACE_STATS
-    return URL, payload
+    url = ct.URL_LASTRACE_STATS
+    return url, payload
 
 
 @request
@@ -201,8 +201,8 @@ def last_series(custID=custID):
     '''Returns a summary of stats about a drivers last 3 series.
     '''
     payload = {'custid': custID}
-    URL = ct.URL_LAST_SERIES
-    return URL, payload
+    url = ct.URL_LAST_SERIES
+    return url, payload
 
 
 @request
@@ -210,8 +210,8 @@ def member_cars_driven(custID=custID):
     '''Returns which cars a driver has driven as carID.
     '''
     payload = {'custid': custID}
-    URL = ct.URL_CARS_DRIVEN
-    return URL, payload
+    url = ct.URL_CARS_DRIVEN
+    return url, payload
 
 
 @request
@@ -219,8 +219,8 @@ def member_division(seasonID, custID=custID):
     '''Returns the drivers division from a seasonid
     '''
     payload = {'seasonid': seasonID, 'custid': custID, 'pointstype': 'race'}
-    URL = ct.URL_MEM_DIVISION
-    return URL, payload
+    url = ct.URL_MEM_DIVISION
+    return url, payload
 
 
 @request
@@ -229,8 +229,8 @@ def member_sub_id_from_session(sessNum, custid=custID):
     in from a given Session ID.
     '''
     payload = {'custid': custID, 'sessionID': sessNum}
-    URL = ct.URL_MEM_SUBSESSID
-    return URL, payload
+    url = ct.URL_MEM_SUBSESSID
+    return url, payload
 
 # Might not be useful. Must be logged in and not affected by custID.
 
@@ -242,8 +242,8 @@ def my_racers(friends=1, studied=1, blacklisted=1):
         'studied': studied,
         'blacklisted': blacklisted
     }
-    URL = ct.URL_MY_RACERS
-    return URL, payload
+    url = ct.URL_MY_RACERS
+    return url, payload
 
 
 @request
@@ -256,8 +256,8 @@ def next_event(seriesID, event=ct.EVENT['race']):
         'evtType': event,
         'date': ct.now_unix_ms
     }
-    URL = ct.URL_NEXT_EVENT
-    return URL, payload
+    url = ct.URL_NEXT_EVENT
+    return url, payload
 
 
 @request
@@ -265,8 +265,8 @@ def personal_bests(carID, custID=custID):
     '''Returns the drivers best laptimes'''
 
     payload = {'custid': custID, 'carid': carID}
-    URL = ct.URL_PERSONAL_BESTS
-    return URL, payload
+    url = ct.URL_PERSONAL_BESTS
+    return url, payload
 
 # TODO Dictionary list of all filters possible
 
@@ -275,16 +275,16 @@ def personal_bests(carID, custID=custID):
 def race_guide():
 
     payload = {}
-    URL = ct.URL_RACEGUIDE
-    return URL, payload
+    url = ct.URL_RACEGUIDE
+    return url, payload
 
 
 @request
 def race_laps_all(subSessID, carClassID=-1):
 
     payload = {'subsessionid': subSessID, 'carclassid': carClassID}
-    URL = ct.URL_LAPS_ALL
-    return URL, payload
+    url = ct.URL_LAPS_ALL
+    return url, payload
 
 
 @request
@@ -295,8 +295,8 @@ def race_laps_driver(subSessID, simSessID, custID=custID):
         'simsessnum': simSessID,
         'groupid': custID
     }
-    URL = ct.URL_LAPS_SINGLE
-    return URL, payload
+    url = ct.URL_LAPS_SINGLE
+    return url, payload
 
 # TODO Dictionary list of available flags/filters. custid required
 
@@ -305,8 +305,8 @@ def race_laps_driver(subSessID, simSessID, custID=custID):
 def results(custID=custID):
 
     payload = {'custid': custID}
-    URL = ct.URL_RESULTS
-    return URL, payload
+    url = ct.URL_RESULTS
+    return url, payload
 
 
 @request
@@ -314,8 +314,8 @@ def season_for_session(sessionID):
     '''Returns the seasonID for a given sessionID
     '''
     payload = {'sessionID': sessionID}
-    URL = ct.URL_SEASON_FOR_SESSION
-    return URL, payload
+    url = ct.URL_SEASON_FOR_SESSION
+    return url, payload
 
 
 @request
@@ -340,24 +340,24 @@ def season_standings(
         'sort': 'points',
         'order': 'desc'
     }
-    URL = ct.URL_SEASON_STANDINGS
-    return URL, payload
+    url = ct.URL_SEASON_STANDINGS
+    return url, payload
 
 
 @request
 def series_race_results(seasonID, raceWeek=-1):
 
     payload = {'seasonid': seasonID, 'raceweek': raceWeek}
-    URL = ct.URL_SERIES_RACERESULTS
-    return URL, payload
+    url = ct.URL_SERIES_RACERESULTS
+    return url, payload
 
 
 @request
 def session_times(seasonID):
 
     payload = {'season': seasonID}
-    URL = ct.URL_SESSION_TIMES
-    return URL, payload
+    url = ct.URL_SESSION_TIMES
+    return url, payload
 
 
 @request
@@ -368,8 +368,8 @@ def stats_chart(category, custID=custID, chartType=1):
         'catId': category,
         'chartType': chartType
     }
-    URL = ct.URL_STATS_CHART
-    return URL, payload
+    url = ct.URL_STATS_CHART
+    return url, payload
 
 
 @request
@@ -379,16 +379,16 @@ def sub_sess_results(subSessID, custID=custID):
         'subsessionID': subSessID,
         'custid': custID
     }
-    URL = ct.URL_SUBS_RESULTS
-    return URL, payload
+    url = ct.URL_SUBS_RESULTS
+    return url, payload
 
 
 @request
 def ticker_sessions():
 
     payload = {}
-    URL = ct.URL_TICKER_SESSIONS
-    return URL, payload
+    url = ct.URL_TICKER_SESSIONS
+    return url, payload
 
 # TODO Does not return JSON format. Find how to convert.
 
@@ -397,8 +397,8 @@ def ticker_sessions():
 def total_registered_all():
 
     payload = {}
-    URL = ct.URL_TOTALREGISTERED
-    return URL, payload
+    url = ct.URL_TOTALREGISTERED
+    return url, payload
 
 
 @request
@@ -413,13 +413,13 @@ def world_records(year, quarter, carID, trackID, custID=custID):
         'format': 'json',
         'upperbound': 1
     }
-    URL = ct.URL_WORLD_RECORDS
-    return URL, payload
+    url = ct.URL_WORLD_RECORDS
+    return url, payload
 
 
 @request
 def yearly_stats(custID=custID):
 
     payload = {'custid': custID}
-    URL = ct.URL_YEARLY_STATS
-    return URL, payload
+    url = ct.URL_YEARLY_STATS
+    return url, payload
