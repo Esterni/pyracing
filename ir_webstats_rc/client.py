@@ -1,4 +1,4 @@
-import constants as ct
+from . import constants as ct
 
 from functools import wraps
 import requests
@@ -34,13 +34,13 @@ class Client:
     def __init__(self, username: str = None, password: str = None) -> None:
         self.username = username or os.getenv("IRACING_USERNAME")
         self.password = password or os.getenv("IRACING_PASSWORD")
+        self.custID = 435144
 
         while not self.username:
             self.username = input("iRacing username: ")
             self.password = getpass.getpass("iRacing password: ")
-        self.custID = 435144
 
-    def inital_login(self):
+    def initial_login():
 
         # Calculate utcoffset from local time
         utcoffset = round(
