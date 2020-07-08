@@ -32,7 +32,7 @@ session = requests.Session()
 custID = 435144
 
 
-def inital_login():
+def initial_login():
 
     # Calculate utcoffset from local time
     utcoffset = round(
