@@ -30,35 +30,35 @@ URL_SERIES_RACERESULTS = (mStats + '/GetSeriesRaceResults')
 URL_LASTRACE_STATS = (mStats + '/GetLastRacesStats')
 URL_LAST_SERIES = (mStats + '/GetLastSeries')
 URL_RESULTS = (mStats + '/GetResults?'
-                                f'custid={custid}'  # custid required
-                                '&showraces=1'
-                                '&showquals=0'
-                                '&showtts=0'
-                                '&showops=0'
-                                '&showofficial=1'
-                                '&showunofficial=0'
-                                '&showrookie=1'
-                                '&showclassd=1'
-                                '&showclassc=1'
-                                '&showclassb=1'
-                                '&showclassa=1'
-                                '&showpro=1'
-                                '&showprowc=1'
-                                '&lowerbound=0'
-                                f'&upperbound=25'
-                                '&sort=start_time'
-                                '&order=desc'
-                                '&format=json'
-                                '&category%5B%5D=1'
-                                '&category%5B%5D=2'
-                                '&category%5B%5D=3'
-                                '&category%5B%5D=4'
-                                f'&seasonyear=year'
-                                f'&seasonquarter=quarter'
-                                f'&raceweek=raceweek'
-                                f'&trackid=trackid'
-                                f'&carclassid=carclass'
-                                f'&carid=carid')
+                        f'custid={custid}'  # custid required
+                        '&showraces=1'
+                        '&showquals=0'
+                        '&showtts=0'
+                        '&showops=0'
+                        '&showofficial=1'
+                        '&showunofficial=0'
+                        '&showrookie=1'
+                        '&showclassd=1'
+                        '&showclassc=1'
+                        '&showclassb=1'
+                        '&showclassa=1'
+                        '&showpro=1'
+                        '&showprowc=1'
+                        '&lowerbound=0'
+                        f'&upperbound=25'
+                        '&sort=start_time'
+                        '&order=desc'
+                        '&format=json'
+                        '&category%5B%5D=1'
+                        '&category%5B%5D=2'
+                        '&category%5B%5D=3'
+                        '&category%5B%5D=4'
+                        f'&seasonyear=year'
+                        f'&seasonquarter=quarter'
+                        f'&raceweek=raceweek'
+                        f'&trackid=trackid'
+                        f'&carclassid=carclass'
+                        f'&carid=carid')
 URL_WORLD_RECORDS = (mStats + '/GetWorldRecords')
 
 
@@ -67,24 +67,24 @@ URL_SESSION_TIMES = (mSite + '/GetSessionTimes')
 URL_NEXT_EVENT = (mSite + '/GetNextEvent')
 URL_TOTALREGISTERED = (mSite + '/GetTotalSessionJoinedCountsBySeason')
 URL_RACEGUIDE = (mSite + '/GetRaceGuide?'
-                             f'at={now_unix_ms}'
-                             '&showRookie=1'
-                             '&showClassD=1'
-                             '&showClassC=1'
-                             '&showClassB=1'
-                             '&showClassA=1'
-                             '&showPro=1'
-                             '&showProWC=1'
-                             '&showOval=1'
-                             '&showRoad=1'
-                             '&showDirtOval=1'
-                             '&showDirtRoad=1'
-                             '&hideNotFixedSetup=0'
-                             '&hideNotMultiClass=0'
-                             '&meetsMPR=0'
-                             '&hideUnpopulated=0'
-                             '&hideIneligible=0'
-                             '&showOfficial=1')
+                         f'at={now_unix_ms}'
+                         '&showRookie=1'
+                         '&showClassD=1'
+                         '&showClassC=1'
+                         '&showClassB=1'
+                         '&showClassA=1'
+                         '&showPro=1'
+                         '&showProWC=1'
+                         '&showOval=1'
+                         '&showRoad=1'
+                         '&showDirtOval=1'
+                         '&showDirtRoad=1'
+                         '&hideNotFixedSetup=0'
+                         '&hideNotMultiClass=0'
+                         '&meetsMPR=0'
+                         '&hideUnpopulated=0'
+                         '&hideIneligible=0'
+                         '&showOfficial=1')
 URL_ACTIVEOP_COUNT = (mSite + '/GetActiveOpenPracticeCount')
 
 
@@ -150,11 +150,11 @@ URL_MEM_DIVISION = (mSite + '/GetMembersDivision')
 # THESE URLS DO NOT RETURN JSON
 
 URL_EVENT_RESULT = (mSite + '/EventResult.do?'
-                                f'subsessionid=subsession')
+                            f'subsessionid=subsession')
 URL_EVENT_RESULTS_CSV = (mSite + '/GetEventResultsAsCSV?'
-                                    f'subsessionid=subsession'
-                                    f'&simsesnum=sessnum'
-                                    '&includeSummary=1')
+                                 f'subsessionid=subsession'
+                                 f'&simsesnum=sessnum'
+                                 '&includeSummary=1')
 URL_CURRENT_SERIES = (mSite + '/Series.do')
 URL_SELECT_SERIES = (mSite + '/SelectSeries.do?'
                              f'season=seasonID'
@@ -428,17 +428,17 @@ COUNTRY_CODES = {
 
 # Discipline Categories
 CATEGORIES = {
-    'oval':1,
-	'road':2,
-	'dirt_oval':3,
-	'dirt_road':4
+    'oval': 1,
+    'road': 2,
+    'dirt_oval': 3,
+    'dirt_road': 4
     }
 
 # For use in ChartType flag of statsChart()
 CHART = {
     'iRating': 1,
     'ttRating': 2,
-    'licenseClass':3
+    'licenseClass': 3
     }
 
 # List of session eventType
