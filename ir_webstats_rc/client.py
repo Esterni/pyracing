@@ -40,7 +40,7 @@ class Client:
             self.username = input("iRacing username: ")
             self.password = getpass.getpass("iRacing password: ")
 
-    def initial_login():
+    def initial_login(self):
 
         # Calculate utcoffset from local time
         utcoffset = round(
@@ -56,7 +56,7 @@ class Client:
         session.post(ct.URL_LOGIN2, data=login_data)
         save_cookies(session)
 
-    def save_cookies(session, filename='cookie.tmp'):
+    def save_cookies(self, session, filename='cookie.tmp'):
         """Saves all cookies from a session object to file
         utilizing the pickle module for serialization
         """
@@ -66,7 +66,7 @@ class Client:
             f.close()
         return True
 
-    def load_cookies(filename='cookie.tmp'):
+    def load_cookies(self, filename='cookie.tmp'):
         """Loads CookieJar object from file if 'cookie' contains data.
         If the file is empty, a new session is created instead.
         """
@@ -82,7 +82,7 @@ class Client:
     # TODO Add cookie check here?
     # Wrapper for all functions that builds the final session.get()
 
-    def request(url_function):
+    def request(self, url_function):
         @wraps(url_function)
         def wrapper():
             grab_cookie = IrWebStats.load_cookies()
@@ -92,7 +92,7 @@ class Client:
         return wrapper
 
     @request
-    def active_op_counts(custID=custID, maxCount=250):
+    def active_op_counts(self, custID, maxCount=250):
         url = ct.URL_ACTIVEOP_COUNT
         payload = {
             'custid': custID,
@@ -103,19 +103,19 @@ class Client:
         return url, payload
 
     @request
-    def all_subsessions(subSessID):
+    def all_subsessions(self, subSessID):
         payload = {'subsessionid': subSessID}
         url = ct.URL_ALL_SUBSESSIONS
         return url, payload
 
     @request
-    def car_class_by_id(carClassID):
+    def car_class_by_id(self, carClassID):
         payload = {'carclassid': carClassID}
         url = ct.URL_CAREER_STATS
         return url, payload
 
     @request
-    def career_stats(custID):
+    def career_stats(self, custID):
         """Returns driver career stats
         """
         payload = {'custid': custID}
@@ -123,7 +123,7 @@ class Client:
         return url, payload
 
     @request
-    def current_seasons(onlyActive=1):
+    def current_seasons(self, onlyActive=1):
         """Returns data about all seasons.
         """
         # List of possible fields. Set any to 1 to return that field.
@@ -166,7 +166,7 @@ class Client:
     # TODO Use *kwargs with dictionary for default values? Very long list.
 
     @request
-    def driver_stats():
+    def driver_stats(self):
         payload = {}
         url = ct.URL_DRIVER_STATS
         return url, payload
@@ -182,7 +182,7 @@ class Client:
         return url, payload
 
     @request
-    def last_race_stats(custID):
+    def last_race_stats(self, custID):
         """Returns stat summary for the drivers last 10 races
         """
         payload = {'custid': custID}
@@ -190,7 +190,7 @@ class Client:
         return url, payload
 
     @request
-    def last_series(custID):
+    def last_series(self, custID):
         """Returns a summary of stats about a drivers last 3 series.
         """
         payload = {'custid': custID}
@@ -206,7 +206,7 @@ class Client:
         return url, payload
 
     @request
-    def member_division(seasonID, custID):
+    def member_division(self, seasonID, custID):
         """Returns the drivers division from a seasonid
         """
         payload = {'seasonid': seasonID,
@@ -215,7 +215,7 @@ class Client:
         return url, payload
 
     @request
-    def member_sub_id_from_session(sessNum, custid):
+    def member_sub_id_from_session(self, sessNum, custid):
         """Returns which SubSession ID that a member was
         in from a given Session ID.
         """
@@ -226,7 +226,7 @@ class Client:
     # Might not be useful. Must be logged in and not affected by custID.
 
     @request
-    def my_racers(friends=1, studied=1, blacklisted=1):
+    def my_racers(self, friends=1, studied=1, blacklisted=1):
         payload = {
             'friends': friends,
             'studied': studied,
@@ -236,7 +236,7 @@ class Client:
         return url, payload
 
     @request
-    def next_event(seriesID, event=ct.EVENT['race']):
+    def next_event(self, seriesID, event=ct.EVENT['race']):
         """Returns information for the upcoming session with given
         seriesID, evtType, and date.
         """
@@ -249,7 +249,7 @@ class Client:
         return url, payload
 
     @request
-    def personal_bests(carID, custID):
+    def personal_bests(self, carID, custID):
         """Returns the drivers best laptimes
         """
 
@@ -260,21 +260,21 @@ class Client:
     # TODO Dictionary list of all filters possible
 
     @request
-    def race_guide():
+    def race_guide(self):
 
         payload = {}
         url = ct.URL_RACEGUIDE
         return url, payload
 
     @request
-    def race_laps_all(subSessID, carClassID=-1):
+    def race_laps_all(self, subSessID, carClassID=-1):
 
         payload = {'subsessionid': subSessID, 'carclassid': carClassID}
         url = ct.URL_LAPS_ALL
         return url, payload
 
     @request
-    def race_laps_driver(subSessID, simSessID, custID):
+    def race_laps_driver(self, subSessID, simSessID, custID):
 
         payload = {
             'subsessionid': subSessID,
@@ -287,14 +287,14 @@ class Client:
     # TODO Dictionary list of available flags/filters. custid required
 
     @request
-    def results(custID):
+    def results(self, custID):
 
         payload = {'custid': custID}
         url = ct.URL_RESULTS
         return url, payload
 
     @request
-    def season_for_session(sessionID):
+    def season_for_session(self, sessionID):
         """Returns the seasonID for a given sessionID
         """
         payload = {'sessionID': sessionID}
@@ -303,6 +303,7 @@ class Client:
 
     @request
     def season_standings(
+        self,
         seasonID,
         carClassID=-1,
         clubID=-1,
@@ -327,21 +328,21 @@ class Client:
         return url, payload
 
     @request
-    def series_race_results(seasonID, raceWeek=-1):
+    def series_race_results(self, seasonID, raceWeek=-1):
 
         payload = {'seasonid': seasonID, 'raceweek': raceWeek}
         url = ct.URL_SERIES_RACERESULTS
         return url, payload
 
     @request
-    def session_times(seasonID):
+    def session_times(self, seasonID):
 
         payload = {'season': seasonID}
         url = ct.URL_SESSION_TIMES
         return url, payload
 
     @request
-    def stats_chart(category, custID, chartType=1):
+    def stats_chart(self, category, custID, chartType=1):
 
         payload = {
             'custId': custID,
@@ -352,7 +353,7 @@ class Client:
         return url, payload
 
     @request
-    def sub_sess_results(subSessID, custID):
+    def sub_sess_results(self, subSessID, custID):
 
         payload = {
             'subsessionID': subSessID,
@@ -362,7 +363,7 @@ class Client:
         return url, payload
 
     @request
-    def ticker_sessions():
+    def ticker_sessions(self):
 
         payload = {}
         url = ct.URL_TICKER_SESSIONS
@@ -371,14 +372,14 @@ class Client:
     # TODO Does not return JSON format. Find how to convert.
 
     @request
-    def total_registered_all():
+    def total_registered_all(self):
 
         payload = {}
         url = ct.URL_TOTALREGISTERED
         return url, payload
 
     @request
-    def world_records(year, quarter, carID, trackID, custID):
+    def world_records(self, year, quarter, carID, trackID, custID):
 
         payload = {
             'seasonyear': year,
@@ -393,7 +394,7 @@ class Client:
         return url, payload
 
     @request
-    def yearly_stats(custID):
+    def yearly_stats(self, custID):
 
         payload = {'custid': custID}
         url = ct.URL_YEARLY_STATS
