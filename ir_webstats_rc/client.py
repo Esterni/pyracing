@@ -4,6 +4,7 @@ from functools import wraps
 import requests
 import pickle
 import os
+import getpass
 import json
 import time
 
@@ -30,10 +31,13 @@ session = requests.Session()
 
 class Client:
 
-    def __init__(username, password):
-        self.session = requests.Session()
-        self.username = username
-        self.password = password
+    def __init__(self, username: str = None, password: str = None) -> None:
+        self.username = username or os.getenv("IRACING_USERNAME")
+        self.password = password or os.getenv("IRACING_PASSWORD")
+
+        while not self.username:
+            self.username = input("iRacing username: ")
+            self.password = getpass.getpass("iRacing password: ")
         self.custID = 435144
 
     def inital_login(self):
@@ -306,7 +310,7 @@ class Client:
         division=-1,
         start=1,
         end=25
-        ):
+    ):
 
         payload = {
             'seasonid': seasonID,
