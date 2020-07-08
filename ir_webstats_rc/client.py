@@ -4,7 +4,6 @@ from functools import wraps
 import requests
 import pickle
 import os
-import getpass
 import json
 import time
 
@@ -26,19 +25,14 @@ import time
 
 
 # Create a global instance of Session() from requests module.
-session = requests.Session()
 
 
 class Client:
 
-    def __init__(self, username: str = None, password: str = None) -> None:
-        self.username = username or os.getenv("IRACING_USERNAME")
-        self.password = password or os.getenv("IRACING_PASSWORD")
-        self.custID = 435144
-
-        while not self.username:
-            self.username = input("iRacing username: ")
-            self.password = getpass.getpass("iRacing password: ")
+    def __init__(self, username: str, password: str) -> None:
+        self.username = username
+        self.password = password
+        self.session = requests.Session()
 
     def initial_login(self):
 
@@ -53,16 +47,16 @@ class Client:
             'todaysdate': ''
         }
 
-        session.post(ct.URL_LOGIN2, data=login_data)
-        save_cookies(session)
+        self.session.post(ct.URL_LOGIN2, data=login_data)
+        self.save_cookies()
 
-    def save_cookies(self, session, filename='cookie.tmp'):
+    def save_cookies(self, filename='cookie.tmp'):
         """Saves all cookies from a session object to file
         utilizing the pickle module for serialization
         """
 
         with open(filename, 'w+') as f:
-            pickle.dump(session.cookies, f)
+            pickle.dump(self.session.cookies, f)
             f.close()
         return True
 
@@ -77,17 +71,17 @@ class Client:
                     f.close()
                     return content
             else:
-                inital_login()
+                self.initial_login()
 
     # TODO Add cookie check here?
-    # Wrapper for all functions that builds the final session.get()
+    # Wrapper for all functions that builds the final self.session.get()
 
     def request(self, url_function):
         @wraps(url_function)
         def wrapper():
-            grab_cookie = IrWebStats.load_cookies()
+            grab_cookie = self.load_cookies()
             url, payload = url_function()
-            response = session.get(url, params=payload, cookies=grab_cookie)
+            response = self.session.get(url, params=payload, cookies=grab_cookie)
             return response
         return wrapper
 
@@ -174,7 +168,7 @@ class Client:
     # TODO Find query string parameters for this url
 
     @request
-    def hosted_results():
+    def hosted_results(self):
         """Currently non-functional
         """
         payload = {}
@@ -215,7 +209,7 @@ class Client:
         return url, payload
 
     @request
-    def member_sub_id_from_session(self, sessNum, custid):
+    def member_sub_id_from_session(self, sessNum, custID):
         """Returns which SubSession ID that a member was
         in from a given Session ID.
         """
