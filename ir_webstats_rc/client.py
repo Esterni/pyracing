@@ -1,4 +1,7 @@
 from . import constants as ct
+from .responses.last_races_stats import LastRaceStats
+from .responses.career_stats import CareerStats
+from .responses.yearly_stats import YearlyStats
 
 import requests_async as requests
 import time
@@ -70,7 +73,12 @@ class Client:
         """
         payload = {'custid': custID}
         url = ct.URL_CAREER_STATS
-        return await self.build_request(url, payload)
+        response = await self.build_request(url, payload)
+
+        if not response.json():
+            return []
+
+        return list(map(lambda x: CareerStats(x), response.json()))
 
     async def current_seasons(self, onlyActive=1):
         """Returns data about all seasons.
@@ -133,7 +141,12 @@ class Client:
         """
         payload = {'custid': custID}
         url = ct.URL_LASTRACE_STATS
-        return await self.build_request(url, payload)
+        response = await self.build_request(url, payload)
+
+        if not response.json():
+            return []
+
+        return list(map(lambda x: LastRaceStats(x), response.json()))
 
     async def last_series(self, custID):
         """Returns a summary of stats about a drivers last 3 series.
@@ -310,4 +323,9 @@ class Client:
     async def yearly_stats(self, custID):
         payload = {'custid': custID}
         url = ct.URL_YEARLY_STATS
-        return await self.build_request(url, payload)
+        response = await self.build_request(url, payload)
+
+        if not response.json():
+            return []
+
+        return list(map(lambda x: YearlyStats(x), response.json()))
