@@ -33,6 +33,8 @@ class Client:
         self.password = password
         self.session = requests.Session()
 
+        self.initial_login()
+
     def initial_login(self):
 
         # Calculate utcoffset from local time
@@ -45,38 +47,15 @@ class Client:
             'utcoffset': utcoffset,
             'todaysdate': ''
         }
-
         self.session.post(ct.URL_LOGIN2, data=login_data)
-        self.save_cookies()
 
-    def save_cookies(self, filename='cookie.tmp'):
-        """Saves all cookies from a session object to file
-        utilizing the pickle module for serialization
-        """
-
-        with open(filename, 'wb+') as f:
-            pickle.dump(self.session.cookies, f)
-            f.close()
-        return True
-
-    def load_cookies(self, filename='cookie.tmp'):
-        """Loads CookieJar object from file if 'cookie' contains data.
-        If the file is empty, a new session is created instead.
-        """
-        if os.path.exists(filename):
-            if os.path.getsize(filename) > 0:
-                with open(filename, 'rb') as f:
-                    content = pickle.load(f)
-                    f.close()
-                    return content
-            else:
-                self.initial_login()
+        return None
 
     # TODO Add cookie check here?
     # Wrapper for all functions that builds the final self.session.get()
 
     def get(self, url, params):
-        return self.session.get(url, params=params, cookies=self.load_cookies())
+        return self.session.get(url, params=params)
 
     def active_op_counts(self, custID, maxCount=250):
         url = ct.URL_ACTIVEOP_COUNT
