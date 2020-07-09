@@ -37,7 +37,7 @@ def default_logger():
 
 
 class Client:
-    def __init__(self, username: str, password: str, log=default_logger()) -> None:
+    def __init__(self, username: str, password: str, log=default_logger()):
         self.username = username
         self.password = password
         self.session = requests.Session()
@@ -60,7 +60,8 @@ class Client:
     # TODO Add cookie check here?
     # Wrapper for all functions that builds the final self.session.get()
     async def build_request(self, url, params):
-        self.log.info('Making get request to url: ' + url + ' with params: %s', params)
+        self.log.info('Making get request to url: ' +
+                      url + ' with params: %s', params)
         return await self.session.get(url, params=params)
 
     async def active_op_counts(self, custID, maxCount=250):
@@ -137,8 +138,62 @@ class Client:
 
     # TODO Use *kwargs with dictionary for default values? Very long list.
 
-    async def driver_stats(self):
-        payload = {}
+    async def driver_stats(self,
+                           custid,
+                           search='null',
+                           friend=-1,
+                           watched=-1,
+                           recent=-1,
+                           country='null',
+                           category=ct.Category.road,
+                           class_low=-1,
+                           class_high=-1,
+                           irating_low=-1,
+                           irating_high=-1,
+                           ttrating_low=-1,
+                           ttrating_high=-1,
+                           avg_start_low=-1,
+                           avg_start_high=-1,
+                           avg_finish_low=-1,
+                           avg_finish_high=-1,
+                           avg_points_low=-1,
+                           avg_points_high=-1,
+                           avg_inc_low=-1,
+                           avg_inc_high=-1,
+                           lower_bound=1,
+                           upper_bound=25,
+                           sort=ct.Sort.irating,
+                           order=ct.Sort.descending,
+                           active=1
+                           ):
+        payload = {
+            'search': str(search),
+            'friend': friend,
+            'watched': watched,
+            'recent': recent,
+            'country': country,
+            'category': category,
+            'classlow': class_low,
+            'classhigh': class_high,
+            'iratinglow': irating_low,
+            'iratinghigh': irating_high,
+            'ttratinglow': ttrating_low,
+            'ttratinghigh': ttrating_high,
+            'avgstartlow': avg_start_low,
+            'avgstarthigh': avg_start_high,
+            'avgfinishlow': avg_finish_low,
+            'avgfinishhigh': avg_finish_high,
+            'avgpointslow': avg_points_low,
+            'avgpointshigh': avg_points_high,
+            'avgincidentslow': avg_inc_low,
+            'avgincidentshigh': avg_inc_high,
+            'custid': custid,
+            'lowerbound': lower_bound,
+            'upperbound': upper_bound,
+            'sort': sort,
+            'order': order,
+            'active': active
+        }
         url = ct.URL_DRIVER_STATS
         return await self.build_request(url, payload)
 
@@ -204,7 +259,7 @@ class Client:
         url = ct.URL_MY_RACERS
         return await self.build_request(url, payload)
 
-    async def next_event(self, seriesID, event=ct.EVENT['race']):
+    async def next_event(self, seriesID, event=ct.EventType.race):
         """Returns information for the upcoming session with given
         seriesID, evtType, and date.
         """
