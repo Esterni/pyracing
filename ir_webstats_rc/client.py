@@ -16,11 +16,9 @@ import time
 # there is no longer a need for regex, drastically reducing the complexity
 # of the code.
 
-# Cookies are handled by the Session() object behind the scenes, only
-# requiring them to be stored in a file if a session is closed.
-
-
-# Create a global instance of Session() from requests module.
+# Cookies are handled by the Session() object behind the scenes. Cookies are
+# not written to file. If a session is closed, you must re-authenticate with
+# the self.authenticate() method.
 
 
 class Client:
