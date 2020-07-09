@@ -1,4 +1,4 @@
-from . import constants as ct
+from ir_webstats_rc import constants as ct
 
 import requests
 import pickle
@@ -56,7 +56,7 @@ def save_cookies(session, filename='cookie.tmp'):
     utilizing the pickle module for serialization
     '''
 
-    with open(filename, 'w+') as f:
+    with open(filename, 'wb') as f:
         pickle.dump(session.cookies, f)
         f.close()
     return True
@@ -83,7 +83,7 @@ def request(url_function):
     def wrapper():
         grab_cookie = load_cookies()
         url, payload = url_function()
-        response = session.get(url, params=payload, cookies=grab_cookie)
+        response = session.get(url, params=payload)
         return response
     return wrapper
 
