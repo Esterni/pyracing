@@ -165,15 +165,16 @@ URL_SEASON_STANDINGS2 = (mSite + '/statsseries.jsp')
 # Doesn't work. Loads a page but redirects back to home
 URL_GET_PASTSERIES = (mSite + '/PreviousSeasons.do')
 
-LIC_CLASS = {
-    'rookie': 1,
-    'd': 2,
-    'c': 3,
-    'b': 4,
-    'a': 5,
-    'pro': 6,
-    'prowc': 7
-    }
+
+class License:
+    rookie = 1
+    d_class = 2
+    c_class = 3
+    b_class = 4
+    a_class = 5
+    pro_class = 6
+    pro_wc_class = 7
+
 
 # LOCATIONS (AKA Country Code)
 COUNTRY_CODES = {
@@ -426,56 +427,60 @@ COUNTRY_CODES = {
     'ZIMBABWE': 'ZW'
     }
 
-# Discipline Categories
-CATEGORIES = {
-    'oval': 1,
-    'road': 2,
-    'dirt_oval': 3,
-    'dirt_road': 4
-    }
 
-# For use in ChartType flag of statsChart()
-CHART = {
-    'iRating': 1,
-    'ttRating': 2,
-    'licenseClass': 3
-    }
+class Category:
+    """Holds the index for each type of racing discipline
+    """
+    oval = 1
+    road = 2
+    dirt_oval = 3
+    dirt_road = 4
 
-# List of session eventType
-EVENT = {
-    'test': 1,
-    'practice': 2,
-    'qualy': 3,
-    'ttrial': 4,
-    'race': 5,
-    'official': 6,  # Official/Unofficial don't feel right here...
-    'unofficial': 7
-    }
 
-# Flags for lap data
-INC_FLAGS = {
-    0: 'clean',
-    2: 'pitted',
-    4: 'off track',
-    8: 'black flag',
-    16: 'car reset',
-    32: 'contact',
-    64: 'car contact',
-    128: 'lost control',
-    256: 'discontinuity',
-    512: 'interpolated crossing',
-    1024: 'clock smash',
-    2048: 'tow'
-    }
+class ChartType:
+    """Holds the index for the charts available from stats_chart()
+    """
+    irating = 1
+    ttrating = 2
+    license_class = 3
 
-# Flags for sorting data received
-SORT = {
-    'irating': 'irating',
-    'time': 'start_time',
-    'points': 'points',
-    'desc': 'desc',
-    'asce': 'asc'
-    }
+
+class EventType():
+    """Holds the index for the session event type
+    """
+    test = 1
+    practice = 2
+    qualify = 3
+    time_trial = 4
+    race = 5
+    official = 6
+    unofficial = 7
+
+
+class IncFlags:
+    clean = 0
+    pitted = 2
+    off_track = 4
+    black_flag = 8
+    car_reset = 16
+    contact = 32
+    car_contact = 64
+    lost_control = 128
+    discontinuity = 256
+    interpolated_crossing = 512
+    clock_smash = 1024
+    tow = 2048
+
+
+class Sort:
+    """Holds the strings used for types of 'sort by'
+    """
+    irating = 'irating'
+    start_time = 'start_time'
+    champ_points = 'points'
+    descending = 'desc'
+    ascending = 'asc'
+
 
 # TODO Construct dictionary of seriesIDs from /GetSeasons
 # TODO Construct dictionary of seasonIDs from /GetSeasons
