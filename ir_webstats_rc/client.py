@@ -57,11 +57,23 @@ class Client:
         }
         await self.session.post(ct.URL_LOGIN2, data=login_data)
 
-    # TODO Add cookie check here?
     # Wrapper for all functions that builds the final self.session.get()
-    async def build_request(self, url, params):
+    async def build_request(self, url, params, retry=True):
         self.log.info('Making get request to url: ' + url + ' with params: %s', params)
-        return await self.session.get(url, params=params)
+        response = await self.session.get(url, params=params)
+        self.log.info('iRacing response: %s', response.__dict__)
+
+        # This happens when we are not logged in or the cookie has expired
+        if 'not authorized' in response.text and retry:
+            self.log.info('Retrying authenticate and then repeating request')
+            await self.authenticate()
+            return await self.build_request(url, params, False)
+        elif 'not authorized' in response.text and not retry:
+            self.log.error('Authentication retry failed')
+            raise RuntimeError('Authentication failed. Make sure username and password are correct and that the '
+                               + 'iRacing servers are not down')
+
+        return response
 
     async def active_op_counts(self, custID, maxCount=250):
         url = ct.URL_ACTIVEOP_COUNT
@@ -259,14 +271,14 @@ class Client:
         return await self.build_request(url, payload)
 
     async def season_standings(
-        self,
-        seasonID,
-        carClassID=-1,
-        clubID=-1,
-        raceWeek=-1,
-        division=-1,
-        start=1,
-        end=25
+            self,
+            seasonID,
+            carClassID=-1,
+            clubID=-1,
+            raceWeek=-1,
+            division=-1,
+            start=1,
+            end=25
     ):
 
         payload = {
