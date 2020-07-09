@@ -1,6 +1,8 @@
 from . import constants as ct
 
+import logging
 import requests_async as requests
+import sys
 import time
 
 
@@ -23,13 +25,25 @@ import time
 # Create a global instance of Session() from requests module.
 
 
+def default_logger():
+    logging.basicConfig(
+        stream=sys.stdout,
+        level=logging.INFO,
+        datefmt="%Y-%m-%d %H:%M:%S",
+        format="%(asctime)s;%(levelname)s;%(message)s"
+    )
+    return logging.getLogger()
+
+
 class Client:
-    def __init__(self, username: str, password: str) -> None:
+    def __init__(self, username: str, password: str, log=default_logger()) -> None:
         self.username = username
         self.password = password
         self.session = requests.Session()
+        self.log = log
 
     async def authenticate(self):
+        self.log.info('Authenticating')
         # Calculate utcoffset from local time
         utcoffset = round(
             abs(time.localtime().tm_gmtoff / 60))
@@ -45,6 +59,7 @@ class Client:
     # TODO Add cookie check here?
     # Wrapper for all functions that builds the final self.session.get()
     async def build_request(self, url, params):
+        self.log.info('Making get request to url: ' + url + ' with params: %s', params)
         return await self.session.get(url, params=params)
 
     async def active_op_counts(self, custID, maxCount=250):
