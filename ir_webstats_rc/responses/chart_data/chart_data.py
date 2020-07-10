@@ -11,7 +11,7 @@ class ChartData:
         return self.list[-1]
 
     def type_string(self):
-        return ChartType.digit_to_string(self.type)
+        return ChartType().number_to_string(self.type)
 
     def category_string(self):
-        return Category.digit_to_string(self.category)
+        return Category().number_to_string(self.category)
