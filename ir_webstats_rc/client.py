@@ -409,7 +409,7 @@ class Client:
         lower_bound=0,
         upper_bound=25,
         sort=ct.Sort.start_time,
-        order=ct.Sort.desc,
+        order=ct.Sort.descending,
         format='json',
         category1=1,
         category2=2,
