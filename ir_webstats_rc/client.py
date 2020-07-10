@@ -113,8 +113,8 @@ class Client:
     async def current_seasons(self, onlyActive=1):
         """Returns data about all seasons.
         """
-        # List of possible fields. Set any to 1 to return that field.
-        fieldDict = {
+        # This is a single query string; Setting to 0 removes it.
+        field_dict = {
             'year': 0,
             'quarter': 0,
             'seriesshortname': 1,
@@ -135,17 +135,17 @@ class Client:
             'seasonid': 1,
         }
 
-        requestedFields = []
+        requested_fields = []
         # Iterate through possible fields, adding requested fields to list
-        for key in fieldDict:
-            if fieldDict[key] == 1:
-                requestedFields.append(key)
+        for key in field_dict:
+            if field_dict[key] == 1:
+                requested_fields.append(key)
             else:
                 continue
 
         payload = {
             'onlyActive': onlyActive,
-            'fields': (','.join(requestedFields))
+            'fields': (','.join(requested_fields))
         }
         url = ct.URL_CURRENT_SEASONS
         return await self.build_request(url, payload)
@@ -294,8 +294,47 @@ class Client:
 
     # TODO Dictionary list of all filters possible
 
-    async def race_guide(self):
-        payload = {}
+    async def race_guide(
+        self,
+        unix_time=ct.now_unix_ms,
+        show_rookie=1,
+        show_class_d=1,
+        show_class_c=1,
+        show_class_b=1,
+        show_class_a=1,
+        show_class_pro=1,
+        show_class_prowc=1,
+        show_oval=1,
+        show_road=1,
+        show_dirt_oval=1,
+        show_dirt_road=1,
+        fixed_only=0,
+        multiclass_only=0,
+        meets_mpr=0,
+        hide_unpopulated=0,
+        hide_ineligible=0,
+        show_official=1
+    ):
+        payload = {
+            'at': unix_time,
+            'showRookie': show_rookie,
+            'showClassD': show_class_d,
+            'showClassC': show_class_c,
+            'showClassB': show_class_b,
+            'showClassA': show_class_a,
+            'showPro': show_class_pro,
+            'showProWC': show_class_prowc,
+            'showOval': show_oval,
+            'showRoad': show_road,
+            'showDirtOval': show_dirt_oval,
+            'showDirtRoad': show_dirt_road,
+            'hideNotFixedSetup': fixed_only,
+            'hideNotMultiClass': multiclass_only,
+            'meetsMPR': meets_mpr,
+            'hideUnpopulated': hide_unpopulated,
+            'hideIneligible': hide_ineligible,
+            'showOfficial': show_official
+        }
         url = ct.URL_RACEGUIDE
         return await self.build_request(url, payload)
 
@@ -315,8 +354,69 @@ class Client:
 
     # TODO Dictionary list of available flags/filters. custid required
 
-    async def results(self, custID):
-        payload = {'custid': custID}
+    async def results(
+        self,
+        custID,
+        show_races=1,
+        show_quals=0,
+        show_tts=0,
+        show_ops=0,
+        show_official=1,
+        show_unofficial=0,
+        show_rookie=1,
+        show_class_d=1,
+        show_class_c=1,
+        show_class_b=1,
+        show_class_a=1,
+        show_pro=1,
+        show_prowc=1,
+        lower_bound=0,
+        upper_bound=25,
+        sort=ct.Sort.start_time,
+        order=ct.Sort.desc,
+        format='json',
+        category1=1,
+        category2=2,
+        category3=3,
+        category4=4,
+        season_year=2020,
+        season_quarter=3,
+        race_week=-1,
+        track_id=-1,
+        car_class=-1,
+        car_id=-1
+    ):
+        payload = {
+            'custID': custID,
+            'showraces': show_races,
+            'showquals': show_quals,
+            'showtts': show_tts,
+            'showops': show_ops,
+            'showofficial': show_official,
+            'showunofficial': show_unofficial,
+            'showrookie': show_rookie,
+            'showclassd': show_class_d,
+            'showclassc': show_class_c,
+            'showclassb': show_class_b,
+            'showclassa': show_class_a,
+            'showpro': show_pro,
+            'showprowc': show_prowc,
+            'lowerbound': lower_bound,
+            'upperbound': upper_bound,
+            'sort': sort,
+            'order': order,
+            'format': format,
+            'category1': category1,
+            'category2': category2,
+            'category3': category3,
+            'category4': category4,
+            'seasonyear': season_year,
+            'seasonquarter': season_quarter,
+            'raceweek': race_week,
+            'trackid': track_id,
+            'carclassid': car_class,
+            'carid': car_id
+        }
         url = ct.URL_RESULTS
         return await self.build_request(url, payload)
 
