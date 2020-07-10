@@ -75,6 +75,7 @@ URL_SESSION_TEAMS = (mStats + '/GetSessionTeams?'
 URL_MY_RACERS = (mSite + '/GetDriverStatus')
 URL_MEM_DIVISION = (mSite + '/GetMembersDivision')
 
+
 class License:
     rookie = 1
     d_class = 2
@@ -84,21 +85,20 @@ class License:
     pro_class = 6
     pro_wc_class = 7
 
-    @staticmethod
-    def digit_to_string(digit):
-        if digit == 1:
+    def number_to_string(self, number):
+        if number == self.rookie:
             return 'Rookie'
-        elif digit == 2:
+        elif number == self.d_class:
             return 'D'
-        elif digit == 3:
+        elif number == self.c_class:
             return 'C'
-        elif digit == 4:
+        elif number == self.b_class:
             return 'B'
-        elif digit == 5:
+        elif number == self.a_class:
             return 'A'
-        elif digit == 6:
+        elif number == self.pro_class:
             return 'P'
-        elif digit == 7:
+        elif number == self.pro_wc_class:
             return 'P-DWC'
         else:
             return None
@@ -366,15 +366,14 @@ class Category:
     dirt_oval = 3
     dirt_road = 4
 
-    @staticmethod
-    def digit_to_string(digit):
-        if digit == 1:
+    def number_to_string(self, number):
+        if number == self.oval:
             return 'Oval'
-        elif digit == 2:
+        elif number == self.road:
             return 'Road'
-        elif digit == 3:
+        elif number == self.dirt_oval:
             return 'Dirt Oval'
-        elif digit == 4:
+        elif number == self.dirt_road:
             return 'Dirt Road'
         else:
             return None
@@ -387,13 +386,12 @@ class ChartType:
     ttrating = 2
     license_class = 3
 
-    @staticmethod
-    def digit_to_string(digit):
-        if digit == 1:
+    def number_to_string(self, number):
+        if number == self.irating:
             return 'iRating'
-        elif digit == 2:
+        elif number == self.ttrating:
             return 'TTRating'
-        elif digit == 3:
+        elif number == self.license_class:
             return 'License Class'
         else:
             return None
@@ -409,7 +407,26 @@ class EventType:
     race = 5
     official = 6
     unofficial = 7
-    
+
+    def number_to_string(self, number):
+        if number == self.test:
+            return 'Test'
+        elif number == self.practice:
+            return 'Practice'
+        elif number == self.qualify:
+            return 'Qualify'
+        elif number == self.time_trial:
+            return 'Time Trial'
+        elif number == self.race:
+            return 'Race'
+        elif number == self.official:
+            return 'Official'
+        elif number == self.unofficial:
+            return 'Unofficial'
+        else:
+            return None
+
+
 class SimSesNum:
     race = 0
     qualify = -1
@@ -429,6 +446,32 @@ class IncFlags:
     interpolated_crossing = 512
     clock_smash = 1024
     tow = 2048
+
+    def number_to_string(self, number):
+        if number == self.clean:
+            return 'Clean'
+        elif number == self.pitted:
+            return 'Pitted'
+        elif number == self.off_track:
+            return 'Off Track'
+        elif number == self.black_flag:
+            return 'Black Flag'
+        elif number == self.car_reset:
+            return 'Car Reset'
+        elif number == self.contact:
+            return 'Contact'
+        elif number == self.lost_control:
+            return 'Lost Control'
+        elif number == self.discontinuity:
+            return 'Discontinuity'
+        elif number == self.interpolated_crossing:
+            return 'Interpolated Crossing'
+        elif number == self.clock_smash:
+            return 'Clock Smash'
+        elif number == self.tow:
+            return 'Tow'
+        else:
+            return None
 
 
 class Sort:

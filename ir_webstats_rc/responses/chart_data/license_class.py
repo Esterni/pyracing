@@ -12,7 +12,7 @@ class LicenseClass:
         self.safety_rating = self.get_safety_rating(str(tuple[1]))
 
     def class_letter(self):
-        return License.digit_to_string(self.class_number)
+        return License().number_to_string(self.class_number)
 
     @staticmethod
     def get_safety_rating(string):
