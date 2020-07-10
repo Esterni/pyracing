@@ -213,10 +213,28 @@ class Client:
 
     # TODO Find query string parameters for this url
 
-    async def hosted_results(self):
-        """Currently non-functional
-        """
-        payload = {}
+    async def hosted_results(
+        self,
+        custid,
+        start_time_lower,
+        start_time_upper,
+        lower_bound=1,
+        upper_bound=25,
+        sort=ct.Sort.session_name,
+        order=ct.Sort.ascending
+        ):
+        """Returns a list of private sessions that the driver
+        has participated in.
+        """        
+        payload = {
+            'participant_custid': custid,
+            'start_time_lowerbound': start_time_lower,
+            'start_time_upperbound': start_time_upper,
+            'lowerbound': lower_bound,
+            'upperbound': upper_bound,
+            'sort': sort,
+            'order': order
+        }
         url = ct.URL_HOSTED_RESULTS
         return await self.build_request(url, payload)
 
@@ -297,23 +315,23 @@ class Client:
     async def race_guide(
         self,
         unix_time=ct.now_unix_ms,
-        show_rookie=1,
-        show_class_d=1,
-        show_class_c=1,
-        show_class_b=1,
-        show_class_a=1,
-        show_class_pro=1,
-        show_class_prowc=1,
-        show_oval=1,
-        show_road=1,
-        show_dirt_oval=1,
-        show_dirt_road=1,
-        fixed_only=0,
-        multiclass_only=0,
-        meets_mpr=0,
-        hide_unpopulated=0,
-        hide_ineligible=0,
-        show_official=1
+        show_rookie=None,
+        show_class_d=None,
+        show_class_c=None,
+        show_class_b=None,
+        show_class_a=None,
+        show_class_pro=None,
+        show_class_prowc=None,
+        show_oval=None,
+        show_road=None,
+        show_dirt_oval=None,
+        show_dirt_road=None,
+        fixed_only=None,
+        multiclass_only=None,
+        meets_mpr=None,
+        hide_unpopulated=None,
+        hide_ineligible=None,
+        show_official=None
     ):
         payload = {
             'at': unix_time,
@@ -435,7 +453,9 @@ class Client:
             raceWeek=-1,
             division=-1,
             start=1,
-            end=25
+            end=25,
+            sort=ct.Sort.champ_points,
+            order=ct.Sort.descending
     ):
 
         payload = {
@@ -446,8 +466,8 @@ class Client:
             'division': division,
             'start': start,
             'end': end,
-            'sort': 'points',
-            'order': 'desc'
+            'sort': sort,
+            'order': order
         }
         url = ct.URL_SEASON_STANDINGS
         return await self.build_request(url, payload)
@@ -475,6 +495,22 @@ class Client:
         payload = {
             'subsessionID': subSessID,
             'custid': custID
+        }
+        url = ct.URL_SUBS_RESULTS
+        return await self.build_request(url, payload)
+
+    async def team_standings(
+        self,
+        season_id,
+        car_class,
+        car_id=-1,
+        race_week=-1
+    ):
+        payload = {
+            'raceWeekNum': race_week,
+            'seasonid': season_id,
+            'carClassId': car_id,
+            'carId': car_id
         }
         url = ct.URL_SUBS_RESULTS
         return await self.build_request(url, payload)
