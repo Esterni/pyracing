@@ -175,6 +175,25 @@ class License:
     pro_class = 6
     pro_wc_class = 7
 
+    @staticmethod
+    def digit_to_string(digit):
+        if digit == 1:
+            return 'Rookie'
+        elif digit == 2:
+            return 'D'
+        elif digit == 3:
+            return 'C'
+        elif digit == 4:
+            return 'B'
+        elif digit == 5:
+            return 'A'
+        elif digit == 6:
+            return 'P'
+        elif digit == 7:
+            return 'P-DWC'
+        else:
+            return None
+
 
 # LOCATIONS (AKA Country Code)
 COUNTRY_CODES = {
@@ -436,6 +455,19 @@ class Category:
     dirt_oval = 3
     dirt_road = 4
 
+    @staticmethod
+    def digit_to_string(digit):
+        if digit == 1:
+            return 'Oval'
+        elif digit == 2:
+            return 'Road'
+        elif digit == 3:
+            return 'Dirt Oval'
+        elif digit == 4:
+            return 'Dirt Road'
+        else:
+            return None
+
 
 class ChartType:
     """Holds the index for the charts available from stats_chart()
@@ -443,6 +475,17 @@ class ChartType:
     irating = 1
     ttrating = 2
     license_class = 3
+
+    @staticmethod
+    def digit_to_string(digit):
+        if digit == 1:
+            return 'iRating'
+        elif digit == 2:
+            return 'TTRating'
+        elif digit == 3:
+            return 'License Class'
+        else:
+            return None
 
 
 class EventType():
