@@ -78,7 +78,7 @@ class Client:
             raise RuntimeError(
                 'Authentication failed. Make sure username and password'
                 'are correct and that the iRacing servers are not down'
-                )
+            )
 
         return response
 
@@ -226,10 +226,10 @@ class Client:
         upper_bound=25,
         sort=ct.Sort.session_name,
         order=ct.Sort.ascending
-        ):
+    ):
         """Returns a list of private sessions that the driver
         has participated in.
-        """        
+        """
         payload = {
             'participant_custid': custid,
             'start_time_lowerbound': start_time_lower,
@@ -501,7 +501,8 @@ class Client:
     async def get_license_class(self, category, custID):
         chart_type = ct.ChartType.license_class
         response = await self.stats_chart(category, custID, chart_type)
-        license_class_list = list(map(lambda x: LicenseClass(x), response.json()))
+        license_class_list = list(
+            map(lambda x: LicenseClass(x), response.json()))
         return ChartData(category, chart_type, license_class_list)
 
     async def stats_chart(self, category, custID, chartType):
