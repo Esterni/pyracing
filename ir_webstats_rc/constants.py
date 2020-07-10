@@ -3,8 +3,6 @@ import time
 import math
 import os
 
-custid = 435144
-
 # iRacing rounds down to the 5 minute mark - DO NOT CHANGE
 now_unix_ms = int(math.floor(time.time()/300)*300)*1000
 
@@ -62,35 +60,20 @@ URL_TICKER_SESSIONS = (mSite + '/GetTickerSessions')
 URL_SEASON_FOR_SESSION = (mSite + '/GetSeasonForSession')
 URL_ALL_SUBSESSIONS = (mSite + '/GetAllSubsessions')
 
+# OTHER
+URL_TEAM_STANDINGS = (mStats + 'GetTeamStandings?'
+                      'raceWeekNum=-1'
+                      '&seasonid=2621'
+                      '&carClassId=67'
+                      '&carId=-1')
+URL_SESSION_TEAMS = (mStats + '/GetSessionTeams?'
+                     'subSessionID=')
 
 # ESSENTIALLY USELESS URLS
 
 # Driver Status is the
 URL_MY_RACERS = (mSite + '/GetDriverStatus')
-URL_MY_RACER_COUNTS = (mSite + '/GetDriverCounts')
 URL_MEM_DIVISION = (mSite + '/GetMembersDivision')
-
-
-# THESE URLS DO NOT RETURN JSON
-# THESE URLS DO NOT RETURN JSON
-# THESE URLS DO NOT RETURN JSON
-
-URL_EVENT_RESULT = (mSite + '/EventResult.do?'
-                            f'subsessionid=subsession')
-URL_EVENT_RESULTS_CSV = (mSite + '/GetEventResultsAsCSV?'
-                                 f'subsessionid=subsession'
-                                 f'&simsesnum=sessnum'
-                                 '&includeSummary=1')
-URL_CURRENT_SERIES = (mSite + '/Series.do')
-URL_SELECT_SERIES = (mSite + '/SelectSeries.do?'
-                             f'season=seasonID'
-                             '&view=undefined'
-                             '&nocache=%s')
-URL_SEASON_STANDINGS2 = (mSite + '/statsseries.jsp')
-
-# Doesn't work. Loads a page but redirects back to home
-URL_GET_PASTSERIES = (mSite + '/PreviousSeasons.do')
-
 
 class License:
     rookie = 1
@@ -373,7 +356,7 @@ class ChartType:
     license_class = 3
 
 
-class EventType():
+class EventType:
     """Holds the index for the session event type
     """
     test = 1
@@ -383,6 +366,11 @@ class EventType():
     race = 5
     official = 6
     unofficial = 7
+    
+class SimSesNum:
+    race = 0
+    qualify = -1
+    practice = -2
 
 
 class IncFlags:
@@ -408,6 +396,7 @@ class Sort:
     champ_points = 'points'
     descending = 'desc'
     ascending = 'asc'
+    session_name = 'sessionname'
 
 
 # TODO Construct dictionary of seriesIDs from /GetSeasons
