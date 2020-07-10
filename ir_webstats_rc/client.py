@@ -2,6 +2,10 @@ from . import constants as ct
 from .responses.last_races_stats import LastRaceStats
 from .responses.career_stats import CareerStats
 from .responses.yearly_stats import YearlyStats
+from .responses.chart_data.chart_data import ChartData
+from .responses.chart_data.irating import IRating
+from .responses.chart_data.ttrating import TTRating
+from .responses.chart_data.license_class import LicenseClass
 
 import logging
 import requests_async as requests
@@ -482,7 +486,25 @@ class Client:
         url = ct.URL_SESSION_TIMES
         return await self.build_request(url, payload)
 
-    async def stats_chart(self, category, custID, chartType=1):
+    async def get_irating(self, category, custID):
+        chart_type = ct.ChartType.irating
+        response = await self.stats_chart(category, custID, chart_type)
+        irating_list = list(map(lambda x: IRating(x), response.json()))
+        return ChartData(category, ct.ChartType.irating, irating_list)
+
+    async def get_ttrating(self, category, custID):
+        chart_type = ct.ChartType.ttrating
+        response = await self.stats_chart(category, custID, chart_type)
+        ttrating_list = list(map(lambda x: TTRating(x), response.json()))
+        return ChartData(category, chart_type, ttrating_list)
+
+    async def get_license_class(self, category, custID):
+        chart_type = ct.ChartType.license_class
+        response = await self.stats_chart(category, custID, chart_type)
+        license_class_list = list(map(lambda x: LicenseClass(x), response.json()))
+        return ChartData(category, chart_type, license_class_list)
+
+    async def stats_chart(self, category, custID, chartType):
         payload = {
             'custId': custID,
             'catId': category,
