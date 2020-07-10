@@ -114,42 +114,56 @@ class Client:
 
         return list(map(lambda x: CareerStats(x), response.json()))
 
-    async def current_seasons(self, onlyActive=1):
-        """Returns data about all seasons.
-        """
-        # This is a single query string; Setting to 0 removes it.
+    async def current_seasons(
+            self,
+            only_active=True,
+            series_short_name=True,
+            cat_id=True,
+            season_id=True,
+            year=False,
+            quarter=False,
+            series_id=False,
+            active=False,
+            license_eligible=False,
+            is_lite=False,
+            car_classes=False,
+            tracks=False,
+            start=False,
+            end=False,
+            cars=False,
+            race_week=False,
+            category=False,
+            series_lic_group_id=False,
+            car_id=False
+    ):
+        """Returns data about all seasons."""
+        # This is a single query string; Setting to False removes it.
         field_dict = {
-            'year': 0,
-            'quarter': 0,
-            'seriesshortname': 1,
-            'seriesid': 0,
-            'active': 0,
-            'catid': 1,
-            'licenseeligible': 0,
-            'islite': 0,
-            'carclasses': 0,
-            'tracks': 0,
-            'start': 0,
-            'end': 0,
-            'cars': 0,
-            'raceweek': 0,
-            'category': 0,
-            'serieslicgroudid': 0,
-            'carid': 0,  # Appears not to work?
-            'seasonid': 1,
+            'year': year,
+            'quarter': quarter,
+            'seriesshortname': series_short_name,
+            'seriesid': series_id,
+            'active': active,
+            'catid': cat_id,
+            'licenseeligible': license_eligible,
+            'islite': is_lite,
+            'carclasses': car_classes,
+            'tracks': tracks,
+            'start': start,
+            'end': end,
+            'cars': cars,
+            'raceweek': race_week,
+            'category': category,
+            'serieslicgroupid': series_lic_group_id,
+            'carid': car_id,
+            'seasonid': season_id,
         }
 
-        requested_fields = []
-        # Iterate through possible fields, adding requested fields to list
-        for key in field_dict:
-            if field_dict[key] == 1:
-                requested_fields.append(key)
-            else:
-                continue
+        key_list = self.key_list_from_dict(field_dict)
 
         payload = {
-            'onlyActive': onlyActive,
-            'fields': (','.join(requested_fields))
+            'onlyActive': 1 if only_active else 0,
+            'fields': (','.join(key_list))
         }
         url = ct.URL_CURRENT_SEASONS
         return await self.build_request(url, payload)
@@ -572,3 +586,13 @@ class Client:
             return []
 
         return list(map(lambda x: YearlyStats(x), response.json()))
+
+    # Returns a list of the keys from the dictionary where the values are truthy
+    @staticmethod
+    def key_list_from_dict(dictionary):
+        key_list = []
+        for key, value in dictionary:
+            if value:
+                key_list.append(key)
+
+        return key_list
