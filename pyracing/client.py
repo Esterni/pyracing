@@ -71,12 +71,12 @@ class Client:
             'todaysdate': ''  # Unknown purpose, but present as hidden form.
         }
 
-        await self.session.post(
-            ct.URL_LOGIN2,
-            data=login_data
-            )
+        auth_post = await self.session.post(ct.URL_LOGIN2, data=login_data)
 
-
+        if 'failedlogin' in auth_post.url:
+            self.log.UserWarning('Login Failed. Please check credentials')
+        else:
+            self.log.info('Login successful')
 
     # Wrapper for all functions that builds the final self.session.get()
 
