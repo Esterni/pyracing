@@ -42,14 +42,25 @@ def default_logger():
 
 class Client:
     def __init__(self, username: str, password: str, log=default_logger()):
+        """ This class is used to interact with all iRacing endpoints that
+        have been discovered so far. After creating an instance of Client
+        it is required to call authenticate(), due to async limitations.
+
+        An alternative to storing credentials as string in the class arguments
+        is to store then in your OS environment and call with os.getenv().
+        """
         self.username = username
         self.password = password
         self.session = requests.Session()
         self.log = log
 
     async def authenticate(self):
-        self.log.info('Authenticating')
-        # Calculate utcoffset from local time
+        """ Sends a POST request to iRacings login server, initiating a
+        persistent connection stored in self.session
+        """
+        self.log.info('Authenticating...')
+
+        # Calculates accepted utcoffset from local system time
         utcoffset = round(
             abs(time.localtime().tm_gmtoff / 60))
 
@@ -57,15 +68,27 @@ class Client:
             'username': self.username,
             'password': self.password,
             'utcoffset': utcoffset,
-            'todaysdate': ''
+            'todaysdate': ''  # Unknown purpose, but present as hidden form.
         }
-        await self.session.post(ct.URL_LOGIN2, data=login_data)
+
+        await self.session.post(
+            ct.URL_LOGIN2,
+            data=login_data
+            )
+
+
 
     # Wrapper for all functions that builds the final self.session.get()
+
     async def build_request(self, url, params, retry=True):
+        """ Builds the final GET request from url and params
+        """
+
         self.log.info('Making get request to url: ' +
                       url + ' with params: %s', params)
+
         response = await self.session.get(url, params=params)
+
         self.log.info('iRacing response: %s', response.__dict__)
 
         # This happens when we are not logged in or the cookie has expired
