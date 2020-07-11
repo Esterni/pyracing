@@ -8,7 +8,7 @@ from .responses.chart_data.ttrating import TTRating
 from .responses.chart_data.license_class import LicenseClass
 
 import logging
-import requests_async as requests
+import httpx
 import sys
 import time
 
@@ -17,7 +17,7 @@ import time
 # Each function is set with only the variables required, for the respective
 # endpoint, to return the desired data.  Compared to the previous client.py,
 # this module does not attempt to parse any of the data received.  Instead,
-# each function returns the response object from requests.Session() to
+# each function returns the response object from https.AsyncClient() to
 # provide more versatility from a function.
 
 # Response objects include the .json() method, which is the same result
@@ -44,7 +44,7 @@ class Client:
     def __init__(self, username: str, password: str, log=default_logger()):
         self.username = username
         self.password = password
-        self.session = requests.Session()
+        self.session = httpx.AsyncClient()
         self.log = log
 
     async def authenticate(self):
