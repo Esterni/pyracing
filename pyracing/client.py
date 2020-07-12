@@ -75,11 +75,11 @@ class Client:
 
         if 'failedlogin' in auth_post.url:
             self.log.warning('Login Failed. Please check credentials')
-            raise UserWarning('The login POST was redirected to /failedlogin '
-                              'which indicates authentication failure. If '
-                              'credentials are correct, check that a captcha '
-                              'is not required by manually logging in to '
-                              'members.iracing.com')
+            raise UserWarning(
+                'The login POST was redirected to /failedlogin, indicating an'
+                ' authentication failure. If credentials are correct, manually'
+                ' check that a captcha is not required at members.iracing.com'
+            )
         else:
             self.log.info('Login successful')
 
@@ -90,11 +90,11 @@ class Client:
         """
 
         self.log.info('Making get request to url: ' +
-                      url + ' with params: %s', params)
+                      url + f' with params: {params}')
 
         response = await self.session.get(url, params=params)
 
-        self.log.info('iRacing response: %s', response.__dict__)
+        self.log.info(f'iRacing response: {response.__dict__}')
 
         # This happens when we are not logged in or the cookie has expired
         if 'not authorized' in response.text and retry:
