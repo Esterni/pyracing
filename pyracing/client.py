@@ -110,13 +110,21 @@ class Client:
 
         return response
 
-    async def active_op_counts(self, custID, maxCount=250):
+    async def active_op_counts(
+        self,
+        maxCount=250,
+        include_empty=n,
+        custID=None
+    ):
+        """ Returns session information for all currently active 'open
+        practice' sessions. Default is to exclude empty sessions
+        """
         url = ct.URL_ACTIVEOP_COUNT
         payload = {
-            'custid': custID,
+            'custid': custID,  # Purpose of custID unknown
             'maxcount': maxCount,
-            'include_empty': 'n',  # Flag is y/n
-            'excludeLite': 0
+            'include_empty': include_empty,
+            'excludeLite': None  # Purpose of excludeLite unknown
         }
         return await self.build_request(url, payload)
 
