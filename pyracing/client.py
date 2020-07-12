@@ -168,14 +168,14 @@ class Client:
 
     async def current_seasons(
             self,
-            only_active=True,
+            only_active=True,  # Returns only seasons that are active
             series_short_name=True,
             cat_id=True,
             season_id=True,
             year=False,
             quarter=False,
             series_id=False,
-            active=False,
+            active=False,  # Field that indicates if season is active or not
             license_eligible=False,
             is_lite=False,
             car_classes=False,
@@ -370,7 +370,7 @@ class Client:
         in from a given Session ID.
         """
         payload = {'custid': custID, 'sessionID': sessNum}
-        url = ct.URL_MEM_SUBSESSID
+        url = ct.URL_MEM_sub_sess_id
         return await self.build_request(url, payload)
 
     # Might not be useful. Must be logged in and not affected by custID.
@@ -395,9 +395,9 @@ class Client:
         for the series_id.
         """
         payload = {
-            'seriesID': seriesID,
+            'seriesID': series_id,
             'evtType': event,
-            'date': ct.now_unix_ms
+            'date': date
         }
         url = ct.URL_NEXT_EVENT
         return await self.build_request(url, payload)
@@ -409,8 +409,6 @@ class Client:
         payload = {'custid': custID, 'carid': carID}
         url = ct.URL_PERSONAL_BESTS
         return await self.build_request(url, payload)
-
-    # TODO Dictionary list of all filters possible
 
     async def race_guide(
         self,
