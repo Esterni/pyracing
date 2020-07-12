@@ -231,34 +231,35 @@ class Client:
 
     # TODO Use *kwargs with dictionary for default values? Very long list.
 
-    async def driver_stats(self,
-                           custid,
-                           search='null',
-                           friend=-1,
-                           watched=-1,
-                           recent=-1,
-                           country='null',
-                           category=ct.Category.road,
-                           class_low=-1,
-                           class_high=-1,
-                           irating_low=-1,
-                           irating_high=-1,
-                           ttrating_low=-1,
-                           ttrating_high=-1,
-                           avg_start_low=-1,
-                           avg_start_high=-1,
-                           avg_finish_low=-1,
-                           avg_finish_high=-1,
-                           avg_points_low=-1,
-                           avg_points_high=-1,
-                           avg_inc_low=-1,
-                           avg_inc_high=-1,
-                           lower_bound=1,
-                           upper_bound=25,
-                           sort=ct.Sort.irating,
-                           order=ct.Sort.descending,
-                           active=1
-                           ):
+    async def driver_stats(
+        self,
+        custid,
+        search='null',
+        friend=-1,
+        watched=-1,
+        recent=-1,
+        country='null',
+        category=ct.Category.road,
+        class_low=-1,
+        class_high=-1,
+        irating_low=-1,
+        irating_high=-1,
+        ttrating_low=-1,
+        ttrating_high=-1,
+        avg_start_low=-1,
+        avg_start_high=-1,
+        avg_finish_low=-1,
+        avg_finish_high=-1,
+        avg_points_low=-1,
+        avg_points_high=-1,
+        avg_inc_low=-1,
+        avg_inc_high=-1,
+        lower_bound=1,
+        upper_bound=25,
+        sort=ct.Sort.irating,
+        order=ct.Sort.descending,
+        active=1
+    ):
         """ Returns a list of drivers that match the given parameters.
         This is the backend source for /DriverLookup.Do AKA 'Driver Stats.'
 
@@ -267,7 +268,7 @@ class Client:
         showing where you are in relation to the list of drivers when using
         the main /DriverLookup page on iRacing.  """
         payload = {
-            'search': str(search),
+            'search': str(search).replace(' ', '+'),
             'friend': friend,
             'watched': watched,
             'recent': recent,
