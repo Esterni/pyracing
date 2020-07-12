@@ -61,15 +61,11 @@ class Client:
         """
         self.log.info('Authenticating...')
 
-        # Calculates accepted utcoffset from local system time
-        utcoffset = round(
-            abs(time.localtime().tm_gmtoff / 60))
-
         login_data = {
             'username': self.username,
             'password': self.password,
-            'utcoffset': utcoffset,
-            'todaysdate': ''  # Unknown purpose, but present as hidden form.
+            'utcoffset': round(abs(time.localtime().tm_gmtoff / 60)),
+            'todaysdate': ''  # Unknown purpose, but present as a hidden form.
         }
 
         auth_post = await self.session.post(ct.URL_LOGIN2, data=login_data)
@@ -77,10 +73,11 @@ class Client:
         if 'failedlogin' in str(auth_post.url):
             self.log.warning('Login Failed. Please check credentials')
             raise UserWarning(
-                'The login POST was redirected to /failedlogin, indicating an'
-                ' authentication failure. If credentials are correct, manually'
-                ' check that a captcha is not required at members.iracing.com'
-            )
+                'The login POST request was redirected to /failedlogin,'
+                'indicating an authentication failure. If credentials are'
+                'correct, check that a captcha is not required by manually'
+                'visiting members.iracing.com'
+                )
         else:
             self.log.info('Login successful')
 
@@ -89,7 +86,6 @@ class Client:
     async def build_request(self, url, params, retry=True):
         """ Builds the final GET request from url and params
         """
-
         # TODO Log the URL with query string instead of params dict.
         self.log.info('Making get request to url: ' +
                       url + f' with params: {params}')
