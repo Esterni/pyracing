@@ -9,4 +9,4 @@ class TTRating:
     # iRacing has all of their timestamps in ms so we need to divide
     @staticmethod
     def datetime_from_iracing_timestamp(timestamp):
-        return datetime.utcfromtimestamp(timestamp / 1000)
+        return datetime.utcfromtimestamp(int(timestamp) / 1000)
