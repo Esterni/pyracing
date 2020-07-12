@@ -89,6 +89,7 @@ class Client:
         """ Builds the final GET request from url and params
         """
 
+        # TODO Log the URL with query string instead of params dict.
         self.log.info('Making get request to url: ' +
                       url + f' with params: {params}')
 
@@ -96,11 +97,16 @@ class Client:
 
         self.log.info(f'iRacing response: {response.__dict__}')
 
+        # TODO With the /failedlogin check in authenticate() this auth check
+        # can be designated as cookie expiration, since the URL endpoints use
+        # different methods of telling you that you aren't authenticated
+
         # This happens when we are not logged in or the cookie has expired
         if 'not authorized' in response.text and retry:
             self.log.info('Retrying authenticate and then repeating request')
             await self.authenticate()
             return await self.build_request(url, params, False)
+
         elif 'not authorized' in response.text and not retry:
             self.log.error('Authentication retry failed')
             raise RuntimeError(
@@ -623,7 +629,7 @@ class Client:
 
         return list(map(lambda x: YearlyStats(x), response.json()))
 
-    # Returns a list of the keys from the dictionary where the values are truthy
+    # Returns a list of keys from the dictionary where values are truthy
     @staticmethod
     def key_list_from_dict(dictionary):
         key_list = []
