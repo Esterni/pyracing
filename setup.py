@@ -3,16 +3,18 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-      name='ir_webstats_rc',
-      version='1.3.2',
-      author='Rob Crouch',
-      author_email='rob.crouch@gmail.com',
-      description='A version of ir_webstats hacked on by Rob Crouch',
+      name='pyracing',
+      version='0.1.0',
+      author='Jacob Anderson & Xander Riga',
+      description='A complete overhaul of ir_webstats; pyracing is an API'\
+        'wrapper for simracing service "iRacing" that queries known URL'\
+        'endpoints and returns JSON data that is accessible through objects'\
+        'instead of dictionaries.',
       long_description=long_description,
       long_description_content_type="text/markdown",
-      url='http://github.com/fuzzwah/ir_webstats_rc',
+      url='https://github.com/Esterni/pyracing',
       packages=setuptools.find_packages(),
-      python_requires='>=3.6',
+      python_requires='>=3.8',
       classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
