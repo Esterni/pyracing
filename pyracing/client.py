@@ -74,7 +74,12 @@ class Client:
         auth_post = await self.session.post(ct.URL_LOGIN2, data=login_data)
 
         if 'failedlogin' in auth_post.url:
-            self.log.UserWarning('Login Failed. Please check credentials')
+            self.log.warning('Login Failed. Please check credentials')
+            raise UserWarning('The login POST was redirected to /failedlogin '
+                              'which indicates authentication failure. If '
+                              'credentials are correct, check that a captcha '
+                              'is not required by manually logging in to '
+                              'members.iracing.com')
         else:
             self.log.info('Login successful')
 
