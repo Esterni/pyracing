@@ -73,9 +73,9 @@ class Client:
         if 'failedlogin' in str(auth_post.url):
             self.log.warning('Login Failed. Please check credentials')
             raise UserWarning(
-                'The login POST request was redirected to /failedlogin,'
-                'indicating an authentication failure. If credentials are'
-                'correct, check that a captcha is not required by manually'
+                'The login POST request was redirected to /failedlogin, '
+                'indicating an authentication failure. If credentials are '
+                'correct, check that a captcha is not required by manually '
                 'visiting members.iracing.com'
                 )
         else:
@@ -361,7 +361,7 @@ class Client:
         in from a given Session ID.
         """
         payload = {'custid': custID, 'sessionID': sessNum}
-        url = ct.URL_MEM_sub_sess_id
+        url = ct.URL_MEM_SUBSESSID
         return await self.build_request(url, payload)
 
     # Might not be useful. Must be logged in and not affected by custID.
@@ -387,7 +387,7 @@ class Client:
         """
         payload = {
             'seriesID': series_id,
-            'evtType': event,
+            'evtType': event_type,
             'date': date
         }
         url = ct.URL_NEXT_EVENT
