@@ -150,7 +150,7 @@ class Client:
         names and their respective carClassID.
         """
         payload = {'carclassid': carClassID}
-        url = ct.URL_CAREER_STATS
+        url = ct.URL_CAR_CLASS
         return await self.build_request(url, payload)
 
     async def career_stats(self, custID):
