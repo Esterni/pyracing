@@ -3,15 +3,30 @@ Client()
 
 You can use this class to send requests to iRacing service and get valuable data like stats, race results, driver info, series info, etc. it requires valid login credentials (username and password) to access the service.
 
-USAGE
-=====
+# Usage
+```py
+import pyracing
+import pyracing.constants as ct
+import asyncio
 
-    from client import Client
-    irw = Client()
-    irw.login('username', 'password')
-    print (irw.cars_driven())  # cars driven by user
+ir = pyracing.client.Client('username', 'password')
+await ir.authenticate()
 
-Check examples.py for more examples
+iRating = await ir.get_irating(ct.Category.road, custid)
+
+current_irating = iRating.current()
+```
+
+# Data
+## Which function for X data?
+Each webpage "section" has an associated URL endpoint that is responsible for returning the data used in that section in (usually) JSON format. Here's a reference table:
+
+|Page Displayed| Data Endpoint Used|
+|---|---|
+|[Race Guide](https://members.iracing.com/membersite/member/Home.do?page=guide) | race_guide() - /GetRaceGuide |
+|   |   |
+|   |   |
+
 
 FILES
 =====
