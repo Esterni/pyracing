@@ -83,33 +83,26 @@ class Client:
 
     # Wrapper for all functions that builds the final self.session.get()
 
-    async def build_request(self, url, params, retry=True):
+    async def build_request(self, url, params):
         """ Builds the final GET request from url and params
         """
-        # TODO Log the URL with query string instead of params dict.
-        self.log.info('Making get request to url: ' +
-                      url + f' with params: {params}')
-
-        response = await self.session.get(url, params=params)
-
-        self.log.info(f'iRacing response: {response.__dict__}')
-
-        # TODO With the /failedlogin check in authenticate() this auth check
-        # can be designated as cookie expiration, since the URL endpoints use
-        # different methods of telling you that you aren't authenticated
-
-        # This happens when we are not logged in or the cookie has expired
-        if 'not authorized' in response.text and retry:
-            self.log.info('Retrying authenticate and then repeating request')
-            await self.authenticate()
-            return await self.build_request(url, params, False)
-
-        elif 'not authorized' in response.text and not retry:
-            self.log.error('Authentication retry failed')
-            raise RuntimeError(
-                'Authentication failed. Make sure username and password'
-                'are correct and that the iRacing servers are not down'
+        response = await self.session.get(
+            url,
+            params=params,
+            allow_redirects=False
             )
+
+        self.log.info(f'Request sent for URL: {response.url}')
+        self.log.info(f'Status code of response: {response.status_code}')
+
+        # Status code other than 200 assumes redirect to a failed auth page
+        if not response.status_code == 200:
+            self.log.info(
+                'Request was redirected, indicating that the cookies are '
+                'invalid. Initiating authentication and retrying the request.'
+                )
+            await self.authenticate()
+            return await self.build_request(url, params)
 
         return response
 
