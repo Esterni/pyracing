@@ -4,7 +4,7 @@ import math
 import os
 
 # iRacing rounds down to the 5 minute mark - DO NOT CHANGE
-now_unix_ms = int(math.floor(time.time()/300)*300)*1000
+now_unix_ms = int(math.floor(time.time() / 300) * 300) * 1000
 
 # Context sites for the 2 types of endpoints
 mSite = 'https://members.iracing.com/membersite/member'
@@ -22,13 +22,11 @@ URL_CURRENT_SEASONS = (mSite + '/GetSeasons')
 URL_SEASON_STANDINGS = (mStats + '/GetSeasonStandings')
 URL_SERIES_RACERESULTS = (mStats + '/GetSeriesRaceResults')
 
-
 # RECENT HISTORICAL
 URL_LASTRACE_STATS = (mStats + '/GetLastRacesStats')
 URL_LAST_SERIES = (mStats + '/GetLastSeries')
 URL_RESULTS = (mStats + '/GetResults')
 URL_WORLD_RECORDS = (mStats + '/GetWorldRecords')
-
 
 # UPCOMING SESSIONS
 URL_SESSION_TIMES = (mSite + '/GetSessionTimes')
@@ -37,18 +35,15 @@ URL_TOTALREGISTERED = (mSite + '/GetTotalSessionJoinedCountsBySeason')
 URL_RACEGUIDE = (mSite + '/GetRaceGuide')
 URL_ACTIVEOP_COUNT = (mSite + '/GetActiveOpenPracticeCount')
 
-
 # DRIVER PROFILE STATS
 URL_STATS_CHART = (mStats + '/GetChartData')
 URL_CAREER_STATS = (mStats + '/GetCareerStats')
 URL_YEARLY_STATS = (mStats + '/GetYearlyStats')
 URL_PERSONAL_BESTS = (mStats + '/GetPersonalBests')
 
-
 # RACE SPECIFIC RESULTS
 URL_LAPS_SINGLE = (mSite + '/GetLaps')
 URL_LAPS_ALL = (mSite + '/GetLapChart')
-
 
 # UTILITY ?
 URL_DRIVER_STATS = (mStats + '/GetDriverStats')
@@ -62,12 +57,12 @@ URL_ALL_SUBSESSIONS = (mSite + '/GetAllSubsessions')
 
 # OTHER
 URL_TEAM_STANDINGS = (mStats + 'GetTeamStandings?'
-                      'raceWeekNum=-1'
-                      '&seasonid=2621'
-                      '&carClassId=67'
-                      '&carId=-1')
+                               'raceWeekNum=-1'
+                               '&seasonid=2621'
+                               '&carClassId=67'
+                               '&carId=-1')
 URL_SESSION_TEAMS = (mStats + '/GetSessionTeams?'
-                     'subSessionID=')
+                              'subSessionID=')
 
 # ESSENTIALLY USELESS URLS
 
@@ -232,6 +227,7 @@ class Sort:
     descending = 'desc'
     ascending = 'asc'
     session_name = 'sessionname'
+
 
 # TODO Construct dictionary of seriesIDs from /GetSeasons
 # TODO Construct dictionary of seasonIDs from /GetSeasons
@@ -499,3 +495,14 @@ class CountryCodes:
     YEMEN = 'YE',
     ZAMBIA = 'ZM',
     ZIMBABWE = 'ZW'
+
+
+# TODO find more of these mappings
+# In a bunch of places the strings we get from iRacing have a bunch of nonsense characters delimited by
+# %, so when we see those cases, we want to make the string actually readable. I assume this is a conversion
+# from a different string format, but I am not sure if there is a way to map them all at once besides this.
+def sanitize_names(string):
+    return string.replace('+', ' ') \
+        .replace('%5B', '(') \
+        .replace('%5D', ')') \
+        .replace('%C3%BC', 'u')

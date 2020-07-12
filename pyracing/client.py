@@ -6,6 +6,7 @@ from .responses.chart_data.chart_data import ChartData
 from .responses.chart_data.irating import IRating
 from .responses.chart_data.ttrating import TTRating
 from .responses.chart_data.license_class import LicenseClass
+from .responses.season import Season
 
 import logging
 import httpx
@@ -227,7 +228,8 @@ class Client:
             'fields': (','.join(key_list))
         }
         url = ct.URL_CURRENT_SEASONS
-        return await self.build_request(url, payload)
+        response = await self.build_request(url, payload)
+        return list(map(lambda x: Season(x), response.json()))
 
     # TODO Use *kwargs with dictionary for default values? Very long list.
 
@@ -731,7 +733,7 @@ class Client:
     @staticmethod
     def key_list_from_dict(dictionary):
         key_list = []
-        for key, value in dictionary:
+        for key, value in dictionary.items():
             if value:
                 key_list.append(key)
 
