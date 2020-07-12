@@ -73,7 +73,7 @@ class Client:
 
         auth_post = await self.session.post(ct.URL_LOGIN2, data=login_data)
 
-        if 'failedlogin' in auth_post.url:
+        if 'failedlogin' in str(auth_post.url):
             self.log.warning('Login Failed. Please check credentials')
             raise UserWarning(
                 'The login POST was redirected to /failedlogin, indicating an'
@@ -119,7 +119,7 @@ class Client:
     async def active_op_counts(
         self,
         maxCount=250,
-        include_empty=n,
+        include_empty='n',  # This should be the string 'n' or 'y'
         custID=None
     ):
         """ Returns session information for all 'open practice' sessions that
@@ -232,33 +232,33 @@ class Client:
     # TODO Use *kwargs with dictionary for default values? Very long list.
 
     async def driver_stats(
-        self,
-        custid,
-        search='null',
-        friend=-1,
-        watched=-1,
-        recent=-1,
-        country='null',
-        category=ct.Category.road,
-        class_low=-1,
-        class_high=-1,
-        irating_low=-1,
-        irating_high=-1,
-        ttrating_low=-1,
-        ttrating_high=-1,
-        avg_start_low=-1,
-        avg_start_high=-1,
-        avg_finish_low=-1,
-        avg_finish_high=-1,
-        avg_points_low=-1,
-        avg_points_high=-1,
-        avg_inc_low=-1,
-        avg_inc_high=-1,
-        lower_bound=1,
-        upper_bound=25,
-        sort=ct.Sort.irating,
-        order=ct.Sort.descending,
-        active=1
+            self,
+            custid,
+            search='null',
+            friend=-1,
+            watched=-1,
+            recent=-1,
+            country='null',
+            category=ct.Category.road,
+            class_low=-1,
+            class_high=-1,
+            irating_low=-1,
+            irating_high=-1,
+            ttrating_low=-1,
+            ttrating_high=-1,
+            avg_start_low=-1,
+            avg_start_high=-1,
+            avg_finish_low=-1,
+            avg_finish_high=-1,
+            avg_points_low=-1,
+            avg_points_high=-1,
+            avg_inc_low=-1,
+            avg_inc_high=-1,
+            lower_bound=1,
+            upper_bound=25,
+            sort=ct.Sort.irating,
+            order=ct.Sort.descending,
+            active=1
     ):
         """ Returns a list of drivers that match the given parameters.
         This is the backend source for /DriverLookup.Do AKA 'Driver Stats.'
@@ -301,14 +301,14 @@ class Client:
     # TODO Find query string parameters for this url
 
     async def hosted_results(
-        self,
-        custid,
-        start_time_lower,
-        start_time_upper,
-        lower_bound=1,
-        upper_bound=25,
-        sort=ct.Sort.session_name,
-        order=ct.Sort.ascending
+            self,
+            custid,
+            start_time_lower,
+            start_time_upper,
+            lower_bound=1,
+            upper_bound=25,
+            sort=ct.Sort.session_name,
+            order=ct.Sort.ascending
     ):
         """ Returns private sessions that the driver
         has participated in.
@@ -361,7 +361,7 @@ class Client:
             'seasonid': seasonID,
             'custid': custID,
             'pointstype': 'race'
-            }
+        }
         url = ct.URL_MEM_DIVISION
         return await self.build_request(url, payload)
 
@@ -386,10 +386,10 @@ class Client:
         return await self.build_request(url, payload)
 
     async def next_event(
-        self,
-        series_id,
-        event_type=ct.EventType.race,
-        date=ct.now_unix_ms
+            self,
+            series_id,
+            event_type=ct.EventType.race,
+            date=ct.now_unix_ms
     ):
         """ Returns information about the next event (from the requested time)
         for the series_id.
@@ -411,25 +411,25 @@ class Client:
         return await self.build_request(url, payload)
 
     async def race_guide(
-        self,
-        unix_time=ct.now_unix_ms,
-        show_rookie=None,
-        show_class_d=None,
-        show_class_c=None,
-        show_class_b=None,
-        show_class_a=None,
-        show_class_pro=None,
-        show_class_prowc=None,
-        show_oval=None,
-        show_road=None,
-        show_dirt_oval=None,
-        show_dirt_road=None,
-        fixed_only=None,
-        multiclass_only=None,
-        meets_mpr=None,
-        hide_unpopulated=None,
-        hide_ineligible=None,
-        show_official=None
+            self,
+            unix_time=ct.now_unix_ms,
+            show_rookie=None,
+            show_class_d=None,
+            show_class_c=None,
+            show_class_b=None,
+            show_class_a=None,
+            show_class_pro=None,
+            show_class_prowc=None,
+            show_oval=None,
+            show_road=None,
+            show_dirt_oval=None,
+            show_dirt_road=None,
+            fixed_only=None,
+            multiclass_only=None,
+            meets_mpr=None,
+            hide_unpopulated=None,
+            hide_ineligible=None,
+            show_official=None
     ):
         """ Returns all data used by the race guide page for the active
         seasons. Filters are identical to those found when visiting the
@@ -469,10 +469,10 @@ class Client:
         return await self.build_request(url, payload)
 
     async def race_laps_driver(
-        self,
-        custID,
-        sub_sess_id,
-        sim_sess_id=ct.SimSesNum.Race
+            self,
+            custID,
+            sub_sess_id,
+            sim_sess_id=ct.SimSesNum.race
     ):
         """ Returns data for all laps completed of a single driver.
         sim_sess_id specifies the laps from practice, qual, or race.
@@ -488,36 +488,36 @@ class Client:
     # TODO Dictionary list of available flags/filters. custid required
 
     async def results(
-        self,
-        custID,
-        show_races=1,
-        show_quals=0,
-        show_tts=0,
-        show_ops=0,
-        show_official=1,
-        show_unofficial=0,
-        show_rookie=1,
-        show_class_d=1,
-        show_class_c=1,
-        show_class_b=1,
-        show_class_a=1,
-        show_pro=1,
-        show_prowc=1,
-        lower_bound=0,
-        upper_bound=25,
-        sort=ct.Sort.start_time,
-        order=ct.Sort.descending,
-        format='json',
-        category1=1,
-        category2=2,
-        category3=3,
-        category4=4,
-        season_year=2020,
-        season_quarter=3,
-        race_week=-1,
-        track_id=-1,
-        car_class=-1,
-        car_id=-1
+            self,
+            custID,
+            show_races=1,
+            show_quals=0,
+            show_tts=0,
+            show_ops=0,
+            show_official=1,
+            show_unofficial=0,
+            show_rookie=1,
+            show_class_d=1,
+            show_class_c=1,
+            show_class_b=1,
+            show_class_a=1,
+            show_pro=1,
+            show_prowc=1,
+            lower_bound=0,
+            upper_bound=25,
+            sort=ct.Sort.start_time,
+            order=ct.Sort.descending,
+            format='json',
+            category1=1,
+            category2=2,
+            category3=3,
+            category4=4,
+            season_year=2020,
+            season_quarter=3,
+            race_week=-1,
+            track_id=-1,
+            car_class=-1,
+            car_id=-1
     ):
         """ Returns all data about the results of a session. Providing a
         custID allows for returning all results by a specific driver.
@@ -669,11 +669,11 @@ class Client:
         return await self.build_request(url, payload)
 
     async def team_standings(
-        self,
-        season_id,
-        car_class,
-        car_id=-1,
-        race_week=-1
+            self,
+            season_id,
+            car_class,
+            car_id=-1,
+            race_week=-1
     ):
         """ Returns championship point standings of Teams.
         """
