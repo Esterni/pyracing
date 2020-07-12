@@ -105,6 +105,149 @@ class License:
 
 
 # LOCATIONS (AKA Country Code)
+
+
+class Category:
+    """Holds the index for each type of racing discipline
+    """
+    oval = 1
+    road = 2
+    dirt_oval = 3
+    dirt_road = 4
+
+    def number_to_string(self, number):
+        if number == self.oval:
+            return 'Oval'
+        elif number == self.road:
+            return 'Road'
+        elif number == self.dirt_oval:
+            return 'Dirt Oval'
+        elif number == self.dirt_road:
+            return 'Dirt Road'
+        else:
+            return None
+
+
+class ChartType:
+    """Holds the index for the charts available from stats_chart()
+    """
+    irating = 1
+    ttrating = 2
+    license_class = 3
+
+    def number_to_string(self, number):
+        if number == self.irating:
+            return 'iRating'
+        elif number == self.ttrating:
+            return 'TTRating'
+        elif number == self.license_class:
+            return 'License Class'
+        else:
+            return None
+
+
+class EventType:
+    """Holds the index for the session event type
+    """
+    test = 1
+    practice = 2
+    qualify = 3
+    time_trial = 4
+    race = 5
+    official = 6
+    unofficial = 7
+
+    def number_to_string(self, number):
+        if number == self.test:
+            return 'Test'
+        elif number == self.practice:
+            return 'Practice'
+        elif number == self.qualify:
+            return 'Qualify'
+        elif number == self.time_trial:
+            return 'Time Trial'
+        elif number == self.race:
+            return 'Race'
+        elif number == self.official:
+            return 'Official'
+        elif number == self.unofficial:
+            return 'Unofficial'
+        else:
+            return None
+
+
+class SimSesNum:
+    race = 0
+    qualify = -1
+    practice = -2
+
+
+class IncFlags:
+    clean = 0
+    pitted = 2
+    off_track = 4
+    black_flag = 8
+    car_reset = 16
+    contact = 32
+    car_contact = 64
+    lost_control = 128
+    discontinuity = 256
+    interpolated_crossing = 512
+    clock_smash = 1024
+    tow = 2048
+
+    def number_to_string(self, number):
+        if number == self.clean:
+            return 'Clean'
+        elif number == self.pitted:
+            return 'Pitted'
+        elif number == self.off_track:
+            return 'Off Track'
+        elif number == self.black_flag:
+            return 'Black Flag'
+        elif number == self.car_reset:
+            return 'Car Reset'
+        elif number == self.contact:
+            return 'Contact'
+        elif number == self.lost_control:
+            return 'Lost Control'
+        elif number == self.discontinuity:
+            return 'Discontinuity'
+        elif number == self.interpolated_crossing:
+            return 'Interpolated Crossing'
+        elif number == self.clock_smash:
+            return 'Clock Smash'
+        elif number == self.tow:
+            return 'Tow'
+        else:
+            return None
+
+
+class Sort:
+    """Holds the strings used for types of 'sort by'
+    """
+    irating = 'irating'
+    start_time = 'start_time'
+    champ_points = 'points'
+    descending = 'desc'
+    ascending = 'asc'
+    session_name = 'sessionname'
+
+# TODO Construct dictionary of seriesIDs from /GetSeasons
+# TODO Construct dictionary of seasonIDs from /GetSeasons
+# TODO Construct dictionary of carIDs
+
+
+class SessionStatus:
+    registered = 1
+    do_not_join = 2
+    ok_to_join = 3
+    joined = 4
+    assigned = 5
+    withdrawn = 6
+    rejected = 7
+
+
 class CountryCodes:
     """Hold the string index of Country Codes that
     iRacing uses for seperating drivers into clubs
@@ -356,135 +499,3 @@ class CountryCodes:
     YEMEN = 'YE',
     ZAMBIA = 'ZM',
     ZIMBABWE = 'ZW'
-
-
-class Category:
-    """Holds the index for each type of racing discipline
-    """
-    oval = 1
-    road = 2
-    dirt_oval = 3
-    dirt_road = 4
-
-    def number_to_string(self, number):
-        if number == self.oval:
-            return 'Oval'
-        elif number == self.road:
-            return 'Road'
-        elif number == self.dirt_oval:
-            return 'Dirt Oval'
-        elif number == self.dirt_road:
-            return 'Dirt Road'
-        else:
-            return None
-
-
-class ChartType:
-    """Holds the index for the charts available from stats_chart()
-    """
-    irating = 1
-    ttrating = 2
-    license_class = 3
-
-    def number_to_string(self, number):
-        if number == self.irating:
-            return 'iRating'
-        elif number == self.ttrating:
-            return 'TTRating'
-        elif number == self.license_class:
-            return 'License Class'
-        else:
-            return None
-
-
-class EventType:
-    """Holds the index for the session event type
-    """
-    test = 1
-    practice = 2
-    qualify = 3
-    time_trial = 4
-    race = 5
-    official = 6
-    unofficial = 7
-
-    def number_to_string(self, number):
-        if number == self.test:
-            return 'Test'
-        elif number == self.practice:
-            return 'Practice'
-        elif number == self.qualify:
-            return 'Qualify'
-        elif number == self.time_trial:
-            return 'Time Trial'
-        elif number == self.race:
-            return 'Race'
-        elif number == self.official:
-            return 'Official'
-        elif number == self.unofficial:
-            return 'Unofficial'
-        else:
-            return None
-
-
-class SimSesNum:
-    race = 0
-    qualify = -1
-    practice = -2
-
-
-class IncFlags:
-    clean = 0
-    pitted = 2
-    off_track = 4
-    black_flag = 8
-    car_reset = 16
-    contact = 32
-    car_contact = 64
-    lost_control = 128
-    discontinuity = 256
-    interpolated_crossing = 512
-    clock_smash = 1024
-    tow = 2048
-
-    def number_to_string(self, number):
-        if number == self.clean:
-            return 'Clean'
-        elif number == self.pitted:
-            return 'Pitted'
-        elif number == self.off_track:
-            return 'Off Track'
-        elif number == self.black_flag:
-            return 'Black Flag'
-        elif number == self.car_reset:
-            return 'Car Reset'
-        elif number == self.contact:
-            return 'Contact'
-        elif number == self.lost_control:
-            return 'Lost Control'
-        elif number == self.discontinuity:
-            return 'Discontinuity'
-        elif number == self.interpolated_crossing:
-            return 'Interpolated Crossing'
-        elif number == self.clock_smash:
-            return 'Clock Smash'
-        elif number == self.tow:
-            return 'Tow'
-        else:
-            return None
-
-
-class Sort:
-    """Holds the strings used for types of 'sort by'
-    """
-    irating = 'irating'
-    start_time = 'start_time'
-    champ_points = 'points'
-    descending = 'desc'
-    ascending = 'asc'
-    session_name = 'sessionname'
-
-
-# TODO Construct dictionary of seriesIDs from /GetSeasons
-# TODO Construct dictionary of seasonIDs from /GetSeasons
-# TODO Construct dictionary of carIDs
