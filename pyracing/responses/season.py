@@ -1,4 +1,4 @@
-from ..constants import sanitize_names
+from ..constants import parse_iracing_string
 
 
 # I believe this maps what I would call a series, but iRacing calls this a season, so I want to be consistent
@@ -6,7 +6,7 @@ class Season:
     def __init__(self, dict):
         self.season_id = dict['seasonid']
         self.cat_id = dict['catid']
-        self.series_short_name = sanitize_names(dict['seriesshortname'])
+        self.series_short_name = parse_iracing_string((dict['seriesshortname']))
         self.year = self.value_or_none(dict, 'year')
         self.quarter = self.value_or_none(dict, 'quarter')
         self.series_id = self.value_or_none(dict, 'seriesid')

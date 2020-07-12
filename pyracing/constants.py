@@ -1,7 +1,7 @@
 # _*_ coding: utf_8 _*_
 import time
 import math
-import os
+import urllib.parse
 
 # iRacing rounds down to the 5 minute mark - DO NOT CHANGE
 now_unix_ms = int(math.floor(time.time() / 300) * 300) * 1000
@@ -497,12 +497,5 @@ class CountryCodes:
     ZIMBABWE = 'ZW'
 
 
-# TODO find more of these mappings
-# In a bunch of places the strings we get from iRacing have a bunch of nonsense characters delimited by
-# %, so when we see those cases, we want to make the string actually readable. I assume this is a conversion
-# from a different string format, but I am not sure if there is a way to map them all at once besides this.
-def sanitize_names(string):
-    return string.replace('+', ' ') \
-        .replace('%5B', '(') \
-        .replace('%5D', ')') \
-        .replace('%C3%BC', 'u')
+def parse_iracing_string(string):
+    return urllib.parse.unquote(string).replace('+', ' ')
