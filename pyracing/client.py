@@ -1,12 +1,10 @@
 from . import constants as ct
-from .responses.last_races_stats import LastRaceStats
-from .responses.career_stats import CareerStats
-from .responses.yearly_stats import YearlyStats
-from .responses.chart_data.chart_data import ChartData
-from .responses.chart_data.irating import IRating
-from .responses.chart_data.ttrating import TTRating
-from .responses.chart_data.license_class import LicenseClass
-from .responses.season import Season
+# Imports CareerStats, YearlyStats, LastRaceStats, LastSeries, Personal Bests.
+from .response_objects.career_stats import *
+# Imports ChartData, IRating, TTRating, and LicenseClass
+from .response_objects.chart_data import *
+
+from .response_objects.iracing_data import *
 
 import logging
 import httpx
@@ -95,7 +93,6 @@ class Client:
         self.log.info(f'Request sent for URL: {response.url}')
         self.log.info(f'Status code of response: {response.status_code}')
         self.log.debug(f'Contents of the response object: {response.__dict__}')
-
 
         # Status code other than 200 assumes redirect to a failed auth page
         if not response.status_code == 200:
@@ -535,10 +532,10 @@ class Client:
             'sort': sort,
             'order': order,
             'format': format,
-            'category1': category1,
-            'category2': category2,
-            'category3': category3,
-            'category4': category4,
+            'category%5B%5D': category1,
+            'category%5B%5D': category2,
+            'category%5B%5D': category3,
+            'category%5B%5D': category4,
             'seasonyear': season_year,
             'seasonquarter': season_quarter,
             'raceweek': race_week,
