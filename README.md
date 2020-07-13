@@ -19,13 +19,17 @@ current_irating = iRating.current()
 
 # Data
 ## Which function for X data?
-Each webpage "section" has an associated URL endpoint that is responsible for returning the data used in that section in (usually) JSON format. Here's a reference table:
+Each webpage has an associated URL endpoint that is responsible for returning JSON data used for that page. The following is a list of iRacing webpages and their associated function.
 
-|Page Displayed| Data Endpoint Used|
-|---|---|
-|[Race Guide](https://members.iracing.com/membersite/member/Home.do?page=guide) | race_guide() - /GetRaceGuide |
-|   |   |
-|   |   |
+##
+
+|   Page Displayed                     |   Client.function
+|   ---                                |   ---
+|   My Series Results (/results.jsp)   |   results()
+|   Series Stats (/statsseries.jsp)    |   season_standings()
+|   Driver Stats (/DriverLookup.Do)    |   driver_stats()
+|   World Records (/worldrecords.jsp)  |   world_records()
+
 
 
 FILES
