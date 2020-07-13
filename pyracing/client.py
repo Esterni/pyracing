@@ -91,9 +91,10 @@ class Client:
             params=params,
             allow_redirects=False
             )
-
         self.log.info(f'Request sent for URL: {response.url}')
         self.log.info(f'Status code of response: {response.status_code}')
+        self.log.debug(f'Contents of the response object: {response.__dict__}')
+
 
         # Status code other than 200 assumes redirect to a failed auth page
         if not response.status_code == 200:
