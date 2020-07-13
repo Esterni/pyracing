@@ -77,8 +77,6 @@ Returns detailed and comprehensive attributes of a session. This function will b
 - Starting temperature for session
 - Wind speed for session
 
-#### car_class_by_id()
-
 #### current_seasons()
 Returns all information about every series (yes, series). Each series has a base "series_id", but in order to differentiate a series from one season to the next, they each use a unique identifier, "season_id".
 
@@ -86,17 +84,9 @@ The default of this function is to return information for only the currently act
 
 #### hosted_results()
 
-#### member_cars_driven()
-
-#### member_division()
-
-#### member_sub_id_from_session()
-
 #### race_laps_all()
 
 #### race_laps_driver()
-
-#### season_for_session()
 
 -
 
@@ -110,6 +100,16 @@ The default of this function is to return information for only the currently act
 
 
 ## Misc Functions
+
+#### member_division()
+
+#### member_sub_id_from_session()
+
+#### season_for_session()
+
+#### member_cars_driven()
+
+#### car_class_by_id()
 
 
 FILES

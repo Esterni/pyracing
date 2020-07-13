@@ -1,12 +1,10 @@
 from . import constants as ct
-from .responses.last_races_stats import LastRaceStats
-from .responses.career_stats import CareerStats
-from .responses.yearly_stats import YearlyStats
-from .responses.chart_data.chart_data import ChartData
-from .responses.chart_data.irating import IRating
-from .responses.chart_data.ttrating import TTRating
-from .responses.chart_data.license_class import LicenseClass
-from .responses.season import Season
+# Imports CareerStats, YearlyStats, LastRaceStats, LastSeries, Personal Bests.
+from .response_objects.career_stats import *
+# Imports ChartData, IRating, TTRating, and LicenseClass
+from .response_objects.chart_data import *
+
+from .response_objects.iracing_data import *
 
 import logging
 import httpx
@@ -94,7 +92,6 @@ class Client:
         self.log.info(f'Request sent for URL: {response.url}')
         self.log.info(f'Status code of response: {response.status_code}')
         self.log.debug(f'Contents of the response object: {response.__dict__}')
-
 
         # Status code other than 200 assumes redirect to a failed auth page
         if not response.status_code == 200:
@@ -328,7 +325,7 @@ class Client:
         if not response.json():
             return []
 
-        return list(map(lambda x: LastRaceStats(x), response.json()))
+        return [LastRaceStats(x) for x in response.json()]
 
     async def last_series(self, custID):
         """ Returns a summary of stats about a driver's last 3 series as seen
@@ -534,10 +531,10 @@ class Client:
             'sort': sort,
             'order': order,
             'format': format,
-            'category1': category1,
-            'category2': category2,
-            'category3': category3,
-            'category4': category4,
+            'category%5B%5D': category1,
+            'category%5B%5D': category2,
+            'category%5B%5D': category3,
+            'category%5B%5D': category4,
             'seasonyear': season_year,
             'seasonquarter': season_quarter,
             'raceweek': race_week,
@@ -609,7 +606,9 @@ class Client:
         """
         chart_type = ct.ChartType.irating
         response = await self.stats_chart(category, custID, chart_type)
-        irating_list = list(map(lambda x: IRating(x), response.json()))
+
+        # Makes a list of IRating objects for ChartData to accept
+        irating_list = [IRating(x) for x in response.json.()[0]]
 
         return ChartData(category, ct.ChartType.irating, irating_list)
 
@@ -619,7 +618,9 @@ class Client:
         """
         chart_type = ct.ChartType.ttrating
         response = await self.stats_chart(category, custID, chart_type)
-        ttrating_list = list(map(lambda x: TTRating(x), response.json()))
+
+        # Makes a list of TTRating objects for ChartData to accept
+        ttrating_list = [TTRating(x) for x in response.json()[0]]
 
         return ChartData(category, chart_type, ttrating_list)
 
@@ -630,8 +631,9 @@ class Client:
         """
         chart_type = ct.ChartType.license_class
         response = await self.stats_chart(category, custID, chart_type)
-        license_class_list = list(
-            map(lambda x: LicenseClass(x), response.json()))
+
+        # Makes a list of LicenseClass objects for ChartData to accept
+        license_class_list = [LicenseClass(x) for x in response.json()[0]]
 
         return ChartData(category, chart_type, license_class_list)
 
@@ -717,7 +719,8 @@ class Client:
         if not response.json():
             return []
 
-        return list(map(lambda x: YearlyStats(x), response.json()))
+        # There is only ever 1 item in returned list
+        return YearlyStats(response.json()[0])
 
     # Returns a list of keys from the dictionary where values are truthy
     @staticmethod
