@@ -86,6 +86,7 @@ class Client:
     async def build_request(self, url, params):
         """ Builds the final GET request from url and params
         """
+        self.log.info(f'Request being sent to: {url} with params: {params}')
         response = await self.session.get(
             url,
             params=params,
