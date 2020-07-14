@@ -129,7 +129,7 @@ class DriverStats:
         self.custid = dict['34']
         self.sublevel = dict['35']
         self.helmfacetype = dict['36']
-        self.rn = parse_iracing_string(dict['37'])
+        self.rn = dict['37']
         self.region = parse_iracing_string(dict['38'])
         self.groupletter = parse_iracing_string(dict['39'])
 
