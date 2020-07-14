@@ -544,6 +544,7 @@ class Client:
         """ Returns all data about the results of a session. Providing a
         custID allows for returning all results by a specific driver.
         """
+        # TODO Dig into the 'category%5B%5D' keys. Doesnt work without them...
         payload = {
             'custID': custID,
             'showraces': show_races,
@@ -586,6 +587,7 @@ class Client:
         url = ct.URL_RESULTS
         response = await self.build_request(url, payload)
 
+        # TODO Consider "try:" for a TypeError for response of {"m":{},"d":[]}
         return [historical_data.EventResults(x) for x in response.json()["d"]["r"]]
 
     async def season_from_session(self, sessionID):
@@ -601,9 +603,9 @@ class Client:
     async def season_standings(
             self,
             seasonID,
+            raceWeek=-1,
             carClassID=-1,
             clubID=-1,
-            raceWeek=-1,
             division=-1,
             start=1,
             end=25,
@@ -611,38 +613,44 @@ class Client:
             order=ct.Sort.descending
     ):
         """ Returns the championship point standings of a series.
-        This is the same data found in /statsseries.jsp
+        This is the same data found in /statsseries.jsp.
         """
-
         payload = {
             'seasonid': seasonID,
             'carclassid': carClassID,
             'clubid': clubID,
-            'raceweek': raceWeek,
+            'raceweek': raceWeek - 1,  # Makes human '1' == computer '1'
             'division': division,
             'start': start,
             'end': end,
             'sort': sort,
             'order': order
         }
+        # Using -1 means "all" but breaks with human -> computer number magic
+        if raceWeek == -1:
+            payload['raceweek'] = -1
+
         url = ct.URL_SEASON_STANDINGS
         response = await self.build_request(url, payload)
 
         return [historical_data.SeasonStandings(x) for x in response.json()["d"]["r"]]
 
-    async def series_race_results(self, seasonID, raceWeek=-1):
+    async def series_race_results(self, seasonID, raceWeek=1):
         """ Returns the race results for a seasonID. raceWeek can be
         specified to reduce the size of data returned.
         """
-        payload = {'seasonid': seasonID, 'raceweek': raceWeek}
+        payload = {
+            'seasonid': seasonID,
+            'raceweek': raceWeek - 1  # Makes human '1' == computer '0'
+            }
         url = ct.URL_SERIES_RACERESULTS
         response = await self.build_request(url, payload)
 
         return [historical_data.SeriesRaceResults(x) for x in response.json()['d']]
 
     async def next_session_times(self, seasonID):
-        """ Returns the next 5 sessions and their starting times from a
-        seasonID.
+        """ Returns the next 5 sessions with all of their attributes:\n
+        starttime, registered drivers, session parameters, etc.
         """
         payload = {'season': seasonID}
         url = ct.URL_SESSION_TIMES
@@ -695,7 +703,6 @@ class Client:
         url = ct.URL_STATS_CHART
         return await self.build_request(url, payload)
 
-    # TODO New name to differentiate "event" results from session data (this)
     async def subsession_data(self, sub_sess_id, custID):
         """ Returns extensive data about a session. This endpoint contains
         data points about a session that are unavaible anywhere else.
