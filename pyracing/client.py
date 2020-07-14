@@ -696,7 +696,7 @@ class Client:
         return await self.build_request(url, payload)
 
     # TODO New name to differentiate "event" results from session data (this)
-    async def sub_sess_data(self, sub_sess_id, custID):
+    async def subsession_data(self, sub_sess_id, custID):
         """ Returns extensive data about a session. This endpoint contains
         data points about a session that are unavaible anywhere else.
         """
@@ -707,7 +707,8 @@ class Client:
         url = ct.URL_SUBS_RESULTS
         response = await self.build_request(url, payload)
 
-        return [session_data.SubSessionData(x) for x in response.json()]
+        # Returns a single dictionary
+        return session_data.SubSessionData(response.json())
 
     # TODO Be bothered to finish this one
     async def team_standings(
