@@ -626,7 +626,13 @@ class Client:
         """
         chart_type = ct.ChartType.irating
         response = await self.stats_chart(category, custID, chart_type)
+<<<<<<< HEAD
         irating_list = [IRating(x) for x in response.json()]
+=======
+
+        # Makes a list of IRating objects for ChartData to accept
+        irating_list = [IRating(x) for x in response.json()[0]]
+>>>>>>> 843cf7ed6deb65886bd4dcc4b97ed5bb9a473c33
 
         return ChartData(category, ct.ChartType.irating, irating_list)
 
@@ -636,7 +642,13 @@ class Client:
         """
         chart_type = ct.ChartType.ttrating
         response = await self.stats_chart(category, custID, chart_type)
+<<<<<<< HEAD
         ttrating_list = [TTRating(x) for x in response.json()]
+=======
+
+        # Makes a list of TTRating objects for ChartData to accept
+        ttrating_list = [TTRating(x) for x in response.json()[0]]
+>>>>>>> 843cf7ed6deb65886bd4dcc4b97ed5bb9a473c33
 
         return ChartData(category, chart_type, ttrating_list)
 
@@ -647,7 +659,13 @@ class Client:
         """
         chart_type = ct.ChartType.license_class
         response = await self.stats_chart(category, custID, chart_type)
+<<<<<<< HEAD
         license_class_list = [LicenseClass(x) for x in response.json()]
+=======
+
+        # Makes a list of LicenseClass objects for ChartData to accept
+        license_class_list = [LicenseClass(x) for x in response.json()[0]]
+>>>>>>> 843cf7ed6deb65886bd4dcc4b97ed5bb9a473c33
 
         return ChartData(category, chart_type, license_class_list)
 
@@ -734,7 +752,12 @@ class Client:
         if not response.json():
             return []
 
+<<<<<<< HEAD
         return [YearlyStats(x) for x in response.json()]
+=======
+        # There is only ever 1 item in returned list
+        return YearlyStats(response.json()[0])
+>>>>>>> 843cf7ed6deb65886bd4dcc4b97ed5bb9a473c33
 
     # Returns a list of keys from the dictionary where values are truthy
     @staticmethod
