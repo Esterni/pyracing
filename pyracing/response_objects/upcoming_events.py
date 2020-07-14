@@ -152,7 +152,6 @@ class NextSessionTimes:
         self.leavemarbles = dict['15']
         self.numregistered = dict['16']
         self.totalcount = dict['17']
-        self.reloadtime = dict['18']
         self.weathertempunits = dict['19']
         self.rubberlevelwarmup = dict['20']
         self.weathertempvalue = dict['21']
@@ -168,3 +167,5 @@ class NextSessionTimes:
         self.seasonid = dict['31']
         self.raceweek = dict['32']
         self.weatherfogdensity = dict['33']
+        # Unsure where this is used, but it's outside of the 'd' dictionary
+        # self.reloadtime = dict['18']
