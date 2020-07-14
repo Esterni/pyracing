@@ -124,7 +124,7 @@ class Client:
             }
         response = await self.build_request(url, payload)
 
-        return [upcoming_events.ActiveOPCount(x) for x in response.json()]
+        return [upcoming_events.ActiveOPCount(x) for x in response.json()["d"]]
 
     async def all_subsessions(self, sub_sess_id):
         """ If the given SubSessionID is one of many race splits, this
