@@ -1,8 +1,8 @@
 from . import constants as ct
-# Imports CareerStats, YearlyStats, LastRaceStats, LastSeries, Personal Bests.
+# Imports CareerStats, YearlyStats, LastRaceStats, LastSeries, PersonalBests.
 from .response_objects.career_stats import *
 # Imports ChartData, IRating, TTRating, and LicenseClass
-from .response_objects.chart_data import *
+from .response_objects.chart_data import ChartData, IRating, TTRating, LicenseClass
 
 from .response_objects.iracing_data import *
 

@@ -2,7 +2,7 @@ from ..constants import parse_iracing_string
 
 
 # I believe this maps what I would call a series, but iRacing calls this a season, so I want to be consistent
-class Season:
+class CurrentSeasons:
     def __init__(self, dict):
         self.season_id = dict['seasonid']
         self.cat_id = dict['catid']
@@ -28,3 +28,23 @@ class Season:
             return dict[field_name]
         else:
             return None
+
+class CarClass:
+    def __init__(self, dict):
+
+
+# Useful for personal_bests(). Need to know CarIDs to query.
+class MemberCars:
+    def __init__(self, dict):
+
+class MemberDivision:
+    def __init__(self, dict):
+
+class MemberSubID:
+    def __init__(self, dict):
+
+
+class SeasonForSession:
+    def __init__(self, dict):
+
+
