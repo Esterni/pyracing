@@ -1,5 +1,6 @@
 from ..constants import parse_iracing_string
 
+
 class CareerStats:
     def __init__(self, dict):
         self.wins = dict['wins']
@@ -39,7 +40,7 @@ class YearlyStats:
         self.starts = dict['starts']
 
 
-class LastRaceStats:
+class LastRacesStats:
     def __init__(self, dict):
         self.startPos = dict['startPos']
         self.lapsLed = dict['lapsLed']
