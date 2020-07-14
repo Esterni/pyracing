@@ -138,7 +138,7 @@ class DriverStats:
 
 class WorldRecords:
     def __init__(self, dict):
-        self.timetrial_subsessionid = parse_iracing_string(dict['1'])
+        self.timetrial_subsessionid = ['1']
         self.practice = parse_iracing_string(dict['2'])
         self.licenseclass = parse_iracing_string(dict['3'])
         self.irating = dict['4']
@@ -148,16 +148,14 @@ class WorldRecords:
         self.practice_start_time = dict['8']
         self.carid = dict['9']
         self.catid = dict['10']
-        self.race_subsessionid = parse_iracing_string(dict['11'])
+        self.race_subsessionid = ['11']
         self.season_quarter = parse_iracing_string(dict['12'])
         self.practice_subsessionid = dict['13']
         self.licensegroup = dict['14']
         self.qualify = parse_iracing_string(dict['15'])
-        self.custrow = dict['16']
         self.season_year = parse_iracing_string(dict['17'])
         self.race_start_time = dict['18']
         self.race = parse_iracing_string(dict['19'])
-        self.rowcount = dict['20']
         self.qualify_start_time = dict['21']
         self.helmpattern = dict['22']
         self.licenselevel = dict['23']
@@ -173,9 +171,11 @@ class WorldRecords:
         self.rn = dict['33']
         self.region = parse_iracing_string(dict['34'])
         self.category = parse_iracing_string(dict['35'])
-        self.qualify_subsessionid = parse_iracing_string(dict['36'])
+        self.qualify_subsessionid = ['36']
         self.timetrial = parse_iracing_string(dict['37'])
-
+        # Data not used in the 'r' dictionary. Only for webpage display.
+        # self.custrow = dict['16']
+        # self.rowcount = dict['20']
 
 class PrivateResults:
     def __init__(self, dict):
