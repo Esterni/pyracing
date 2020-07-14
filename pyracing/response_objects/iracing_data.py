@@ -66,7 +66,7 @@ class MemberSubID:
 
 class SeasonFromSession:
     def __init__(self, value):
-        self.seasonID = value
+        self.seasonID = int(value)
 
 
 class AllSubSessions:
