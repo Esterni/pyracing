@@ -70,9 +70,7 @@ class SeasonStandings:
         self.incidents = dict['13']
         self.rank = dict['14']
         self.starts = dict['15']
-        self.custrow = dict['16']
         self.wins = dict['17']
-        self.rowcount = dict['18']
         self.poles = dict['19']
         self.helmpattern = dict['20']
         self.maxlicenselev = dict['21']
@@ -87,6 +85,10 @@ class SeasonStandings:
         self.pos = dict['30']
         self.rn = dict['31']
         self.displaycountry = dict['32']
+
+        # Used only on webpage to highlight the member in relaton to others
+        # self.custrow = dict['16']
+        # self.rowcount = dict['18']
 
 
 class DriverStats:
