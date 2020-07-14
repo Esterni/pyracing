@@ -82,7 +82,7 @@ class License:
 
     def number_to_string(self, number):
         if number == self.rookie:
-            return 'Rookie'
+            return 'R'
         elif number == self.d_class:
             return 'D'
         elif number == self.c_class:

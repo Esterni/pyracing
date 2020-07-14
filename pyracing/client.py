@@ -86,6 +86,7 @@ class Client:
     async def build_request(self, url, params):
         """ Builds the final GET request from url and params
         """
+        self.log.info(f'Request being sent to: {url} with params: {params}')
         response = await self.session.get(
             url,
             params=params,
@@ -155,7 +156,7 @@ class Client:
         if not response.json():
             return []
 
-        return list(map(lambda x: CareerStats(x), response.json()))
+        return [CareerStats(x) for x in response.json()]
 
     async def current_seasons(
             self,
@@ -219,7 +220,7 @@ class Client:
         }
         url = ct.URL_CURRENT_SEASONS
         response = await self.build_request(url, payload)
-        return list(map(lambda x: Season(x), response.json()))
+        return [Season(x) for x in response.json()]
 
     # TODO Use *kwargs with dictionary for default values? Very long list.
 
@@ -328,7 +329,7 @@ class Client:
         if not response.json():
             return []
 
-        return list(map(lambda x: LastRaceStats(x), response.json()))
+        return [LastRaceStats(x) for x in response.json()]
 
     async def last_series(self, custID):
         """ Returns a summary of stats about a driver's last 3 series as seen
@@ -609,7 +610,7 @@ class Client:
         """
         chart_type = ct.ChartType.irating
         response = await self.stats_chart(category, custID, chart_type)
-        irating_list = list(map(lambda x: IRating(x), response.json()))
+        irating_list = [IRating(x) for x in response.json()]
 
         return ChartData(category, ct.ChartType.irating, irating_list)
 
@@ -619,7 +620,7 @@ class Client:
         """
         chart_type = ct.ChartType.ttrating
         response = await self.stats_chart(category, custID, chart_type)
-        ttrating_list = list(map(lambda x: TTRating(x), response.json()))
+        ttrating_list = [TTRating(x) for x in response.json()]
 
         return ChartData(category, chart_type, ttrating_list)
 
@@ -630,8 +631,7 @@ class Client:
         """
         chart_type = ct.ChartType.license_class
         response = await self.stats_chart(category, custID, chart_type)
-        license_class_list = list(
-            map(lambda x: LicenseClass(x), response.json()))
+        license_class_list = [LicenseClass(x) for x in response.json()]
 
         return ChartData(category, chart_type, license_class_list)
 
@@ -717,7 +717,7 @@ class Client:
         if not response.json():
             return []
 
-        return list(map(lambda x: YearlyStats(x), response.json()))
+        return [YearlyStats(x) for x in response.json()]
 
     # Returns a list of keys from the dictionary where values are truthy
     @staticmethod
