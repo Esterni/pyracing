@@ -107,10 +107,12 @@ class DriverStats:
         self.rank = dict['14']
         self.starts = dict['15']
         self.licenseclass = parse_iracing_string(dict['16'])
-        self.custrow = dict['17']
+        # 17 only exists in the dict level up for highlighting custid
+        # self.custrow = dict['17']
         self.wins = dict['18']
         self.licenseclass_rank = dict['19']
-        self.rowcount = dict['20']
+        # 20 only exists in the dict level up for identifying total rows
+        # self.rowcount = dict['20']
         self.clubpoints = dict['21']
         self.helmpattern = dict['22']
         self.licenselevel = dict['23']
