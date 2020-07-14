@@ -1,4 +1,4 @@
-from ...constants import ChartType, Category, License
+from ..constants import ChartType, Category, License
 from datetime import datetime
 
 
