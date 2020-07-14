@@ -29,22 +29,47 @@ class CurrentSeasons:
         else:
             return None
 
+
 class CarClass:
     def __init__(self, dict):
+        self.rel_speed = dict['relspeed']  # Speed ranking to other classes
+        self.lower_name = dict['lowername']
+        self.custid = dict['custid']
+        self.class_full_name = dict['name']
+
+        # Inject into subclass CarsInClass?
+        self.carsinclass = dict['carsinclass']
+        self.class_id = dict['id']
+        self.class_shortname = dict['shortname']
+
+    class CarsInClass:
+        def __init__(self, dict):
+            self.car_name = dict['name']
+            self.car_id = dict['id']
 
 
 # Useful for personal_bests(). Need to know CarIDs to query.
-class MemberCars:
-    def __init__(self, dict):
+class CarsDriven:
+    def __init__(self, car_list):
+        self.list_of_cars = car_list
+
 
 class MemberDivision:
     def __init__(self, dict):
+        self.division = dict['division']
+        self.projected_division = dict['isProjected']
+
 
 class MemberSubID:
+    def __init__(self, value):
+        self.sub_id = value
+
+
+class SeasonFromSession:
+    def __init__(self, value):
+        self.seasonID = value
+
+
+class AllSubSessions:
     def __init__(self, dict):
-
-
-class SeasonForSession:
-    def __init__(self, dict):
-
-
+        self.subsession_id = dict['subsessionid']
