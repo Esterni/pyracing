@@ -2,7 +2,7 @@ from ..constants import parse_iracing_string
 
 
 # I believe this maps what I would call a series, but iRacing calls this a season, so I want to be consistent
-class CurrentSeasons:
+class Season:
     def __init__(self, dict):
         self.season_id = dict['seasonid']
         self.cat_id = dict['catid']

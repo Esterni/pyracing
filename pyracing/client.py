@@ -225,7 +225,7 @@ class Client:
         url = ct.URL_CURRENT_SEASONS
         response = await self.build_request(url, payload)
 
-        return [iracing_data.CurrentSeasons(x) for x in response.json()]
+        return [iracing_data.Season(x) for x in response.json()]
 
     async def driver_stats(
             self,
@@ -659,7 +659,7 @@ class Client:
         response = await self.stats_chart(category, custID, chart_type)
         irating_list = [chart_data.IRating(x) for x in response.json()]
 
-        return ChartData(category, ct.ChartType.irating, irating_list)
+        return chart_data.ChartData(category, ct.ChartType.irating, irating_list)
 
     async def get_ttrating(self, category, custID):
         """ Utilizes the stats_chart class to return a list of ttrating values
@@ -669,7 +669,7 @@ class Client:
         response = await self.stats_chart(category, custID, chart_type)
         ttrating_list = [chart_data.TTRating(x) for x in response.json()]
 
-        return ChartData(category, chart_type, ttrating_list)
+        return chart_data.ChartData(category, chart_type, ttrating_list)
 
     async def get_license_class(self, category, custID):
         """ Utilizes the stats_chart class to return a list of license values
