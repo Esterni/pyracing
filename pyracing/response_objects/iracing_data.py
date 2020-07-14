@@ -36,16 +36,15 @@ class CarClass:
         self.lower_name = dict['lowername']
         self.custid = dict['custid']
         self.class_full_name = dict['name']
-
-        # Inject into subclass CarsInClass?
-        self.carsinclass = dict['carsinclass']
         self.class_id = dict['id']
         self.class_shortname = dict['shortname']
 
-    class CarsInClass:
-        def __init__(self, dict):
-            self.car_name = dict['name']
-            self.car_id = dict['id']
+        class Cars:
+            def __init__(self, dict):
+                self.car_name = dict['name']
+                self.car_id = dict['id']
+
+        self.cars = [Cars(x) for x in dict['carsinclass']]
 
 
 # Useful for personal_bests(). Need to know CarIDs to query.

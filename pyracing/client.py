@@ -147,7 +147,8 @@ class Client:
 
         response = await self.build_request(url, payload)
 
-        return [iracing_data.CarClass(x) for x in response.json()]
+        # Returns a single dictionary
+        return iracing_data.CarClass(response.json()['carclass'])
 
     async def career_stats(self, custID):
         """ Returns driver career stats as seen on the driver profile page.\n
@@ -498,7 +499,6 @@ class Client:
         response = await self.build_request(url, payload)
 
         return [session_data.RaceLapsDriver(x) for x in response.json()]
-
 
     async def event_results(
             self,
