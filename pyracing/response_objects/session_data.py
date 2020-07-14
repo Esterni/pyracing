@@ -282,4 +282,4 @@ class RaceLapsDriver:
         # attributes of primary class (RaceLapsDriver)
         self.lapData = [LapData(x) for x in dict['lapData']]
         self.header = Header(dict['header'])
-        self.drivers = [Driver(x) for x in dict['drivers']]
+        self.driver = Driver(dict['drivers'])
