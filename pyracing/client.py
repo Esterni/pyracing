@@ -6,6 +6,8 @@ from .response_objects.chart_data import *
 
 from .response_objects.iracing_data import *
 
+from .response_objects.historical_data import *
+
 import logging
 import httpx
 import sys
@@ -219,8 +221,6 @@ class Client:
         response = await self.build_request(url, payload)
         return [Season(x) for x in response.json()]
 
-    # TODO Use *kwargs with dictionary for default values? Very long list.
-
     async def driver_stats(
             self,
             custid,
@@ -286,9 +286,8 @@ class Client:
             'active': active
         }
         url = ct.URL_DRIVER_STATS
-        return await self.build_request(url, payload)
-
-    # TODO Find query string parameters for this url
+        response = await self.build_request(url, payload)
+        return [DriverStats(x) for x in response.json()["d"]["r"]]
 
     async def hosted_results(
             self,
@@ -334,7 +333,9 @@ class Client:
         """
         payload = {'custid': custID}
         url = ct.URL_LAST_SERIES
-        return await self.build_request(url, payload)
+        response = await self.build_request(url, payload)
+
+        return [LastRaceStats(x) for x in response.json()]
 
     async def member_cars_driven(self, custID):
         """ Returns which cars (carID) someone has driven.
@@ -362,8 +363,6 @@ class Client:
         payload = {'custid': custID, 'sessionID': sessNum}
         url = ct.URL_MEM_SUBSESSID
         return await self.build_request(url, payload)
-
-    # Might not be useful. Must be logged in and not affected by custID.
 
     async def my_racers(self, friends=1, studied=1, blacklisted=1):
         """ Not useful. Returns only friendslist for the person logged in """
@@ -398,7 +397,9 @@ class Client:
         """
         payload = {'custid': custID, 'carid': carID}
         url = ct.URL_PERSONAL_BESTS
-        return await self.build_request(url, payload)
+        response = await self.build_request(url, payload)
+
+        return [PersonalBests(x) for x in response.json()]
 
     async def race_guide(
             self,
@@ -475,9 +476,8 @@ class Client:
         url = ct.URL_LAPS_SINGLE
         return await self.build_request(url, payload)
 
-    # TODO Dictionary list of available flags/filters. custid required
 
-    async def results(
+    async def event_results(
             self,
             custID,
             show_races=1,
@@ -497,7 +497,7 @@ class Client:
             upper_bound=25,
             sort=ct.Sort.start_time,
             order=ct.Sort.descending,
-            format='json',
+            data_format='json',
             category1=1,
             category2=2,
             category3=3,
@@ -505,9 +505,18 @@ class Client:
             season_year=2020,
             season_quarter=3,
             race_week=-1,
-            track_id=-1,
-            car_class=-1,
-            car_id=-1
+            track_id=None,
+            car_class=None,
+            car_id=None,
+            raceweek=None,
+            start_low=None,
+            start_high=None,
+            finish_low=None,
+            finish_high=None,
+            incidents_low=None,
+            incidents_high=None,
+            champpoints_low=None,
+            champpoints_high=None
     ):
         """ Returns all data about the results of a session. Providing a
         custID allows for returning all results by a specific driver.
@@ -531,7 +540,7 @@ class Client:
             'upperbound': upper_bound,
             'sort': sort,
             'order': order,
-            'format': format,
+            'format': data_format,
             'category%5B%5D': category1,
             'category%5B%5D': category2,
             'category%5B%5D': category3,
@@ -541,10 +550,19 @@ class Client:
             'raceweek': race_week,
             'trackid': track_id,
             'carclassid': car_class,
-            'carid': car_id
+            'carid': car_id,
+            'start_low': start_low,
+            'start_high': start_high,
+            'finish_low': finish_low,
+            'finish_high': finish_high,
+            'incidents_low': incidents_low,
+            'incidents_high': incidents_high,
+            'champpoints_low': champpoints_low,
+            'champpoints_high': champpoints_high
         }
         url = ct.URL_RESULTS
-        return await self.build_request(url, payload)
+        response = await self.build_request(url, payload)
+        return [EventResults(x) for x in response.json()["d"]["r"]]
 
     async def season_for_session(self, sessionID):
         """ Returns the seasonID for a given sessionID. That is this endpoints
@@ -582,7 +600,8 @@ class Client:
             'order': order
         }
         url = ct.URL_SEASON_STANDINGS
-        return await self.build_request(url, payload)
+        response = await self.build_request(url, payload)
+        return [SeasonStandings(x) for x in response.json()["d"]["r"]]
 
     async def series_race_results(self, seasonID, raceWeek=-1):
         """ Returns the race results for a seasonID. raceWeek can be
@@ -701,7 +720,8 @@ class Client:
             'upperbound': 1
         }
         url = ct.URL_WORLD_RECORDS
-        return await self.build_request(url, payload)
+        response = await self.build_request(url, payload)
+        return [WorldRecords(x) for x in response.json()["d"]["r"]]
 
     async def yearly_stats(self, custID):
         """ Returns the breakdown of career stats by year, as seen on the

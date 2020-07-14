@@ -1,3 +1,5 @@
+from ..constants import parse_iracing_string
+
 class CareerStats:
     def __init__(self, dict):
         self.wins = dict['wins']
@@ -13,7 +15,7 @@ class CareerStats:
         self.lapsLed = dict['lapsLed']
         self.top5 = dict['top5']
         self.lapsLedPerc = round(dict['lapsLedPerc'], 2)
-        self.category = dict['category'].replace('+', ' ')
+        self.category = parse_iracing_string(dict['category'])
         self.starts = dict['starts']
 
 
@@ -33,7 +35,7 @@ class YearlyStats:
         self.lapsLed = dict['lapsLed']
         self.top5 = dict['top5']
         self.lapsLedPerc = round(dict['lapsLedPerc'], 2)
-        self.category = dict['category'].replace('+', ' ')
+        self.category = parse_iracing_string(dict['category'])
         self.starts = dict['starts']
 
 
@@ -63,31 +65,31 @@ class LastRaceStats:
 
 class LastSeries:
     def __init__(self, dict):
-        self.champPoints
-        self.weeks
-        self.lapsLead
-        self.laps
-        self.avgStart
-        self.avgFinish
-        self.seriesID
-        self.seasonShortName
-        self.division
-        self.seasonID
-        self.series
-        self.top5
-        self.seasonName
-        self.incidents
-        self.clubPoints
-        self.position
-        self.starts
-        self.seriesShortName
-        self.carClass
+        self.current_champ_points = dict['champPoints']
+        self.weeks = dict['weeks']
+        self.lapsLead = dict['lapsLead']
+        self.laps = dict['laps']
+        self.avgStart = dict['avgStart']
+        self.avgFinish = dict['avgFinish']
+        self.seriesID = dict['seriesID']
+        self.seasonShortName = parse_iracing_string(dict['seasonShortName'])
+        self.division = dict['division']
+        self.seasonID = dict['seasonID']
+        self.series = parse_iracing_string(dict['series'])
+        self.top5 = dict['top5']
+        self.seasonName = parse_iracing_string(dict['seasonName'])
+        self.incidents = dict['incidents']
+        self.clubPoints = dict['clubPoints']
+        self.position = dict['position']
+        self.starts = dict['starts']
+        self.seriesShortName = parse_iracing_string(dict['seriesShortName'])
+        self.carClass = dict['carClass']
 
 
 class PersonalBests:
     def __init__(self, dict):
-        self.trackconfigname
-        self.eventtypename
-        self.trackid
-        self.bestlaptimeformatted
-        self.trackname
+        self.track_config = parse_iracing_string(dict['trackconfigname'])
+        self.event_type = dict['eventtypename']
+        self.track_id = dict['trackid']
+        self.best_lap = parse_iracing_string(dict['bestlaptimeformatted'])
+        self.track_name = parse_iracing_string(dict['trackname'])
