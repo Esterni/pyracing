@@ -52,6 +52,7 @@ class EventResults:
         self.clubpointssort = dict['47']
         self.displayname = parse_iracing_string(dict['48'])
 
+
 class SeasonStandings:
     def __init__(self, dict):
         self.country = parse_iracing_string(dict['1'])
@@ -130,6 +131,7 @@ class DriverStats:
         self.region = parse_iracing_string(dict['38'])
         self.groupletter = parse_iracing_string(dict['39'])
 
+
 class WorldRecords:
     def __init__(self, dict):
         self.timetrial_subsessionid = parse_iracing_string(dict['1'])
@@ -170,3 +172,91 @@ class WorldRecords:
         self.qualify_subsessionid = parse_iracing_string(dict['36'])
         self.timetrial = parse_iracing_string(dict['37'])
 
+
+class PrivateResults:
+    def __init__(self, dict):
+        self.weather_temp_units = dict['weather_temp_units']
+        self.weather_wind_dir = dict['weather_wind_dir']
+        self.weather_temp_value = dict['weather_temp_value']
+        self.privatesessionid = dict['privatesessionid']
+        self.sessionid = dict['sessionid']
+        self.practicelength = dict['practicelength']
+        self.sessionname = dict['sessionname']
+        self.winner_licenselevel = dict['winner_licenselevel']
+        self.hardcorelevel = dict['hardcorelevel']
+        self.carids = dict['carids']
+        self.racesetupfilenames = dict['racesetupfilenames']
+        self.host_helmet_color1 = dict['host_helmet_color1']
+        self.host_helmet_color2 = dict['host_helmet_color2']
+        self.weight_penalties = dict['weight_penalties']
+        self.host_helmet_color3 = dict['host_helmet_color3']
+        self.qualifylength = dict['qualifylength']
+        self.maxir = dict['maxir']
+        self.weather_fog_density = dict['weather_fog_density']
+        self.startingposition = dict['startingposition']
+        self.max_pct_fuel_fills = dict['max_pct_fuel_fills']
+        self.host_licenselevel = dict['host_licenselevel']
+        self.created = dict['created']
+        self.host_custid = dict['host_custid']
+        self.restarts = dict['restarts']
+        self.start_time = dict['start_time']
+        self.timeofday = dict['timeofday']
+        self.racefinishedat = dict['racefinishedat']
+        self.host_displayname = dict['host_displayname']
+        self.numfasttows = dict['numfasttows']
+        self.rn = dict['rn']
+        self.winner_displayname = dict['winner_displayname']
+        self.racelaps = dict['racelaps']
+        self.winnersgroupid = dict['winnersgroupid']
+        self.private = dict['private']
+        self.carclassid = dict['carclassid']
+        self.classfinishingposition = dict['classfinishingposition']
+        self.trackid = dict['trackid']
+        self.weather_type = dict['weather_type']
+        self.minir = dict['minir']
+        self.fixed_setup = dict['fixed_setup']
+        self.qualifylaps = dict['qualifylaps']
+        self.weather_skies = dict['weather_skies']
+        self.rollingstarts = dict['rollingstarts']
+        self.subsessionfinishedat = dict['subsessionfinishedat']
+        self.catid = dict['catid']
+        self.maxdrivers = dict['maxdrivers']
+        self.fullcoursecautions = dict['fullcoursecautions']
+        self.racesetupids = dict['racesetupids']
+        self.qualsetupfilenames = dict['qualsetupfilenames']
+        self.bestlaptime = dict['bestlaptime']
+        self.finishingposition = dict['finishingposition']
+        self.incidents = dict['incidents']
+        self.subsessionid = dict['subsessionid']
+        self.qualsetupids = dict['qualsetupids']
+        self.track_name = dict['track_name']
+        self.sessionfastlap = dict['sessionfastlap']
+        self.winner_helmet_color2 = dict['winner_helmet_color2']
+        self.winner_helmet_color1 = dict['winner_helmet_color1']
+        self.winner_helmet_color3 = dict['winner_helmet_color3']
+        self.maxliclevel = dict['maxliclevel']
+        self.weather_rh = dict['weather_rh']
+        self.racelength = dict['racelength']
+        self.multiclass = dict['multiclass']
+        self.lonequalify = dict['lonequalify']
+        self.host_helmet_facetype = dict['host_helmet_facetype']
+        self.weather_wind_speed_value = dict['weather_wind_speed_value']
+        self.minliclevel = dict['minliclevel']
+        self.winner_helmet_pattern = dict['winner_helmet_pattern']
+        self.host_helmet_pattern = dict['host_helmet_pattern']
+        self.weather_wind_speed_units = dict['weather_wind_speed_units']
+        self.host_helmet_helmettype = dict['host_helmet_helmettype']
+        self.classstartingposition = dict['classstartingposition']
+        self.winner_displaynames = dict['winner_displaynames']
+
+
+class SeriesRaceResults:
+    def __init__(self, dict):
+        self.start_time = dict['1']
+        self.carclassid = dict['2']
+        self.trackid = dict['3']
+        self.sessionid = dict['4']
+        self.subsessionid = dict['5']
+        self.officialsession = dict['6']
+        self.sizeoffield = dict['7']
+        self.strengthoffield = dict['8']
