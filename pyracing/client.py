@@ -772,13 +772,3 @@ class Client:
             return []
 
         return [career_stats.YearlyStats(x) for x in response.json()]
-
-    # Returns a list of keys from the dictionary where values are truthy
-    @staticmethod
-    def key_list_from_dict(dictionary):
-        key_list = []
-        for key, value in dictionary.items():
-            if value:
-                key_list.append(key)
-
-        return key_list
