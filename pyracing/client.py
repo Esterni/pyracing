@@ -1,10 +1,6 @@
 from . import constants as ct
-from .response_objects import career_stats
-from .response_objects import chart_data
-from .response_objects import iracing_data
-from .response_objects import historical_data
-from .response_objects import session_data
-from .response_objects import upcoming_events
+from .response_objects import career_stats, iracing_data, historical_data
+from .response_objects import chart_data, session_data, upcoming_events
 
 import logging
 import httpx
