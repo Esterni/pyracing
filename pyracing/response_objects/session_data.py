@@ -159,7 +159,7 @@ class SubSessionData:
 
         self.driver = [Driver(x) for x in dict['rows']]
 
-
+# Race laps for all drivers of a session
 class RaceLapsAll:
     def __init__(self, dict):
 
@@ -223,6 +223,7 @@ class RaceLapsAll:
         self.lapdata = [LapData(x) for x in dict['lapdata']]
 
 
+# Race laps for single driver of a session
 class RaceLapsDriver:
     def __init__(self, dict):
 
