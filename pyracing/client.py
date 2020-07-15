@@ -217,7 +217,7 @@ class Client:
         key_list = [key for key in field_dict if field_dict.get(key)]
 
         # iRacing accepts these as a single, comma seperated, parameter
-        key_list = ','.join(map(str, key_list))
+        key_list = ','.join(key_list)
 
         payload = {
             'onlyActive': 1 if only_active else 0,
