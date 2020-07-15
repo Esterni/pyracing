@@ -1,84 +1,73 @@
 from ..constants import parse_iracing_string
 
 
+# This is the baseline for a car. Most of the time this is all we get,
+# but sometimes we get more fields
+class Car:
+    def __init__(self, data):
+        self.name = parse_iracing_string(data['name'])
+        self.id = data['id']
+
+
+# This is the base class for a CarClass, in a season call we get one more field than this
+class CarClass:
+    def __init__(self, dict):
+        self.rel_speed = dict['relspeed']  # Speed ranking to other classes
+        self.lowername = dict['lowername']
+        self.custid = dict['custid']
+        self.name = parse_iracing_string(dict['name'])
+        self.id = dict['id']
+        self.shortname = parse_iracing_string(dict['shortname'])
+        # Creating subclass from nested list
+        self.cars = [Car(x) for x in dict['carsinclass']]
+
+
 # I believe this maps what I would call a series, but
 # iRacing calls this a season, so I want to be consistent
 class Season:
     def __init__(self, data):
-        self.serieslicgroupid = data.get('serieslicgroupid')
+        self.series_lic_group_id = data.get('serieslicgroupid')
         self.year = data.get('year')
         self.start = data.get('start')
         self.active = data.get('active')
-        self.islite = data.get('islite')
-        self.seriesid = data.get('seriesid')
-        self.licenseEligible = data.get('licenseEligible')
-        self.catid = data.get('catid')
-        self.seasonid = data.get('seasonid')
-        self.seriesshortname = data.get('seriesshortname')
+        self.is_lite = data.get('islite')
+        self.series_id = data.get('seriesid')
+        self.license_eligible = data.get('licenseEligible')
+        self.cat_id = data.get('catid')
+        self.season_id = data.get('seasonid')
+        self.series_short_name = data.get('seriesshortname')
         self.end = data.get('end')
         self.category = data.get('category')
         self.raceweek = data.get('raceweek')
         self.quarter = data.get('quarter')
         # Creating subclasses from nested lists
-        self.carclasses = [self.CarClass(x) for x in data.get('carclasses', [])]
+        self.car_classes = [self.SeasonCarClass(x) for x in data.get('carclasses', [])]
         self.tracks = [self.Tracks(x) for x in data.get('tracks', [])]
-        self.cars = [self.Cars(x) for x in data.get('cars', [])]
-
-    class CarClass:
-        def __init__(self, data):
-            self.relspeed = data['relspeed']
-            self.lowername = data['lowername']
-            self.custid = data['custid']
-            self.name = data['name']
-            self.max_dry_tire_sets = data['max_dry_tire_sets']
-            self.id = data['id']
-            self.shortname = data['shortname']
-            # Creating subclass from nested lists
-            self.carsinclass = [self.Cars(x) for
-                                x in data.get('carsinclass', [])]
-
-        class Cars:
-            def __init__(self, data):
-                self.name = data['name']
-                self.id = data['id']
+        self.cars = [self.SeasonCar(x) for x in data.get('cars', [])]
 
     class Tracks:
         def __init__(self, data):
-            self.lowername = data['lowername']
-            self.name = data['name']
-            self.id = data['id']
+            self.lowername = parse_iracing_string(data['lowername'])
             self.pkgid = data['pkgid']
             self.priority = data['priority']
             self.raceweek = data['raceweek']
             self.config = data['config']
             self.timeOfDay = data['timeOfDay']
 
-    # Yes, there is both a list of "carclasses" with a list of "cars" AND
-    # a list "cars" but they each have different values...
-    class Cars:
+    # The Season endpoint returns more data for a car than other places
+    class SeasonCar(Car):
         def __init__(self, data):
-            self.lowername = data['lowername']
+            super().__init__(data)
+            self.lowername = parse_iracing_string(data['lowername'])
             self.name = data['name']
             self.id = data['id']
-            self.pkgid = data['pkgid']
+            self.pkg_id = data['pkgid']
             self.sku = data['sku']
 
-
-class CarClass:
-    def __init__(self, dict):
-        self.rel_speed = dict['relspeed']  # Speed ranking to other classes
-        self.lower_name = dict['lowername']
-        self.custid = dict['custid']
-        self.class_full_name = dict['name']
-        self.class_id = dict['id']
-        self.class_shortname = dict['shortname']
-        # Creating subclass from nested list
-        self.cars = [self.Cars(x) for x in dict['carsinclass']]
-
-    class Cars:
-        def __init__(self, dict):
-            self.car_name = dict['name']
-            self.car_id = dict['id']
+    class SeasonCarClass(CarClass):
+        def __init__(self, data):
+            super().__init__(data)
+            self.max_dry_tire_sets = data['max_dry_tire_sets']
 
 
 # Useful for personal_bests(). Need to know CarIDs to query.
