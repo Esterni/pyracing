@@ -17,7 +17,6 @@ class EventResults:
         self.starting_position = dict['12']
         self.helm_color3 = parse_iracing_string(dict['13'])
         self.helm_color2 = parse_iracing_string(dict['14'])
-        self.rowcount = dict['15']
         self.clubpoints = dict['16']
         self.dropracepoints = dict['17']
         self.officialsession = dict['18']
@@ -51,6 +50,8 @@ class EventResults:
         self.helm_pattern = dict['46']
         self.clubpointssort = dict['47']
         self.displayname = parse_iracing_string(dict['48'])
+        # Another instance of not in dict
+        # self.rowcount = dict['15']
 
 
 class SeasonStandings:
@@ -176,6 +177,7 @@ class WorldRecords:
         # Data not used in the 'r' dictionary. Only for webpage display.
         # self.custrow = dict['16']
         # self.rowcount = dict['20']
+
 
 class PrivateResults:
     def __init__(self, dict):
