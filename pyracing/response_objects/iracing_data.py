@@ -1,33 +1,66 @@
 from ..constants import parse_iracing_string
 
 
-# I believe this maps what I would call a series, but iRacing calls this a season, so I want to be consistent
+# I believe this maps what I would call a series, but
+# iRacing calls this a season, so I want to be consistent
 class Season:
-    def __init__(self, dict):
-        self.season_id = dict['seasonid']
-        self.cat_id = dict['catid']
-        self.series_short_name = parse_iracing_string((dict['seriesshortname']))
-        self.year = self.value_or_none(dict, 'year')
-        self.quarter = self.value_or_none(dict, 'quarter')
-        self.series_id = self.value_or_none(dict, 'seriesid')
-        self.active = self.value_or_none(dict, 'active')
-        self.license_eligible = self.value_or_none(dict, 'licenseeligible')
-        self.is_lite = self.value_or_none(dict, 'islite')
-        self.car_classes = self.value_or_none(dict, 'carclasses')
-        self.tracks = self.value_or_none(dict, 'tracks')
-        self.end = self.value_or_none(dict, 'end')
-        self.cars = self.value_or_none(dict, 'cars')
-        self.race_week = self.value_or_none(dict, 'raceweek')
-        self.category = self.value_or_none(dict, 'category')
-        self.series_lic_group_id = self.value_or_none(dict, 'serieslicgroupid')
-        self.car_id = self.value_or_none(dict, 'carid')
+    def __init__(self, data):
+        self.serieslicgroupid = data.get('serieslicgroupid')
+        self.year = data.get('year')
+        self.start = data.get('start')
+        self.active = data.get('active')
+        self.islite = data.get('islite')
+        self.seriesid = data.get('seriesid')
+        self.licenseEligible = data.get('licenseEligible')
+        self.catid = data.get('catid')
+        self.seasonid = data.get('seasonid')
+        self.seriesshortname = data.get('seriesshortname')
+        self.end = data.get('end')
+        self.category = data.get('category')
+        self.raceweek = data.get('raceweek')
+        self.quarter = data.get('quarter')
 
-    @staticmethod
-    def value_or_none(dict, field_name):
-        if field_name in dict:
-            return dict[field_name]
-        else:
-            return None
+        class CarClass:
+            def __init__(self, data):
+                self.relspeed = data['relspeed']
+                self.lowername = data['lowername']
+                self.custid = data['custid']
+                self.name = data['name']
+                self.max_dry_tire_sets = data['max_dry_tire_sets']
+                self.id = data['id']
+                self.shortname = data['shortname']
+
+                class Cars:
+                    def __init__(self, data):
+                        self.name = data['name']
+                        self.id = data['id']
+
+                self.carsinclass = [Cars(x) for x in data.get('carsinclass', [])]
+
+        class Tracks:
+            def __init__(self, data):
+                self.lowername = data['lowername']
+                self.name = data['name']
+                self.id = data['id']
+                self.pkgid = data['pkgid']
+                self.priority = data['priority']
+                self.raceweek = data['raceweek']
+                self.config = data['config']
+                self.timeOfDay = data['timeOfDay']
+
+        # Yes, there is both a list of "carclasses" with a list of "cars" AND
+        # a list "cars" but they each have different values...
+        class Cars:
+            def __init__(self, data):
+                self.lowername = data['lowername']
+                self.name = data['name']
+                self.id = data['id']
+                self.pkgid = data['pkgid']
+                self.sku = data['sku']
+
+        self.carclasses = [CarClass(x) for x in data.get('carclasses', [])]
+        self.tracks = [Tracks(x) for x in data.get('tracks', [])]
+        self.cars = [Cars(x) for x in data.get('cars', [])]
 
 
 class CarClass:
