@@ -653,7 +653,7 @@ class Client:
 
         return [upcoming_events.NextSessionTimes(x) for x in response.json()["d"]["r"]]
 
-    async def get_irating(self, category, custID):
+    async def irating(self, category, custID):
         """ Utilizes the stats_chart class to return a list of iRating values
         that are used in the /CareerStats charts. Accessing
         get_irating().current will give the most recent irating of a custID
@@ -664,7 +664,7 @@ class Client:
 
         return chart_data.ChartData(category, ct.ChartType.irating, irating_list)
 
-    async def get_ttrating(self, category, custID):
+    async def ttrating(self, category, custID):
         """ Utilizes the stats_chart class to return a list of ttrating values
         that are used in the /CareerStats charts.
         """
@@ -674,7 +674,7 @@ class Client:
 
         return chart_data.ChartData(category, chart_type, ttrating_list)
 
-    async def get_license_class(self, category, custID):
+    async def license_class(self, category, custID):
         """ Utilizes the stats_chart class to return a list of license values
         that are used in the /CareerStats charts. See the LicenseClass class
         for how to further use this data.
