@@ -1,12 +1,6 @@
 from . import constants as ct
-from .responses.last_races_stats import LastRaceStats
-from .responses.career_stats import CareerStats
-from .responses.yearly_stats import YearlyStats
-from .responses.chart_data.chart_data import ChartData
-from .responses.chart_data.irating import IRating
-from .responses.chart_data.ttrating import TTRating
-from .responses.chart_data.license_class import LicenseClass
-from .responses.season import Season
+from .response_objects import career_stats, iracing_data, historical_data
+from .response_objects import chart_data, session_data, upcoming_events
 
 import logging
 import httpx
@@ -37,7 +31,7 @@ def default_logger():
         level=logging.INFO,
         datefmt="%Y-%m-%d %H:%M:%S",
         format="%(asctime)s;%(levelname)s;%(message)s"
-    )
+        )
     return logging.getLogger()
 
 
@@ -65,7 +59,7 @@ class Client:
             'username': self.username,
             'password': self.password,
             'utcoffset': round(abs(time.localtime().tm_gmtoff / 60)),
-            'todaysdate': ''  # Unknown purpose, but present as a hidden form.
+            'todaysdate': ''  # Unknown purpose, but exists as a hidden form.
         }
 
         auth_post = await self.session.post(ct.URL_LOGIN2, data=login_data)
@@ -87,15 +81,16 @@ class Client:
         """ Builds the final GET request from url and params
         """
         self.log.info(f'Request being sent to: {url} with params: {params}')
+
         response = await self.session.get(
             url,
             params=params,
-            allow_redirects=False
+            allow_redirects=False,
+            timeout=10.0
             )
         self.log.info(f'Request sent for URL: {response.url}')
         self.log.info(f'Status code of response: {response.status_code}')
         self.log.debug(f'Contents of the response object: {response.__dict__}')
-
 
         # Status code other than 200 assumes redirect to a failed auth page
         if not response.status_code == 200:
@@ -116,7 +111,7 @@ class Client:
     ):
         """ Returns session information for all 'open practice' sessions that
         are currently active. By default this only includes sessions with
-        registered drivers.
+        registered drivers. Use include_empty flag to see all sessions.
         """
         url = ct.URL_ACTIVEOP_COUNT
         payload = {
@@ -124,8 +119,10 @@ class Client:
             'maxcount': maxCount,
             'include_empty': include_empty,
             'excludeLite': None  # Purpose of excludeLite unknown
-        }
-        return await self.build_request(url, payload)
+            }
+        response = await self.build_request(url, payload)
+
+        return [upcoming_events.ActiveOPCount(x) for x in response.json()["d"]]
 
     async def all_subsessions(self, sub_sess_id):
         """ If the given SubSessionID is one of many race splits, this
@@ -133,7 +130,9 @@ class Client:
         """
         payload = {'subsessionid': sub_sess_id}
         url = ct.URL_ALL_SUBSESSIONS
-        return await self.build_request(url, payload)
+        response = await self.build_request(url, payload)
+
+        return [iracing_data.AllSubSessions(x) for x in response.json()]
 
     async def car_class_by_id(self, carClassID):
         """ Returns the CarClass data for the associated carClassID
@@ -143,7 +142,11 @@ class Client:
         """
         payload = {'carclassid': carClassID}
         url = ct.URL_CAR_CLASS
-        return await self.build_request(url, payload)
+
+        response = await self.build_request(url, payload)
+
+        # Returns a single dictionary
+        return iracing_data.CarClass(response.json()['carclass'])
 
     async def career_stats(self, custID):
         """ Returns driver career stats as seen on the driver profile page.\n
@@ -156,7 +159,7 @@ class Client:
         if not response.json():
             return []
 
-        return [CareerStats(x) for x in response.json()]
+        return [career_stats.CareerStats(x) for x in response.json()]
 
     async def current_seasons(
             self,
@@ -210,19 +213,18 @@ class Client:
             'serieslicgroupid': series_lic_group_id,
             'carid': car_id,
             'seasonid': season_id,
-        }
+            }
 
         key_list = self.key_list_from_dict(field_dict)
 
         payload = {
             'onlyActive': 1 if only_active else 0,
             'fields': (','.join(key_list))
-        }
+            }
         url = ct.URL_CURRENT_SEASONS
         response = await self.build_request(url, payload)
-        return [Season(x) for x in response.json()]
 
-    # TODO Use *kwargs with dictionary for default values? Very long list.
+        return [iracing_data.Season(x) for x in response.json()]
 
     async def driver_stats(
             self,
@@ -287,13 +289,13 @@ class Client:
             'sort': sort,
             'order': order,
             'active': active
-        }
+            }
         url = ct.URL_DRIVER_STATS
-        return await self.build_request(url, payload)
+        response = await self.build_request(url, payload)
 
-    # TODO Find query string parameters for this url
+        return [historical_data.DriverStats(x) for x in response.json()["d"]["r"]]
 
-    async def hosted_results(
+    async def private_results(
             self,
             custid,
             start_time_lower,
@@ -314,11 +316,13 @@ class Client:
             'upperbound': upper_bound,
             'sort': sort,
             'order': order
-        }
-        url = ct.URL_HOSTED_RESULTS
-        return await self.build_request(url, payload)
+            }
+        url = ct.URL_PRIVATE_RESULTS
+        response = await self.build_request(url, payload)
 
-    async def last_race_stats(self, custID):
+        return [historical_data.PrivateResults(x) for x in response.json()]
+
+    async def last_races_stats(self, custID):
         """ Returns stat summary for the driver's last 10 races as seen
         on the /CareerStats page.
         """
@@ -329,7 +333,7 @@ class Client:
         if not response.json():
             return []
 
-        return [LastRaceStats(x) for x in response.json()]
+        return [career_stats.LastRacesStats(x) for x in response.json()]
 
     async def last_series(self, custID):
         """ Returns a summary of stats about a driver's last 3 series as seen
@@ -337,14 +341,18 @@ class Client:
         """
         payload = {'custid': custID}
         url = ct.URL_LAST_SERIES
-        return await self.build_request(url, payload)
+        response = await self.build_request(url, payload)
+
+        return [career_stats.LastSeries(x) for x in response.json()]
 
     async def member_cars_driven(self, custID):
         """ Returns which cars (carID) someone has driven.
         """
         payload = {'custid': custID}
         url = ct.URL_CARS_DRIVEN
-        return await self.build_request(url, payload)
+        response = await self.build_request(url, payload)
+
+        return iracing_data.CarsDriven(response.content)
 
     async def member_division(self, seasonID, custID):
         """ Returns which division the driver was in for the
@@ -354,9 +362,11 @@ class Client:
             'seasonid': seasonID,
             'custid': custID,
             'pointstype': 'race'
-        }
+            }
         url = ct.URL_MEM_DIVISION
-        return await self.build_request(url, payload)
+        response = await self.build_request(url, payload)
+
+        return [iracing_data.MemberDivision(x) for x in response.json()]
 
     async def member_sub_id_from_session(self, sessNum, custID):
         """ Returns which SubSession ID that a member was
@@ -364,9 +374,9 @@ class Client:
         """
         payload = {'custid': custID, 'sessionID': sessNum}
         url = ct.URL_MEM_SUBSESSID
-        return await self.build_request(url, payload)
+        response = await self.build_request(url, payload)
 
-    # Might not be useful. Must be logged in and not affected by custID.
+        return iracing_data.MemberSubID(response.content)
 
     async def my_racers(self, friends=1, studied=1, blacklisted=1):
         """ Not useful. Returns only friendslist for the person logged in """
@@ -391,9 +401,11 @@ class Client:
             'seriesID': series_id,
             'evtType': event_type,
             'date': date
-        }
+            }
         url = ct.URL_NEXT_EVENT
-        return await self.build_request(url, payload)
+        response = await self.build_request(url, payload)
+
+        return [upcoming_events.NextEvent(x) for x in response.json]
 
     async def personal_bests(self, carID, custID):
         """ Returns the drivers best laptimes for the given carID, as seen on
@@ -401,7 +413,9 @@ class Client:
         """
         payload = {'custid': custID, 'carid': carID}
         url = ct.URL_PERSONAL_BESTS
-        return await self.build_request(url, payload)
+        response = await self.build_request(url, payload)
+
+        return [career_stats.PersonalBests(x) for x in response.json()]
 
     async def race_guide(
             self,
@@ -447,9 +461,11 @@ class Client:
             'hideUnpopulated': hide_unpopulated,
             'hideIneligible': hide_ineligible,
             'showOfficial': show_official
-        }
+            }
         url = ct.URL_RACEGUIDE
-        return await self.build_request(url, payload)
+        response = await self.build_request(url, payload)
+
+        return [upcoming_events.RaceGuide(x) for x in response.json()]
 
     async def race_laps_all(self, sub_sess_id, carClassID=-1):
         """ Returns information about all laps of a race for *every*
@@ -459,7 +475,9 @@ class Client:
         """
         payload = {'subsessionid': sub_sess_id, 'carclassid': carClassID}
         url = ct.URL_LAPS_ALL
-        return await self.build_request(url, payload)
+        response = await self.build_request(url, payload)
+
+        return [session_data.RaceLapsAll(x) for x in response.json]
 
     async def race_laps_driver(
             self,
@@ -476,11 +494,11 @@ class Client:
             'groupid': custID
         }
         url = ct.URL_LAPS_SINGLE
-        return await self.build_request(url, payload)
+        response = await self.build_request(url, payload)
 
-    # TODO Dictionary list of available flags/filters. custid required
+        return [session_data.RaceLapsDriver(x) for x in response.json()]
 
-    async def results(
+    async def event_results(
             self,
             custID,
             show_races=1,
@@ -500,7 +518,7 @@ class Client:
             upper_bound=25,
             sort=ct.Sort.start_time,
             order=ct.Sort.descending,
-            format='json',
+            data_format='json',
             category1=1,
             category2=2,
             category3=3,
@@ -508,13 +526,23 @@ class Client:
             season_year=2020,
             season_quarter=3,
             race_week=-1,
-            track_id=-1,
-            car_class=-1,
-            car_id=-1
+            track_id=None,
+            car_class=None,
+            car_id=None,
+            raceweek=None,
+            start_low=None,
+            start_high=None,
+            finish_low=None,
+            finish_high=None,
+            incidents_low=None,
+            incidents_high=None,
+            champpoints_low=None,
+            champpoints_high=None
     ):
         """ Returns all data about the results of a session. Providing a
         custID allows for returning all results by a specific driver.
         """
+        # TODO Dig into the 'category%5B%5D' keys. Doesnt work without them...
         payload = {
             'custID': custID,
             'showraces': show_races,
@@ -534,35 +562,45 @@ class Client:
             'upperbound': upper_bound,
             'sort': sort,
             'order': order,
-            'format': format,
-            'category1': category1,
-            'category2': category2,
-            'category3': category3,
-            'category4': category4,
+            'format': data_format,
+            'category%5B%5D': category2,
             'seasonyear': season_year,
             'seasonquarter': season_quarter,
             'raceweek': race_week,
             'trackid': track_id,
             'carclassid': car_class,
-            'carid': car_id
+            'carid': car_id,
+            'start_low': start_low,
+            'start_high': start_high,
+            'finish_low': finish_low,
+            'finish_high': finish_high,
+            'incidents_low': incidents_low,
+            'incidents_high': incidents_high,
+            'champpoints_low': champpoints_low,
+            'champpoints_high': champpoints_high
         }
         url = ct.URL_RESULTS
-        return await self.build_request(url, payload)
+        response = await self.build_request(url, payload)
 
-    async def season_for_session(self, sessionID):
+        # TODO Consider "try:" for a TypeError for response of {"m":{},"d":[]}
+        return [historical_data.EventResults(x) for x in response.json()["d"]["r"]]
+
+    async def season_from_session(self, sessionID):
         """ Returns the seasonID for a given sessionID. That is this endpoints
         only purpose.
         """
         payload = {'sessionID': sessionID}
         url = ct.URL_SEASON_FOR_SESSION
-        return await self.build_request(url, payload)
+        response = await self.build_request(url, payload)
+
+        return iracing_data.SeasonFromSession(response.content)
 
     async def season_standings(
             self,
             seasonID,
+            raceWeek=-1,
             carClassID=-1,
             clubID=-1,
-            raceWeek=-1,
             division=-1,
             start=1,
             end=25,
@@ -570,70 +608,82 @@ class Client:
             order=ct.Sort.descending
     ):
         """ Returns the championship point standings of a series.
-        This is the same data found in /statsseries.jsp
+        This is the same data found in /statsseries.jsp.
         """
-
         payload = {
             'seasonid': seasonID,
             'carclassid': carClassID,
             'clubid': clubID,
-            'raceweek': raceWeek,
+            'raceweek': raceWeek - 1,  # Makes human '1' == computer '1'
             'division': division,
             'start': start,
             'end': end,
             'sort': sort,
             'order': order
         }
-        url = ct.URL_SEASON_STANDINGS
-        return await self.build_request(url, payload)
+        # Using -1 means "all" but breaks with human -> computer number magic
+        if raceWeek == -1:
+            payload['raceweek'] = -1
 
-    async def series_race_results(self, seasonID, raceWeek=-1):
+        url = ct.URL_SEASON_STANDINGS
+        response = await self.build_request(url, payload)
+
+        return [historical_data.SeasonStandings(x) for x in response.json()["d"]["r"]]
+
+    async def series_race_results(self, seasonID, raceWeek=1):
         """ Returns the race results for a seasonID. raceWeek can be
         specified to reduce the size of data returned.
         """
-        payload = {'seasonid': seasonID, 'raceweek': raceWeek}
+        payload = {
+            'seasonid': seasonID,
+            'raceweek': raceWeek - 1  # Makes human '1' == computer '0'
+            }
         url = ct.URL_SERIES_RACERESULTS
-        return await self.build_request(url, payload)
+        response = await self.build_request(url, payload)
 
-    async def session_times(self, seasonID):
-        """ Returns the next 5 sessions and their starting times from a
-        seasonID.
+        return [historical_data.SeriesRaceResults(x) for x in response.json()['d']]
+
+    async def next_session_times(self, seasonID):
+        """ Returns the next 5 sessions with all of their attributes:\n
+        starttime, registered drivers, session parameters, etc.
         """
         payload = {'season': seasonID}
         url = ct.URL_SESSION_TIMES
-        return await self.build_request(url, payload)
+        response = await self.build_request(url, payload)
 
-    async def get_irating(self, category, custID):
+        return [upcoming_events.NextSessionTimes(x) for x in response.json()["d"]["r"]]
+
+    async def irating(self, category, custID):
         """ Utilizes the stats_chart class to return a list of iRating values
         that are used in the /CareerStats charts. Accessing
         get_irating().current will give the most recent irating of a custID
         """
         chart_type = ct.ChartType.irating
         response = await self.stats_chart(category, custID, chart_type)
-        irating_list = [IRating(x) for x in response.json()]
+        irating_list = [chart_data.IRating(x) for x in response.json()]
 
-        return ChartData(category, ct.ChartType.irating, irating_list)
+        return chart_data.ChartData(category, ct.ChartType.irating, irating_list)
 
-    async def get_ttrating(self, category, custID):
+    async def ttrating(self, category, custID):
         """ Utilizes the stats_chart class to return a list of ttrating values
         that are used in the /CareerStats charts.
         """
         chart_type = ct.ChartType.ttrating
         response = await self.stats_chart(category, custID, chart_type)
-        ttrating_list = [TTRating(x) for x in response.json()]
+        ttrating_list = [chart_data.TTRating(x) for x in response.json()]
 
-        return ChartData(category, chart_type, ttrating_list)
+        return chart_data.ChartData(category, chart_type, ttrating_list)
 
-    async def get_license_class(self, category, custID):
+    async def license_class(self, category, custID):
         """ Utilizes the stats_chart class to return a list of license values
         that are used in the /CareerStats charts. See the LicenseClass class
         for how to further use this data.
         """
         chart_type = ct.ChartType.license_class
         response = await self.stats_chart(category, custID, chart_type)
-        license_class_list = [LicenseClass(x) for x in response.json()]
+        license_class_list = [chart_data.LicenseClass(x) for x in response.json()]
 
-        return ChartData(category, chart_type, license_class_list)
+        return chart_data.ChartData(category, chart_type, license_class_list)
 
     async def stats_chart(self, category, custID, chartType):
         """ Returns a list in the form of time:value for the race category
@@ -648,8 +698,7 @@ class Client:
         url = ct.URL_STATS_CHART
         return await self.build_request(url, payload)
 
-    # TODO New name to differentiate "event" results from session data (this)
-    async def sub_sess_results(self, sub_sess_id, custID):
+    async def subsession_data(self, sub_sess_id, custID):
         """ Returns extensive data about a session. This endpoint contains
         data points about a session that are unavaible anywhere else.
         """
@@ -658,8 +707,12 @@ class Client:
             'custid': custID
         }
         url = ct.URL_SUBS_RESULTS
-        return await self.build_request(url, payload)
+        response = await self.build_request(url, payload)
 
+        # Returns a single dictionary
+        return session_data.SubSessionData(response.json())
+
+    # TODO Be bothered to finish this one
     async def team_standings(
             self,
             season_id,
@@ -679,7 +732,6 @@ class Client:
         return await self.build_request(url, payload)
 
     # TODO Does not return JSON format. Find how to convert.
-
     async def total_registered_all(self):
         """ Returns a list of every upcoming session and the number of
         drivers that have registered. This data is used in the small text
@@ -688,7 +740,9 @@ class Client:
         """
         payload = {}
         url = ct.URL_TOTALREGISTERED
-        return await self.build_request(url, payload)
+        response = await self.build_request(url, payload)
+
+        return [upcoming_events.TotalRegistered(x) for x in response.json()]
 
     async def world_records(self, year, quarter, carID, trackID, custID):
         """ Returns laptimes with the requested paramaters. Filters can also
@@ -702,9 +756,10 @@ class Client:
             'custid': custID,
             'format': 'json',
             'upperbound': 1
-        }
+            }
         url = ct.URL_WORLD_RECORDS
-        return await self.build_request(url, payload)
+        response = await self.build_request(url, payload)
+        return [historical_data.WorldRecords(x) for x in response.json()["d"]["r"]]
 
     async def yearly_stats(self, custID):
         """ Returns the breakdown of career stats by year, as seen on the
@@ -717,7 +772,7 @@ class Client:
         if not response.json():
             return []
 
-        return [YearlyStats(x) for x in response.json()]
+        return [career_stats.YearlyStats(x) for x in response.json()]
 
     # Returns a list of keys from the dictionary where values are truthy
     @staticmethod

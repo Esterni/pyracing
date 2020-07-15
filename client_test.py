@@ -3,14 +3,9 @@ import dotenv
 import os
 from pyracing import client as pyracing
 from pyracing import constants
-from pyracing.responses.career_stats import CareerStats
-from pyracing.responses.yearly_stats import YearlyStats
-from pyracing.responses.last_races_stats import LastRaceStats
-from pyracing.responses.season import Season
-from pyracing.responses.chart_data.chart_data import ChartData
-from pyracing.responses.chart_data.irating import IRating
-from pyracing.responses.chart_data.ttrating import TTRating
-from pyracing.responses.chart_data.license_class import LicenseClass
+from pyracing.response_objects import career_stats
+from pyracing.response_objects import chart_data
+from pyracing.response_objects import iracing_data
 import unittest
 
 dotenv.load_dotenv()
@@ -37,7 +32,7 @@ class ClientTest(unittest.TestCase):
         await client.authenticate()
         response_list = await client.career_stats(499343)
         for career_stat in response_list:
-            self.assertIsInstance(career_stat, CareerStats)
+            self.assertIsInstance(career_stat, career_stats.CareerStats)
 
     @async_test
     async def test_yearly_stats(self):
@@ -45,15 +40,15 @@ class ClientTest(unittest.TestCase):
         await client.authenticate()
         response_list = await client.yearly_stats(499343)
         for yearly_stat in response_list:
-            self.assertIsInstance(yearly_stat, YearlyStats)
+            self.assertIsInstance(yearly_stat, career_stats.YearlyStats)
 
     @async_test
     async def test_last_races_stats(self):
         client = await get_client()
         await client.authenticate()
-        response_list = await client.last_race_stats(499343)
+        response_list = await client.last_races_stats(499343)
         for career_stat in response_list:
-            self.assertIsInstance(career_stat, LastRaceStats)
+            self.assertIsInstance(career_stat, career_stats.LastRacesStats)
 
     @async_test
     async def test_current_seasons(self):
@@ -61,34 +56,34 @@ class ClientTest(unittest.TestCase):
         await client.authenticate()
         response_list = await client.current_seasons()
         for season in response_list:
-            self.assertIsInstance(season, Season)
+            self.assertIsInstance(season, iracing_data.Season)
 
     @async_test
     async def test_get_irating(self):
         client = await get_client()
         await client.authenticate()
         response = await client.get_irating(constants.Category.road, 499343)
-        self.assertIsInstance(response, ChartData)
+        self.assertIsInstance(response, chart_data.ChartData)
         for irating in response.list:
-            self.assertIsInstance(irating, IRating)
+            self.assertIsInstance(irating, chart_data.IRating)
 
     @async_test
     async def test_get_ttrating(self):
         client = await get_client()
         await client.authenticate()
         response = await client.get_ttrating(constants.Category.road, 499343)
-        self.assertIsInstance(response, ChartData)
+        self.assertIsInstance(response, chart_data.ChartData)
         for ttrating in response.list:
-            self.assertIsInstance(ttrating, TTRating)
+            self.assertIsInstance(ttrating, chart_data.TTRating)
 
     @async_test
     async def test_get_license_class(self):
         client = await get_client()
         await client.authenticate()
         response = await client.get_license_class(constants.Category.road, 499343)
-        self.assertIsInstance(response, ChartData)
+        self.assertIsInstance(response, chart_data.ChartData)
         for license_class in response.list:
-            self.assertIsInstance(license_class, LicenseClass)
+            self.assertIsInstance(license_class, chart_data.LicenseClass)
 
 
 if __name__ == '__main__':
