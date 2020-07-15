@@ -167,21 +167,21 @@ class Client:
             series_short_name=True,
             cat_id=True,
             season_id=True,
-            year=False,
-            quarter=False,
-            series_id=False,
-            active=False,  # Field that indicates if season is active or not
-            license_eligible=False,
-            is_lite=False,
-            car_classes=False,
-            tracks=False,
-            start=False,
-            end=False,
-            cars=False,
-            race_week=False,
-            category=False,
-            series_lic_group_id=False,
-            car_id=False
+            year=True,
+            quarter=True,
+            series_id=True,
+            active=True,  # Field that indicates if season is active or not
+            license_eligible=True,
+            is_lite=True,
+            car_classes=True,
+            tracks=True,
+            start=True,
+            end=True,
+            cars=True,
+            race_week=True,
+            category=True,
+            series_lic_group_id=True,
+            car_id=True
     ):
         """ Returns data about all SeasonIDs. A SeasonID is unique to a series
         for a specific year:quarter, so in 1 year a series will have gone
