@@ -81,10 +81,12 @@ class Client:
         """ Builds the final GET request from url and params
         """
         self.log.info(f'Request being sent to: {url} with params: {params}')
+
         response = await self.session.get(
             url,
             params=params,
-            allow_redirects=False
+            allow_redirects=False,
+            timeout=10.0
             )
         self.log.info(f'Request sent for URL: {response.url}')
         self.log.info(f'Status code of response: {response.status_code}')
