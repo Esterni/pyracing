@@ -541,7 +541,7 @@ class Client:
         custID allows for returning all results by a specific driver.
         """
         # "category[]" is a checkbox flag on the website. Setting it to a
-        # category will return results for that category. 
+        # category will return results for that category.
         payload = {
             'custID': custID,
             'showraces': show_races,
