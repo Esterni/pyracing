@@ -521,30 +521,27 @@ class Client:
             sort=ct.Sort.start_time,
             order=ct.Sort.descending,
             data_format='json',
-            category1=1,
-            category2=2,
-            category3=3,
-            category4=4,
+            category=2,
             season_year=2020,
             season_quarter=3,
             race_week=-1,
-            track_id=None,
-            car_class=None,
-            car_id=None,
-            raceweek=None,
-            start_low=None,
-            start_high=None,
-            finish_low=None,
-            finish_high=None,
-            incidents_low=None,
-            incidents_high=None,
-            champpoints_low=None,
-            champpoints_high=None
+            track_id=0,
+            car_class=0,
+            car_id=0,
+            start_low=0,
+            start_high=0,
+            finish_low=0,
+            finish_high=0,
+            incidents_low=0,
+            incidents_high=0,
+            champpoints_low=0,
+            champpoints_high=0
     ):
         """ Returns all data about the results of a session. Providing a
         custID allows for returning all results by a specific driver.
         """
-        # TODO Dig into the 'category%5B%5D' keys. Doesnt work without them...
+        # "category[]" is a checkbox flag on the website. Setting it to a
+        # category will return results for that category. 
         payload = {
             'custID': custID,
             'showraces': show_races,
@@ -565,7 +562,7 @@ class Client:
             'sort': sort,
             'order': order,
             'format': data_format,
-            'category%5B%5D': category2,
+            'category[]': category,
             'seasonyear': season_year,
             'seasonquarter': season_quarter,
             'raceweek': race_week,
