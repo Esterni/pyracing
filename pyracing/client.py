@@ -193,7 +193,6 @@ class Client:
         you *only* a list of items with a single number between 1 and 4
         indicating Road, Oval, Dirt Road, Dirt Oval, respectively.
         """
-        # This is a single query string; Setting to False removes it.
         field_dict = {
             'year': year,
             'quarter': quarter,
@@ -214,12 +213,15 @@ class Client:
             'carid': car_id,
             'seasonid': season_id,
             }
+        # Adds the key name to key_list if set to True
+        key_list = [key for key in field_dict if field_dict.get(key)]
 
-        key_list = self.key_list_from_dict(field_dict)
+        # iRacing accepts these as a single, comma seperated, parameter
+        key_list = ','.join(map(str, key_list))
 
         payload = {
             'onlyActive': 1 if only_active else 0,
-            'fields': (','.join(key_list))
+            'fields': key_list
             }
         url = ct.URL_CURRENT_SEASONS
         response = await self.build_request(url, payload)
