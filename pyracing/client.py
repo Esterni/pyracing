@@ -131,8 +131,7 @@ class Client:
         payload = {'subsessionid': sub_sess_id}
         url = ct.URL_ALL_SUBSESSIONS
         response = await self.build_request(url, payload)
-
-        return [iracing_data.AllSubSessions(x) for x in response.json()]
+        return response.json()
 
     async def car_class_by_id(self, carClassID):
         """ Returns the CarClass data for the associated carClassID
@@ -353,8 +352,7 @@ class Client:
         payload = {'custid': custID}
         url = ct.URL_CARS_DRIVEN
         response = await self.build_request(url, payload)
-
-        return iracing_data.CarsDriven(response.content)
+        return response.json()
 
     async def member_division(self, seasonID, custID):
         """ Returns which division the driver was in for the
@@ -370,15 +368,14 @@ class Client:
 
         return [iracing_data.MemberDivision(x) for x in response.json()]
 
-    async def member_sub_id_from_session(self, sessNum, custID):
+    async def member_subsession_id_from_session(self, sessNum, custID):
         """ Returns which SubSession ID that a member was
         in from a given Session ID.
         """
         payload = {'custid': custID, 'sessionID': sessNum}
         url = ct.URL_MEM_SUBSESSID
         response = await self.build_request(url, payload)
-
-        return iracing_data.MemberSubID(response.content)
+        return response.json()
 
     async def my_racers(self, friends=1, studied=1, blacklisted=1):
         """ Not useful. Returns only friendslist for the person logged in """
@@ -591,8 +588,7 @@ class Client:
         payload = {'sessionID': sessionID}
         url = ct.URL_SEASON_FOR_SESSION
         response = await self.build_request(url, payload)
-
-        return iracing_data.SeasonFromSession(response.content)
+        return response.json()
 
     async def season_standings(
             self,
