@@ -68,18 +68,18 @@ class ActiveOPCount:
         self.weather_wind_speed_units = dict['49']
 
 
-# I'm giving it my best guess here. This one has lots of nesting.
 class RaceGuide:
     def __init__(self, dict):
         self.catID = dict['catID']
         self.image = dict['image']
-        self.seasonSchedules = dict['seasonSchedules']
         self.seriesName = dict['seriesName']
         self.eligible = dict['eligible']
         self.seriesID = dict['seriesID']
         self.mpr = dict['mpr']
+        self.seasonSchedule = [self.Schedules(x) for
+                               x in dict['seasonSchedules']]
 
-    class Schedules:
+    class Schedule:
         def __init__(self, dict):
             self.seasonStartDate = dict['seasonStartDate']
             self.multiClass = dict['multiClass']
@@ -87,22 +87,17 @@ class RaceGuide:
             self.licenseGroup = dict['licenseGroup']
             self.fixedSetup = dict['fixedSetup']
             self.carClasses = dict['carClasses']
-            self.races = dict['races']
             self.openPracticeDrivers = dict['openPracticeDrivers']
             self.openPracticeSessions = dict['openPracticeSessions']
+            self.race = [self.Race(x) for x in dict['races']]
 
-        class Races:
+        class Race:
             def __init__(self, dict):
                 self.preRegCount = dict['preRegCount']
                 self.weatherType = dict['weatherType']
                 self.weatherRelativeHumidity = dict['weatherRelativeHumidity']
                 self.weatherWindSpeedValue = dict['weatherWindSpeedValue']
                 self.trackID = dict['trackID']
-
-                # raceWeekCars returns a dictionary of {weeks} >
-                # each week has a dictionary of {car_id} >
-                # each car has a dictionary of {car attributes}
-                self.raceWeekCars = dict['raceWeekCars']
                 self.sessionTypeID = dict['sessionTypeID']
                 self.sessionID = dict['sessionID']
                 self.trackName = dict['trackName']
@@ -122,15 +117,20 @@ class RaceGuide:
                 self.raceLapLimit = dict['raceLapLimit']
                 self.weatherWindDir = dict['weatherWindDir']
                 self.raceWeekNum = dict['raceWeekNum']
-
-                # rubberSettings contains a dictionary of {rubber attributes}
-                self.rubberSettings = dict['rubberSettings']
                 self.weatherFogDensity = dict['weatherFogDensity']
                 self.simulatedstarttime = dict['simulatedstarttime']
                 self.weatherVarInitial = dict['weatherVarInitial']
                 self.endTime = dict['endTime']
                 self.weatherWindSpeedUnits = dict['weatherWindSpeedUnits']
                 self.timeOfDay = dict['timeOfDay']
+
+                # raceWeekCars returns a dictionary of {weeks} >
+                # each week has a dictionary of {car_id} >
+                # each car has a dictionary of {car attributes}
+                self.raceWeekCars = dict['raceWeekCars']
+
+                # rubberSettings contains a dictionary of {rubber attributes}
+                self.rubberSettings = dict['rubberSettings']
 
 
 class NextSessionTimes:
@@ -167,5 +167,5 @@ class NextSessionTimes:
         self.seasonid = dict['31']
         self.raceweek = dict['32']
         self.weatherfogdensity = dict['33']
-        # Unsure where this is used, but it's outside of the 'd' dictionary
+        # Used outside of d dict; Holds refresh time of data
         # self.reloadtime = dict['18']

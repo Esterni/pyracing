@@ -110,12 +110,8 @@ class DriverStats:
         self.rank = dict['14']
         self.starts = dict['15']
         self.licenseclass = parse_iracing_string(dict['16'])
-        # 17 only exists in the dict level up for highlighting custid
-        # self.custrow = dict['17']
         self.wins = dict['18']
         self.licenseclass_rank = dict['19']
-        # 20 only exists in the dict level up for identifying total rows
-        # self.rowcount = dict['20']
         self.clubpoints = dict['21']
         self.helmpattern = dict['22']
         self.licenselevel = dict['23']
@@ -135,6 +131,9 @@ class DriverStats:
         self.rn = dict['37']
         self.region = parse_iracing_string(dict['38'])
         self.groupletter = parse_iracing_string(dict['39'])
+        # These are only used in front end webpage; Not in dict results
+        # self.custrow = dict['17']
+        # self.rowcount = dict['20']
 
 
 class WorldRecords:

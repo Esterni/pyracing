@@ -1,15 +1,14 @@
 from ..constants import parse_iracing_string
 
 
-# This is the baseline for a car. Most of the time this is all we get,
-# but sometimes we get more fields
+# Common denominator for Car attributes across all data.
 class Car:
     def __init__(self, data):
         self.name = parse_iracing_string(data['name'])
         self.id = data['id']
 
 
-# This is the base class for a CarClass, in a season call we get one more field than this
+# Common denominator for CarClass attributes across all data.
 class CarClass:
     def __init__(self, dict):
         self.rel_speed = dict['relspeed']  # Speed ranking to other classes
@@ -35,13 +34,15 @@ class Season:
         self.license_eligible = data.get('licenseEligible')
         self.cat_id = data.get('catid')
         self.season_id = data.get('seasonid')
-        self.series_short_name = parse_iracing_string(data.get('seriesshortname'))
+        self.series_short_name = parse_iracing_string(
+            data.get('seriesshortname'))
         self.end = data.get('end')
         self.category = data.get('category')
         self.raceweek = data.get('raceweek')
         self.quarter = data.get('quarter')
         # Creating subclasses from nested lists
-        self.car_classes = [self.SeasonCarClass(x) for x in data.get('carclasses', [])]
+        self.car_classes = [self.SeasonCarClass(x) for
+                            x in data.get('carclasses', [])]
         self.tracks = [self.Tracks(x) for x in data.get('tracks', [])]
         self.cars = [self.SeasonCar(x) for x in data.get('cars', [])]
 
