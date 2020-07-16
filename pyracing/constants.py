@@ -58,84 +58,84 @@ URL_TICKER_SESSIONS = (mSite + '/GetTickerSessions')
 URL_SEASON_FOR_SESSION = (mSite + '/GetSeasonForSession')
 URL_ALL_SUBSESSIONS = (mSite + '/GetAllSubsessions')
 
-# TEAMS (Not yet implemented)
-URL_TEAM_STANDINGS = (mStats + '/GetTeamStandings')
-URL_SESSION_TEAMS = (mStats + '/GetSessionTeams'
-                     'subSessionID=')
-URL_TEAM_SESSIONS = (mSite + '/GetTeamSessions'
-                     'teamID=-11456')
-URL_TEAM_MEMBERS = (mSite + '/GetTeamMembers')
-URL_TEAM_DIRECTORY = (mSite + '/GetTeamDirectory')
+# # TEAMS (Not yet implemented)
+# URL_TEAM_STANDINGS = (mStats + '/GetTeamStandings')
+# URL_SESSION_TEAMS = (mStats + '/GetSessionTeams'
+#                      'subSessionID=')
+# URL_TEAM_SESSIONS = (mSite + '/GetTeamSessions'
+#                      'teamID=-11456')
+# URL_TEAM_MEMBERS = (mSite + '/GetTeamMembers')
+# URL_TEAM_DIRECTORY = (mSite + '/GetTeamDirectory')
 
-# LEAGUES
-URL_LEAGUE_DIRECTORY = (mSite + '/GetLeagueDirectory'
-                        'restrictToMember=0
-                        '&lowerbound=1'
-                        '&upperbound=33'
-                        '&tag=Clean')  # Param 'tag' takes a string list
-URL_LEAGUE_SESSIONS = (mSite + '/GetLeagueSessions'
-                       '?ts=0'
-                       '&startRow=1'
-                       '&stopRow=20'
-                       '&rand=522840')
-URL_LEAGUE_TAGS = (mSite + '/GetLeagueTags')
-URL_LEAGUE_OFFSET = (mSite + '/GetLeagueImageOffsets'
-                     'leagueid=1056')
-URL_LEAGUE_CALENDAR_YEAR = (mSite + '/GetLeagueCalendarByMonth'
-                       'leagueID=1056'
-                       '&year=2020'
-                       '&month=7')
-URL_LEAGUE_TAGS = (mSite + '/GetTagsOnLeague'
-                    'leagueID=1056')
-URL_LEAGUE_MEMBERS = (mSite + '/GetLeagueMembers'
-                      'leagueid=1056'
-                      'lowerBound=1'
-                      'upperBound=26'
-                      'search=')
-URL_LEAGUE_WALL = (mSite + '/GetLeagueWall')
-URL_LEAGUE_POST = (mSite + '/PostLeagueMessage'  # IT'S A POST!!!!
-                   'sendEmail=0'
-                   '&postToWall=1'
-                   '&sendPM=0'
-                   '&subject=Email%20Subject'
-                   '&text=Test%20for%20coding%20purposes'
-                   '&leagueID=1056')
-URL_LEAGUE_SEASONS = (mSite + '/GetLeagueSeasons'
-                      'leagueID=1056')
-URL_LEAGUE_CALENDAR_SEASON = (mSite + '/GetLeagueCalendarBySeason'
-                              'leagueID=1056'
-                              '&leagueSeasonID=46493')
-URL_LEAGUE_SEASON_TEAM_STANDINGS = (mSite + '/GetLeagueSeasonTeamStandings'
-                               'leagueID=1056'
-                               '&leagueSeasonID=46493')
-URL_LEAGUE_SEASON_STANDINGS = (mSite + '/GetLeagueSeasonStandings'
-                               'leagueID=1056'
-                               '&leagueSeasonID=46493'
-                               '&carClassID=1450'
-                               '&carID=0')
-URL_LEAGUE_ICALENDAR_SUBSCRIBE = (mSite + '/GetICalendarForLeague'
-                                  'leagueId=1056'
-                                  '&leagueSeasonId=46493')
+# LEAGUES (Not yet implemented)
+# URL_LEAGUE_DIRECTORY = (mSite + '/GetLeagueDirectory'
+#                        'restrictToMember=0'
+#                         '&lowerbound=1'
+#                         '&upperbound=33'
+#                         '&tag=Clean')  # Param 'tag' takes a string list
+# URL_LEAGUE_SESSIONS = (mSite + '/GetLeagueSessions'
+#                        '?ts=0'
+#                        '&startRow=1'
+#                        '&stopRow=20'
+#                        '&rand=522840')
+# URL_LEAGUE_TAGS = (mSite + '/GetLeagueTags')
+# URL_LEAGUE_OFFSET = (mSite + '/GetLeagueImageOffsets'
+#                      'leagueid=1056')
+# URL_LEAGUE_CALENDAR_YEAR = (mSite + '/GetLeagueCalendarByMonth'
+#                             'leagueID=1056'
+#                             '&year=2020'
+#                             '&month=7')
+# URL_LEAGUE_TAGS = (mSite + '/GetTagsOnLeague'
+#                    'leagueID=1056')
+# URL_LEAGUE_MEMBERS = (mSite + '/GetLeagueMembers'
+#                       'leagueid=1056'
+#                       'lowerBound=1'
+#                       'upperBound=26'
+#                       'search=')
+# URL_LEAGUE_WALL = (mSite + '/GetLeagueWall')
+# URL_LEAGUE_POST = (mSite + '/PostLeagueMessage'  # IT'S A POST!!!!
+#                    'sendEmail=0'
+#                    '&postToWall=1'
+#                    '&sendPM=0'
+#                    '&subject=Email%20Subject'
+#                    '&text=Test%20for%20coding%20purposes'
+#                    '&leagueID=1056')
+# URL_LEAGUE_SEASONS = (mSite + '/GetLeagueSeasons'
+#                       'leagueID=1056')
+# URL_LEAGUE_CALENDAR_SEASON = (mSite + '/GetLeagueCalendarBySeason'
+#                               'leagueID=1056'
+#                               '&leagueSeasonID=46493')
+# URL_LEAGUE_SEASON_TEAM_STANDINGS = (mSite + '/GetLeagueSeasonTeamStandings'
+#                                     'leagueID=1056'
+#                                     '&leagueSeasonID=46493')
+# URL_LEAGUE_SEASON_STANDINGS = (mSite + '/GetLeagueSeasonStandings'
+#                                'leagueID=1056'
+#                                '&leagueSeasonID=46493'
+#                                '&carClassID=1450'
+#                                '&carID=0')
+# URL_LEAGUE_ICALENDAR_SUBSCRIBE = (mSite + '/GetICalendarForLeague'
+#                                   'leagueId=1056'
+#                                   '&leagueSeasonId=46493')
 
 
-URL_TOURNAMENTS = (mSite + '/GetTournaments'
-                   'ongoingonly=1' or 'sessionname=' or 'participant_custid='
-                   or 'host_custid=435144'  # continuation of last line
-                   '&lowerbound=1'
-                   '&upperbound=25'
-                   '&sort=start_time'
-                   '&order=desc'
-                   'start_time_lowerbound=1594710000000'
-                   '&start_time_upperbound=1595055600000')
-URL_TOURNAMENT_ROUND = (mSite + '/GetTournamentRoundDetails'
-                        'pvtId=1799376'
-                        'nextId=1798708')
+# URL_TOURNAMENTS = (mSite + '/GetTournaments'
+#                    'ongoingonly=1' or 'sessionname=' or 'participant_custid='
+#                    or 'host_custid=435144'  # continuation of last line
+#                    '&lowerbound=1'
+#                    '&upperbound=25'
+#                    '&sort=start_time'
+#                    '&order=desc'
+#                    'start_time_lowerbound=1594710000000'
+#                    '&start_time_upperbound=1595055600000')
+# URL_TOURNAMENT_ROUND = (mSite + '/GetTournamentRoundDetails'
+#                         'pvtId=1799376'
+#                         'nextId=1798708')
 
-# FARMS
-URL_FARM_TRACKS = (mSite + '/GetFarmTracks'
-                   'farmID=11')
-URL_FARM_CARS = (mSite + '/GetFarmCars'
-                 'farmID=')
+# # FARMS
+# URL_FARM_TRACKS = (mSite + '/GetFarmTracks'
+#                    'farmID=11')
+# URL_FARM_CARS = (mSite + '/GetFarmCars'
+#                  'farmID=')
 # ESSENTIALLY USELESS URLS
 
 # Driver Status is the
