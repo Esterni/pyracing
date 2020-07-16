@@ -369,15 +369,14 @@ class Client:
 
         return [iracing_data.MemberDivision(x) for x in response.json()]
 
-    async def member_sub_id_from_session(self, sessNum, custID):
+    async def member_subsession_id_from_session(self, sessNum, custID):
         """ Returns which SubSession ID that a member was
         in from a given Session ID.
         """
         payload = {'custid': custID, 'sessionID': sessNum}
         url = ct.URL_MEM_SUBSESSID
         response = await self.build_request(url, payload)
-
-        return iracing_data.MemberSubID(response.content)
+        return response.json()
 
     async def my_racers(self, friends=1, studied=1, blacklisted=1):
         """ Not useful. Returns only friendslist for the person logged in """

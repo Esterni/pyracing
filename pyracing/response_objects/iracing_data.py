@@ -80,8 +80,3 @@ class MemberDivision:
     def __init__(self, dict):
         self.division = dict['division']
         self.projected_division = dict['isProjected']
-
-
-class MemberSubID:
-    def __init__(self, value):
-        self.sub_id = value
