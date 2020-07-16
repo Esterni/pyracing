@@ -76,7 +76,7 @@ class RaceGuide:
         self.eligible = dict['eligible']
         self.seriesID = dict['seriesID']
         self.mpr = dict['mpr']
-        self.seasonSchedule = [self.Schedules(x) for
+        self.seasonSchedule = [self.Schedule(x) for
                                x in dict['seasonSchedules']]
 
     class Schedule:
