@@ -1,4 +1,4 @@
-from ..constants import parse_iracing_string
+from ..constants import parse_encode
 
 
 class EventResults:
@@ -6,23 +6,23 @@ class EventResults:
         self.helm_color1 = dict['1']
         self.winnerhelmcolor2 = dict['2']
         self.finishing_position = dict['3']
-        self.winnerhelmcolor3 = parse_iracing_string(dict['4'])
-        self.winnerhelmcolor1 = parse_iracing_string(dict['5'])
-        self.bestquallaptime = parse_iracing_string(dict['6'])
-        self.subsession_bestlaptime = parse_iracing_string(dict['7'])
+        self.winnerhelmcolor3 = parse_encode(dict['4'])
+        self.winnerhelmcolor1 = parse_encode(dict['5'])
+        self.bestquallaptime = parse_encode(dict['6'])
+        self.subsession_bestlaptime = parse_encode(dict['7'])
         self.race_week_num = dict['8']
         self.sessionid = dict['9']
         self.finishedat = dict['10']
         self.raw_start_time = dict['11']
         self.starting_position = dict['12']
-        self.helm_color3 = parse_iracing_string(dict['13'])
-        self.helm_color2 = parse_iracing_string(dict['14'])
+        self.helm_color3 = parse_encode(dict['13'])
+        self.helm_color2 = parse_encode(dict['14'])
         self.clubpoints = dict['16']
         self.dropracepoints = dict['17']
         self.officialsession = dict['18']
         self.groupname = dict['19']
         self.seriesid = dict['20']
-        self.start_time = parse_iracing_string(dict['21'])
+        self.start_time = parse_encode(dict['21'])
         self.seasonid = dict['22']
         self.custid = dict['23']
         self.helm_licenselevel = dict['24']
@@ -32,34 +32,34 @@ class EventResults:
         self.sesrank = dict['28']
         self.carclassid = dict['29']
         self.trackid = dict['30']
-        self.winnerdisplayname = parse_iracing_string(dict['31'])
+        self.winnerdisplayname = parse_encode(dict['31'])
         self.carid = dict['32']
         self.catid = dict['33']
         self.season_quarter = dict['34']
         self.licensegroup = dict['35']
         self.winnerhelmpattern = dict['36']
         self.evttype = dict['37']
-        self.bestlaptime = parse_iracing_string(dict['38'])
+        self.bestlaptime = parse_encode(dict['38'])
         self.incidents = dict['39']
         self.champpoints = dict['40']
         self.subsessionid = dict['41']
         self.season_year = dict['42']
         self.champpointssort = dict['43']
-        self.start_date = parse_iracing_string(dict['44'])
+        self.start_date = parse_encode(dict['44'])
         self.strengthoffield = dict['45']
         self.helm_pattern = dict['46']
         self.clubpointssort = dict['47']
-        self.displayname = parse_iracing_string(dict['48'])
+        self.displayname = parse_encode(dict['48'])
         # Another instance of not in dict
         # self.rowcount = dict['15']
 
 
 class SeasonStandings:
     def __init__(self, dict):
-        self.country = parse_iracing_string(dict['1'])
+        self.country = parse_encode(dict['1'])
         self.week = dict['2']
         self.irating = dict['3']
-        self.countrycode = parse_iracing_string(dict['4'])
+        self.countrycode = parse_encode(dict['4'])
         self.dropped = dict['5']
         self.clubid = dict['6']
         self.laps = dict['7']
@@ -75,14 +75,14 @@ class SeasonStandings:
         self.poles = dict['19']
         self.helmpattern = dict['20']
         self.maxlicenselev = dict['21']
-        self.helmcolor3 = parse_iracing_string(dict['22'])
-        self.clubname = parse_iracing_string(dict['23'])
+        self.helmcolor3 = parse_encode(dict['22'])
+        self.clubname = parse_encode(dict['23'])
         self.lapslead = dict['24']
-        self.helmcolor1 = parse_iracing_string(dict['25'])
-        self.displayname = parse_iracing_string(dict['26'])
-        self.helmcolor2 = parse_iracing_string(dict['27'])
+        self.helmcolor1 = parse_encode(dict['25'])
+        self.displayname = parse_encode(dict['26'])
+        self.helmcolor2 = parse_encode(dict['27'])
         self.custid = dict['28']
-        self.sublevel = parse_iracing_string(dict['29'])
+        self.sublevel = parse_encode(dict['29'])
         self.pos = dict['30']
         self.rn = dict['31']
         self.displaycountry = dict['32']
@@ -97,7 +97,7 @@ class DriverStats:
         self.top25pcnt = dict['1']
         self.irating_rank = dict['2']
         self.irating = dict['3']
-        self.countrycode = parse_iracing_string(dict['4'])
+        self.countrycode = parse_encode(dict['4'])
         self.clubid = dict['5']
         self.ttrating_rank = dict['6']
         self.laps = dict['7']
@@ -109,28 +109,28 @@ class DriverStats:
         self.avefieldsize = dict['13']
         self.rank = dict['14']
         self.starts = dict['15']
-        self.licenseclass = parse_iracing_string(dict['16'])
+        self.licenseclass = parse_encode(dict['16'])
         self.wins = dict['18']
         self.licenseclass_rank = dict['19']
         self.clubpoints = dict['21']
         self.helmpattern = dict['22']
         self.licenselevel = dict['23']
-        self.groupname = parse_iracing_string(dict['24'])
+        self.groupname = parse_encode(dict['24'])
         self.ttrating = dict['25']
         self.avgincidents = dict['26']
         self.avgpoints = dict['27']
-        self.helmcolor3 = parse_iracing_string(dict['28'])
-        self.clubname = parse_iracing_string(dict['29'])
+        self.helmcolor3 = parse_encode(dict['28'])
+        self.clubname = parse_encode(dict['29'])
         self.lapslead = dict['30']
-        self.helmcolor1 = parse_iracing_string(dict['31'])
-        self.displayname = parse_iracing_string(dict['32'])
-        self.helmcolor2 = parse_iracing_string(dict['33'])
+        self.helmcolor1 = parse_encode(dict['31'])
+        self.displayname = parse_encode(dict['32'])
+        self.helmcolor2 = parse_encode(dict['33'])
         self.custid = dict['34']
         self.sublevel = dict['35']
         self.helmfacetype = dict['36']
         self.rn = dict['37']
-        self.region = parse_iracing_string(dict['38'])
-        self.groupletter = parse_iracing_string(dict['39'])
+        self.region = parse_encode(dict['38'])
+        self.groupletter = parse_encode(dict['39'])
         # These are only used in front end webpage; Not in dict results
         # self.custrow = dict['17']
         # self.rowcount = dict['20']
@@ -139,40 +139,40 @@ class DriverStats:
 class WorldRecords:
     def __init__(self, dict):
         self.timetrial_subsessionid = ['1']
-        self.practice = parse_iracing_string(dict['2'])
-        self.licenseclass = parse_iracing_string(dict['3'])
+        self.practice = parse_encode(dict['2'])
+        self.licenseclass = parse_encode(dict['3'])
         self.irating = dict['4']
         self.trackid = dict['5']
-        self.countrycode = parse_iracing_string(dict['6'])
+        self.countrycode = parse_encode(dict['6'])
         self.clubid = dict['7']
         self.practice_start_time = dict['8']
         self.carid = dict['9']
         self.catid = dict['10']
         self.race_subsessionid = ['11']
-        self.season_quarter = parse_iracing_string(dict['12'])
+        self.season_quarter = parse_encode(dict['12'])
         self.practice_subsessionid = dict['13']
         self.licensegroup = dict['14']
-        self.qualify = parse_iracing_string(dict['15'])
-        self.season_year = parse_iracing_string(dict['17'])
+        self.qualify = parse_encode(dict['15'])
+        self.season_year = parse_encode(dict['17'])
         self.race_start_time = dict['18']
-        self.race = parse_iracing_string(dict['19'])
+        self.race = parse_encode(dict['19'])
         self.qualify_start_time = dict['21']
         self.helmpattern = dict['22']
         self.licenselevel = dict['23']
         self.ttrating = dict['24']
         self.timetrial_start_time = dict['25']
-        self.helmcolor3 = parse_iracing_string(dict['26'])
-        self.clubname = parse_iracing_string(dict['27'])
-        self.helmcolor1 = parse_iracing_string(dict['28'])
-        self.displayname = parse_iracing_string(dict['29'])
-        self.helmcolor2 = parse_iracing_string(dict['30'])
+        self.helmcolor3 = parse_encode(dict['26'])
+        self.clubname = parse_encode(dict['27'])
+        self.helmcolor1 = parse_encode(dict['28'])
+        self.displayname = parse_encode(dict['29'])
+        self.helmcolor2 = parse_encode(dict['30'])
         self.custid = dict['31']
         self.sublevel = dict['32']
         self.rn = dict['33']
-        self.region = parse_iracing_string(dict['34'])
-        self.category = parse_iracing_string(dict['35'])
+        self.region = parse_encode(dict['34'])
+        self.category = parse_encode(dict['35'])
         self.qualify_subsessionid = ['36']
-        self.timetrial = parse_iracing_string(dict['37'])
+        self.timetrial = parse_encode(dict['37'])
         # Data not used in the 'r' dictionary. Only for webpage display.
         # self.custrow = dict['16']
         # self.rowcount = dict['20']

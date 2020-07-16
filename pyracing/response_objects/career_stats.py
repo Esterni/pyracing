@@ -1,4 +1,4 @@
-from ..constants import parse_iracing_string
+from ..constants import parse_encode
 
 
 class CareerStats:
@@ -16,7 +16,7 @@ class CareerStats:
         self.lapsLed = dict['lapsLed']
         self.top5 = dict['top5']
         self.lapsLedPerc = round(dict['lapsLedPerc'], 2)
-        self.category = parse_iracing_string(dict['category'])
+        self.category = parse_encode(dict['category'])
         self.starts = dict['starts']
 
 
@@ -36,7 +36,7 @@ class YearlyStats:
         self.lapsLed = dict['lapsLed']
         self.top5 = dict['top5']
         self.lapsLedPerc = round(dict['lapsLedPerc'], 2)
-        self.category = parse_iracing_string(dict['category'])
+        self.category = parse_encode(dict['category'])
         self.starts = dict['starts']
 
 
@@ -46,7 +46,7 @@ class LastRacesStats:
         self.lapsLed = dict['lapsLed']
         self.finishPos = dict['finishPos']
         self.incidents = dict['incidents']
-        self.trackName = parse_iracing_string(dict['trackName'])
+        self.trackName = parse_encode(dict['trackName'])
         self.sof = dict['sof']
         self.date = dict['date']
         self.seriesID = dict['seriesID']
@@ -69,24 +69,24 @@ class LastSeries:
         self.avgStart = dict['avgStart']
         self.avgFinish = dict['avgFinish']
         self.seriesID = dict['seriesID']
-        self.seasonShortName = parse_iracing_string(dict['seasonShortName'])
+        self.seasonShortName = parse_encode(dict['seasonShortName'])
         self.division = dict['division']
         self.seasonID = dict['seasonID']
-        self.series = parse_iracing_string(dict['series'])
+        self.series = parse_encode(dict['series'])
         self.top5 = dict['top5']
-        self.seasonName = parse_iracing_string(dict['seasonName'])
+        self.seasonName = parse_encode(dict['seasonName'])
         self.incidents = dict['incidents']
         self.clubPoints = dict['clubPoints']
         self.position = dict['position']
         self.starts = dict['starts']
-        self.seriesShortName = parse_iracing_string(dict['seriesShortName'])
+        self.seriesShortName = parse_encode(dict['seriesShortName'])
         self.carClass = dict['carClass']
 
 
 class PersonalBests:
     def __init__(self, dict):
-        self.track_config = parse_iracing_string(dict['trackconfigname'])
+        self.track_config = parse_encode(dict['trackconfigname'])
         self.event_type = dict['eventtypename']
         self.track_id = dict['trackid']
-        self.best_lap = parse_iracing_string(dict['bestlaptimeformatted'])
-        self.track_name = parse_iracing_string(dict['trackname'])
+        self.best_lap = parse_encode(dict['bestlaptimeformatted'])
+        self.track_name = parse_encode(dict['trackname'])
