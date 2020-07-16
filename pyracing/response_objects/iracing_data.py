@@ -35,7 +35,7 @@ class Season:
         self.license_eligible = data.get('licenseEligible')
         self.cat_id = data.get('catid')
         self.season_id = data.get('seasonid')
-        self.series_short_name = data.get('seriesshortname')
+        self.series_short_name = parse_iracing_string(data.get('seriesshortname'))
         self.end = data.get('end')
         self.category = data.get('category')
         self.raceweek = data.get('raceweek')
