@@ -131,8 +131,7 @@ class Client:
         payload = {'subsessionid': sub_sess_id}
         url = ct.URL_ALL_SUBSESSIONS
         response = await self.build_request(url, payload)
-
-        return [iracing_data.AllSubSessions(x) for x in response.json()]
+        return response.json()
 
     async def car_class_by_id(self, carClassID):
         """ Returns the CarClass data for the associated carClassID

@@ -90,8 +90,3 @@ class MemberSubID:
 class SeasonFromSession:
     def __init__(self, value):
         self.seasonID = int(value)
-
-
-class AllSubSessions:
-    def __init__(self, dict):
-        self.subsession_id = dict['subsessionid']
