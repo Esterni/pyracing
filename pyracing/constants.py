@@ -35,9 +35,11 @@ URL_NEXT_EVENT = (mSite + '/GetNextEvent')
 URL_TOTALREGISTERED = (mSite + '/GetTotalSessionJoinedCountsBySeason')
 URL_RACEGUIDE = (mSite + '/GetRaceGuide')
 URL_ACTIVEOP_COUNT = (mSite + '/GetActiveOpenPracticeCount')
-# can be used without parameters for all hosted sessions
-URL_HOSTED_SESSIONS = (mSite + '/GetHostedSessions'
-                       'ts=0' or 'privateSessionID=1801560')
+
+# Not yet implemented
+#  can be used without parameters for all hosted sessions
+#URL_HOSTED_SESSIONS = (mSite + '/GetHostedSessions'
+#                       'ts=0' or 'privateSessionID=1801560')
 
 # DRIVER PROFILE STATS
 URL_STATS_CHART = (mStats + '/GetChartData')
