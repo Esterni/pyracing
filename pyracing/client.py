@@ -352,8 +352,7 @@ class Client:
         payload = {'custid': custID}
         url = ct.URL_CARS_DRIVEN
         response = await self.build_request(url, payload)
-
-        return iracing_data.CarsDriven(response.content)
+        return response.json()
 
     async def member_division(self, seasonID, custID):
         """ Returns which division the driver was in for the

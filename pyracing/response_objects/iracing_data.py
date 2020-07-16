@@ -70,12 +70,6 @@ class Season:
             self.max_dry_tire_sets = data['max_dry_tire_sets']
 
 
-# Useful for personal_bests(). Need to know CarIDs to query.
-class CarsDriven:
-    def __init__(self, car_list):
-        self.list_of_cars = car_list
-
-
 class MemberDivision:
     def __init__(self, dict):
         self.division = dict['division']
