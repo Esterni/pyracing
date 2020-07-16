@@ -1,10 +1,10 @@
-from ..constants import parse_iracing_string
+from ..constants import parse_encode
 
 
 # Common denominator for Car attributes across all data.
 class Car:
     def __init__(self, data):
-        self.name = parse_iracing_string(data['name'])
+        self.name = parse_encode(data['name'])
         self.id = data['id']
 
 
@@ -14,9 +14,9 @@ class CarClass:
         self.rel_speed = dict['relspeed']  # Speed ranking to other classes
         self.lowername = dict['lowername']
         self.custid = dict['custid']
-        self.name = parse_iracing_string(dict['name'])
+        self.name = parse_encode(dict['name'])
         self.id = dict['id']
-        self.shortname = parse_iracing_string(dict['shortname'])
+        self.shortname = parse_encode(dict['shortname'])
         # Creating subclass from nested list
         self.cars = [Car(x) for x in dict['carsinclass']]
 
@@ -34,8 +34,7 @@ class Season:
         self.license_eligible = data.get('licenseEligible')
         self.cat_id = data.get('catid')
         self.season_id = data.get('seasonid')
-        self.series_short_name = parse_iracing_string(
-            data.get('seriesshortname'))
+        self.series_short_name = parse_encode(data.get('seriesshortname'))
         self.end = data.get('end')
         self.category = data.get('category')
         self.raceweek = data.get('raceweek')
@@ -43,12 +42,12 @@ class Season:
         # Creating subclasses from nested lists
         self.car_classes = [self.SeasonCarClass(x) for
                             x in data.get('carclasses', [])]
-        self.tracks = [self.Tracks(x) for x in data.get('tracks', [])]
+        self.tracks = [self.Track(x) for x in data.get('tracks', [])]
         self.cars = [self.SeasonCar(x) for x in data.get('cars', [])]
 
-    class Tracks:
+    class Track:
         def __init__(self, data):
-            self.lowername = parse_iracing_string(data['lowername'])
+            self.lowername = parse_encode(data['lowername'])
             self.pkgid = data['pkgid']
             self.priority = data['priority']
             self.raceweek = data['raceweek']
@@ -59,7 +58,7 @@ class Season:
     class SeasonCar(Car):
         def __init__(self, data):
             super().__init__(data)
-            self.lowername = parse_iracing_string(data['lowername'])
+            self.lowername = parse_encode(data['lowername'])
             self.name = data['name']
             self.id = data['id']
             self.pkg_id = data['pkgid']

@@ -571,5 +571,5 @@ class CountryCodes:
     ZIMBABWE = 'ZW'
 
 
-def parse_iracing_string(string):
+def parse_encode(string):
     return urllib.parse.unquote(string).replace('+', ' ')
