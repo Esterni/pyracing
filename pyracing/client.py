@@ -592,10 +592,10 @@ class Client:
 
     async def season_standings(
             self,
-            seasonID,
-            raceWeek=-1,
-            carClassID=-1,
-            clubID=-1,
+            season_id,
+            race_week=-1,
+            car_class_id=-1,
+            club_id=-1,
             division=-1,
             start=1,
             end=25,
@@ -606,19 +606,18 @@ class Client:
         This is the same data found in /statsseries.jsp.
         """
         payload = {
-            'seasonid': seasonID,
-            'carclassid': carClassID,
-            'clubid': clubID,
-            'raceweek': raceWeek - 1,  # Makes human '1' == computer '1'
+            'seasonid': season_id,
+            'carclassid': car_class_id,
+            'clubid': club_id,
+            # -1 for all weeks, or the week number to get a specific week.
+            # 0 indexed in iRacing, so the user passes the week number and we subtract one to get the 0 indexed position
+            'raceweek': race_week if race_week == -1 else race_week - 1,
             'division': division,
             'start': start,
             'end': end,
             'sort': sort,
             'order': order
         }
-        # Using -1 means "all" but breaks with human -> computer number magic
-        if raceWeek == -1:
-            payload['raceweek'] = -1
 
         url = ct.URL_SEASON_STANDINGS
         response = await self.build_request(url, payload)
