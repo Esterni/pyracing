@@ -1,50 +1,73 @@
 from ..constants import parse_iracing_string
 
 
-# I believe this maps what I would call a series, but iRacing calls this a season, so I want to be consistent
-class Season:
-    def __init__(self, dict):
-        self.season_id = dict['seasonid']
-        self.cat_id = dict['catid']
-        self.series_short_name = parse_iracing_string((dict['seriesshortname']))
-        self.year = self.value_or_none(dict, 'year')
-        self.quarter = self.value_or_none(dict, 'quarter')
-        self.series_id = self.value_or_none(dict, 'seriesid')
-        self.active = self.value_or_none(dict, 'active')
-        self.license_eligible = self.value_or_none(dict, 'licenseeligible')
-        self.is_lite = self.value_or_none(dict, 'islite')
-        self.car_classes = self.value_or_none(dict, 'carclasses')
-        self.tracks = self.value_or_none(dict, 'tracks')
-        self.end = self.value_or_none(dict, 'end')
-        self.cars = self.value_or_none(dict, 'cars')
-        self.race_week = self.value_or_none(dict, 'raceweek')
-        self.category = self.value_or_none(dict, 'category')
-        self.series_lic_group_id = self.value_or_none(dict, 'serieslicgroupid')
-        self.car_id = self.value_or_none(dict, 'carid')
-
-    @staticmethod
-    def value_or_none(dict, field_name):
-        if field_name in dict:
-            return dict[field_name]
-        else:
-            return None
+# This is the baseline for a car. Most of the time this is all we get,
+# but sometimes we get more fields
+class Car:
+    def __init__(self, data):
+        self.name = parse_iracing_string(data['name'])
+        self.id = data['id']
 
 
+# This is the base class for a CarClass, in a season call we get one more field than this
 class CarClass:
     def __init__(self, dict):
         self.rel_speed = dict['relspeed']  # Speed ranking to other classes
-        self.lower_name = dict['lowername']
+        self.lowername = dict['lowername']
         self.custid = dict['custid']
-        self.class_full_name = dict['name']
-        self.class_id = dict['id']
-        self.class_shortname = dict['shortname']
+        self.name = parse_iracing_string(dict['name'])
+        self.id = dict['id']
+        self.shortname = parse_iracing_string(dict['shortname'])
+        # Creating subclass from nested list
+        self.cars = [Car(x) for x in dict['carsinclass']]
 
-        class Cars:
-            def __init__(self, dict):
-                self.car_name = dict['name']
-                self.car_id = dict['id']
 
-        self.cars = [Cars(x) for x in dict['carsinclass']]
+# I believe this maps what I would call a series, but
+# iRacing calls this a season, so I want to be consistent
+class Season:
+    def __init__(self, data):
+        self.series_lic_group_id = data.get('serieslicgroupid')
+        self.year = data.get('year')
+        self.start = data.get('start')
+        self.active = data.get('active')
+        self.is_lite = data.get('islite')
+        self.series_id = data.get('seriesid')
+        self.license_eligible = data.get('licenseEligible')
+        self.cat_id = data.get('catid')
+        self.season_id = data.get('seasonid')
+        self.series_short_name = data.get('seriesshortname')
+        self.end = data.get('end')
+        self.category = data.get('category')
+        self.raceweek = data.get('raceweek')
+        self.quarter = data.get('quarter')
+        # Creating subclasses from nested lists
+        self.car_classes = [self.SeasonCarClass(x) for x in data.get('carclasses', [])]
+        self.tracks = [self.Tracks(x) for x in data.get('tracks', [])]
+        self.cars = [self.SeasonCar(x) for x in data.get('cars', [])]
+
+    class Tracks:
+        def __init__(self, data):
+            self.lowername = parse_iracing_string(data['lowername'])
+            self.pkgid = data['pkgid']
+            self.priority = data['priority']
+            self.raceweek = data['raceweek']
+            self.config = data['config']
+            self.timeOfDay = data['timeOfDay']
+
+    # The Season endpoint returns more data for a car than other places
+    class SeasonCar(Car):
+        def __init__(self, data):
+            super().__init__(data)
+            self.lowername = parse_iracing_string(data['lowername'])
+            self.name = data['name']
+            self.id = data['id']
+            self.pkg_id = data['pkgid']
+            self.sku = data['sku']
+
+    class SeasonCarClass(CarClass):
+        def __init__(self, data):
+            super().__init__(data)
+            self.max_dry_tire_sets = data['max_dry_tire_sets']
 
 
 # Useful for personal_bests(). Need to know CarIDs to query.
