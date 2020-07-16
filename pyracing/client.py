@@ -590,8 +590,7 @@ class Client:
         payload = {'sessionID': sessionID}
         url = ct.URL_SEASON_FOR_SESSION
         response = await self.build_request(url, payload)
-
-        return iracing_data.SeasonFromSession(response.content)
+        return response.json()
 
     async def season_standings(
             self,

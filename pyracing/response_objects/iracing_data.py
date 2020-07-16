@@ -85,8 +85,3 @@ class MemberDivision:
 class MemberSubID:
     def __init__(self, value):
         self.sub_id = value
-
-
-class SeasonFromSession:
-    def __init__(self, value):
-        self.seasonID = int(value)
