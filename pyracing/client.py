@@ -294,7 +294,8 @@ class Client:
         url = ct.URL_DRIVER_STATS
         response = await self.build_request(url, payload)
 
-        return [historical_data.DriverStats(x) for x in response.json()["d"]["r"]]
+        return [historical_data.DriverStats(x) for
+                x in response.json()["d"]["r"]]
 
     async def private_results(
             self,
@@ -579,7 +580,8 @@ class Client:
         response = await self.build_request(url, payload)
 
         # TODO Consider "try:" for a TypeError for response of {"m":{},"d":[]}
-        return [historical_data.EventResults(x) for x in response.json()["d"]["r"]]
+        return [historical_data.EventResults(x) for
+                x in response.json()["d"]["r"]]
 
     async def season_from_session(self, sessionID):
         """ Returns the seasonID for a given sessionID. That is this endpoints
@@ -610,7 +612,8 @@ class Client:
             'carclassid': car_class_id,
             'clubid': club_id,
             # -1 for all weeks, or the week number to get a specific week.
-            # 0 indexed in iRacing, so the user passes the week number and we subtract one to get the 0 indexed position
+            # 0 indexed in iRacing, so the user passes the week number and we
+            # subtract one to get the 0 indexed position
             'raceweek': race_week if race_week == -1 else race_week - 1,
             'division': division,
             'start': start,
@@ -622,7 +625,8 @@ class Client:
         url = ct.URL_SEASON_STANDINGS
         response = await self.build_request(url, payload)
 
-        return [historical_data.SeasonStandings(x) for x in response.json()["d"]["r"]]
+        return [historical_data.SeasonStandings(x) for
+                x in response.json()["d"]["r"]]
 
     async def series_race_results(self, seasonID, raceWeek=1):
         """ Returns the race results for a seasonID. raceWeek can be
@@ -635,7 +639,8 @@ class Client:
         url = ct.URL_SERIES_RACERESULTS
         response = await self.build_request(url, payload)
 
-        return [historical_data.SeriesRaceResults(x) for x in response.json()['d']]
+        return [historical_data.SeriesRaceResults(x) for
+                x in response.json()['d']]
 
     async def next_session_times(self, seasonID):
         """ Returns the next 5 sessions with all of their attributes:\n
@@ -645,7 +650,8 @@ class Client:
         url = ct.URL_SESSION_TIMES
         response = await self.build_request(url, payload)
 
-        return [upcoming_events.NextSessionTimes(x) for x in response.json()["d"]["r"]]
+        return [upcoming_events.NextSessionTimes(x) for
+                x in response.json()["d"]["r"]]
 
     async def irating(self, category, custID):
         """ Utilizes the stats_chart class to return a list of iRating values
@@ -654,9 +660,9 @@ class Client:
         """
         chart_type = ct.ChartType.irating
         response = await self.stats_chart(category, custID, chart_type)
-        irating_list = [chart_data.IRating(x) for x in response.json()]
+        ir_list = [chart_data.IRating(x) for x in response.json()]
 
-        return chart_data.ChartData(category, ct.ChartType.irating, irating_list)
+        return chart_data.ChartData(category, ct.ChartType.irating, ir_list)
 
     async def ttrating(self, category, custID):
         """ Utilizes the stats_chart class to return a list of ttrating values
@@ -675,7 +681,8 @@ class Client:
         """
         chart_type = ct.ChartType.license_class
         response = await self.stats_chart(category, custID, chart_type)
-        license_class_list = [chart_data.LicenseClass(x) for x in response.json()]
+        license_class_list = [chart_data.LicenseClass(x) for
+                              x in response.json()]
 
         return chart_data.ChartData(category, chart_type, license_class_list)
 
@@ -753,7 +760,8 @@ class Client:
             }
         url = ct.URL_WORLD_RECORDS
         response = await self.build_request(url, payload)
-        return [historical_data.WorldRecords(x) for x in response.json()["d"]["r"]]
+        return [historical_data.WorldRecords(x) for
+                x in response.json()["d"]["r"]]
 
     async def yearly_stats(self, custID):
         """ Returns the breakdown of career stats by year, as seen on the
