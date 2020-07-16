@@ -1,5 +1,5 @@
 # URL_CAR_CLASS
-{
+GetCarClassById = {
     "carclass": {
         "relspeed": 35,
         "lowername": "vw+jetta+tdi+cup",
@@ -6824,7 +6824,6 @@ GetPrivateSessionResults = {
     ]
 }
 # URL_STATS_CHART - No descriptions [Time, iRating
-]
 GetChartData = [
     [
         1581724800000,
@@ -7057,7 +7056,6 @@ GetYearlyStats = [
 ]
 
 # URL_CARS_DRIVEN [List of carIDs
-]
 GetCarsDriven = [
     109,
     41,
