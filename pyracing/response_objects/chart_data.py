@@ -5,8 +5,8 @@ from datetime import datetime
 class ChartData:
     def __init__(self, category, type, list):
         self.category = category  # oval, road, dirt_road, dirt_oval
-        self.type = type  # irating, ttrating, or license_class
         self.list = list  # A list of Iratings, TTRatings, or LicenseClasses
+        self.type = type  # irating, ttrating, or license_class
 
     def current(self):
         return self.list[-1]
@@ -36,8 +36,8 @@ class TTRating:
 # would be B class with a 3.68 rating
 class LicenseClass:
     def __init__(self, tuple):
-        self.datetime = datetime_from_iracing_timestamp(tuple[0])
         self.class_number = int(str(tuple[1])[0])
+        self.datetime = datetime_from_iracing_timestamp(tuple[0])
         self.safety_rating = self.get_safety_rating(str(tuple[1]))
 
     def class_letter(self):
