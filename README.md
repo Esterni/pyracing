@@ -1,6 +1,8 @@
-# pyracing
+# About
 
-This package is an "API wrapper" for retrieving data from iRacing. We use the term "API wrapper" loosely because iRacing does not yet have an officially documented API.
+This package is an API wrapper/client for retrieving data from iRacing. We use the term "wrapper" loosely because iRacing does not yet have an officially documented API. However, we've done our best to build something that might resemble an actual API.
+
+Please feel free to open issues, offer suggestions, or fork and submit a pull request to help polish things up here. We only ask that you be willing to openly discuss things in a respectful manner. If you'd like to chat in Discord, I can be reached in the [iRacing Open Wheel Discord](https://discord.gg/UwnhM7w) (nearing 1000 members!). My username is Jacob Anderson7#4903. I'd be happy to hear from those interested in this project and if enough people reach out I'll make a section just for this project.
 
 # Usage
 ```py
