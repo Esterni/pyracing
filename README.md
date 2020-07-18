@@ -8,9 +8,12 @@ Please feel free to open issues, offer suggestions, or fork and submit a pull re
 ```py
 import pyracing
 import pyracing.constants as ct
-import asyncio
 
-ir = pyracing.client.Client('username', 'password')
+# Storing in system env is another option and use os.getenv() to retrieve them. 
+username = 'username'
+password = 'password'
+
+ir = pyracing.client.Client('username', 'password')  # or any other method
 await ir.authenticate()
 
 iRating = await ir.get_irating(ct.Category.road, custid)
