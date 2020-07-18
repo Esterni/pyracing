@@ -107,7 +107,7 @@ class Client:
         self,
         maxCount=250,
         include_empty='n',  # This should be the string 'n' or 'y'
-        custID=None
+        cust_id=None
     ):
         """ Returns session information for all 'open practice' sessions that
         are currently active. By default this only includes sessions with
@@ -115,7 +115,7 @@ class Client:
         """
         url = ct.URL_ACTIVEOP_COUNT
         payload = {
-            'custid': custID,  # Purpose of custID unknown
+            'custid': cust_id,  # Purpose of cust_id unknown
             'maxcount': maxCount,
             'include_empty': include_empty,
             'excludeLite': None  # Purpose of excludeLite unknown
@@ -124,22 +124,22 @@ class Client:
 
         return [upcoming_events.ActiveOPCount(x) for x in response.json()["d"]]
 
-    async def all_subsessions(self, sub_sess_id):
+    async def all_subsessions(self, subsession_id):
         """ If the given SubSessionID is one of many race splits, this
         returns the SubSessionID for each additional split.
         """
-        payload = {'subsessionid': sub_sess_id}
+        payload = {'subsessionid': subsession_id}
         url = ct.URL_ALL_SUBSESSIONS
         response = await self.__build_request(url, payload)
         return response.json()
 
-    async def car_class_by_id(self, carClassID):
-        """ Returns the CarClass data for the associated carClassID
+    async def car_class_by_id(self, car_class_id=0):
+        """ Returns the CarClass data for the associated car_class_id
 
-        Use id "0" for a "master" CarClass containing a list of CarClass
-        names and their respective carClassID.
+        The default "0" is a "master" CarClass containing a list of CarClass
+        names and their respective car_class_id.
         """
-        payload = {'carclassid': carClassID}
+        payload = {'carclassid': car_class_id}
         url = ct.URL_CAR_CLASS
 
         response = await self.__build_request(url, payload)
@@ -147,11 +147,11 @@ class Client:
         # Returns a single dictionary
         return iracing_data.CarClass(response.json()['carclass'])
 
-    async def career_stats(self, custID):
+    async def career_stats(self, cust_id):
         """ Returns driver career stats as seen on the driver profile page.\n
         E.g. Starts, Avg Inc., Win %, etc.
         """
-        payload = {'custid': custID}
+        payload = {'custid': cust_id}
         url = ct.URL_CAREER_STATS
         response = await self.__build_request(url, payload)
 
@@ -299,7 +299,7 @@ class Client:
 
     async def event_results(
             self,
-            custID,
+            cust_id,
             show_races=1,
             show_quals=0,
             show_tts=0,
@@ -335,12 +335,12 @@ class Client:
             champpoints_high=None
     ):
         """ Returns all data about the results of a session. Providing a
-        custID allows for returning all results by a specific driver.
+        cust_id allows for returning all results by a specific driver.
         """
         # "category[]" is a checkbox flag on the website. Setting it to a
         # category will return results for that category.
         payload = {
-            'custid': custID,
+            'custid': cust_id,
             'showraces': show_races,
             'showquals': show_quals,
             'showtts': show_tts,
@@ -382,22 +382,22 @@ class Client:
         return [historical_data.EventResults(x) for
                 x in response.json()["d"]["r"]]
 
-    async def irating(self, category, custID):
+    async def irating(self, category, cust_id):
         """ Utilizes the stats_chart class to return a list of iRating values
         that are used in the /CareerStats charts. Accessing
-        get_irating().current will give the most recent irating of a custID
+        get_irating().current will give the most recent irating of a cust_id
         """
         chart_type = ct.ChartType.irating
-        response = await self.stats_chart(category, custID, chart_type)
+        response = await self.stats_chart(category, cust_id, chart_type)
         ir_list = [chart_data.IRating(x) for x in response.json()]
 
         return chart_data.ChartData(category, ct.ChartType.irating, ir_list)
 
-    async def last_races_stats(self, custID):
+    async def last_races_stats(self, cust_id):
         """ Returns stat summary for the driver's last 10 races as seen
         on the /CareerStats page.
         """
-        payload = {'custid': custID}
+        payload = {'custid': cust_id}
         url = ct.URL_LASTRACE_STATS
         response = await self.__build_request(url, payload)
 
@@ -406,31 +406,31 @@ class Client:
 
         return [career_stats.LastRacesStats(x) for x in response.json()]
 
-    async def last_series(self, custID):
+    async def last_series(self, cust_id):
         """ Returns a summary of stats about a driver's last 3 series as seen
         on the /CareerStats page.
         """
-        payload = {'custid': custID}
+        payload = {'custid': cust_id}
         url = ct.URL_LAST_SERIES
         response = await self.__build_request(url, payload)
 
         return [career_stats.LastSeries(x) for x in response.json()]
 
-    async def member_cars_driven(self, custID):
-        """ Returns which cars (carID) someone has driven.
+    async def member_cars_driven(self, cust_id):
+        """ Returns which cars (car_id) someone has driven.
         """
-        payload = {'custid': custID}
+        payload = {'custid': cust_id}
         url = ct.URL_CARS_DRIVEN
         response = await self.__build_request(url, payload)
         return response.json()
 
-    async def member_division(self, seasonID, custID):
+    async def member_division(self, season_id, cust_id):
         """ Returns which division the driver was in for the
-        specified seasonID.
+        specified season_id.
         """
         payload = {
-            'seasonid': seasonID,
-            'custid': custID,
+            'seasonid': season_id,
+            'custid': cust_id,
             'pointstype': 'race'
         }
         url = ct.URL_MEM_DIVISION
@@ -438,11 +438,11 @@ class Client:
 
         return [iracing_data.MemberDivision(x) for x in response.json()]
 
-    async def member_subsession_id_from_session(self, sessNum, custID):
+    async def member_subsession_id_from_session(self, sess_num, cust_id):
         """ Returns which SubSession ID that a member was
         in from a given Session ID.
         """
-        payload = {'custid': custID, 'sessionID': sessNum}
+        payload = {'custid': cust_id, 'sessionID': sess_num}
         url = ct.URL_MEM_SUBSESSID
         response = await self.__build_request(url, payload)
         return response.json()
@@ -476,22 +476,22 @@ class Client:
 
         return [upcoming_events.NextEvent(x) for x in response.json]
 
-    async def next_session_times(self, seasonID):
+    async def next_session_times(self, season_id):
         """ Returns the next 5 sessions with all of their attributes:\n
         starttime, registered drivers, session parameters, etc.
         """
-        payload = {'season': seasonID}
+        payload = {'season': season_id}
         url = ct.URL_SESSION_TIMES
         response = await self.__build_request(url, payload)
 
         return [upcoming_events.NextSessionTimes(x) for
                 x in response.json()["d"]["r"]]
 
-    async def personal_bests(self, carID, custID):
-        """ Returns the drivers best laptimes for the given carID, as seen on
+    async def personal_bests(self, car_id, cust_id):
+        """ Returns the drivers best laptimes for the given car_id, as seen on
         the /CareerStats page.
         """
-        payload = {'custid': custID, 'carid': carID}
+        payload = {'custid': cust_id, 'carid': car_id}
         url = ct.URL_PERSONAL_BESTS
         response = await self.__build_request(url, payload)
 
@@ -499,7 +499,7 @@ class Client:
 
     async def private_results(
             self,
-            custid,
+            cust_id,
             start_time_lower,
             start_time_upper,
             lower_bound=1,
@@ -511,7 +511,7 @@ class Client:
         has participated in.
         """
         payload = {
-            'participant_custid': custid,
+            'participant_custid': cust_id,
             'start_time_lowerbound': start_time_lower,
             'start_time_upperbound': start_time_upper,
             'lowerbound': lower_bound,
@@ -574,13 +574,13 @@ class Client:
 
         return [upcoming_events.RaceGuide(x) for x in response.json()]
 
-    async def race_laps_all(self, sub_sess_id, carClassID=-1):
+    async def race_laps_all(self, sub_sess_id, car_class_id=-1):
         """ Returns information about all laps of a race for *every*
         driver. The class of car can be set for multiclass races.
 
         To specify laps of a single driver, use race_laps_driver().
         """
-        payload = {'subsessionid': sub_sess_id, 'carclassid': carClassID}
+        payload = {'subsessionid': sub_sess_id, 'carclassid': car_class_id}
         url = ct.URL_LAPS_ALL
         response = await self.__build_request(url, payload)
 
@@ -588,7 +588,7 @@ class Client:
 
     async def race_laps_driver(
             self,
-            custID,
+            cust_id,
             sub_sess_id,
             sim_sess_id=ct.SimSesNum.race
     ):
@@ -598,18 +598,18 @@ class Client:
         payload = {
             'subsessionid': sub_sess_id,
             'simsessnum': sim_sess_id,
-            'groupid': custID
+            'groupid': cust_id
         }
         url = ct.URL_LAPS_SINGLE
         response = await self.__build_request(url, payload)
 
         return [session_data.RaceLapsDriver(x) for x in response.json()]
 
-    async def season_from_session(self, sessionID):
-        """ Returns the seasonID for a given sessionID. That is this endpoints
-        only purpose.
+    async def season_from_session(self, session_id):
+        """ Returns the season_id for a given session_id. That is this
+        endpoints only purpose.
         """
-        payload = {'sessionID': sessionID}
+        payload = {'sessionID': session_id}
         url = ct.URL_SEASON_FOR_SESSION
         response = await self.__build_request(url, payload)
         return response.json()
@@ -650,13 +650,13 @@ class Client:
         return [historical_data.SeasonStandings(x) for
                 x in response.json()["d"]["r"]]
 
-    async def series_race_results(self, seasonID, raceWeek=1):
-        """ Returns the race results for a seasonID. raceWeek can be
+    async def series_race_results(self, season_id, race_week=1):
+        """ Returns the race results for a season_id. race_week can be
         specified to reduce the size of data returned.
         """
         payload = {
-            'seasonid': seasonID,
-            'raceweek': raceWeek - 1  # Makes human '1' == computer '0'
+            'seasonid': season_id,
+            'raceweek': race_week - 1  # Makes human '1' == computer '0'
         }
         url = ct.URL_SERIES_RACERESULTS
         response = await self.__build_request(url, payload)
@@ -664,48 +664,48 @@ class Client:
         return [historical_data.SeriesRaceResults(x) for
                 x in response.json()['d']]
 
-    async def ttrating(self, category, custID):
+    async def ttrating(self, category, cust_id):
         """ Utilizes the stats_chart class to return a list of ttrating values
         that are used in the /CareerStats charts.
         """
         chart_type = ct.ChartType.ttrating
-        response = await self.stats_chart(category, custID, chart_type)
+        response = await self.stats_chart(category, cust_id, chart_type)
         ttrating_list = [chart_data.TTRating(x) for x in response.json()]
 
         return chart_data.ChartData(category, chart_type, ttrating_list)
 
-    async def license_class(self, category, custID):
+    async def license_class(self, category, cust_id):
         """ Utilizes the stats_chart class to return a list of license values
         that are used in the /CareerStats charts. See the LicenseClass class
         for how to further use this data.
         """
         chart_type = ct.ChartType.license_class
-        response = await self.stats_chart(category, custID, chart_type)
+        response = await self.stats_chart(category, cust_id, chart_type)
         license_class_list = [chart_data.LicenseClass(x) for
                               x in response.json()]
 
         return chart_data.ChartData(category, chart_type, license_class_list)
 
-    async def stats_chart(self, category, custID, chartType):
+    async def stats_chart(self, category, cust_id, chart_type):
         """ Returns a list in the form of time:value for the race category
-        specified. chartType changes values between iRating, ttRating, or
+        specified. chart_type changes values between iRating, ttRating, or
         Safety Rating. Category chooses 1 of the 4 disciplines.
         """
         payload = {
-            'custId': custID,
+            'custId': cust_id,
             'catId': category,
-            'chartType': chartType
+            'chartType': chart_type
         }
         url = ct.URL_STATS_CHART
         return await self.__build_request(url, payload)
 
-    async def subsession_data(self, sub_sess_id, custID):
+    async def subsession_data(self, subsession_id, cust_id):
         """ Returns extensive data about a session. This endpoint contains
-        data points about a session that are unavaible anywhere else.
+        data points about a session that are unavailable anywhere else.
         """
         payload = {
-            'subsessionID': sub_sess_id,
-            'custid': custID
+            'subsessionID': subsession_id,
+            'custid': cust_id
         }
         url = ct.URL_SUBS_RESULTS
         response = await self.__build_request(url, payload)
@@ -745,16 +745,16 @@ class Client:
 
         return [upcoming_events.TotalRegistered(x) for x in response.json()]
 
-    async def world_records(self, year, quarter, carID, trackID, custID):
+    async def world_records(self, year, quarter, car_id, track_id, cust_id):
         """ Returns laptimes with the requested paramaters. Filters can also
         be seen on the /worldrecords.jsp page on the membersite.
         """
         payload = {
             'seasonyear': year,
             'seasonquarter': quarter,
-            'carid': carID,
-            'trackid': trackID,
-            'custid': custID,
+            'carid': car_id,
+            'trackid': track_id,
+            'custid': cust_id,
             'format': 'json',
             'upperbound': 1
         }
@@ -764,11 +764,11 @@ class Client:
         return [historical_data.WorldRecords(x) for
                 x in response.json()["d"]["r"]]
 
-    async def yearly_stats(self, custID):
+    async def yearly_stats(self, cust_id):
         """ Returns the breakdown of career stats by year, as seen on the
         /CareerStats driver profile.
         """
-        payload = {'custid': custID}
+        payload = {'custid': cust_id}
         url = ct.URL_YEARLY_STATS
         response = await self.__build_request(url, payload)
 
