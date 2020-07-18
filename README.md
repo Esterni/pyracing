@@ -21,6 +21,8 @@ iRating = await ir.get_irating(ct.Category.road, custid)
 current_irating = iRating.current()
 ```
 
+## See the wiki page [List of Functions](https://github.com/Esterni/pyracing/wiki/List-of-functions) for a list of what is available to use. 
+
 FILES
 =====
 
