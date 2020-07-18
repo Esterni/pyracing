@@ -699,7 +699,7 @@ class Client:
         url = ct.URL_STATS_CHART
         return await self.__build_request(url, payload)
 
-    async def subsession_data(self, subsession_id, cust_id):
+    async def subsession_data(self, subsession_id, cust_id=None):
         """ Returns extensive data about a session. This endpoint contains
         data points about a session that are unavailable anywhere else.
         """
