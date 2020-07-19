@@ -29,16 +29,16 @@ class Season:
         self.cat_id = data.get('catid')
         self.category = data.get('category')
         self.date_end = data.get('end')
+        self.date_start = data.get('start')
         self.is_lite = data.get('islite')
         self.license_eligible = data.get('licenseEligible')
-        self.season_quarter = data.get('quarter')
         self.race_week = data.get('raceweek')
         self.season_id = data.get('seasonid')
+        self.season_quarter = data.get('quarter')
+        self.season_year = data.get('year')
         self.series_id = data.get('seriesid')
         self.series_lic_group_id = data.get('serieslicgroupid')
         self.series_name_short = parse_encode(data.get('seriesshortname'))
-        self.date_start = data.get('start')
-        self.season_year = data.get('year')
         # Creating subclasses from nested lists
         self.car_classes = [self.SeasonCarClass(x) for
                             x in data.get('carclasses', [])]
@@ -47,20 +47,20 @@ class Season:
 
     class Track:
         def __init__(self, data):
-            self.track_config = data['config']
             self.name_lower = parse_encode(data['lowername'])
             self.pkg_id = data['pkgid']
             self.priority = data['priority']
             self.race_week = data['raceweek']
             self.time_of_day = data['timeOfDay']
+            self.track_config = data['config']
 
     # The Season endpoint returns more data for a car than other places
     class SeasonCar(Car):
         def __init__(self, data):
             super().__init__(data)
             self.id = data['id']
-            self.name_lower = parse_encode(data['lowername'])
             self.name = data['name']
+            self.name_lower = parse_encode(data['lowername'])
             self.pkg_id = data['pkgid']
             self.sku = data['sku']
 
@@ -73,4 +73,4 @@ class Season:
 class MemberDivision:
     def __init__(self, dict):
         self.division = dict['division']
-        self.projected_division = dict['isProjected']
+        self.division_projected = dict['isProjected']
