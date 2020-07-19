@@ -3,20 +3,20 @@ from ..constants import parse_encode
 
 class EventResults:
     def __init__(self, dict):
-        self.qlap_best = parse_encode(dict['38'])
-        self.lap_best_subsession = parse_encode(dict['6'])
-        self.lap_best = dict['29']
-        self.car_class_id = dict['32']
-        self.car_id = dict['33']
-        self.cat_id = dict['40']
+        self.lap_best = parse_encode(dict['38'])
+        self.qlap_best = parse_encode(dict['6'])
+        self.car_class_id = dict['29']
+        self.car_id = dict['32']
+        self.category_id = dict['33']
+        self.champ_points = dict['40']
         self.champ_points_sort = dict['43']
-        self.champ_points = dict['16']
+        self.club_points = dict['16']
         self.club_points_sort = dict['47']
-        self.club_points = dict['23']
-        self.cust_id = parse_encode(dict['48'])
-        self.display_name = dict['17']
-        self.drop_race = dict['37']
-        self.event_type = dict['10']
+        self.cust_id = dict['23']
+        self.display_name = parse_encode(dict['48'])
+        self.drop_race_points = dict['17']
+        self.event_type = dict['37']
+        self.time_finished = dict['10']
         self.pos_finish = dict['3']
         self.group_name = dict['19']
         self.helm_color_1 = dict['1']
@@ -25,22 +25,22 @@ class EventResults:
         self.helm_license_level = dict['24']
         self.helm_pattern = dict['46']
         self.incidents = dict['39']
-        self.license_class = dict['35']
-        self.official = dict['18']
+        self.license_group = dict['35']
+        self.official_session = dict['18']
         self.race_week = dict['8']
-        self.raw_start_time = dict['11']
-        self.row = dict['26']
-        self.season_id = dict['34']
-        self.season_quarter = dict['42']
+        self.time_start_raw = dict['11']
+        self.row_number = dict['26']
+        self.quarter_season = dict['34']
+        self.season_id = dict['42']
         self.series_id = dict['22']
-        self.session_id = dict['20']
-        self.session_rank = dict['28']
-        self.start_date = dict['9']
-        self.pos_start = parse_encode(dict['44'])
-        self.start_time = parse_encode(dict['21'])
+        self.rank_session = dict['20']
+        self.session_id = dict['28']
+        self.date_start = dict['9']
+        self.time_start = parse_encode(dict['44'])
+        self.pos_start = parse_encode(dict['21'])
         self.strength_of_field = dict['12']
-        self.subsession_id = dict['45']
-        self.time_finished = parse_encode(dict['7'])
+        self.blap_subsession_best = dict['45']
+        self.subsession_id = parse_encode(dict['7'])
         self.track_id = dict['41']
         self.winner_display_name = dict['30']
         self.winner_helm_color_1 = parse_encode(dict['31'])
@@ -48,8 +48,8 @@ class EventResults:
         self.winner_helm_color_3 = dict['2']
         self.winner_helm_pattern = parse_encode(dict['4'])
         self.winner_license_level = dict['36']
-        self.winner_group_id = dict['25']
-        self.season_year = dict['27']
+        self.winners_group_id = dict['25']
+        self.year = dict['27']
         # Another instance of not in dict
         # self.rowcount = dict['15']
 
@@ -158,7 +158,7 @@ class WorldRecords:
         self.practice_start_time = dict['8']
         self.practice_subsession_id = dict['13']
         self.qualify = parse_encode(dict['15'])
-        self.qualify_start_time = dict['21']
+        self.time_start_qualify = dict['21']
         self.qualify_subsession_id = ['36']
         self.race = parse_encode(dict['19'])
         self.race_start_time = dict['18']
@@ -184,10 +184,10 @@ class PrivateResults:
         self.car_class_id = dict['carclassid']
         self.car_ids = dict['carids']
         self.cat_id = dict['catid']
-        self.finish_pos_class = dict['classfinishingposition']
-        self.start_pos_class = dict['classstartingposition']
+        self.pos_finish_class = dict['classfinishingposition']
+        self.pos_start_class = dict['classstartingposition']
         self.created = dict['created']
-        self.finish_pos = dict['finishingposition']
+        self.pos_finish = dict['finishingposition']
         self.fixed_setup = dict['fixed_setup']
         self.full_course_cautions = dict['fullcoursecautions']
         self.hardcore_level = dict['hardcorelevel']
