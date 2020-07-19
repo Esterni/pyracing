@@ -60,7 +60,7 @@ class ActiveOPCount:
         self.skies = dict['26']
         self.temp_unit = dict['1']
         self.temp_value = dict['3']
-        self.weather = dict['24']
+        self.weather_type = dict['24']
         self.weather_initial = dict['40']
         self.weather_ongoing = dict['29']
         self.wind_direction = dict['2']

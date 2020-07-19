@@ -57,7 +57,7 @@ class SubSessionData:
         self.skies = dict['weather_skies']
         self.temp_unit = dict['weather_temp_units']
         self.temp_value = dict['weather_temp_value']
-        self.weather = dict['weather_type']
+        self.weather_type = dict['weather_type']
         self.weather_initial = dict['weather_var_initial']
         self.weather_ongoing = dict['weather_var_ongoing']
         self.wind_direction = dict['weather_wind_dir']

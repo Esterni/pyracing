@@ -240,7 +240,7 @@ class PrivateResults:
         self.time_start = dict['start_time']
         self.track = dict['track_name']
         self.track_id = dict['trackid']
-        self.weather = dict['weather_type']
+        self.weather_type = dict['weather_type']
         self.weight_penalties = dict['weight_penalties']
         self.wind_direction = dict['weather_wind_dir']
         self.wind_speed_unit = dict['weather_wind_speed_units']
