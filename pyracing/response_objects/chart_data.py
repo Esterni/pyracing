@@ -38,7 +38,7 @@ class LicenseClass:
     def __init__(self, tuple):
         self.class_number = int(str(tuple[1])[0])
         self.datetime = datetime_from_iracing_timestamp(tuple[0])
-        self.safety_rating = self.get_safety_rating(str(tuple[1]))
+        self.license_level = self.get_safety_rating(str(tuple[1]))
 
     def class_letter(self):
         return License().number_to_string(self.class_number)

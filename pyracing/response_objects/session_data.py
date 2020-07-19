@@ -5,8 +5,8 @@ class SubSessionData:
         self.cat_id = dict['catid']
         self.caution_type = dict['cautiontype']
         self.corners_total = dict['cornersperlap']
-        self.driver_change_param1 = dict['driver_change_param1']
-        self.driver_change_param2 = dict['driver_change_param2']
+        self.driver_change_param_1 = dict['driver_change_param1']
+        self.driver_change_param_2 = dict['driver_change_param2']
         self.driver_change_rule = dict['driver_change_rule']
         self.driver_changes = dict['driver_changes']
         self.lap_avg = dict['eventavglap']
@@ -34,7 +34,7 @@ class SubSessionData:
         self.rubber_warmup = dict['rubberlevel_warmup']
         self.season_name = dict['season_name']
         self.season_quarter = dict['season_quarter']
-        self.season_short_name = dict['season_shortname']
+        self.season_name_short = dict['season_shortname']
         self.season_year = dict['season_year']
         self.season_id = dict['seasonid']
         self.series_name = dict['series_name']
@@ -43,7 +43,7 @@ class SubSessionData:
         self.session_id = dict['sessionid']
         self.session_name = dict['sessionname']
         self.sim_ses_type = dict['simsestype']
-        self.sim_time_start = dict['simulatedstarttime']
+        self.time_start_sim = dict['simulatedstarttime']
         self.special_event_type = dict['specialeventtype']
         self.special_event_type_text = dict['specialeventtypetext']
         self.time_start = dict['start_time']
@@ -68,7 +68,7 @@ class SubSessionData:
 
     class Driver:
         def __init__(self, dict):
-            self.points_champ = dict['aggchamppoints']
+            self.points_champ_agg = dict['aggchamppoints']
             self.lap_avg = dict['avglap']
             self.lap_best_n = dict['bestlapnum']
             self.lap_best = dict['bestlaptime']
@@ -93,7 +93,7 @@ class SubSessionData:
             self.car_sponser_2 = dict['carsponsor2']
             self.car_class_name = dict['ccName']
             self.car_class_name_short = dict['ccNameShort']
-            self.champ_points = dict['champpoints']
+            self.points_champ = dict['champpoints']
             self.interval_class = dict['classinterval']
             self.club_id = dict['clubid']
             self.club_name = dict['clubname']
@@ -107,7 +107,7 @@ class SubSessionData:
             self.drop_race = dict['dropracepoints']
             self.event_type_name = dict['evttypename']
             self.pos_finish = dict['finishpos']
-            self.pos_finish_in_class = dict['finishposinclass']
+            self.pos_finish_class = dict['finishposinclass']
             self.group_id = dict['groupid']
             self.heat_info_id = dict['heatinfoid']
             self.helm_color_1 = dict['helm_color1']
@@ -143,7 +143,7 @@ class SubSessionData:
             self.reason_out = dict['reasonout']
             self.reason_out_id = dict['reasonoutid']
             self.restrict_results = dict['restrictresults']
-            self.session_time_start = dict['sessionstarttime']
+            self.time_session_start = dict['sessionstarttime']
             self.sim_ses_name = dict['simsesname']
             self.sim_ses_num = dict['simsesnum']
             self.sim_ses_type_name = dict['simsestypename']
@@ -219,7 +219,7 @@ class RaceLapsAll:
             self.cust_id = dict['custid']
             self.flags = dict['flags']
             self.lap_num = dict['lapnum']
-            self.session_time = dict['sesTime']
+            self.time_ses = dict['sesTime']
 
 
 # Race laps for single driver of a session
@@ -234,7 +234,7 @@ class RaceLapsDriver:
             self.cust_id = dict['custid']
             self.flags = dict['flags']
             self.lap_num = dict['lap_num']
-            self.ses_time = dict['ses_time']
+            self.time_ses = dict['ses_time']
 
     class Header:
         def __init__(self, dict):
