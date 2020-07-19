@@ -3,89 +3,89 @@ from ..constants import parse_encode
 
 class CareerStats:
     def __init__(self, dict):
-        self.avgFinish = round(dict['avgFinish'], 2)
-        self.avgIncPerRace = round(dict['avgIncPerRace'], 2)
-        self.avgPtsPerRace = round(dict['avgPtsPerRace'], 2)
-        self.avgStart = round(dict['avgStart'], 2)
+        self.pos_finish_avg = round(dict['avgFinish'], 2)
+        self.incidents_avg = round(dict['avgIncPerRace'], 2)
+        self.points_avg = round(dict['avgPtsPerRace'], 2)
+        self.pos_start_avg = round(dict['avgStart'], 2)
         self.category = parse_encode(dict['category'])
-        self.lapsLed = dict['lapsLed']
-        self.lapsLedPerc = round(dict['lapsLedPerc'], 2)
+        self.laps_led_total = dict['lapsLed']
+        self.laps_led_total_pcnt = round(dict['lapsLedPerc'], 2)
         self.poles = dict['poles']
         self.starts = dict['starts']
-        self.top5 = dict['top5']
-        self.top5Perc = round(dict['top5Perc'], 2)
-        self.totalclubpoints = dict['totalclubpoints']
-        self.totalLaps = dict['totalLaps']
-        self.winPerc = round(dict['winPerc'], 2)
+        self.top_5s = dict['top5']
+        self.top_5_pcnt = round(dict['top5Perc'], 2)
+        self.points_club = dict['totalclubpoints']
+        self.laps = dict['totalLaps']
+        self.win_pcnt = round(dict['winPerc'], 2)
         self.wins = dict['wins']
 
 
 class YearlyStats:
     def __init__(self, dict):
-        self.avgFinish = round(dict['avgFinish'], 2)
-        self.avgIncPerRace = round(dict['avgIncPerRace'], 2)
-        self.avgPtsPerRace = round(dict['avgPtsPerRace'], 2)
-        self.avgStart = round(dict['avgStart'], 2)
+        self.pos_finish_avg = round(dict['avgFinish'], 2)
+        self.incidents_avg = round(dict['avgIncPerRace'], 2)
+        self.points_avg = round(dict['avgPtsPerRace'], 2)
+        self.pos_start_avg = round(dict['avgStart'], 2)
         self.category = parse_encode(dict['category'])
-        self.clubpoints = dict['clubpoints']
-        self.lapsLed = dict['lapsLed']
-        self.lapsLedPerc = round(dict['lapsLedPerc'], 2)
+        self.points_club = dict['clubpoints']
+        self.laps_led_total = dict['lapsLed']
+        self.laps_led_total_pcnt = round(dict['lapsLedPerc'], 2)
         self.poles = dict['poles']
         self.starts = dict['starts']
-        self.top5 = dict['top5']
-        self.top5Perc = round(dict['top5Perc'], 2)
-        self.totalLaps = dict['totalLaps']
-        self.winPerc = round(dict['winPerc'], 2)
+        self.top_5s = dict['top5']
+        self.top_5_pcnt = round(dict['top5Perc'], 2)
+        self.laps = dict['totalLaps']
+        self.win_pcnt = round(dict['winPerc'], 2)
         self.wins = dict['wins']
         self.year = dict['year']
 
 
 class LastRacesStats:
     def __init__(self, dict):
-        self.champPoints = dict['champPoints']
-        self.clubPoints = dict['clubPoints']
+        self.points_champ = dict['champPoints']
+        self.points_club = dict['clubPoints']
         self.date = dict['date']
-        self.finishPos = dict['finishPos']
+        self.pos_finish = dict['finishPos']
         self.incidents = dict['incidents']
-        self.lapsLed = dict['lapsLed']
-        self.seasonID = dict['seasonID']
-        self.seriesID = dict['seriesID']
-        self.sof = dict['sof']
-        self.startPos = dict['startPos']
-        self.subsessionID = dict['subsessionID']
+        self.laps_led_total = dict['lapsLed']
+        self.season_id = dict['seasonID']
+        self.series_id = dict['seriesID']
+        self.strength_of_field = dict['sof']
+        self.pos_start = dict['startPos']
+        self.subsession_id = dict['subsessionID']
         self.time = dict['time']
-        self.trackName = parse_encode(dict['trackName'])
-        self.winnerID = dict['winnerID']
-        self.winnerLL = dict['winnerLL']
-        self.winnerName = dict['winnerName']
+        self.track = parse_encode(dict['trackName'])
+        self.winner_cust_id = dict['winnerID']
+        self.winner_laps_led = dict['winnerLL']
+        self.winner_name = dict['winnerName']
 
 
 class LastSeries:
     def __init__(self, dict):
-        self.avgFinish = dict['avgFinish']
-        self.avgStart = dict['avgStart']
-        self.carClass = dict['carClass']
-        self.clubPoints = dict['clubPoints']
-        self.current_champ_points = dict['champPoints']
+        self.pos_finish_avg = dict['avgFinish']
+        self.pos_start_avg = dict['avgStart']
+        self.car_class_id = dict['carClass']
+        self.points_club = dict['clubPoints']
+        self.points_champ = dict['champPoints']
         self.division = dict['division']
         self.incidents = dict['incidents']
         self.laps = dict['laps']
-        self.lapsLead = dict['lapsLead']
-        self.position = dict['position']
-        self.seasonID = dict['seasonID']
-        self.seasonName = parse_encode(dict['seasonName'])
-        self.seasonShortName = parse_encode(dict['seasonShortName'])
+        self.laps_led = dict['lapsLead']
+        self.series_rank = dict['position']
+        self.season_id = dict['seasonID']
+        self.season_name = parse_encode(dict['seasonName'])
+        self.season_name_short = parse_encode(dict['seasonShortName'])
         self.series = parse_encode(dict['series'])
-        self.seriesID = dict['seriesID']
-        self.seriesShortName = parse_encode(dict['seriesShortName'])
+        self.series_id = dict['seriesID']
+        self.series_name_short = parse_encode(dict['seriesShortName'])
         self.starts = dict['starts']
-        self.top5 = dict['top5']
+        self.top_5s = dict['top5']
         self.weeks = dict['weeks']
 
 
 class PersonalBests:
     def __init__(self, dict):
-        self.best_lap = parse_encode(dict['bestlaptimeformatted'])
+        self.lap_best = parse_encode(dict['bestlaptimeformatted'])
         self.event_type = dict['eventtypename']
         self.track_config = parse_encode(dict['trackconfigname'])
         self.track_id = dict['trackid']
