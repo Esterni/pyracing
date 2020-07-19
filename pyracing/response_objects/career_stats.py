@@ -28,8 +28,8 @@ class YearlyStats:
         self.pos_start_avg = round(dict['avgStart'], 2)
         self.category = parse_encode(dict['category'])
         self.points_club = dict['clubpoints']
-        self.laps_led_total = dict['lapsLed']
-        self.laps_led_total_pcnt = round(dict['lapsLedPerc'], 2)
+        self.laps_led = dict['lapsLed']
+        self.laps_led_pcnt = round(dict['lapsLedPerc'], 2)
         self.poles = dict['poles']
         self.starts = dict['starts']
         self.top_5s = dict['top5']
