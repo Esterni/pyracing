@@ -4,7 +4,7 @@ from ..constants import parse_encode
 class EventResults:
     def __init__(self, dict):
         self.lap_best = parse_encode(dict['38'])
-        self.qlap_best = parse_encode(dict['6'])
+        self.lap_qual_best = parse_encode(dict['6'])
         self.car_class_id = dict['29']
         self.car_id = dict['32']
         self.category_id = dict['33']
@@ -40,7 +40,7 @@ class EventResults:
         self.time_start = parse_encode(dict['21'])
         self.pos_start = dict['12']
         self.strength_of_field = dict['45']
-        self.blap_subsession_best = parse_encode(dict['7'])
+        self.lap_best_subsession = parse_encode(dict['7'])
         self.subsession_id = dict['41']
         self.track_id = dict['30']
         self.winner_display_name = parse_encode(dict['31'])
