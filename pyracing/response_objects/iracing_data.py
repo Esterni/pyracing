@@ -28,17 +28,17 @@ class Season:
         self.active = data.get('active')
         self.cat_id = data.get('catid')
         self.category = data.get('category')
-        self.end = data.get('end')
+        self.date_end = data.get('end')
         self.is_lite = data.get('islite')
         self.license_eligible = data.get('licenseEligible')
-        self.quarter = data.get('quarter')
-        self.raceweek = data.get('raceweek')
+        self.season_quarter = data.get('quarter')
+        self.race_week = data.get('raceweek')
         self.season_id = data.get('seasonid')
         self.series_id = data.get('seriesid')
         self.series_lic_group_id = data.get('serieslicgroupid')
-        self.series_short_name = parse_encode(data.get('seriesshortname'))
-        self.start = data.get('start')
-        self.year = data.get('year')
+        self.series_name_short = parse_encode(data.get('seriesshortname'))
+        self.date_start = data.get('start')
+        self.season_year = data.get('year')
         # Creating subclasses from nested lists
         self.car_classes = [self.SeasonCarClass(x) for
                             x in data.get('carclasses', [])]
@@ -47,19 +47,19 @@ class Season:
 
     class Track:
         def __init__(self, data):
-            self.config = data['config']
-            self.lowername = parse_encode(data['lowername'])
-            self.pkgid = data['pkgid']
+            self.track_config = data['config']
+            self.name_lower = parse_encode(data['lowername'])
+            self.pkg_id = data['pkgid']
             self.priority = data['priority']
-            self.raceweek = data['raceweek']
-            self.timeOfDay = data['timeOfDay']
+            self.race_week = data['raceweek']
+            self.time_of_day = data['timeOfDay']
 
     # The Season endpoint returns more data for a car than other places
     class SeasonCar(Car):
         def __init__(self, data):
             super().__init__(data)
             self.id = data['id']
-            self.lowername = parse_encode(data['lowername'])
+            self.name_lower = parse_encode(data['lowername'])
             self.name = data['name']
             self.pkg_id = data['pkgid']
             self.sku = data['sku']
@@ -67,7 +67,7 @@ class Season:
     class SeasonCarClass(CarClass):
         def __init__(self, data):
             super().__init__(data)
-            self.max_dry_tire_sets = data['max_dry_tire_sets']
+            self.tire_sets_dry_max = data['max_dry_tire_sets']
 
 
 class MemberDivision:
