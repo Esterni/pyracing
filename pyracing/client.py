@@ -8,21 +8,15 @@ import sys
 import time
 
 
-# This module authenticates, builds, and sends url queries to iRacing.
-# Each function is set with only the variables required, for the respective
-# endpoint, to return the desired data.  Compared to the previous client.py,
-# this module does not attempt to parse any of the data received.  Instead,
-# each function returns the response object from httpx.AsyncClient() to
-# provide more versatility from a function.
+# This module authenticates a session, builds a URL query from parameters,
+# and parses returned data into instanced objects from iRacing endpoints.
+# Each method contains all **known** paramaters available for an endpoint.
+# Cookies are handled by the httpx module behind the scenes and are not
+# written to file.
 
-# Response objects include the .json() method, which is the same result
-# that was found in util.py as parse().  Since new endpoints have been found,
-# there is no longer a need for regex, drastically reducing the complexity
-# of the code.
-
-# Cookies are handled by the Session() object behind the scenes. Cookies are
-# not written to file. If a session is closed, you must re-authenticate with
-# the self.authenticate() method.
+# Authentication happens automatically on the first method call from Client().
+# When a request fails from an expired cookie, a re-auth is triggered and
+# the last request that failed is tried again.
 
 
 def default_logger():
