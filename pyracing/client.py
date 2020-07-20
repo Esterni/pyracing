@@ -522,7 +522,7 @@ class Client:
 
     async def race_guide(
             self,
-            unix_time=ct.Date.now_unix_ms,
+            unix_time=ct.now_five_min_floor(),
             show_rookie=None,
             show_class_d=None,
             show_class_c=None,
