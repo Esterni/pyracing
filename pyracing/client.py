@@ -103,7 +103,7 @@ class Client:
     async def active_op_counts(
         self,
         count_max=250,
-        include_empty='n',  # This should be the string 'n' or 'y'
+        include_empty='n',
         cust_id=None
     ):
         """ Returns session information for all 'open practice' sessions that
@@ -117,7 +117,7 @@ class Client:
             'include_empty': include_empty,
             'excludeLite': None  # Purpose of excludeLite unknown
         }
-        response = await self.__build_request(url, payload)
+        response = await self._build_request(url, payload)
 
         return [upcoming_events.ActiveOPCount(x) for x in response.json()["d"]]
 
@@ -127,7 +127,7 @@ class Client:
         """
         payload = {'subsessionid': subsession_id}
         url = ct.URL_ALL_SUBSESSIONS
-        response = await self.__build_request(url, payload)
+        response = await self._build_request(url, payload)
         return response.json()
 
     async def car_class_by_id(self, car_class_id=0):
@@ -139,7 +139,7 @@ class Client:
         payload = {'carclassid': car_class_id}
         url = ct.URL_CAR_CLASS
 
-        response = await self.__build_request(url, payload)
+        response = await self._build_request(url, payload)
 
         # Returns a single dictionary
         return iracing_data.CarClass(response.json()['carclass'])
@@ -150,7 +150,7 @@ class Client:
         """
         payload = {'custid': cust_id}
         url = ct.URL_CAREER_STATS
-        response = await self.__build_request(url, payload)
+        response = await self._build_request(url, payload)
 
         if not response.json():
             return []
@@ -159,14 +159,14 @@ class Client:
 
     async def current_seasons(
             self,
-            only_active=True,  # Returns only seasons that are active
+            only_active=True,
             series_name_short=True,
             cat_id=True,
             season_id=True,
             year=True,
             quarter=True,
             series_id=True,
-            active=True,  # Field that indicates if season is active or not
+            active=True,
             license_eligible=True,
             is_lite=True,
             car_classes=True,
@@ -220,7 +220,7 @@ class Client:
             'fields': key_list
         }
         url = ct.URL_CURRENT_SEASONS
-        response = await self.__build_request(url, payload)
+        response = await self._build_request(url, payload)
 
         return [iracing_data.Season(x) for x in response.json()]
 
@@ -290,7 +290,7 @@ class Client:
             'active': active
         }
         url = ct.URL_DRIVER_STATS
-        response = await self.__build_request(url, payload)
+        response = await self._build_request(url, payload)
 
         return [historical_data.DriverStats(x) for
                 x in response.json()["d"]["r"]]
@@ -377,7 +377,7 @@ class Client:
             else:
                 pass
         url = ct.URL_RESULTS
-        response = await self.__build_request(url, payload)
+        response = await self._build_request(url, payload)
 
         # TODO Consider "try:" for a TypeError for response of {"m":{},"d":[]}
         return [historical_data.EventResults(x) for
@@ -400,7 +400,7 @@ class Client:
         """
         payload = {'custid': cust_id}
         url = ct.URL_LASTRACE_STATS
-        response = await self.__build_request(url, payload)
+        response = await self._build_request(url, payload)
 
         if not response.json():
             return []
@@ -413,7 +413,7 @@ class Client:
         """
         payload = {'custid': cust_id}
         url = ct.URL_LAST_SERIES
-        response = await self.__build_request(url, payload)
+        response = await self._build_request(url, payload)
 
         return [career_stats.LastSeries(x) for x in response.json()]
 
@@ -422,7 +422,7 @@ class Client:
         """
         payload = {'custid': cust_id}
         url = ct.URL_CARS_DRIVEN
-        response = await self.__build_request(url, payload)
+        response = await self._build_request(url, payload)
         return response.json()
 
     async def member_division(self, cust_id, season_id):
@@ -435,7 +435,7 @@ class Client:
             'pointstype': 'race'
         }
         url = ct.URL_MEM_DIVISION
-        response = await self.__build_request(url, payload)
+        response = await self._build_request(url, payload)
 
         return [iracing_data.MemberDivision(x) for x in response.json()]
 
@@ -445,7 +445,7 @@ class Client:
         """
         payload = {'custid': cust_id, 'sessionID': session_id}
         url = ct.URL_MEM_SUBSESSID
-        response = await self.__build_request(url, payload)
+        response = await self._build_request(url, payload)
         return response.json()
 
     async def my_racers(self, friends=1, studied=1, blacklisted=1):
@@ -456,7 +456,7 @@ class Client:
             'blacklisted': blacklisted
         }
         url = ct.URL_MY_RACERS
-        return await self.__build_request(url, payload)
+        return await self._build_request(url, payload)
 
     async def next_event(
             self,
@@ -473,7 +473,7 @@ class Client:
             'date': date
         }
         url = ct.URL_NEXT_EVENT
-        response = await self.__build_request(url, payload)
+        response = await self._build_request(url, payload)
 
         return [upcoming_events.NextEvent(x) for x in response.json]
 
@@ -483,7 +483,7 @@ class Client:
         """
         payload = {'season': season_id}
         url = ct.URL_SESSION_TIMES
-        response = await self.__build_request(url, payload)
+        response = await self._build_request(url, payload)
 
         return [upcoming_events.NextSessionTimes(x) for
                 x in response.json()["d"]["r"]]
@@ -494,7 +494,7 @@ class Client:
         """
         payload = {'custid': cust_id, 'carid': car_id}
         url = ct.URL_PERSONAL_BESTS
-        response = await self.__build_request(url, payload)
+        response = await self._build_request(url, payload)
 
         return [career_stats.PersonalBests(x) for x in response.json()]
 
@@ -521,7 +521,7 @@ class Client:
             'order': order
         }
         url = ct.URL_PRIVATE_RESULTS
-        response = await self.__build_request(url, payload)
+        response = await self._build_request(url, payload)
 
         return [historical_data.PrivateResults(x) for x in response.json()]
 
@@ -571,7 +571,7 @@ class Client:
             'showOfficial': show_official
         }
         url = ct.URL_RACEGUIDE
-        response = await self.__build_request(url, payload)
+        response = await self._build_request(url, payload)
 
         return [upcoming_events.RaceGuide(x) for x in response.json()]
 
@@ -583,7 +583,7 @@ class Client:
         """
         payload = {'subsessionid': subsession_id, 'carclassid': car_class_id}
         url = ct.URL_LAPS_ALL
-        response = await self.__build_request(url, payload)
+        response = await self._build_request(url, payload)
 
         return [session_data.RaceLapsAll(x) for x in response.json]
 
@@ -591,7 +591,7 @@ class Client:
             self,
             cust_id,
             subsession_id,
-            sim_sess_num=ct.SimSesNum.race
+            sim_sess_num=ct.SimSesId.race
     ):
         """ Returns data for all laps completed of a single driver.
         sim_sess_id specifies the laps from practice, qual, or race.
@@ -602,7 +602,7 @@ class Client:
             'groupid': cust_id
         }
         url = ct.URL_LAPS_SINGLE
-        response = await self.__build_request(url, payload)
+        response = await self._build_request(url, payload)
 
         return [session_data.RaceLapsDriver(x) for x in response.json()]
 
@@ -612,7 +612,7 @@ class Client:
         """
         payload = {'sessionID': session_id}
         url = ct.URL_SEASON_FOR_SESSION
-        response = await self.__build_request(url, payload)
+        response = await self._build_request(url, payload)
         return response.json()
 
     async def season_standings(
@@ -646,7 +646,7 @@ class Client:
         }
 
         url = ct.URL_SEASON_STANDINGS
-        response = await self.__build_request(url, payload)
+        response = await self._build_request(url, payload)
 
         return [historical_data.SeasonStandings(x) for
                 x in response.json()["d"]["r"]]
@@ -660,7 +660,7 @@ class Client:
             'raceweek': race_week - 1  # Makes human '1' == computer '0'
         }
         url = ct.URL_SERIES_RACERESULTS
-        response = await self.__build_request(url, payload)
+        response = await self._build_request(url, payload)
 
         return [historical_data.SeriesRaceResults(x) for
                 x in response.json()['d']]
@@ -698,7 +698,7 @@ class Client:
             'chartType': chart_type
         }
         url = ct.URL_STATS_CHART
-        return await self.__build_request(url, payload)
+        return await self._build_request(url, payload)
 
     async def subsession_data(self, subsession_id, cust_id=None):
         """ Returns extensive data about a session. This endpoint contains
@@ -709,7 +709,7 @@ class Client:
             'custid': cust_id
         }
         url = ct.URL_SUBS_RESULTS
-        response = await self.__build_request(url, payload)
+        response = await self._build_request(url, payload)
 
         # Returns a single dictionary
         return session_data.SubSessionData(response.json())
@@ -731,7 +731,7 @@ class Client:
             'carId': car_id
         }
         url = ct.URL_SUBS_RESULTS
-        return await self.__build_request(url, payload)
+        return await self._build_request(url, payload)
 
     # TODO Does not return JSON format. Find how to convert.
     async def total_registered_all(self):
@@ -742,7 +742,7 @@ class Client:
         """
         payload = {}
         url = ct.URL_TOTALREGISTERED
-        response = await self.__build_request(url, payload)
+        response = await self._build_request(url, payload)
 
         return [upcoming_events.TotalRegistered(x) for x in response.json()]
 
@@ -762,7 +762,7 @@ class Client:
 
         }
         url = ct.URL_WORLD_RECORDS
-        response = await self.__build_request(url, payload)
+        response = await self._build_request(url, payload)
 
         return [historical_data.WorldRecords(x) for
                 x in response.json()["d"]["r"]]
@@ -773,7 +773,7 @@ class Client:
         """
         payload = {'custid': cust_id}
         url = ct.URL_YEARLY_STATS
-        response = await self.__build_request(url, payload)
+        response = await self._build_request(url, payload)
 
         if not response.json():
             return []
