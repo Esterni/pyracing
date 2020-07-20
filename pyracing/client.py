@@ -457,7 +457,7 @@ class Client:
             self,
             series_id,
             event_type=ct.EventType.race,
-            date=ct.Date.now_unix_ms
+            date=ct.now_five_min_floor()
     ):
         """ Returns information about the next event (from the requested time)
         for the series_id.
@@ -586,14 +586,14 @@ class Client:
             self,
             cust_id,
             subsession_id,
-            sim_sess_id=ct.SimSesId.race
+            sim_session_type=ct.SimSessionType.race
     ):
         """ Returns data for all laps completed of a single driver.
         sim_sess_id specifies the laps from practice, qual, or race.
         """
         payload = {
             'subsessionid': subsession_id,
-            'simsessnum': sim_sess_id,
+            'simsessnum': sim_session_type,
             'groupid': cust_id
         }
         url = ct.URL_LAPS_SINGLE
