@@ -68,15 +68,14 @@ class Client:
                 'visiting members.iracing.com'
             )
         else:
-            self.initial_auth = True
             self.log.info('Login successful')
 
     async def _build_request(self, url, params):
         """ Builds the final GET request from url and params
         """
-        if not self.__initial_auth:
+        if not self.session.cookies.__bool__():
+            self.log.info("No cookies in cookie jar.")
             await self._authenticate()
-            self.__initial_auth = True
 
         self.log.info(f'Request being sent to: {url} with params: {params}')
 
@@ -568,7 +567,8 @@ class Client:
         url = ct.URL_RACEGUIDE
         response = await self._build_request(url, payload)
 
-        return [upcoming_events.RaceGuide(x) for x in response.json()]
+        return [upcoming_events.RaceGuide(x) for
+                x in response.json()['series']]
 
     async def race_laps_all(self, subsession_id, car_class_id=-1):
         """ Returns information about all laps of a race for *every*
