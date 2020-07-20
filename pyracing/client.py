@@ -371,6 +371,11 @@ class Client:
             'champpoints_low': points_champ_low,
             'champpoints_high': points_champ_high
         }
+        for key in payload.copy():
+            if payload.get(key) is None:
+                del(payload[key])
+            else:
+                pass
         url = ct.URL_RESULTS
         response = await self.__build_request(url, payload)
 
