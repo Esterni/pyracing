@@ -246,8 +246,8 @@ class Client:
             points_avg_high=None,
             inc_avg_low=None,
             inc_avg_high=None,
-            num_results_low=1,
-            num_results_high=25,
+            result_num_low=1,
+            result_num_high=25,
             sort=ct.Sort.irating,
             order=ct.Sort.descending,
             active=1,
@@ -283,8 +283,8 @@ class Client:
             'avgincidentslow': inc_avg_low,
             'avgincidentshigh': inc_avg_high,
             'custid': cust_id,
-            'lowerbound': num_results_low,
-            'upperbound': num_results_high,
+            'lowerbound': result_num_low,
+            'upperbound': result_num_high,
             'sort': sort,
             'order': order,
             'active': active
@@ -311,8 +311,8 @@ class Client:
             show_class_a=1,
             show_pro=1,
             show_prowc=1,
-            lower_bound=1,
-            upper_bound=25,
+            result_num_low=1,
+            result_num_high=25,
             sort=ct.Sort.start_time,
             order=ct.Sort.descending,
             data_format='json',
@@ -332,8 +332,9 @@ class Client:
             points_champ_low=None,
             points_champ_high=None
     ):
-        """ Returns all data about the results of a session. Providing a
-        cust_id allows for returning all results by a specific driver.
+        """ Returns a list with an EventResults object for each of a driver's
+        past events that meet the selected criteria. Default is to show the
+        last 25 official road races, sorted by most recent as first result.
         """
         payload = {
             'custid': cust_id,
@@ -350,8 +351,8 @@ class Client:
             'showclassa': show_class_a,
             'showpro': show_pro,
             'showprowc': show_prowc,
-            'lowerbound': lower_bound,
-            'upperbound': upper_bound,
+            'lowerbound': result_num_low,
+            'upperbound': result_num_high,
             'sort': sort,
             'order': order,
             'format': data_format,
@@ -371,11 +372,6 @@ class Client:
             'champpoints_low': points_champ_low,
             'champpoints_high': points_champ_high
         }
-        for key in payload.copy():
-            if payload.get(key) is None:
-                del(payload[key])
-            else:
-                pass
         url = ct.URL_RESULTS
         response = await self._build_request(url, payload)
 
@@ -503,8 +499,8 @@ class Client:
             cust_id,
             start_time_lower,
             start_time_upper,
-            lower_bound=1,
-            upper_bound=25,
+            result_num_low=1,
+            result_num_high=25,
             sort=ct.Sort.session_name,
             order=ct.Sort.ascending
     ):
@@ -515,8 +511,8 @@ class Client:
             'participant_custid': cust_id,
             'start_time_lowerbound': start_time_lower,
             'start_time_upperbound': start_time_upper,
-            'lowerbound': lower_bound,
-            'upperbound': upper_bound,
+            'lowerbound': result_num_low,
+            'upperbound': result_num_high,
             'sort': sort,
             'order': order
         }
@@ -546,9 +542,8 @@ class Client:
             hide_ineligible=None,
             show_official=None
     ):
-        """ Returns all data used by the race guide page for the active
-        seasons. Filters are identical to those found when visiting the
-        race guide with a browser.
+        """ Returns all data used by the race guide. Filters are identical
+        to those found when visiting the race guide with a browser.
         """
         payload = {
             'at': unix_time,
@@ -591,14 +586,14 @@ class Client:
             self,
             cust_id,
             subsession_id,
-            sim_sess_num=ct.SimSesId.race
+            sim_sess_id=ct.SimSesId.race
     ):
         """ Returns data for all laps completed of a single driver.
         sim_sess_id specifies the laps from practice, qual, or race.
         """
         payload = {
             'subsessionid': subsession_id,
-            'simsessnum': sim_sess_num,
+            'simsessnum': sim_sess_id,
             'groupid': cust_id
         }
         url = ct.URL_LAPS_SINGLE
@@ -622,8 +617,8 @@ class Client:
             car_class_id=None,
             club_id=None,
             division=None,
-            start=1,
-            end=25,
+            result_num_low=1,
+            result_num_high=25,
             sort=ct.Sort.champ_points,
             order=ct.Sort.descending
     ):
@@ -639,8 +634,8 @@ class Client:
             # subtract one to get the 0 indexed position
             'raceweek': race_week if race_week == -1 else race_week - 1,
             'division': division,
-            'start': start,
-            'end': end,
+            'start': result_num_low,
+            'end': result_num_high,
             'sort': sort,
             'order': order
         }
@@ -657,7 +652,9 @@ class Client:
         """
         payload = {
             'seasonid': season_id,
-            'raceweek': race_week - 1  # Makes human '1' == computer '0'
+            # subtracts 1 so that entering 1 returns W1 instead of W2.
+            # Does not accept a 'show all' value of -1 as others might
+            'raceweek': race_week - 1
         }
         url = ct.URL_SERIES_RACERESULTS
         response = await self._build_request(url, payload)
@@ -746,7 +743,16 @@ class Client:
 
         return [upcoming_events.TotalRegistered(x) for x in response.json()]
 
-    async def world_records(self, cust_id, year, quarter, car_id, track_id):
+    async def world_records(
+        self,
+        cust_id,
+        year,
+        quarter,
+        car_id,
+        track_id,
+        result_num_low=1,
+        result_num_high=25
+    ):
         """ Returns laptimes with the requested paramaters. Filters can also
         be seen on the /worldrecords.jsp page on the membersite.
         """
@@ -757,9 +763,8 @@ class Client:
             'trackid': track_id,
             'custid': cust_id,
             'format': 'json',
-            'lowerbound': 1,
-            'upperbound': 25
-
+            'lowerbound': result_num_low,
+            'upperbound': result_num_high
         }
         url = ct.URL_WORLD_RECORDS
         response = await self._build_request(url, payload)
