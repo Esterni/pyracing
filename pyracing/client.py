@@ -462,7 +462,7 @@ class Client:
             self,
             series_id,
             event_type=ct.EventType.race,
-            date=ct.now_unix_ms
+            date=ct.Date.now_unix_ms
     ):
         """ Returns information about the next event (from the requested time)
         for the series_id.
@@ -527,7 +527,7 @@ class Client:
 
     async def race_guide(
             self,
-            unix_time=ct.now_unix_ms,
+            unix_time=ct.Date.now_unix_ms,
             show_rookie=None,
             show_class_d=None,
             show_class_c=None,
