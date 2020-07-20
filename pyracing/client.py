@@ -105,7 +105,7 @@ class Client:
 
     async def active_op_counts(
         self,
-        maxCount=250,
+        count_max=250,
         include_empty='n',  # This should be the string 'n' or 'y'
         cust_id=None
     ):
@@ -116,7 +116,7 @@ class Client:
         url = ct.URL_ACTIVEOP_COUNT
         payload = {
             'custid': cust_id,  # Purpose of cust_id unknown
-            'maxcount': maxCount,
+            'maxcount': count_max,
             'include_empty': include_empty,
             'excludeLite': None  # Purpose of excludeLite unknown
         }
@@ -163,7 +163,7 @@ class Client:
     async def current_seasons(
             self,
             only_active=True,  # Returns only seasons that are active
-            series_short_name=True,
+            series_name_short=True,
             cat_id=True,
             season_id=True,
             year=True,
@@ -195,7 +195,7 @@ class Client:
         field_dict = {
             'year': year,
             'quarter': quarter,
-            'seriesshortname': series_short_name,
+            'seriesshortname': series_name_short,
             'seriesid': series_id,
             'active': active,
             'catid': cat_id,
@@ -229,32 +229,32 @@ class Client:
 
     async def driver_stats(
             self,
-            custid,
             search='null',
-            friend=-1,
-            watched=-1,
-            recent=-1,
+            friend=None,
+            watched=None,
+            recent=None,
             country='null',
             category=ct.Category.road,
-            class_low=-1,
-            class_high=-1,
-            irating_low=-1,
-            irating_high=-1,
-            ttrating_low=-1,
-            ttrating_high=-1,
-            avg_start_low=-1,
-            avg_start_high=-1,
-            avg_finish_low=-1,
-            avg_finish_high=-1,
-            avg_points_low=-1,
-            avg_points_high=-1,
-            avg_inc_low=-1,
-            avg_inc_high=-1,
-            lower_bound=1,
-            upper_bound=25,
+            class_low=None,
+            class_high=None,
+            irating_low=None,
+            irating_high=None,
+            ttrating_low=None,
+            ttrating_high=None,
+            starts_avg_low=None,
+            starts_avg_high=None,
+            finish_avg_low=None,
+            finish_avg_high=None,
+            points_avg_low=None,
+            points_avg_high=None,
+            inc_avg_low=None,
+            inc_avg_high=None,
+            num_results_low=1,
+            num_results_high=25,
             sort=ct.Sort.irating,
             order=ct.Sort.descending,
-            active=1
+            active=1,
+            cust_id=None  # Does not appear to affect results
     ):
         """ Returns a list of drivers that match the given parameters.
         This is the backend source for /DriverLookup.Do AKA 'Driver Stats.'
@@ -262,7 +262,8 @@ class Client:
         This function can be used to search drivers by name using the search=
         field and entering their full driver name. custid is only used for
         showing where you are in relation to the list of drivers when using
-        the main /DriverLookup page on iRacing.  """
+        the main /DriverLookup page on iRacing.
+        """
         payload = {
             'search': str(search).replace(' ', '+'),
             'friend': friend,
@@ -276,17 +277,17 @@ class Client:
             'iratinghigh': irating_high,
             'ttratinglow': ttrating_low,
             'ttratinghigh': ttrating_high,
-            'avgstartlow': avg_start_low,
-            'avgstarthigh': avg_start_high,
-            'avgfinishlow': avg_finish_low,
-            'avgfinishhigh': avg_finish_high,
-            'avgpointslow': avg_points_low,
-            'avgpointshigh': avg_points_high,
-            'avgincidentslow': avg_inc_low,
-            'avgincidentshigh': avg_inc_high,
-            'custid': custid,
-            'lowerbound': lower_bound,
-            'upperbound': upper_bound,
+            'avgstartlow': starts_avg_low,
+            'avgstarthigh': starts_avg_high,
+            'avgfinishlow': finish_avg_low,
+            'avgfinishhigh': finish_avg_high,
+            'avgpointslow': points_avg_low,
+            'avgpointshigh': points_avg_high,
+            'avgincidentslow': inc_avg_low,
+            'avgincidentshigh': inc_avg_high,
+            'custid': cust_id,
+            'lowerbound': num_results_low,
+            'upperbound': num_results_high,
             'sort': sort,
             'order': order,
             'active': active
@@ -301,11 +302,11 @@ class Client:
             self,
             cust_id,
             show_races=1,
-            show_quals=0,
-            show_tts=0,
-            show_ops=0,
+            show_quals=None,
+            show_tts=None,
+            show_ops=None,
             show_official=1,
-            show_unofficial=0,
+            show_unofficial=None,
             show_rookie=1,
             show_class_d=1,
             show_class_c=1,
@@ -313,14 +314,14 @@ class Client:
             show_class_a=1,
             show_pro=1,
             show_prowc=1,
-            lower_bound=0,
+            lower_bound=1,
             upper_bound=25,
             sort=ct.Sort.start_time,
             order=ct.Sort.descending,
             data_format='json',
-            category=2,
-            season_year=2020,
-            season_quarter=3,
+            category=ct.Category.road,
+            year=2020,
+            quarter=3,
             race_week=None,
             track_id=None,
             car_class=None,
@@ -331,14 +332,12 @@ class Client:
             finish_high=None,
             incidents_low=None,
             incidents_high=None,
-            champpoints_low=None,
-            champpoints_high=None
+            points_champ_low=None,
+            points_champ_high=None
     ):
         """ Returns all data about the results of a session. Providing a
         cust_id allows for returning all results by a specific driver.
         """
-        # "category[]" is a checkbox flag on the website. Setting it to a
-        # category will return results for that category.
         payload = {
             'custid': cust_id,
             'showraces': show_races,
@@ -360,8 +359,8 @@ class Client:
             'order': order,
             'format': data_format,
             'category[]': category,
-            'seasonyear': season_year,
-            'seasonquarter': season_quarter,
+            'seasonyear': year,
+            'seasonquarter': quarter,
             'raceweek': race_week,
             'trackid': track_id,
             'carclassid': car_class,
@@ -372,8 +371,8 @@ class Client:
             'finish_high': finish_high,
             'incidents_low': incidents_low,
             'incidents_high': incidents_high,
-            'champpoints_low': champpoints_low,
-            'champpoints_high': champpoints_high
+            'champpoints_low': points_champ_low,
+            'champpoints_high': points_champ_high
         }
         url = ct.URL_RESULTS
         response = await self.__build_request(url, payload)
@@ -382,7 +381,7 @@ class Client:
         return [historical_data.EventResults(x) for
                 x in response.json()["d"]["r"]]
 
-    async def irating(self, category, cust_id):
+    async def irating(self, cust_id, category):
         """ Utilizes the stats_chart class to return a list of iRating values
         that are used in the /CareerStats charts. Accessing
         get_irating().current will give the most recent irating of a cust_id
@@ -424,7 +423,7 @@ class Client:
         response = await self.__build_request(url, payload)
         return response.json()
 
-    async def member_division(self, season_id, cust_id):
+    async def member_division(self, cust_id, season_id):
         """ Returns which division the driver was in for the
         specified season_id.
         """
@@ -438,11 +437,11 @@ class Client:
 
         return [iracing_data.MemberDivision(x) for x in response.json()]
 
-    async def member_subsession_id_from_session(self, sess_num, cust_id):
+    async def member_subsession_id_from_session(self, cust_id, session_id):
         """ Returns which SubSession ID that a member was
         in from a given Session ID.
         """
-        payload = {'custid': cust_id, 'sessionID': sess_num}
+        payload = {'custid': cust_id, 'sessionID': session_id}
         url = ct.URL_MEM_SUBSESSID
         response = await self.__build_request(url, payload)
         return response.json()
@@ -487,7 +486,7 @@ class Client:
         return [upcoming_events.NextSessionTimes(x) for
                 x in response.json()["d"]["r"]]
 
-    async def personal_bests(self, car_id, cust_id):
+    async def personal_bests(self, cust_id, car_id):
         """ Returns the drivers best laptimes for the given car_id, as seen on
         the /CareerStats page.
         """
@@ -574,13 +573,13 @@ class Client:
 
         return [upcoming_events.RaceGuide(x) for x in response.json()]
 
-    async def race_laps_all(self, sub_sess_id, car_class_id=-1):
+    async def race_laps_all(self, subsession_id, car_class_id=-1):
         """ Returns information about all laps of a race for *every*
         driver. The class of car can be set for multiclass races.
 
         To specify laps of a single driver, use race_laps_driver().
         """
-        payload = {'subsessionid': sub_sess_id, 'carclassid': car_class_id}
+        payload = {'subsessionid': subsession_id, 'carclassid': car_class_id}
         url = ct.URL_LAPS_ALL
         response = await self.__build_request(url, payload)
 
@@ -589,15 +588,15 @@ class Client:
     async def race_laps_driver(
             self,
             cust_id,
-            sub_sess_id,
-            sim_sess_id=ct.SimSesNum.race
+            subsession_id,
+            sim_sess_num=ct.SimSesNum.race
     ):
         """ Returns data for all laps completed of a single driver.
         sim_sess_id specifies the laps from practice, qual, or race.
         """
         payload = {
-            'subsessionid': sub_sess_id,
-            'simsessnum': sim_sess_id,
+            'subsessionid': subsession_id,
+            'simsessnum': sim_sess_num,
             'groupid': cust_id
         }
         url = ct.URL_LAPS_SINGLE
@@ -617,10 +616,10 @@ class Client:
     async def season_standings(
             self,
             season_id,
-            race_week=-1,
-            car_class_id=-1,
-            club_id=-1,
-            division=-1,
+            race_week=None,
+            car_class_id=None,
+            club_id=None,
+            division=None,
             start=1,
             end=25,
             sort=ct.Sort.champ_points,
@@ -664,7 +663,7 @@ class Client:
         return [historical_data.SeriesRaceResults(x) for
                 x in response.json()['d']]
 
-    async def ttrating(self, category, cust_id):
+    async def ttrating(self, cust_id, category):
         """ Utilizes the stats_chart class to return a list of ttrating values
         that are used in the /CareerStats charts.
         """
@@ -674,7 +673,7 @@ class Client:
 
         return chart_data.ChartData(category, chart_type, ttrating_list)
 
-    async def license_class(self, category, cust_id):
+    async def license_class(self, cust_id, category):
         """ Utilizes the stats_chart class to return a list of license values
         that are used in the /CareerStats charts. See the LicenseClass class
         for how to further use this data.
@@ -686,7 +685,7 @@ class Client:
 
         return chart_data.ChartData(category, chart_type, license_class_list)
 
-    async def stats_chart(self, category, cust_id, chart_type):
+    async def stats_chart(self, cust_id, category, chart_type):
         """ Returns a list in the form of time:value for the race category
         specified. chart_type changes values between iRating, ttRating, or
         Safety Rating. Category chooses 1 of the 4 disciplines.
@@ -718,8 +717,8 @@ class Client:
             self,
             season_id,
             car_class,
-            car_id=-1,
-            race_week=-1
+            car_id=None,
+            race_week=None
     ):
         """ Returns championship point standings of Teams.
         """
@@ -745,7 +744,7 @@ class Client:
 
         return [upcoming_events.TotalRegistered(x) for x in response.json()]
 
-    async def world_records(self, year, quarter, car_id, track_id, cust_id):
+    async def world_records(self, cust_id, year, quarter, car_id, track_id):
         """ Returns laptimes with the requested paramaters. Filters can also
         be seen on the /worldrecords.jsp page on the membersite.
         """
@@ -756,7 +755,9 @@ class Client:
             'trackid': track_id,
             'custid': cust_id,
             'format': 'json',
-            'upperbound': 1
+            'lowerbound': 1,
+            'upperbound': 25
+
         }
         url = ct.URL_WORLD_RECORDS
         response = await self.__build_request(url, payload)

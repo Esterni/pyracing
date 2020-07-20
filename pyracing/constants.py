@@ -3,8 +3,6 @@ import time
 import math
 import urllib.parse
 
-# iRacing rounds down to the 5 minute mark - DO NOT CHANGE
-now_unix_ms = int(math.floor(time.time() / 300) * 300) * 1000
 
 # Context sites for the 2 types of endpoints
 mSite = 'https://members.iracing.com/membersite/member'
@@ -144,6 +142,10 @@ URL_ALL_SUBSESSIONS = (mSite + '/GetAllSubsessions')
 URL_MY_RACERS = (mSite + '/GetDriverStatus')
 URL_MEM_DIVISION = (mSite + '/GetMembersDivision')
 
+# iRacing rounds down to the 5 minute mark - DO NOT CHANGE
+class Date:
+    now_unix_ms = int(math.floor(time.time() / 300) * 300) * 1000
+
 
 class License:
     rookie = 1
@@ -245,7 +247,7 @@ class EventType:
             return None
 
 
-class SimSesNum:
+class SimSesId:
     race = 0
     qualify = -1
     practice = -2
