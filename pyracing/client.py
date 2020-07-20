@@ -48,8 +48,9 @@ class Client:
         self.password = password
         self.session = httpx.AsyncClient()
         self.log = log
+        self.__initial_auth = False
 
-    async def authenticate(self):
+    async def _authenticate(self):
         """ Sends a POST request to iRacings login server, initiating a
         persistent connection stored in self.session
         """
@@ -73,13 +74,16 @@ class Client:
                 'visiting members.iracing.com'
             )
         else:
+            self.initial_auth = True
             self.log.info('Login successful')
 
-    # Wrapper for all functions that builds the final self.session.get()
-
-    async def __build_request(self, url, params):
+    async def _build_request(self, url, params):
         """ Builds the final GET request from url and params
         """
+        if not self.__initial_auth:
+            await self._authenticate()
+            self.__initial_auth = True
+
         self.log.info(f'Request being sent to: {url} with params: {params}')
 
         response = await self.session.get(
@@ -92,14 +96,13 @@ class Client:
         self.log.info(f'Status code of response: {response.status_code}')
         self.log.debug(f'Contents of the response object: {response.__dict__}')
 
-        # Status code other than 200 assumes redirect to a failed auth page
-        if not response.status_code == 200:
+        if response.is_error or response.is_redirect:
             self.log.info(
                 'Request was redirected, indicating that the cookies are '
                 'invalid. Initiating authentication and retrying the request.'
             )
-            await self.authenticate()
-            return await self.__build_request(url, params)
+            await self._authenticate()
+            return await self._build_request(url, params)
 
         return response
 
