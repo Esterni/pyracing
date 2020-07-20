@@ -2,6 +2,7 @@
 import time
 import math
 import urllib.parse
+from datetime import datetime
 
 
 # Context sites for the 2 types of endpoints
@@ -570,6 +571,8 @@ class CountryCodes:
 
 
 def parse_encode(string):
+    if not string:
+        return None
     return urllib.parse.unquote(string).replace('+', ' ')
 
 
@@ -577,3 +580,8 @@ def now_five_min_floor():
     """ Takes the current time and rounds down to the nearest five minute mark
     """
     return int(math.floor(time.time() / 300) * 300) * 1000
+
+
+# iRacing has all of their timestamps in ms so we need to divide
+def datetime_from_iracing_timestamp(timestamp):
+    return datetime.utcfromtimestamp(int(timestamp) / 1000)
