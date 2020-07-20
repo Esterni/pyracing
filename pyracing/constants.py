@@ -3,8 +3,6 @@ import time
 import math
 import urllib.parse
 
-# iRacing rounds down to the 5 minute mark - DO NOT CHANGE
-now_unix_ms = int(math.floor(time.time() / 300) * 300) * 1000
 
 # Context sites for the 2 types of endpoints
 mSite = 'https://members.iracing.com/membersite/member'
@@ -245,7 +243,7 @@ class EventType:
             return None
 
 
-class SimSesNum:
+class SimSessionType:
     race = 0
     qualify = -1
     practice = -2
@@ -573,3 +571,9 @@ class CountryCodes:
 
 def parse_encode(string):
     return urllib.parse.unquote(string).replace('+', ' ')
+
+
+def now_five_min_floor():
+    """ Takes the current time and rounds down to the nearest five minute mark
+    """
+    return int(math.floor(time.time() / 300) * 300) * 1000
