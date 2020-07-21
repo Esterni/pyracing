@@ -1,6 +1,4 @@
-from ..constants import ChartType, Category, License
-from datetime import datetime
-
+from ..constants import ChartType, Category, License, datetime_from_iracing_timestamp
 
 class ChartData:
     def __init__(self, category, type, list):
@@ -47,8 +45,3 @@ class LicenseClass:
     def get_safety_rating(string):
         relevant_chars = string[1:]
         return relevant_chars[0] + '.' + relevant_chars[1:]
-
-
-# iRacing has all of their timestamps in ms so we need to divide
-def datetime_from_iracing_timestamp(timestamp):
-    return datetime.utcfromtimestamp(int(timestamp) / 1000)

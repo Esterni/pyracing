@@ -2,6 +2,7 @@ from . import constants as ct
 from .response_objects import career_stats, iracing_data, historical_data
 from .response_objects import chart_data, session_data, upcoming_events
 
+from datetime import datetime, timedelta
 import logging
 import httpx
 import sys
@@ -297,6 +298,7 @@ class Client:
     async def event_results(
             self,
             cust_id,
+            quarter,
             show_races=1,
             show_quals=None,
             show_tts=None,
@@ -316,8 +318,7 @@ class Client:
             order=ct.Sort.descending,
             data_format='json',
             category=ct.Category.road,
-            year=2020,
-            quarter=3,
+            year=datetime.today().year,
             race_week=None,
             track_id=None,
             car_class=None,
