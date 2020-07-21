@@ -3,6 +3,7 @@ import time
 import math
 import urllib.parse
 from datetime import datetime
+from enum import Enum
 
 
 # Context sites for the 2 types of endpoints
@@ -144,7 +145,7 @@ URL_MY_RACERS = (mSite + '/GetDriverStatus')
 URL_MEM_DIVISION = (mSite + '/GetMembersDivision')
 
 
-class License:
+class License(Enum):
     rookie = 1
     d_class = 2
     c_class = 3
@@ -153,29 +154,8 @@ class License:
     pro_class = 6
     pro_wc_class = 7
 
-    def number_to_string(self, number):
-        if number == self.rookie:
-            return 'R'
-        elif number == self.d_class:
-            return 'D'
-        elif number == self.c_class:
-            return 'C'
-        elif number == self.b_class:
-            return 'B'
-        elif number == self.a_class:
-            return 'A'
-        elif number == self.pro_class:
-            return 'P'
-        elif number == self.pro_wc_class:
-            return 'P-DWC'
-        else:
-            return None
 
-
-# LOCATIONS (AKA Country Code)
-
-
-class Category:
+class Category(Enum):
     """Holds the index for each type of racing discipline
     """
     oval = 1
@@ -183,38 +163,16 @@ class Category:
     dirt_oval = 3
     dirt_road = 4
 
-    def number_to_string(self, number):
-        if number == self.oval:
-            return 'Oval'
-        elif number == self.road:
-            return 'Road'
-        elif number == self.dirt_oval:
-            return 'Dirt Oval'
-        elif number == self.dirt_road:
-            return 'Dirt Road'
-        else:
-            return None
 
-
-class ChartType:
+class ChartType(Enum):
     """Holds the index for the charts available from stats_chart()
     """
     irating = 1
     ttrating = 2
     license_class = 3
 
-    def number_to_string(self, number):
-        if number == self.irating:
-            return 'iRating'
-        elif number == self.ttrating:
-            return 'TTRating'
-        elif number == self.license_class:
-            return 'License Class'
-        else:
-            return None
 
-
-class EventType:
+class EventType(Enum):
     """Holds the index for the session event type
     """
     test = 1
@@ -225,32 +183,14 @@ class EventType:
     official = 6
     unofficial = 7
 
-    def number_to_string(self, number):
-        if number == self.test:
-            return 'Test'
-        elif number == self.practice:
-            return 'Practice'
-        elif number == self.qualify:
-            return 'Qualify'
-        elif number == self.time_trial:
-            return 'Time Trial'
-        elif number == self.race:
-            return 'Race'
-        elif number == self.official:
-            return 'Official'
-        elif number == self.unofficial:
-            return 'Unofficial'
-        else:
-            return None
 
-
-class SimSessionType:
+class SimSessionType(Enum):
     race = 0
     qualify = -1
     practice = -2
 
 
-class IncFlags:
+class IncFlags(Enum):
     clean = 0
     pitted = 2
     off_track = 4
@@ -264,34 +204,8 @@ class IncFlags:
     clock_smash = 1024
     tow = 2048
 
-    def number_to_string(self, number):
-        if number == self.clean:
-            return 'Clean'
-        elif number == self.pitted:
-            return 'Pitted'
-        elif number == self.off_track:
-            return 'Off Track'
-        elif number == self.black_flag:
-            return 'Black Flag'
-        elif number == self.car_reset:
-            return 'Car Reset'
-        elif number == self.contact:
-            return 'Contact'
-        elif number == self.lost_control:
-            return 'Lost Control'
-        elif number == self.discontinuity:
-            return 'Discontinuity'
-        elif number == self.interpolated_crossing:
-            return 'Interpolated Crossing'
-        elif number == self.clock_smash:
-            return 'Clock Smash'
-        elif number == self.tow:
-            return 'Tow'
-        else:
-            return None
 
-
-class Sort:
+class Sort(Enum):
     """Holds the strings used for types of 'sort by'
     """
     irating = 'irating'
@@ -307,7 +221,7 @@ class Sort:
 # TODO Construct dictionary of carIDs
 
 
-class SessionStatus:
+class SessionStatus(Enum):
     registered = 1
     do_not_join = 2
     ok_to_join = 3
@@ -317,7 +231,7 @@ class SessionStatus:
     rejected = 7
 
 
-class CountryCodes:
+class CountryCodes(Enum):
     """Hold the string index of Country Codes that
     iRacing uses for seperating drivers into clubs
     """

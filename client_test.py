@@ -62,7 +62,7 @@ class ClientTest(unittest.TestCase):
     async def test_get_irating(self):
         client = await get_client()
         await client.authenticate()
-        response = await client.get_irating(constants.Category.road, 499343)
+        response = await client.get_irating(constants.Category.road.value, 499343)
         self.assertIsInstance(response, chart_data.ChartData)
         for irating in response.list:
             self.assertIsInstance(irating, chart_data.IRating)
@@ -71,7 +71,7 @@ class ClientTest(unittest.TestCase):
     async def test_get_ttrating(self):
         client = await get_client()
         await client.authenticate()
-        response = await client.get_ttrating(constants.Category.road, 499343)
+        response = await client.get_ttrating(constants.Category.road.value, 499343)
         self.assertIsInstance(response, chart_data.ChartData)
         for ttrating in response.list:
             self.assertIsInstance(ttrating, chart_data.TTRating)
@@ -80,7 +80,7 @@ class ClientTest(unittest.TestCase):
     async def test_get_license_class(self):
         client = await get_client()
         await client.authenticate()
-        response = await client.get_license_class(constants.Category.road, 499343)
+        response = await client.get_license_class(constants.Category.road.value, 499343)
         self.assertIsInstance(response, chart_data.ChartData)
         for license_class in response.list:
             self.assertIsInstance(license_class, chart_data.LicenseClass)
