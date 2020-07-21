@@ -6,8 +6,8 @@ class CareerStats:
         self.category = parse_encode(dict['category'])
         self.incidents_avg = round(dict['avgIncPerRace'], 2)
         self.laps = dict['totalLaps']
-        self.laps_led_total = dict['lapsLed']
-        self.laps_led_total_pcnt = round(dict['lapsLedPerc'], 2)
+        self.laps_led = dict['lapsLed']
+        self.laps_led_pcnt = round(dict['lapsLedPerc'], 2)
         self.points_avg = round(dict['avgPtsPerRace'], 2)
         self.points_club = dict['totalclubpoints']
         self.poles = dict['poles']
@@ -44,7 +44,7 @@ class LastRacesStats:
     def __init__(self, dict):
         self.date = dict['date']
         self.incidents = dict['incidents']
-        self.laps_led_total = dict['lapsLed']
+        self.laps_led = dict['lapsLed']
         self.points_champ = dict['champPoints']
         self.points_club = dict['clubPoints']
         self.pos_finish = dict['finishPos']
