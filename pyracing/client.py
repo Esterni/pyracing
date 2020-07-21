@@ -238,8 +238,8 @@ class Client:
             inc_avg_high=None,
             result_num_low=1,
             result_num_high=25,
-            sort=ct.Sort.irating,
-            order=ct.Sort.descending,
+            sort=ct.Sort.irating.value,
+            order=ct.Sort.descending.value,
             active=1,
             cust_id=None  # Does not appear to affect results
     ):
@@ -307,7 +307,7 @@ class Client:
             sort=ct.Sort.start_time.value,
             order=ct.Sort.descending.value,
             data_format='json',
-            category=ct.Category.road,
+            category=ct.Category.road.value,
             year=datetime.today().year,
             race_week=None,
             track_id=None,
