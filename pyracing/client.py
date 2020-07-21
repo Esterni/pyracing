@@ -1,11 +1,11 @@
 from . import constants as ct
+
+from .helpers import default_logger, now_five_min_floor
 from .response_objects import career_stats, iracing_data, historical_data
 from .response_objects import chart_data, session_data, upcoming_events
 
 from datetime import datetime, timedelta
-import logging
 import httpx
-import sys
 import time
 
 
@@ -18,16 +18,6 @@ import time
 # Authentication happens automatically on the first method call from Client().
 # When a request fails from an expired cookie, a re-auth is triggered and
 # the last request that failed is tried again.
-
-
-def default_logger():
-    logging.basicConfig(
-        stream=sys.stdout,
-        level=logging.INFO,
-        datefmt="%Y-%m-%d %H:%M:%S",
-        format="%(asctime)s;%(levelname)s;%(message)s"
-    )
-    return logging.getLogger()
 
 
 class Client:
@@ -458,7 +448,7 @@ class Client:
             self,
             series_id,
             event_type=ct.EventType.race.value,
-            date=ct.now_five_min_floor()
+            date=now_five_min_floor()
     ):
         """ Returns information about the next event (from the requested time)
         for the series_id.
@@ -523,7 +513,7 @@ class Client:
 
     async def race_guide(
             self,
-            unix_time=ct.now_five_min_floor(),
+            unix_time=now_five_min_floor(),
             show_rookie=None,
             show_class_d=None,
             show_class_c=None,

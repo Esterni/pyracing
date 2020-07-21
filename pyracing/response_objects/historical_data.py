@@ -1,4 +1,4 @@
-from ..constants import parse_encode
+from ..helpers import parse_encode
 
 
 class EventResults:
