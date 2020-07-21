@@ -1,4 +1,5 @@
-from ..constants import ChartType, Category, License, datetime_from_iracing_timestamp
+from ..constants import ChartType, Category, License
+from ..helpers import datetime_from_iracing_timestamp
 
 class ChartData:
     def __init__(self, category, type, list):
