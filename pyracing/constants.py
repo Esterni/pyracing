@@ -146,13 +146,13 @@ URL_MEM_DIVISION = (mSite + '/GetMembersDivision')
 
 
 class License(Enum):
-    rookie = 1
-    d_class = 2
-    c_class = 3
-    b_class = 4
-    a_class = 5
-    pro_class = 6
-    pro_wc_class = 7
+    R = 1
+    D = 2
+    C = 3
+    B = 4
+    A = 5
+    P = 6
+    PWC = 7
 
 
 class Category(Enum):
