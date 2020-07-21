@@ -231,7 +231,7 @@ class Client:
             watched=None,
             recent=None,
             country='null',
-            category=ct.Category.road,
+            category=ct.Category.road.value,
             class_low=None,
             class_high=None,
             irating_low=None,
@@ -314,8 +314,8 @@ class Client:
             show_prowc=1,
             result_num_low=1,
             result_num_high=25,
-            sort=ct.Sort.start_time,
-            order=ct.Sort.descending,
+            sort=ct.Sort.start_time.value,
+            order=ct.Sort.descending.value,
             data_format='json',
             category=ct.Category.road,
             year=datetime.today().year,
@@ -384,11 +384,11 @@ class Client:
         that are used in the /CareerStats charts. Accessing
         get_irating().current will give the most recent irating of a cust_id
         """
-        chart_type = ct.ChartType.irating
+        chart_type = ct.ChartType.irating.value
         response = await self.stats_chart(category, cust_id, chart_type)
         ir_list = [chart_data.IRating(x) for x in response.json()]
 
-        return chart_data.ChartData(category, ct.ChartType.irating, ir_list)
+        return chart_data.ChartData(category, ct.ChartType.irating.value, ir_list)
 
     async def last_races_stats(self, cust_id):
         """ Returns stat summary for the driver's last 10 races as seen
@@ -457,7 +457,7 @@ class Client:
     async def next_event(
             self,
             series_id,
-            event_type=ct.EventType.race,
+            event_type=ct.EventType.race.value,
             date=ct.now_five_min_floor()
     ):
         """ Returns information about the next event (from the requested time)
@@ -501,8 +501,8 @@ class Client:
             start_time_upper,
             result_num_low=1,
             result_num_high=25,
-            sort=ct.Sort.session_name,
-            order=ct.Sort.ascending
+            sort=ct.Sort.session_name.value,
+            order=ct.Sort.ascending.value
     ):
         """ Returns private sessions that the driver
         has participated in.
@@ -587,7 +587,7 @@ class Client:
             self,
             cust_id,
             subsession_id,
-            sim_session_type=ct.SimSessionType.race
+            sim_session_type=ct.SimSessionType.race.value
     ):
         """ Returns data for all laps completed of a single driver.
         sim_sess_id specifies the laps from practice, qual, or race.
@@ -620,8 +620,8 @@ class Client:
             division=None,
             result_num_low=1,
             result_num_high=25,
-            sort=ct.Sort.champ_points,
-            order=ct.Sort.descending
+            sort=ct.Sort.champ_points.value,
+            order=ct.Sort.descending.value
     ):
         """ Returns the championship point standings of a series.
         This is the same data found in /statsseries.jsp.
@@ -667,7 +667,7 @@ class Client:
         """ Utilizes the stats_chart class to return a list of ttrating values
         that are used in the /CareerStats charts.
         """
-        chart_type = ct.ChartType.ttrating
+        chart_type = ct.ChartType.ttrating.value
         response = await self.stats_chart(category, cust_id, chart_type)
         ttrating_list = [chart_data.TTRating(x) for x in response.json()]
 
@@ -678,7 +678,7 @@ class Client:
         that are used in the /CareerStats charts. See the LicenseClass class
         for how to further use this data.
         """
-        chart_type = ct.ChartType.license_class
+        chart_type = ct.ChartType.license_class.value
         response = await self.stats_chart(category, cust_id, chart_type)
         license_class_list = [chart_data.LicenseClass(x) for
                               x in response.json()]

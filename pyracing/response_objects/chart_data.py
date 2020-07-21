@@ -10,10 +10,10 @@ class ChartData:
         return self.list[-1]
 
     def type_string(self):
-        return ChartType().number_to_string(self.type)
+        return ChartType(self.type).name
 
     def category_string(self):
-        return Category().number_to_string(self.category)
+        return Category(self.category).name
 
 
 class IRating:
@@ -39,7 +39,7 @@ class LicenseClass:
         self.license_level = self.get_safety_rating(str(tuple[1]))
 
     def class_letter(self):
-        return License().number_to_string(self.class_number)
+        return License(self.class_number).name
 
     @staticmethod
     def get_safety_rating(string):
