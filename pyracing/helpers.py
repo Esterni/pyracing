@@ -2,6 +2,7 @@ import logging
 import math
 import sys
 import urllib.parse
+from time import time
 from datetime import datetime
 
 # iRacing has all of their timestamps in ms so we need to divide
@@ -22,7 +23,7 @@ def default_logger():
 def now_five_min_floor():
     """ Takes the current time and rounds down to the nearest five minute mark
     """
-    return int(math.floor(time.time() / 300) * 300) * 1000
+    return int(math.floor(time() / 300) * 300) * 1000
 
 
 def parse_encode(string):
