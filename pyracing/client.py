@@ -440,7 +440,7 @@ class Client:
         your friends along with studied, and blacklisted drivers.
         """
         payload = {
-            'custId': cust_id
+            'custId': cust_id,
             'friends': friends,
             'studied': studied,
             'blacklisted': blacklisted
