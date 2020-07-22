@@ -217,9 +217,6 @@ class Client:
     async def driver_stats(
             self,
             search='null',
-            friend=None,
-            watched=None,
-            recent=None,
             country='null',
             category=ct.Category.road.value,
             class_low=None,
@@ -241,6 +238,9 @@ class Client:
             sort=ct.Sort.irating.value,
             order=ct.Sort.descending.value,
             active=1,
+            friend=None,
+            watched=None,
+            recent=None,
             cust_id=None  # Does not appear to affect results
     ):
         """ Returns a list of drivers that match the given parameters.
@@ -434,9 +434,13 @@ class Client:
         response = await self._build_request(url, payload)
         return response.json()
 
-    async def my_racers(self, friends=1, studied=1, blacklisted=1):
-        """ Not useful. Returns only friendslist for the person logged in """
+    async def my_racers(self, cust_id, friends=1, studied=1, blacklisted=1):
+        """ Returns information about the member's current status. If logged
+        in while also providing your custid, it will return the same info for
+        your friends along with studied, and blacklisted drivers.
+        """
         payload = {
+            'custId': cust_id
             'friends': friends,
             'studied': studied,
             'blacklisted': blacklisted
@@ -513,47 +517,47 @@ class Client:
 
     async def race_guide(
             self,
-            unix_time=now_five_min_floor(),
-            show_rookie=None,
-            show_class_d=None,
-            show_class_c=None,
-            show_class_b=None,
-            show_class_a=None,
-            show_class_pro=None,
-            show_class_prowc=None,
-            show_oval=None,
-            show_road=None,
-            show_dirt_oval=None,
-            show_dirt_road=None,
-            fixed_only=None,
-            multiclass_only=None,
+            rookie=None,
+            class_d=None,
+            class_c=None,
+            class_b=None,
+            class_a=None,
+            class_pro=None,
+            class_prowc=None,
+            oval=None,
+            road=None,
+            dirt_oval=None,
+            dirt_road=None,
+            fixed=None,
+            multiclass=None,
             meets_mpr=None,
-            hide_unpopulated=None,
-            hide_ineligible=None,
-            show_official=None
+            populated=None,
+            eligible=None,
+            official=None,
+            time=now_five_min_floor()
     ):
         """ Returns all data used by the race guide. Filters are identical
         to those found when visiting the race guide with a browser.
         """
         payload = {
-            'at': unix_time,
-            'showRookie': show_rookie,
-            'showClassD': show_class_d,
-            'showClassC': show_class_c,
-            'showClassB': show_class_b,
-            'showClassA': show_class_a,
-            'showPro': show_class_pro,
-            'showProWC': show_class_prowc,
-            'showOval': show_oval,
-            'showRoad': show_road,
-            'showDirtOval': show_dirt_oval,
-            'showDirtRoad': show_dirt_road,
-            'hideNotFixedSetup': fixed_only,
-            'hideNotMultiClass': multiclass_only,
+            'at': time,
+            'showRookie': rookie,
+            'showClassD': class_d,
+            'showClassC': class_c,
+            'showClassB': class_b,
+            'showClassA': class_a,
+            'showPro': class_pro,
+            'showProWC': class_prowc,
+            'showOval': oval,
+            'showRoad': road,
+            'showDirtOval': dirt_oval,
+            'showDirtRoad': dirt_road,
+            'hideNotFixedSetup': fixed,
+            'hideNotMultiClass': multiclass,
             'meetsMPR': meets_mpr,
-            'hideUnpopulated': hide_unpopulated,
-            'hideIneligible': hide_ineligible,
-            'showOfficial': show_official
+            'hideUnpopulated': populated,
+            'hideIneligible': eligible,
+            'showOfficial': official
         }
         url = ct.URL_RACEGUIDE
         response = await self._build_request(url, payload)
@@ -561,7 +565,12 @@ class Client:
         return [upcoming_events.RaceGuide(x) for
                 x in response.json()['series']]
 
-    async def race_laps_all(self, subsession_id, car_class_id=-1):
+    async def race_laps_all(
+        self,
+        subsession_id,
+        car_class_id=None,
+        sim_session_type=ct.SimSessionType.race.value
+        ):
         """ Returns information about all laps of a race for *every*
         driver. The class of car can be set for multiclass races.
 
@@ -706,7 +715,7 @@ class Client:
     async def team_standings(
             self,
             season_id,
-            car_class,
+            car_class_id,
             car_id=None,
             race_week=None
     ):
@@ -715,7 +724,7 @@ class Client:
         payload = {
             'raceWeekNum': race_week,
             'seasonid': season_id,
-            'carClassId': car_id,
+            'carClassId': car_class_id,
             'carId': car_id
         }
         url = ct.URL_SUBS_RESULTS
@@ -736,13 +745,13 @@ class Client:
 
     async def world_records(
         self,
-        cust_id,
         year,
         quarter,
         car_id,
         track_id,
         result_num_low=1,
-        result_num_high=25
+        result_num_high=25,
+        cust_id=None
     ):
         """ Returns laptimes with the requested paramaters. Filters can also
         be seen on the /worldrecords.jsp page on the membersite.
