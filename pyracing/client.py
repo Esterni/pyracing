@@ -375,7 +375,7 @@ class Client:
         get_irating().current will give the most recent irating of a cust_id
         """
         chart_type = ct.ChartType.irating.value
-        response = await self.stats_chart(category, cust_id, chart_type)
+        response = await self.stats_chart(cust_id, category, chart_type)
         ir_list = [chart_data.IRating(x) for x in response.json()]
 
         return chart_data.ChartData(category, ct.ChartType.irating.value, ir_list)
