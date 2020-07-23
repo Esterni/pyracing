@@ -667,7 +667,7 @@ class Client:
         that are used in the /CareerStats charts.
         """
         chart_type = ct.ChartType.ttrating.value
-        response = await self.stats_chart(category, cust_id, chart_type)
+        response = await self.stats_chart(cust_id, category, chart_type)
         ttrating_list = [chart_data.TTRating(x) for x in response.json()]
 
         return chart_data.ChartData(category, chart_type, ttrating_list)
@@ -678,7 +678,7 @@ class Client:
         for how to further use this data.
         """
         chart_type = ct.ChartType.license_class.value
-        response = await self.stats_chart(category, cust_id, chart_type)
+        response = await self.stats_chart(cust_id, category, chart_type)
         license_class_list = [chart_data.LicenseClass(x) for
                               x in response.json()]
 
