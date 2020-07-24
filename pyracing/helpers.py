@@ -9,7 +9,7 @@ from datetime import datetime
 def datetime_from_iracing_timestamp(timestamp):
     try:
         return datetime.utcfromtimestamp(int(timestamp) / 1000)
-    else:
+    except:
         return None
 
 
