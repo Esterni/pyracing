@@ -7,7 +7,7 @@ from datetime import datetime
 
 # iRacing has all of their timestamps in ms so we need to divide
 def datetime_from_iracing_timestamp(timestamp):
-    if type(timestamp) is int or type(timestamp) is float:
+    try:
         return datetime.utcfromtimestamp(int(timestamp) / 1000)
     else:
         return None
