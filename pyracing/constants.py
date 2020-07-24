@@ -34,7 +34,7 @@ URL_ACTIVEOP_COUNT = (mSite + '/GetActiveOpenPracticeCount')
 
 # Not yet implemented
 #  can be used without parameters for all hosted sessions
-#URL_HOSTED_SESSIONS = (mSite + '/GetHostedSessions'
+# URL_HOSTED_SESSIONS = (mSite + '/GetHostedSessions'
 #                       'ts=0' or 'privateSessionID=1801560')
 
 # DRIVER PROFILE STATS

@@ -1,6 +1,7 @@
 from ..constants import ChartType, Category, License
 from ..helpers import datetime_from_iracing_timestamp
 
+
 class ChartData:
     def __init__(self, category, type, list):
         self.category = category  # oval, road, dirt_road, dirt_oval

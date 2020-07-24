@@ -5,6 +5,7 @@ import urllib.parse
 from time import time
 from datetime import datetime
 
+
 # iRacing has all of their timestamps in ms so we need to divide
 def datetime_from_iracing_timestamp(timestamp):
     try:
@@ -32,5 +33,5 @@ def now_five_min_floor():
 def parse_encode(string):
     if not type(string) is str:
         return ''
-    
+
     return urllib.parse.unquote(string).replace('+', ' ')

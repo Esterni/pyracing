@@ -378,7 +378,10 @@ class Client:
         response = await self.stats_chart(cust_id, category, chart_type)
         ir_list = [chart_data.IRating(x) for x in response.json()]
 
-        return chart_data.ChartData(category, ct.ChartType.irating.value, ir_list)
+        return chart_data.ChartData(
+            category,
+            ct.ChartType.irating.value,
+            ir_list)
 
     async def last_races_stats(self, cust_id):
         """ Returns stat summary for the driver's last 10 races as seen
@@ -570,7 +573,7 @@ class Client:
         subsession_id,
         car_class_id=None,
         sim_session_type=ct.SimSessionType.race.value
-        ):
+    ):
         """ Returns information about all laps of a race for *every*
         driver. The class of car can be set for multiclass races.
 
