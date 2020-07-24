@@ -4,7 +4,7 @@ from .helpers import default_logger, now_five_min_floor
 from .response_objects import career_stats, iracing_data, historical_data
 from .response_objects import chart_data, session_data, upcoming_events
 
-from datetime import datetime, timedelta
+from datetime import datetime
 import httpx
 import time
 

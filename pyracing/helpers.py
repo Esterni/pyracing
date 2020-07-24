@@ -7,7 +7,10 @@ from datetime import datetime
 
 # iRacing has all of their timestamps in ms so we need to divide
 def datetime_from_iracing_timestamp(timestamp):
-    return datetime.utcfromtimestamp(int(timestamp) / 1000)
+    try:
+        return datetime.utcfromtimestamp(int(timestamp) / 1000)
+    except:
+        return None
 
 
 def default_logger():
@@ -27,6 +30,7 @@ def now_five_min_floor():
 
 
 def parse_encode(string):
-    if not string:
-        return None
+    if not type(string) is str:
+        return ''
+    
     return urllib.parse.unquote(string).replace('+', ' ')
