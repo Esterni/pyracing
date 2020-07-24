@@ -31,6 +31,6 @@ def now_five_min_floor():
 
 def parse_encode(string):
     if not type(string) is str:
-        return None
+        return ''
     
     return urllib.parse.unquote(string).replace('+', ' ')
