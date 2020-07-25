@@ -437,19 +437,15 @@ class Client:
         response = await self._build_request(url, payload)
         return response.json()
 
-    async def my_racers(self, cust_id, friends=1, studied=1, blacklisted=1):
+    async def driver_status(self, cust_id):
         """ Returns information about the member's current status. If logged
         in while also providing your custid, it will return the same info for
         your friends along with studied, and blacklisted drivers.
         """
-        payload = {
-            'custId': cust_id,
-            'friends': friends,
-            'studied': studied,
-            'blacklisted': blacklisted
-        }
-        url = ct.URL_MY_RACERS
-        return await self._build_request(url, payload)
+        payload = {'custId': cust_id}
+        url = ct.URL_DRIVER_STATUS
+        response = await self._build_request(url, payload)
+        return iracing_data.DriverStatus(response.json())
 
     async def next_event(
             self,
