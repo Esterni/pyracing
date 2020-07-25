@@ -1,0 +1,9 @@
+site_name: My Docs
+repo_url: https://github.com/esterni/pyracing
+repo_name: GitHub
+
+theme:
+  name: material
+  nav_style: dark
+  features:
+    - tabs
