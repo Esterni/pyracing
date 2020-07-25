@@ -11,8 +11,8 @@ __pycache__
 .env
 *.vscode
 *.code-workspace
-site/
+/site/**
+*.yml
 build
 dist
 *.egg-info
-ir_webstats_rc/NewClient/cookie
