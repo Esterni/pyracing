@@ -137,7 +137,7 @@ URL_ALL_SUBSESSIONS = (mSite + '/GetAllSubsessions')
 # ESSENTIALLY USELESS URLS
 
 # Driver Status is the
-URL_MY_RACERS = (mSite + '/GetDriverStatus')
+URL_DRIVER_STATUS = (mSite + '/GetDriverStatus')
 URL_MEM_DIVISION = (mSite + '/GetMembersDivision')
 
 
