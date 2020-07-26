@@ -115,6 +115,24 @@ class ClientTest(unittest.TestCase):
         response = await client.next_event(228)
         self.assertIsInstance(response, upcoming_events.NextEvent)
 
+    @async_test
+    async def test_next_session_times(self):
+        response = await client.next_session_times(2826)
+        for session_time in response:
+            self.assertIsInstance(session_time, upcoming_events.NextSessionTimes)
+
+    @async_test
+    async def test_personal_bests(self):
+        response = await client.personal_bests(499343, 4)
+        for personal_best in response:
+            self.assertIsInstance(personal_best, career_stats.PersonalBests)
+
+    @async_test
+    async def test_private_results(self):
+        response = await client.private_results(499343, 0, 1595792756654)
+        for result in response:
+            self.assertIsInstance(result, historical_data.PrivateResults)
+
 
 if __name__ == '__main__':
     unittest.main()

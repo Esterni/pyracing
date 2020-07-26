@@ -511,7 +511,7 @@ class Client:
         url = ct.URL_PRIVATE_RESULTS
         response = await self._build_request(url, payload)
 
-        return [historical_data.PrivateResults(x) for x in response.json()]
+        return [historical_data.PrivateResults(x) for x in response.json()['rows']]
 
     async def race_guide(
             self,
