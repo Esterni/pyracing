@@ -7,3 +7,7 @@ theme:
   nav_style: dark
   features:
     - tabs
+
+markdown_extensions:
+  - admonition
+  - codehilite

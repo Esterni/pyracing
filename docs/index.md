@@ -3,7 +3,7 @@
 This package is an API wrapper/client for retrieving data from iRacing. We use the term "wrapper" loosely because iRacing does not yet have an officially documented API. However, we've done our best to build something that might resemble an actual API.
 
 # Basic Usage
-```py
+```python
 from pyracing import Client
 
 username = 'username'
