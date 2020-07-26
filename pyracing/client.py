@@ -33,7 +33,6 @@ class Client:
         self.password = password
         self.session = httpx.AsyncClient()
         self.log = log
-        self.__initial_auth = False
 
     async def _authenticate(self):
         """ Sends a POST request to iRacings login server, initiating a
