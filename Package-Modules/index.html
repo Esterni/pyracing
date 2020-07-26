@@ -321,15 +321,16 @@ iRacing endpoints and mapping them to instanced objects. When performing a query
 assigning it to a variable, it will be of the object type unique to that data. This means that
 you don't have to parse any of the JSON data.</p>
 <p>Getting the strength_of_field of a session:</p>
-<pre><code class="py">ir = client.Client('username', 'password')
+<div class="codehilite"><pre><span></span><code><span class="n">ir</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="s1">&#39;username&#39;</span><span class="p">,</span> <span class="s1">&#39;password&#39;</span><span class="p">)</span>
 
-session_data = await ir.subsession_data(subsession_id, cust_id=None)
-print(session_data.strength_of_field)
-</code></pre>
+<span class="n">session_data</span> <span class="o">=</span> <span class="k">await</span> <span class="n">ir</span><span class="o">.</span><span class="n">subsession_data</span><span class="p">(</span><span class="n">subsession_id</span><span class="p">,</span> <span class="n">cust_id</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">session_data</span><span class="o">.</span><span class="n">strength_of_field</span><span class="p">)</span>
+</code></pre></div>
+
 
 <p>Result:</p>
-<pre><code class="py">3051
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="mi">3051</span>
+</code></pre></div>
                 
               
               

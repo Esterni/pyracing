@@ -306,36 +306,37 @@
                 <h1 id="introduction">Introduction</h1>
 <p>This package is an API wrapper/client for retrieving data from iRacing. We use the term "wrapper" loosely because iRacing does not yet have an officially documented API. However, we've done our best to build something that might resemble an actual API.</p>
 <h1 id="basic-usage">Basic Usage</h1>
-<pre><code class="python">from pyracing import Client
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">pyracing</span> <span class="kn">import</span> <span class="n">Client</span>
 
-username = 'username'
-password = 'password'
-ir = Client(username, password)
+<span class="n">username</span> <span class="o">=</span> <span class="s1">&#39;username&#39;</span>
+<span class="n">password</span> <span class="o">=</span> <span class="s1">&#39;password&#39;</span>
+<span class="n">ir</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
 
-# Authentication is automated and initiated on first request
-seasons = await ir.current_seasons()
+<span class="c1"># Authentication is automated and initiated on first request</span>
+<span class="n">seasons</span> <span class="o">=</span> <span class="k">await</span> <span class="n">ir</span><span class="o">.</span><span class="n">current_seasons</span><span class="p">()</span>
 
-for season in seasons:
-    if season.series_id == 231:
-        for t in tracks:
-            print(f'Week {t.race_week} will take place at {t.name} ({t.config})')
-</code></pre>
+<span class="k">for</span> <span class="n">season</span> <span class="ow">in</span> <span class="n">seasons</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">season</span><span class="o">.</span><span class="n">series_id</span> <span class="o">==</span> <span class="mi">231</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tracks</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Week </span><span class="si">{</span><span class="n">t</span><span class="o">.</span><span class="n">race_week</span><span class="si">}</span><span class="s1"> will take place at </span><span class="si">{</span><span class="n">t</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1"> (</span><span class="si">{</span><span class="n">t</span><span class="o">.</span><span class="n">config</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+</code></pre></div>
+
 
 <p>The result will be</p>
-<pre><code>Week 0 will take place at Road Atlanta (Full Course)
-Week 1 will take place at Circuit Gilles Villeneuve ()
-Week 2 will take place at Road America (Full Course)
-Week 3 will take place at Lime Rock Park (Grand Prix)
-Week 4 will take place at Barber Motorsports Park (Full Course)
-Week 5 will take place at Suzuka International Racing Course (Grand Prix)
-Week 6 will take place at Nürburgring Combined (Gesamtstrecke Short w/out Arena)
-Week 7 will take place at Brands Hatch Circuit (Grand Prix)
-Week 8 will take place at Autodromo Internazionale Enzo e Dino Ferrari (Grand Prix)
-Week 9 will take place at Watkins Glen International (Boot)
-Week 10 will take place at Sebring International Raceway (International)
-Week 11 will take place at Autodromo Nazionale Monza (Grand Prix)
-Week 12 will take place at Mount Panorama Circuit ()
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="err">Week 0 will take place at Road Atlanta (Full Course)</span>
+<span class="err">Week 1 will take place at Circuit Gilles Villeneuve ()</span>
+<span class="err">Week 2 will take place at Road America (Full Course)</span>
+<span class="err">Week 3 will take place at Lime Rock Park (Grand Prix)</span>
+<span class="err">Week 4 will take place at Barber Motorsports Park (Full Course)</span>
+<span class="err">Week 5 will take place at Suzuka International Racing Course (Grand Prix)</span>
+<span class="err">Week 6 will take place at Nürburgring Combined (Gesamtstrecke Short w/out Arena)</span>
+<span class="err">Week 7 will take place at Brands Hatch Circuit (Grand Prix)</span>
+<span class="err">Week 8 will take place at Autodromo Internazionale Enzo e Dino Ferrari (Grand Prix)</span>
+<span class="err">Week 9 will take place at Watkins Glen International (Boot)</span>
+<span class="err">Week 10 will take place at Sebring International Raceway (International)</span>
+<span class="err">Week 11 will take place at Autodromo Nazionale Monza (Grand Prix)</span>
+<span class="err">Week 12 will take place at Mount Panorama Circuit ()</span>
+</code></pre></div>
                 
               
               
