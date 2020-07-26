@@ -3,7 +3,8 @@ import dotenv
 import os
 from pyracing import client as pyracing
 from pyracing import constants
-from pyracing.response_objects import career_stats, chart_data, iracing_data, upcoming_events, historical_data
+from pyracing.response_objects import career_stats, chart_data, iracing_data, \
+    upcoming_events, historical_data, session_data
 import unittest
 
 dotenv.load_dotenv()
@@ -132,6 +133,33 @@ class ClientTest(unittest.TestCase):
         response = await client.private_results(499343, 0, 1595792756654)
         for result in response:
             self.assertIsInstance(result, historical_data.PrivateResults)
+
+    @async_test
+    async def test_race_guide(self):
+        response = await client.race_guide()
+        for race_guide in response:
+            self.assertIsInstance(race_guide, upcoming_events.RaceGuide)
+
+    @async_test
+    async def test_race_laps_all(self):
+        response = await client.race_laps_all(33618467)
+        self.assertIsInstance(response, session_data.RaceLapsAll)
+
+    @async_test
+    async def test_race_laps_driver(self):
+        response = await client.race_laps_driver(499343, 33618467)
+        self.assertIsInstance(response, session_data.RaceLapsDriver)
+
+    @async_test
+    async def test_season_from_session(self):
+        response = await client.season_from_session(134975301)
+        self.assertIsInstance(response, int)
+
+    @async_test
+    async def test_season_standings(self):
+        response = await client.season_standings(2826)
+        for standings in response:
+            self.assertIsInstance(standings, historical_data.SeasonStandings)
 
 
 if __name__ == '__main__':

@@ -225,7 +225,7 @@ class RaceLapsAll:
 # Race laps for single driver of a session
 class RaceLapsDriver:
     def __init__(self, dict):
-        self.driver = self.Driver(dict['drivers'])
+        self.drivers = [self.Driver(x) for x in dict['drivers']]
         self.header = self.Header(dict['header'])
         self.lap_data = [self.LapData(x) for x in dict['lapData']]
 
