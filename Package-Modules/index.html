@@ -15,7 +15,7 @@
     
     
       
-        <title>client - pyracing</title>
+        <title>Package Modules - pyracing</title>
       
     
     
@@ -49,7 +49,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#client" class="md-skip">
+        <a href="#_1" class="md-skip">
           Skip to content
         </a>
       
@@ -77,7 +77,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              client
+              Package Modules
             
           </span>
         </div>
@@ -147,11 +147,13 @@
   <li class="md-tabs__item">
     
       <a href=".." class="md-tabs__link md-tabs__link--active">
-        About
+        Introduction
       </a>
     
   </li>
 
+      
+        
       
         
       
@@ -203,32 +205,8 @@
 
 
   <li class="md-nav__item">
-    <a href=".." title="About" class="md-nav__link">
-      About
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../CODE_REFERENCE/" title="About" class="md-nav__link">
-      About
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../List-of-functions/" title="List of functions" class="md-nav__link">
-      List of functions
+    <a href=".." title="Introduction" class="md-nav__link">
+      Introduction
     </a>
   </li>
 
@@ -247,10 +225,46 @@
       
     
     
-    <a href="./" title="client" class="md-nav__link md-nav__link--active">
-      client
+    <a href="./" title="Package Modules" class="md-nav__link md-nav__link--active">
+      Package Modules
     </a>
     
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../contributing/" title="Contributing (Under Construction)" class="md-nav__link">
+      Contributing (Under Construction)
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../data/" title="About" class="md-nav__link">
+      About
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../functions/" title="Functions" class="md-nav__link">
+      Functions
+    </a>
   </li>
 
     
@@ -289,23 +303,24 @@
                   
                 
                 
-                <h1 id="client">client</h1>
-<p>The <code>client.py</code> module contains the <code>Client()</code> class which makes up the bulk of pyracing.<br />
+                <h1 id="_1"></h1>
+<h1 id="client">client</h1>
+<p>The <code>client</code> module contains the <code>Client()</code> class which makes up the bulk of pyracing.
 Along with Client.authenticate(), it holds the class methods to query all of iRacing's web-data.</p>
 <p>For a detailed description of each class method, see the <a href="https://github.com/Esterni/pyracing/wiki/List-of-functions">List of Functions</a> wiki page.</p>
 <h1 id="constants">constants</h1>
-<p>The <code>constants.py</code> module contains all constants of iRacing. Since iRacing constants are<br />
-not always consistent in usage, we assign them to Class Attributes (not <a href="https://www.python-course.eu/python3_class_and_instance_attributes.php">instance attributes</a>).<br />
-Which enables using the name "dirt_oval" instead of remembering that <code>4</code> is the index for it. </p>
-<p>As an example, in any of the Client() methods that accept an argument of <code>category</code> you can<br />
-input "Dirt Oval" with <code>constants.Category.dirt_oval</code> and the correct value of <code>4</code> will be<br />
-used. It's also a handy way to show you all available arguments if your IDE offers autocomplete. </p>
+<p>The <code>constants</code> module contains all constants of iRacing. Since iRacing constants are
+not always consistent in usage, we assign them to Class Attributes (not <a href="https://www.python-course.eu/python3_class_and_instance_attributes.php">instance attributes</a>).
+Which enables using the name "dirt_oval" instead of remembering that <code>4</code> is the index for it.</p>
+<p>As an example, in any of the Client() methods that accept an argument of <code>category</code> you can
+input "Dirt Oval" with <code>constants.Category.dirt_oval.value</code> and the correct value of <code>4</code> will be
+used.</p>
 <h1 id="response_objects">response_objects</h1>
-<p>The <code>response_objects</code> sub-package is responsible for taking the JSON data returned from<br />
-iRacing endpoints and mapping them to instanced objects. When performing a query and<br />
-assigning it to a variable, it will be of the object type unique to that data. This means that<br />
+<p>The <code>response_objects</code> sub-package is responsible for taking the JSON data returned from
+iRacing endpoints and mapping them to instanced objects. When performing a query and
+assigning it to a variable, it will be of the object type unique to that data. This means that
 you don't have to parse any of the JSON data.</p>
-<p>Getting the strength_of_field of a session:  </p>
+<p>Getting the strength_of_field of a session:</p>
 <pre><code class="py">ir = client.Client('username', 'password')
 
 session_data = await ir.subsession_data(subsession_id, cust_id=None)
@@ -333,7 +348,7 @@ print(session_data.strength_of_field)
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../List-of-functions/" title="List of functions" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href=".." title="Introduction" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -342,11 +357,25 @@ print(session_data.strength_of_field)
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                List of functions
+                Introduction
               </div>
             </div>
           </a>
         
+        
+          <a href="../contributing/" title="Contributing (Under Construction)" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Contributing (Under Construction)
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
         
       </nav>
     </div>

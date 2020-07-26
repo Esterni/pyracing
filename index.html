@@ -49,7 +49,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#about" class="md-skip">
+        <a href="#introduction" class="md-skip">
           Skip to content
         </a>
       
@@ -77,7 +77,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              About
+              Introduction
             
           </span>
         </div>
@@ -147,11 +147,13 @@
   <li class="md-tabs__item">
     
       <a href="." class="md-tabs__link md-tabs__link--active">
-        About
+        Introduction
       </a>
     
   </li>
 
+      
+        
       
         
       
@@ -211,10 +213,46 @@
       
     
     
-    <a href="." title="About" class="md-nav__link md-nav__link--active">
+    <a href="." title="Introduction" class="md-nav__link md-nav__link--active">
+      Introduction
+    </a>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="Package-Modules/" title="Package Modules" class="md-nav__link">
+      Package Modules
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="contributing/" title="Contributing (Under Construction)" class="md-nav__link">
+      Contributing (Under Construction)
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="data/" title="About" class="md-nav__link">
       About
     </a>
-    
   </li>
 
     
@@ -224,32 +262,8 @@
 
 
   <li class="md-nav__item">
-    <a href="CODE_REFERENCE/" title="About" class="md-nav__link">
-      About
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="List-of-functions/" title="List of functions" class="md-nav__link">
-      List of functions
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="Package-Modules/" title="client" class="md-nav__link">
-      client
+    <a href="functions/" title="Functions" class="md-nav__link">
+      Functions
     </a>
   </li>
 
@@ -289,33 +303,39 @@
                   
                 
                 
-                <h1 id="about">About</h1>
+                <h1 id="introduction">Introduction</h1>
 <p>This package is an API wrapper/client for retrieving data from iRacing. We use the term "wrapper" loosely because iRacing does not yet have an officially documented API. However, we've done our best to build something that might resemble an actual API.</p>
-<p>Please feel free to open issues, offer suggestions, or fork and submit a pull request to help polish things up here. We only ask that you be willing to openly discuss things in a respectful manner. If you'd like to chat in Discord, I can be reached in the <a href="https://discord.gg/UwnhM7w">iRacing Open Wheel Discord</a> (nearing 1000 members!). My username is Jacob Anderson7#4903. I'd be happy to hear from those interested in this project and if enough people reach out I'll make a section just for this project.</p>
-<h1 id="usage">Usage</h1>
-<pre><code class="py">import pyracing
-import pyracing.constants as ct
+<h1 id="basic-usage">Basic Usage</h1>
+<pre><code class="py">from pyracing import Client
 
-# Storing in system env is another option and use os.getenv() to retrieve them.
 username = 'username'
 password = 'password'
+ir = Client(username, password)
 
-ir = pyracing.client.Client('username', 'password')  # or any other method
-await ir.authenticate()
+# Authentication is automated and initiated on first request
+seasons = await ir.current_seasons()
 
-iRating = await ir.get_irating(ct.Category.road, custid)
-
-current_irating = iRating.current()
+for season in seasons:
+    if season.series_id == 231:
+        for t in tracks:
+            print(f'Week {t.race_week} will take place at {t.name} ({t.config})')
 </code></pre>
 
-<h2 id="see-the-wiki-page-list-of-functions-for-a-list-of-what-is-available-to-use">See the wiki page <a href="https://github.com/Esterni/pyracing/wiki/List-of-functions">List of Functions</a> for a list of what is available to use.</h2>
-<h1 id="files">FILES</h1>
-<ul>
-<li>client.py : This is where the main class is defined.</li>
-<li>constants.py : Useful constants used in request fields sent to the service.</li>
-</ul>
-<h1 id="requirements">REQUIREMENTS</h1>
-<p>Python 3.8+ (with network access)</p>
+<p>The result will be</p>
+<pre><code>Week 0 will take place at Road Atlanta (Full Course)
+Week 1 will take place at Circuit Gilles Villeneuve ()
+Week 2 will take place at Road America (Full Course)
+Week 3 will take place at Lime Rock Park (Grand Prix)
+Week 4 will take place at Barber Motorsports Park (Full Course)
+Week 5 will take place at Suzuka International Racing Course (Grand Prix)
+Week 6 will take place at Nürburgring Combined (Gesamtstrecke Short w/out Arena)
+Week 7 will take place at Brands Hatch Circuit (Grand Prix)
+Week 8 will take place at Autodromo Internazionale Enzo e Dino Ferrari (Grand Prix)
+Week 9 will take place at Watkins Glen International (Boot)
+Week 10 will take place at Sebring International Raceway (International)
+Week 11 will take place at Autodromo Nazionale Monza (Grand Prix)
+Week 12 will take place at Mount Panorama Circuit ()
+</code></pre>
                 
               
               
@@ -335,13 +355,13 @@ current_irating = iRating.current()
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
         
-          <a href="CODE_REFERENCE/" title="About" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="Package-Modules/" title="Package Modules" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                About
+                Package Modules
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">
