@@ -88,6 +88,33 @@ class ClientTest(unittest.TestCase):
         response = await client.car_class(1)
         self.assertIsInstance(response, iracing_data.CarClass)
 
+    @async_test
+    async def test_last_series(self):
+        response = await client.last_series(499343)
+        for last_series in response:
+            self.assertIsInstance(last_series, career_stats.LastSeries)
+
+    @async_test
+    async def test_member_cars_driven(self):
+        response = await client.member_cars_driven(499343)
+        for car_id in response:
+            self.assertIsInstance(car_id, int)
+
+    @async_test
+    async def test_member_subsession_id_from_session(self):
+        response = await client.member_subsession_id_from_session(499343, 134975301)
+        self.assertIsInstance(response, int)
+
+    @async_test
+    async def test_driver_status(self):
+        response = await client.driver_status(499343)
+        self.assertIsInstance(response, iracing_data.DriverStatus)
+
+    @async_test
+    async def test_next_event(self):
+        response = await client.next_event(228)
+        self.assertIsInstance(response, upcoming_events.NextEvent)
+
 
 if __name__ == '__main__':
     unittest.main()

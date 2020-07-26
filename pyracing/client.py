@@ -463,7 +463,7 @@ class Client:
         url = ct.URL_NEXT_EVENT
         response = await self._build_request(url, payload)
 
-        return [upcoming_events.NextEvent(x) for x in response.json]
+        return upcoming_events.NextEvent(response.json())
 
     async def next_session_times(self, season_id):
         """ Returns the next 5 sessions with all of their attributes:\n
