@@ -1,3 +1,4 @@
+from ..helpers import datetime_from_iracing_timestamp
 
 
 class NextEvent:
@@ -5,7 +6,7 @@ class NextEvent:
         self.driver_count = dict['drivercount']
         self.season_id = dict['seasonid']
         self.session_id = dict['sessionid']
-        self.time_start = dict['start_time']
+        self.time_start = datetime_from_iracing_timestamp(dict['start_time'])
 
 
 # Needs to have fix applied to data before

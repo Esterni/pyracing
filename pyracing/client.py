@@ -117,9 +117,9 @@ class Client:
         payload = {'subsessionid': subsession_id}
         url = ct.URL_ALL_SUBSESSIONS
         response = await self._build_request(url, payload)
-        return response.json()
+        return [x['subsessionid'] for x in response.json()]
 
-    async def car_class_by_id(self, car_class_id=0):
+    async def car_class(self, car_class_id=0):
         """ Returns the CarClass data for the associated car_class_id
 
         The default "0" is a "master" CarClass containing a list of CarClass
@@ -463,7 +463,7 @@ class Client:
         url = ct.URL_NEXT_EVENT
         response = await self._build_request(url, payload)
 
-        return [upcoming_events.NextEvent(x) for x in response.json]
+        return upcoming_events.NextEvent(response.json())
 
     async def next_session_times(self, season_id):
         """ Returns the next 5 sessions with all of their attributes:\n
