@@ -11,15 +11,15 @@
       
       
       <link rel="shortcut icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.5.0">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.4.0">
     
     
       
-        <title>Functions - pyracing</title>
+        <title>Which function for X data? - pyracing</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.b5d04df8.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.fe0cca5b.min.css">
       
       
     
@@ -77,7 +77,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              Functions
+              Which function for X data? <!-- omit in toc -->
             
           </span>
         </div>
@@ -261,8 +261,8 @@
       
     
     
-    <a href="./" title="Functions" class="md-nav__link md-nav__link--active">
-      Functions
+    <a href="./" title="Which function for X data?" class="md-nav__link md-nav__link--active">
+      Which function for X data? <!-- omit in toc -->
     </a>
     
   </li>
@@ -307,44 +307,6 @@
 <p>Every page on the iRacing Membersite receives its data, to be nicely displayed, from various URL endpoints in the form of <code>/GetSomeData</code> that is <em>usually</em> in JSON format.</p>
 <p>The functions below interact with 1 endpoint each and use the provided arguments as the parameters in the URL query string that we've found it accepts. It is then mapped into a class object for ease of use. (More details here)</p>
 <p><strong>Note</strong>: While some of these endpoints reveal data that can't be found anywhere else, others will return such little information that you might wonder why they exist at all. <strong>Our primary goal is to provide accessibility to the data, not make sense of it..</strong></p>
-<ul>
-<li><a href="#driver-data">Driver Data</a></li>
-<li><a href="#career_stats">career_stats()</a></li>
-<li><a href="#driver_stats">driver_stats()</a></li>
-<li><a href="#event_results">event_results()</a></li>
-<li><a href="#irating">irating()</a></li>
-<li><a href="#last_races_stats">last_races_stats()</a></li>
-<li><a href="#last_series">last_series()</a></li>
-<li><a href="#license_class">license_class()</a></li>
-<li><a href="#member_cars_driven">member_cars_driven()</a></li>
-<li><a href="#member_division">member_division()</a></li>
-<li><a href="#member_subsession_id_from_session">member_subsession_id_from_session()</a></li>
-<li><a href="#my_racers">my_racers()</a></li>
-<li><a href="#personal_bests">personal_bests()</a></li>
-<li><a href="#race_laps_driver">race_laps_driver()</a></li>
-<li><a href="#stats_chart">stats_chart()</a></li>
-<li><a href="#ttrating">ttrating()</a></li>
-<li><a href="#yearly_stats">yearly_stats()</a></li>
-<li><a href="#series-data">Series Data</a></li>
-<li><a href="#active_op_counts">active_op_counts()</a></li>
-<li><a href="#next_event">next_event()</a></li>
-<li><a href="#next_session_times">next_session_times()</a></li>
-<li><a href="#season_standings">season_standings()</a></li>
-<li><a href="#series_race_results">series_race_results()</a></li>
-<li><a href="#team_standings">team_standings()</a></li>
-<li><a href="#session-data">Session Data</a></li>
-<li><a href="#all_subsessions">all_subsessions()</a></li>
-<li><a href="#private_results">private_results()</a></li>
-<li><a href="#race_guide">race_guide()</a></li>
-<li><a href="#race_laps_all">race_laps_all()</a></li>
-<li><a href="#season_from_session">season_from_session()</a></li>
-<li><a href="#subsession_data">subsession_data()</a></li>
-<li><a href="#total_registered_all">total_registered_all()</a></li>
-<li><a href="#global-data">Global Data</a></li>
-<li><a href="#car_class_by_id">car_class_by_id()</a></li>
-<li><a href="#current_seasons">current_seasons()</a></li>
-<li><a href="#world_records">world_records()</a></li>
-</ul>
 <h1 id="driver-data">Driver Data</h1>
 <p>Data returned from these methods require a driver (cust_id) to be included in the query parameters. A good example is <code>event_results()</code>. It can return all kinds of different race results, but only results that are related to a driver in question. For all results of a series, go to <a href="#series_race_results">series_race_results()</a></p>
 <h2 id="career_stats">career_stats()</h2>
@@ -1318,8 +1280,8 @@ See the LicenseClass class for how to further use this data. (Link to page comin
       
     </div>
     
-      <script src="../assets/javascripts/vendor.92ffa368.min.js"></script>
-      <script src="../assets/javascripts/bundle.5123e3d4.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      <script src="../assets/javascripts/vendor.d710d30a.min.js"></script>
+      <script src="../assets/javascripts/bundle.b39636ac.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
       
       <script>
         app = initialize({
