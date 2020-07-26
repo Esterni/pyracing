@@ -1,35 +1,36 @@
-# About
+# Introduction
 
 This package is an API wrapper/client for retrieving data from iRacing. We use the term "wrapper" loosely because iRacing does not yet have an officially documented API. However, we've done our best to build something that might resemble an actual API.
 
-Please feel free to open issues, offer suggestions, or fork and submit a pull request to help polish things up here. We only ask that you be willing to openly discuss things in a respectful manner. If you'd like to chat in Discord, I can be reached in the [iRacing Open Wheel Discord](https://discord.gg/UwnhM7w) (nearing 1000 members!). My username is Jacob Anderson7#4903. I'd be happy to hear from those interested in this project and if enough people reach out I'll make a section just for this project.
-
-# Usage
+# Basic Usage
 ```py
-import pyracing
-import pyracing.constants as ct
+from pyracing import Client
 
-# Storing in system env is another option and use os.getenv() to retrieve them.
 username = 'username'
 password = 'password'
+ir = Client(username, password)
 
-ir = pyracing.client.Client('username', 'password')  # or any other method
-await ir.authenticate()
+# Authentication is automated and initiated on first request
+seasons = await ir.current_seasons()
 
-iRating = await ir.get_irating(ct.Category.road, custid)
-
-current_irating = iRating.current()
+for season in seasons:
+    if season.series_id == 231:
+        for t in tracks:
+            print(f'Week {t.race_week} will take place at {t.name} ({t.config})')
 ```
-
-## See the wiki page [List of Functions](https://github.com/Esterni/pyracing/wiki/List-of-functions) for a list of what is available to use.
-
-FILES
-=====
-
-- client.py : This is where the main class is defined.
-- constants.py : Useful constants used in request fields sent to the service.
-
-REQUIREMENTS
-============
-
-Python 3.8+ (with network access)
+The result will be
+```
+Week 0 will take place at Road Atlanta (Full Course)
+Week 1 will take place at Circuit Gilles Villeneuve ()
+Week 2 will take place at Road America (Full Course)
+Week 3 will take place at Lime Rock Park (Grand Prix)
+Week 4 will take place at Barber Motorsports Park (Full Course)
+Week 5 will take place at Suzuka International Racing Course (Grand Prix)
+Week 6 will take place at Nürburgring Combined (Gesamtstrecke Short w/out Arena)
+Week 7 will take place at Brands Hatch Circuit (Grand Prix)
+Week 8 will take place at Autodromo Internazionale Enzo e Dino Ferrari (Grand Prix)
+Week 9 will take place at Watkins Glen International (Boot)
+Week 10 will take place at Sebring International Raceway (International)
+Week 11 will take place at Autodromo Nazionale Monza (Grand Prix)
+Week 12 will take place at Mount Panorama Circuit ()
+```
