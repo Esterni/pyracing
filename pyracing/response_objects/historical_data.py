@@ -191,7 +191,7 @@ class PrivateResults:
         self.full_course_cautions = dict['fullcoursecautions']
         self.hardcore_level = dict['hardcorelevel']
         self.host_cust_id = dict['host_custid']
-        self.host_display_name = dict['host_displayname']
+        self.host_display_name = parse_encode(dict['host_displayname'])
         self.host_helmet_color_1 = dict['host_helmet_color1']
         self.host_helmet_color_2 = dict['host_helmet_color2']
         self.host_helmet_color_3 = dict['host_helmet_color3']
@@ -238,14 +238,14 @@ class PrivateResults:
         self.temp_value = dict['weather_temp_value']
         self.time_of_day = dict['timeofday']
         self.time_start = dict['start_time']
-        self.track = dict['track_name']
+        self.track = parse_encode(dict['track_name'])
         self.track_id = dict['trackid']
         self.weather_type = dict['weather_type']
         self.weight_penalties = dict['weight_penalties']
         self.wind_direction = dict['weather_wind_dir']
         self.wind_speed_unit = dict['weather_wind_speed_units']
         self.wind_speed_value = dict['weather_wind_speed_value']
-        self.winner_display_name = dict['winner_displayname']
+        self.winner_display_name = parse_encode(dict['winner_displayname'])
         self.winner_display_names = dict['winner_displaynames']
         self.winner_group_id = dict['winnersgroupid']
         self.winner_helmet_color_1 = dict['winner_helmet_color1']
