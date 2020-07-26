@@ -14,6 +14,9 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url='https://github.com/Esterni/pyracing',
+    project_urls={
+        "Documentation": "https://esterni.github.io/pyracing/"
+            },
     packages=setuptools.find_packages(),
     python_requires='>=3.8',
     classifiers=[

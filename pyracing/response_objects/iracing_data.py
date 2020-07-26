@@ -47,12 +47,13 @@ class Season:
 
     class Track:
         def __init__(self, data):
+            self.name = parse_encode(data['name'])
             self.name_lower = parse_encode(data['lowername'])
             self.pkg_id = data['pkgid']
             self.priority = data['priority']
             self.race_week = data['raceweek']
             self.time_of_day = data['timeOfDay']
-            self.track_config = data['config']
+            self.config = parse_encode(data['config'])
 
     # The Season endpoint returns more data for a car than other places
     class SeasonCar(Car):
