@@ -161,6 +161,23 @@ class ClientTest(unittest.TestCase):
         for standings in response:
             self.assertIsInstance(standings, historical_data.SeasonStandings)
 
+    @async_test
+    async def test_series_race_results(self):
+        response = await client.series_race_results(2826)
+        for standings in response:
+            self.assertIsInstance(standings, historical_data.SeriesRaceResults)
+
+    @async_test
+    async def test_subsession_data(self):
+        response = await client.subsession_data(33618467)
+        self.assertIsInstance(response, session_data.SubSessionData)
+
+    @async_test
+    async def test_world_records(self):
+        response = await client.world_records(2019, 1, 1, 1)
+        for record in response:
+            self.assertIsInstance(record, historical_data.WorldRecords)
+
 
 if __name__ == '__main__':
     unittest.main()
