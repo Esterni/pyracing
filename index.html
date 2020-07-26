@@ -77,7 +77,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              Introduction
+              Home
             
           </span>
         </div>
@@ -137,34 +137,6 @@
       
       
         
-          
-
-<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
-  <div class="md-tabs__inner md-grid">
-    <ul class="md-tabs__list">
-      
-        
-  <li class="md-tabs__item">
-    
-      <a href="." class="md-tabs__link md-tabs__link--active">
-        Introduction
-      </a>
-    
-  </li>
-
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    </ul>
-  </div>
-</nav>
-        
       
       <main class="md-main" data-md-component="main">
         <div class="md-main__inner md-grid">
@@ -213,8 +185,8 @@
       
     
     
-    <a href="." title="Introduction" class="md-nav__link md-nav__link--active">
-      Introduction
+    <a href="." title="Home" class="md-nav__link md-nav__link--active">
+      Home
     </a>
     
   </li>
@@ -226,8 +198,8 @@
 
 
   <li class="md-nav__item">
-    <a href="Package-Modules/" title="Package Modules" class="md-nav__link">
-      Package Modules
+    <a href="functions/" title="Class Methods" class="md-nav__link">
+      Class Methods
     </a>
   </li>
 
@@ -238,8 +210,8 @@
 
 
   <li class="md-nav__item">
-    <a href="contributing/" title="Contributing (Under Construction)" class="md-nav__link">
-      Contributing (Under Construction)
+    <a href="data/" title="Returned Data" class="md-nav__link">
+      Returned Data
     </a>
   </li>
 
@@ -250,8 +222,8 @@
 
 
   <li class="md-nav__item">
-    <a href="data/" title="About" class="md-nav__link">
-      About
+    <a href="modules/" title="Modules" class="md-nav__link">
+      Modules
     </a>
   </li>
 
@@ -262,8 +234,8 @@
 
 
   <li class="md-nav__item">
-    <a href="functions/" title="Which function for X data?" class="md-nav__link">
-      Which function for X data? <!-- omit in toc -->
+    <a href="contributing/" title="Contributing" class="md-nav__link">
+      Contributing
     </a>
   </li>
 
@@ -306,7 +278,7 @@
                 <h1 id="introduction">Introduction</h1>
 <p>This package is an API wrapper/client for retrieving data from iRacing. We use the term "wrapper" loosely because iRacing does not yet have an officially documented API. However, we've done our best to build something that might resemble an actual API.</p>
 <h1 id="basic-usage">Basic Usage</h1>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">pyracing</span> <span class="kn">import</span> <span class="n">Client</span>
+<p><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pyracing</span> <span class="kn">import</span> <span class="n">Client</span>
 
 <span class="n">username</span> <span class="o">=</span> <span class="s1">&#39;username&#39;</span>
 <span class="n">password</span> <span class="o">=</span> <span class="s1">&#39;password&#39;</span>
@@ -320,23 +292,21 @@
         <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tracks</span><span class="p">:</span>
             <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Week </span><span class="si">{</span><span class="n">t</span><span class="o">.</span><span class="n">race_week</span><span class="si">}</span><span class="s1"> will take place at </span><span class="si">{</span><span class="n">t</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1"> (</span><span class="si">{</span><span class="n">t</span><span class="o">.</span><span class="n">config</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
 </code></pre></div>
-
-
-<p>The result will be</p>
-<div class="codehilite"><pre><span></span><code><span class="err">Week 0 will take place at Road Atlanta (Full Course)</span>
-<span class="err">Week 1 will take place at Circuit Gilles Villeneuve ()</span>
-<span class="err">Week 2 will take place at Road America (Full Course)</span>
-<span class="err">Week 3 will take place at Lime Rock Park (Grand Prix)</span>
-<span class="err">Week 4 will take place at Barber Motorsports Park (Full Course)</span>
-<span class="err">Week 5 will take place at Suzuka International Racing Course (Grand Prix)</span>
-<span class="err">Week 6 will take place at Nürburgring Combined (Gesamtstrecke Short w/out Arena)</span>
-<span class="err">Week 7 will take place at Brands Hatch Circuit (Grand Prix)</span>
-<span class="err">Week 8 will take place at Autodromo Internazionale Enzo e Dino Ferrari (Grand Prix)</span>
-<span class="err">Week 9 will take place at Watkins Glen International (Boot)</span>
-<span class="err">Week 10 will take place at Sebring International Raceway (International)</span>
-<span class="err">Week 11 will take place at Autodromo Nazionale Monza (Grand Prix)</span>
-<span class="err">Week 12 will take place at Mount Panorama Circuit ()</span>
-</code></pre></div>
+The result will be
+<div class="highlight"><pre><span></span><code>Week 0 will take place at Road Atlanta (Full Course)
+Week 1 will take place at Circuit Gilles Villeneuve ()
+Week 2 will take place at Road America (Full Course)
+Week 3 will take place at Lime Rock Park (Grand Prix)
+Week 4 will take place at Barber Motorsports Park (Full Course)
+Week 5 will take place at Suzuka International Racing Course (Grand Prix)
+Week 6 will take place at Nürburgring Combined (Gesamtstrecke Short w/out Arena)
+Week 7 will take place at Brands Hatch Circuit (Grand Prix)
+Week 8 will take place at Autodromo Internazionale Enzo e Dino Ferrari (Grand Prix)
+Week 9 will take place at Watkins Glen International (Boot)
+Week 10 will take place at Sebring International Raceway (International)
+Week 11 will take place at Autodromo Nazionale Monza (Grand Prix)
+Week 12 will take place at Mount Panorama Circuit ()
+</code></pre></div></p>
                 
               
               
@@ -356,13 +326,13 @@
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
         
-          <a href="Package-Modules/" title="Package Modules" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="functions/" title="Class Methods" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Package Modules
+                Class Methods
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">
@@ -395,7 +365,7 @@
       <script>
         app = initialize({
           base: ".",
-          features: ["tabs"],
+          features: [{"toc": null, "permalink": true}],
           search: Object.assign({
             worker: "assets/javascripts/worker/search.a68abb33.min.js"
           }, typeof search !== "undefined" && search)

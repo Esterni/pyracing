@@ -15,7 +15,7 @@
     
     
       
-        <title>Which function for X data? - pyracing</title>
+        <title>Class Methods - pyracing</title>
       
     
     
@@ -77,7 +77,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              Which function for X data? <!-- omit in toc -->
+              Class Methods
             
           </span>
         </div>
@@ -137,34 +137,6 @@
       
       
         
-          
-
-<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
-  <div class="md-tabs__inner md-grid">
-    <ul class="md-tabs__list">
-      
-        
-  <li class="md-tabs__item">
-    
-      <a href=".." class="md-tabs__link md-tabs__link--active">
-        Introduction
-      </a>
-    
-  </li>
-
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    </ul>
-  </div>
-</nav>
-        
       
       <main class="md-main" data-md-component="main">
         <div class="md-main__inner md-grid">
@@ -205,44 +177,8 @@
 
 
   <li class="md-nav__item">
-    <a href=".." title="Introduction" class="md-nav__link">
-      Introduction
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../Package-Modules/" title="Package Modules" class="md-nav__link">
-      Package Modules
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../contributing/" title="Contributing (Under Construction)" class="md-nav__link">
-      Contributing (Under Construction)
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../data/" title="About" class="md-nav__link">
-      About
+    <a href=".." title="Home" class="md-nav__link">
+      Home
     </a>
   </li>
 
@@ -261,10 +197,46 @@
       
     
     
-    <a href="./" title="Which function for X data?" class="md-nav__link md-nav__link--active">
-      Which function for X data? <!-- omit in toc -->
+    <a href="./" title="Class Methods" class="md-nav__link md-nav__link--active">
+      Class Methods
     </a>
     
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../data/" title="Returned Data" class="md-nav__link">
+      Returned Data
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../modules/" title="Modules" class="md-nav__link">
+      Modules
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../contributing/" title="Contributing" class="md-nav__link">
+      Contributing
+    </a>
   </li>
 
     
@@ -303,16 +275,14 @@
                   
                 
                 
-                <h1 id="which-function-for-x-data">Which function for X data? <!-- omit in toc --></h1>
+                <h1 id="which-function-for-x-data">Which function for X data?</h1>
 <p>Every page on the iRacing Membersite receives its data, to be nicely displayed, from various URL endpoints in the form of <code>/GetSomeData</code> that is <em>usually</em> in JSON format.</p>
 <p>The functions below interact with 1 endpoint each and use the provided arguments as the parameters in the URL query string that we've found it accepts. It is then mapped into a class object for ease of use. (More details here)</p>
 <p><strong>Note</strong>: While some of these endpoints reveal data that can't be found anywhere else, others will return such little information that you might wonder why they exist at all. <strong>Our primary goal is to provide accessibility to the data, not make sense of it..</strong></p>
 <h1 id="driver-data">Driver Data</h1>
 <p>Data returned from these methods require a driver (cust_id) to be included in the query parameters. A good example is <code>event_results()</code>. It can return all kinds of different race results, but only results that are related to a driver in question. For all results of a series, go to <a href="#series_race_results">series_race_results()</a></p>
 <h2 id="career_stats">career_stats()</h2>
-<blockquote>
 <p>Returns a driver’s career stats as seen on iRacing's <a href="https://members.iracing.com/membersite/member/CareerStats.do">Career Profile</a>.</p>
-</blockquote>
 <table>
 <thead>
 <tr>
@@ -322,90 +292,86 @@
 </thead>
 <tbody>
 <tr>
-<td align="left"><code>cust_id</code></td>
+<td align="left">cust_id</td>
 <td align="left">Which driver’s Career Stats to return.</td>
 </tr>
 </tbody>
 </table>
 <h2 id="driver_stats">driver_stats()</h2>
-<blockquote>
 <p>Returns a list of drivers that match the given parameters. This is the backend source for iRacing's <a href="https://members.iracing.com/membersite/member/DriverLookup.do">Driver Stats Page</a>.</p>
 <p>This method provides functionality that the iRacing page does not. It search drivers by name. It is arguably the easiest method to obtain driver information.</p>
-</blockquote>
 <table>
 <thead>
 <tr>
-<th>Args/Kwargs</th>
+<th align="left">Args/Kwargs</th>
 <th align="left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>search='null'</code></td>
+<td align="left">search=<code>'null'</code></td>
 <td align="left">Useful for looking up a specific driver. (e.g. <code>'Driver Full Name5'</code>) <br> Also accepts partial names to return all matching drivers.</td>
 </tr>
 <tr>
-<td><code>country='null'</code></td>
+<td align="left">country=<code>'null'</code></td>
 <td align="left">Return only drivers from a given country. Accepted values can be found in the <code>CountryCode</code> enum from the <code>constants</code> module for convienence.</td>
 </tr>
 <tr>
-<td><code>category=Category.road.value</code></td>
-<td align="left">Selects the race discipline. (The <code>Category</code> enum is from the <code>constants</code> module)</td>
+<td align="left">category=Category.road.value</td>
+<td align="left">Selects the race discipline.<br>(The <code>Category</code> enum is from the <code>constants</code> module) <br></td>
 </tr>
 <tr>
-<td><code>class_low=None</code><br><code>class_high=None</code></td>
+<td align="left">class_low=None<br>class_high=None</td>
 <td align="left">Filters results by the driver's License Class.</td>
 </tr>
 <tr>
-<td><code>irating_low=None</code><br><code>irating_high=None</code></td>
+<td align="left">irating_low=None<br>irating_high=None</td>
 <td align="left">Filters results by the driver's iRating.</td>
 </tr>
 <tr>
-<td><code>ttrating_low=None</code><br><code>ttrating_high=None</code></td>
+<td align="left">ttrating_low=None<br>ttrating_high=None</td>
 <td align="left">Filters results by the driver's ttRating.</td>
 </tr>
 <tr>
-<td><code>starts_avg_low=None</code><br><code>starts_avg_high=None</code></td>
+<td align="left">starts_avg_low=None<br>starts_avg_high=None</td>
 <td align="left">Filters results by the driver's average starting position.</td>
 </tr>
 <tr>
-<td><code>finish_avg_low=None</code><br><code>finish_avg_high=None</code></td>
+<td align="left">finish_avg_low=None<br>finish_avg_high=None</td>
 <td align="left">Filters results by the driver's average finish position.</td>
 </tr>
 <tr>
-<td><code>points_avg_low=None</code><br><code>points_avg_high=None</code></td>
+<td align="left">points_avg_low=None<br>points_avg_high=None</td>
 <td align="left">Filters results by the driver's average champ points awarded.</td>
 </tr>
 <tr>
-<td><code>inc_avg_low=None</code><br><code>inc_avg_high=None</code></td>
+<td align="left">inc_avg_low=None<br>inc_avg_high=None</td>
 <td align="left">Filters results by the driver's average incidents per race.</td>
 </tr>
 <tr>
-<td><code>num_results_low=1</code><br><code>num_results_high=25</code></td>
+<td align="left">num_results_low=1<br>num_results_high=25</td>
 <td align="left">The first result of the query to return and the last result of the query to return.</td>
 </tr>
 <tr>
-<td><code>sort=Sort.irating.value</code><br><code>order=Sort.descending.value</code></td>
+<td align="left">sort=Sort.irating.value<br>order=Sort.descending.value</td>
 <td align="left">How to sort and order the data. The default is to sort the data with the most recent race as the first result. The <code>Sort</code> enum is from the <code>constants</code> module.</td>
 </tr>
 <tr>
-<td><code>active=1</code></td>
+<td align="left">active=1</td>
 <td align="left"><em>Should</em> let you see non-active drivers with <code>0</code>, but appears that iRacing does not allow it.</td>
 </tr>
 <tr>
-<td><code>friend=None</code><br><code>watched=None</code><br><code>recent=None</code></td>
+<td align="left">friend=None<br>watched=None<br>recent=None</td>
 <td align="left">Accepts a <code>cust_id</code> to filter results to friend, watched, or recent.<br> <strong>!Note: Only works for the currently logged in members <code>cust_id</code>.</strong></td>
 </tr>
 <tr>
-<td><code>cust_id=None</code></td>
+<td align="left">cust_id=None</td>
 <td align="left">Does not affect returned data</td>
 </tr>
 </tbody>
 </table>
 <h2 id="event_results">event_results()</h2>
-<blockquote>
 <p>Returns a list of event results that the driver has participated in. This is the backend data for iRacing's <a href="https://members.iracing.com/membersite/member/results.jsp">My Series Results</a>. Contains the summary information about the results of the event. For detailed information about a specific session, see: <a href="#subsession_data">subsession_data()</a>.</p>
-</blockquote>
 <table>
 <thead>
 <tr>
@@ -415,76 +381,74 @@
 </thead>
 <tbody>
 <tr>
-<td align="left"><code>cust_id</code></td>
+<td align="left">cust_id</td>
 <td align="left">Which driver's events to return.</td>
 </tr>
 <tr>
-<td align="left"><code>quarter</code></td>
+<td align="left">quarter</td>
 <td align="left">Which quarter/season of the year to return data from.</td>
 </tr>
 <tr>
-<td align="left"><code>show_races=1</code><br><code>show_quals=None</code><br><code>show_tts=None</code><br><code>show_ops=None</code></td>
+<td align="left">show_races=1<br>show_quals=None<br>show_tts=None<br>show_ops=None</td>
 <td align="left">A value of 1 includes the session type in the return.<br>A value of None excludes the session type from the results.</td>
 </tr>
 <tr>
-<td align="left"><code>show_official=1</code><br><code>show_unofficial=None</code></td>
+<td align="left">show_official=1<br>show_unofficial=None</td>
 <td align="left">Toggles official/non-official sessions  with values of <code>1</code> or <code>None</code>.</td>
 </tr>
 <tr>
-<td align="left"><code>show_rookie=1</code><br><code>show_class_d=1</code><br><code>show_class_c=1</code><br><code>show_class_b=1</code><br><code>show_class_a=1</code><br><code>show_pro=1</code><br><code>show_prowc=1</code></td>
+<td align="left">show_rookie=1<br>show_class_d=1<br>show_class_c=1<br>show_class_b=1<br>show_class_a=1<br>show_pro=1<br>show_prowc=1</td>
 <td align="left">Filters results by the license class that a series requires. Setting only <code>show_class_a</code> to 1 for the road category will only display results from the iGPS series, as that is the only series with an A class requirement.</td>
 </tr>
 <tr>
-<td align="left"><code>result_num_low=1</code><br><code>result_num_high=25</code></td>
+<td align="left">result_num_low=1<br>result_num_high=25</td>
 <td align="left">First result of the data to return.<br> Last result of the data to return.</td>
 </tr>
 <tr>
-<td align="left"><code>sort=Sort.start_time.value</code><br><code>order=Sort.descending.value</code></td>
+<td align="left">sort=Sort.start_time.value<br>order=Sort.descending.value</td>
 <td align="left">How to sort and order the data. The default is to sort the data with the most recent race as the first result. The <code>Sort</code> enum is from the <code>constants</code> module.</td>
 </tr>
 <tr>
-<td align="left"><code>data_format='json'</code></td>
+<td align="left">data_format='json'</td>
 <td align="left">Other values are currently unknown.</td>
 </tr>
 <tr>
-<td align="left"><code>category=Category.road.value</code></td>
+<td align="left">category=Category.road.value</td>
 <td align="left">Which category of race discipline to return. The <code>Category</code> enum is from the <code>constants</code> module.</td>
 </tr>
 <tr>
-<td align="left"><code>year=datetime.today().year</code></td>
+<td align="left">year=datetime.today().year</td>
 <td align="left">Which year to query. The default sets to the current years data.</td>
 </tr>
 <tr>
-<td align="left"><code>race_week=None</code></td>
+<td align="left">race_week=None</td>
 <td align="left">Which raceweek of the quarter/season to query.</td>
 </tr>
 <tr>
-<td align="left"><code>track_id=None</code><br><code>car_class=None</code><br><code>car_id=None</code></td>
+<td align="left">track_id=None<br>car_class=None<br>car_id=None</td>
 <td align="left">Allows to filter results to a specific track, car class, car, or a combination of all three.</td>
 </tr>
 <tr>
-<td align="left"><code>start_low=None</code><br><code>start_high=None</code></td>
+<td align="left">start_low=None<br>start_high=None</td>
 <td align="left">Filters results by the driver's starting position.</td>
 </tr>
 <tr>
-<td align="left"><code>finish_low=None</code><br><code>finish_high=None</code></td>
+<td align="left">finish_low=None<br>finish_high=None</td>
 <td align="left">Filters results by the driver's finish position.</td>
 </tr>
 <tr>
-<td align="left"><code>incidents_low=None</code><br><code>incidents_high=None</code></td>
+<td align="left">incidents_low=None<br>incidents_high=None</td>
 <td align="left">Filters results by the driver's number of incidents.</td>
 </tr>
 <tr>
-<td align="left"><code>points_champ_low=None</code><br><code>points_champ_high=None</code></td>
+<td align="left">points_champ_low=None<br>points_champ_high=None</td>
 <td align="left">Filters results by driver's champ points awarded.</td>
 </tr>
 </tbody>
 </table>
 <h2 id="irating">irating()</h2>
-<blockquote>
 <p>Utilizes the <code>stats_chart()</code> method to return a list of iRating values. Used in the membersite's <a href="https://members.iracing.com/membersite/member/CareerStats.do">Career Profile</a> charts.
 Accessing irating.current() will give the most recent irating of a user.</p>
-</blockquote>
 <table>
 <thead>
 <tr>
@@ -494,19 +458,17 @@ Accessing irating.current() will give the most recent irating of a user.</p>
 </thead>
 <tbody>
 <tr>
-<td align="left"><code>cust_id</code></td>
+<td align="left">cust_id</td>
 <td align="left">Which driver’s irating to return.</td>
 </tr>
 <tr>
-<td align="left"><code>category</code></td>
+<td align="left">category</td>
 <td align="left">Selects the race discipline. The <code>Category</code> enum from <code>constants</code> module can be used here.</td>
 </tr>
 </tbody>
 </table>
 <h2 id="last_races_stats">last_races_stats()</h2>
-<blockquote>
 <p>Returns a stat summary for the driver's last 10 races; used in the membersite's <a href="https://members.iracing.com/membersite/member/CareerStats.do">Career Profile</a> "Last 10 Races" table.</p>
-</blockquote>
 <table>
 <thead>
 <tr>
@@ -516,15 +478,13 @@ Accessing irating.current() will give the most recent irating of a user.</p>
 </thead>
 <tbody>
 <tr>
-<td align="left"><code>cust_id</code></td>
+<td align="left">cust_id</td>
 <td align="left">Which driver’s races to return.</td>
 </tr>
 </tbody>
 </table>
 <h2 id="last_series">last_series()</h2>
-<blockquote>
 <p>Returns a summary of stats about a driver's last 3 series; Used in the membersite's <a href="https://members.iracing.com/membersite/member/CareerStats.do">Career Profile</a> "Last 3 Series" table.</p>
-</blockquote>
 <table>
 <thead>
 <tr>
@@ -534,16 +494,14 @@ Accessing irating.current() will give the most recent irating of a user.</p>
 </thead>
 <tbody>
 <tr>
-<td align="left"><code>cust_id</code></td>
+<td align="left">cust_id</td>
 <td align="left">Which driver’s series to return.</td>
 </tr>
 </tbody>
 </table>
 <h2 id="license_class">license_class()</h2>
-<blockquote>
 <p>Utilizes the <code>stats_chart()</code> method to return a list of license values; Used in the membersite's <a href="https://members.iracing.com/membersite/member/CareerStats.do">Career Profile</a> charts.
 See the LicenseClass class for how to further use this data. (Link to page coming soon...)</p>
-</blockquote>
 <table>
 <thead>
 <tr>
@@ -553,19 +511,17 @@ See the LicenseClass class for how to further use this data. (Link to page comin
 </thead>
 <tbody>
 <tr>
-<td align="left"><code>cust_id</code></td>
+<td align="left">cust_id</td>
 <td align="left">Which driver’s stats to return.</td>
 </tr>
 <tr>
-<td align="left"><code>category</code></td>
+<td align="left">category</td>
 <td align="left">Selects the race discipline. The <code>Category</code> enum from <code>constants</code> module can be used here.</td>
 </tr>
 </tbody>
 </table>
 <h2 id="member_cars_driven">member_cars_driven()</h2>
-<blockquote>
 <p>Returns which cars (list of <code>car_id</code>s) the member has driven.</p>
-</blockquote>
 <table>
 <thead>
 <tr>
@@ -575,15 +531,13 @@ See the LicenseClass class for how to further use this data. (Link to page comin
 </thead>
 <tbody>
 <tr>
-<td align="left"><code>cust_id</code></td>
+<td align="left">cust_id</td>
 <td align="left">Which member to search for their car's driven.</td>
 </tr>
 </tbody>
 </table>
 <h2 id="member_division">member_division()</h2>
-<blockquote>
 <p>Returns which division the driver was in for the specified season_id. ("was" because a season_id can be a season that has concluded)</p>
-</blockquote>
 <table>
 <thead>
 <tr>
@@ -593,19 +547,17 @@ See the LicenseClass class for how to further use this data. (Link to page comin
 </thead>
 <tbody>
 <tr>
-<td align="left"><code>cust_id</code></td>
+<td align="left">cust_id</td>
 <td align="left">Which member's division to return.</td>
 </tr>
 <tr>
-<td align="left"><code>season_id</code></td>
+<td align="left">season_id</td>
 <td align="left">Which season to check for the driver's division.</td>
 </tr>
 </tbody>
 </table>
 <h2 id="member_subsession_id_from_session">member_subsession_id_from_session()</h2>
-<blockquote>
 <p>Returns which subsession_id that a member was in from a given session_id. This might be useful when you you know the session_id before the race session were split into subsessions, but otherwise subsession is usually included for the driver in other queries.</p>
-</blockquote>
 <table>
 <thead>
 <tr>
@@ -615,19 +567,17 @@ See the LicenseClass class for how to further use this data. (Link to page comin
 </thead>
 <tbody>
 <tr>
-<td align="left"><code>cust_id</code></td>
+<td align="left">cust_id</td>
 <td align="left">Which member's <code>subsession_id</code> to return.</td>
 </tr>
 <tr>
-<td align="left"><code>session_id</code></td>
+<td align="left">session_id</td>
 <td align="left">Which session to look in for the driver's subsession.</td>
 </tr>
 </tbody>
 </table>
-<h2 id="my_racers">my_racers()</h2>
-<blockquote>
+<h2 id="driver_status">driver_status()</h2>
 <p>Returns friends list for the person logged in. (gold star for least useful)</p>
-</blockquote>
 <table>
 <thead>
 <tr>
@@ -637,27 +587,25 @@ See the LicenseClass class for how to further use this data. (Link to page comin
 </thead>
 <tbody>
 <tr>
-<td align="left"><code>cust_id=None</code></td>
+<td align="left">cust_id=None</td>
 <td align="left">Returns the status info of the provided cust_id. If logged in while also providing <strong>your</strong> custid, it will also return the status info of your friends and studied/blacklisted drivers.</td>
 </tr>
 <tr>
-<td align="left"><code>friends=1</code></td>
+<td align="left">friends=1</td>
 <td align="left">Toggles display of friends in results.</td>
 </tr>
 <tr>
-<td align="left"><code>studied=1</code></td>
+<td align="left">studied=1</td>
 <td align="left">Toggles display of studied drivers in results.</td>
 </tr>
 <tr>
-<td align="left"><code>blacklisted=1</code></td>
+<td align="left">blacklisted=1</td>
 <td align="left">Toggles display of blacklisted drivers in results.</td>
 </tr>
 </tbody>
 </table>
 <h2 id="personal_bests">personal_bests()</h2>
-<blockquote>
 <p>Returns the drivers best laptimes for the given car, as seen on the /CareerStats page.</p>
-</blockquote>
 <table>
 <thead>
 <tr>
@@ -667,19 +615,17 @@ See the LicenseClass class for how to further use this data. (Link to page comin
 </thead>
 <tbody>
 <tr>
-<td align="left"><code>cust_id</code></td>
+<td align="left">cust_id</td>
 <td align="left">Which driver’s laptimes to return.</td>
 </tr>
 <tr>
-<td align="left"><code>car_id</code></td>
+<td align="left">car_id</td>
 <td align="left">Which car's laptimes to return for the driver.</td>
 </tr>
 </tbody>
 </table>
 <h2 id="race_laps_driver">race_laps_driver()</h2>
-<blockquote>
 <p>Returns data for all laps completed of a single driver. sim_sess_id specifies the laps from practice, qual, or race.</p>
-</blockquote>
 <table>
 <thead>
 <tr>
@@ -689,23 +635,21 @@ See the LicenseClass class for how to further use this data. (Link to page comin
 </thead>
 <tbody>
 <tr>
-<td align="left"><code>cust_id</code></td>
+<td align="left">cust_id</td>
 <td align="left">Which driver’s lap data to return.</td>
 </tr>
 <tr>
-<td align="left"><code>subsession_id</code></td>
+<td align="left">subsession_id</td>
 <td align="left">Which subsession's data to return.</td>
 </tr>
 <tr>
-<td align="left"><code>sim_session_type=</code><br><code>SimSessionType.race.value</code></td>
+<td align="left">sim_session_type=<br>SimSessionType.race.value</td>
 <td align="left">Which segment of a race session to return results for. (Practice, Qualify, Race)<br> The <code>SimSessionType</code> enum is from the <code>constants</code> module.</td>
 </tr>
 </tbody>
 </table>
 <h2 id="stats_chart">stats_chart()</h2>
-<blockquote>
 <p>Returns a list in the form of <code>time:value</code> for the race category specified.</p>
-</blockquote>
 <table>
 <thead>
 <tr>
@@ -715,23 +659,21 @@ See the LicenseClass class for how to further use this data. (Link to page comin
 </thead>
 <tbody>
 <tr>
-<td align="left"><code>cust_id</code></td>
+<td align="left">cust_id</td>
 <td align="left">Which driver’s chart to return.</td>
 </tr>
 <tr>
-<td align="left"><code>category</code></td>
+<td align="left">category</td>
 <td align="left">Which race category to return. The <code>Category</code> enum from the <code>constants</code> module provides available values.</td>
 </tr>
 <tr>
-<td align="left"><code>chart_type</code></td>
+<td align="left">chart_type</td>
 <td align="left">Type of chart to return. (iRating, ttRating, and License Class) The <code>ChartType</code> enum from the <code>constants</code> module provides easy access.</td>
 </tr>
 </tbody>
 </table>
 <h2 id="ttrating">ttrating()</h2>
-<blockquote>
 <p>Utilizes the stats_chart class to return a list of ttrating values that are used in the /CareerStats charts.</p>
-</blockquote>
 <table>
 <thead>
 <tr>
@@ -741,19 +683,17 @@ See the LicenseClass class for how to further use this data. (Link to page comin
 </thead>
 <tbody>
 <tr>
-<td align="left"><code>cust_id</code></td>
+<td align="left">cust_id</td>
 <td align="left">Which driver’s ttrating to return.</td>
 </tr>
 <tr>
-<td align="left"><code>category</code></td>
+<td align="left">category</td>
 <td align="left">Selects the race discipline. The <code>Category</code> enum from <code>constants</code> module can be used here.</td>
 </tr>
 </tbody>
 </table>
 <h2 id="yearly_stats">yearly_stats()</h2>
-<blockquote>
 <p>Returns the breakdown of career stats by year, as seen on the driver profile page.</p>
-</blockquote>
 <table>
 <thead>
 <tr>
@@ -763,7 +703,7 @@ See the LicenseClass class for how to further use this data. (Link to page comin
 </thead>
 <tbody>
 <tr>
-<td align="left"><code>cust_id</code></td>
+<td align="left">cust_id</td>
 <td align="left">Which driver’s Yearly Stats to return.</td>
 </tr>
 </tbody>
@@ -771,9 +711,7 @@ See the LicenseClass class for how to further use this data. (Link to page comin
 <hr />
 <h1 id="series-data">Series Data</h1>
 <h2 id="active_op_counts">active_op_counts()</h2>
-<blockquote>
 <p>Returns a list of 'Open Practice' sessions that are currently active. By default only sessions with registered drivers are included. Use include_empty flag to see all sessions.</p>
-</blockquote>
 <table>
 <thead>
 <tr>
@@ -783,23 +721,21 @@ See the LicenseClass class for how to further use this data. (Link to page comin
 </thead>
 <tbody>
 <tr>
-<td align="left"><code>count_max=250</code></td>
+<td align="left">count_max=250</td>
 <td align="left">Sets the max number of results to return.</td>
 </tr>
 <tr>
-<td align="left"><code>include_empty='n'</code></td>
+<td align="left">include_empty='n'</td>
 <td align="left">Set to <code>'y'</code> if empty results should be included.</td>
 </tr>
 <tr>
-<td align="left"><code>cust_id=None</code></td>
+<td align="left">cust_id=None</td>
 <td align="left">Unknown purpose.</td>
 </tr>
 </tbody>
 </table>
 <h2 id="next_event">next_event()</h2>
-<blockquote>
 <p>Returns the next event for a series, from the requested time.</p>
-</blockquote>
 <table>
 <thead>
 <tr>
@@ -809,23 +745,21 @@ See the LicenseClass class for how to further use this data. (Link to page comin
 </thead>
 <tbody>
 <tr>
-<td align="left"><code>series_id</code></td>
+<td align="left">series_id</td>
 <td align="left">Which series to return the next event for.</td>
 </tr>
 <tr>
-<td align="left"><code>event_type=EventType.race.value</code></td>
+<td align="left">event_type=EventType.race.value</td>
 <td align="left">Which event_type (Race, Practice) to return results for. The <code>EventType</code> enum is from the <code>constants</code> module.</td>
 </tr>
 <tr>
-<td align="left"><code>date=now_five_min_floor()</code></td>
+<td align="left">date=now_five_min_floor()</td>
 <td align="left">Default is to use the same time format that iRacing's Race Guide uses, which is the current time rounded down the previous 5 minute mark.</td>
 </tr>
 </tbody>
 </table>
 <h2 id="next_session_times">next_session_times()</h2>
-<blockquote>
 <p>Returns the next 5 sessions with all of their attributes: start time, registered drivers, session parameters, etc.</p>
-</blockquote>
 <table>
 <thead>
 <tr>
@@ -835,15 +769,13 @@ See the LicenseClass class for how to further use this data. (Link to page comin
 </thead>
 <tbody>
 <tr>
-<td align="left"><code>season_id</code></td>
+<td align="left">season_id</td>
 <td align="left">Which season to return the sessions for.</td>
 </tr>
 </tbody>
 </table>
 <h2 id="season_standings">season_standings()</h2>
-<blockquote>
 <p>Returns the championship point standings of a series. This is the same data found in /statsseries.jsp.</p>
-</blockquote>
 <table>
 <thead>
 <tr>
@@ -853,39 +785,37 @@ See the LicenseClass class for how to further use this data. (Link to page comin
 </thead>
 <tbody>
 <tr>
-<td align="left"><code>season_id</code></td>
+<td align="left">season_id</td>
 <td align="left">Which season's champ points to return.</td>
 </tr>
 <tr>
-<td align="left"><code>race_week=None</code></td>
+<td align="left">race_week=None</td>
 <td align="left">Which race_week of the season to return.</td>
 </tr>
 <tr>
-<td align="left"><code>car_class_id=None</code></td>
+<td align="left">car_class_id=None</td>
 <td align="left">Filters point standings to a specific car class.</td>
 </tr>
 <tr>
-<td align="left"><code>club_id=None</code></td>
+<td align="left">club_id=None</td>
 <td align="left">Filters point standings to a specific club.</td>
 </tr>
 <tr>
-<td align="left"><code>division=None</code></td>
+<td align="left">division=None</td>
 <td align="left">Filters point standings to a specific division.</td>
 </tr>
 <tr>
-<td align="left"><code>result_num_low=1</code><br><code>result_num_high=25</code></td>
+<td align="left">result_num_low=1<br>result_num_high=25</td>
 <td align="left">The first result of the query to return and the last result of the query to return.</td>
 </tr>
 <tr>
-<td align="left"><code>sort=Sort.champ_points.value</code><br><code>order=Sort.descending.value</code></td>
+<td align="left">sort=Sort.champ_points.value<br>order=Sort.descending.value</td>
 <td align="left">How to sort and order the data. The default is to sort the data with the most recent race as the first result. <br>The <code>Sort</code> enum is from the <code>constants</code> module.</td>
 </tr>
 </tbody>
 </table>
 <h2 id="series_race_results">series_race_results()</h2>
-<blockquote>
 <p>Returns summary info for the specified season_id and race_week. Results are restricted to a single week per query.</p>
-</blockquote>
 <table>
 <thead>
 <tr>
@@ -895,19 +825,17 @@ See the LicenseClass class for how to further use this data. (Link to page comin
 </thead>
 <tbody>
 <tr>
-<td align="left"><code>season_id</code></td>
+<td align="left">season_id</td>
 <td align="left">Which season's results to return.</td>
 </tr>
 <tr>
-<td align="left"><code>race_week=1</code></td>
+<td align="left">race_week=1</td>
 <td align="left">Which week of the season to return. iRacing restricts this endpoint to querying a single week at a time.</td>
 </tr>
 </tbody>
 </table>
 <h2 id="team_standings">team_standings()</h2>
-<blockquote>
 <p>(<strong>Not finished</strong>) Returns championship point standings of Teams.</p>
-</blockquote>
 <table>
 <thead>
 <tr>
@@ -917,19 +845,19 @@ See the LicenseClass class for how to further use this data. (Link to page comin
 </thead>
 <tbody>
 <tr>
-<td align="left"><code>season_id</code></td>
+<td align="left">season_id</td>
 <td align="left">Which season's standings to return.</td>
 </tr>
 <tr>
-<td align="left"><code>car_class_id</code></td>
+<td align="left">car_class_id</td>
 <td align="left">Which car class to return data for. (Required to select 1 class)</td>
 </tr>
 <tr>
-<td align="left"><code>car_id=None</code></td>
+<td align="left">car_id=None</td>
 <td align="left">Filters results to a specific car.</td>
 </tr>
 <tr>
-<td align="left"><code>race_week=None</code></td>
+<td align="left">race_week=None</td>
 <td align="left">Filters results to a specific race week.</td>
 </tr>
 </tbody>
@@ -937,9 +865,7 @@ See the LicenseClass class for how to further use this data. (Link to page comin
 <hr />
 <h1 id="session-data">Session Data</h1>
 <h2 id="all_subsessions">all_subsessions()</h2>
-<blockquote>
 <p>Returns subsession IDs for any additional race splits to the one provided.</p>
-</blockquote>
 <table>
 <thead>
 <tr>
@@ -949,15 +875,13 @@ See the LicenseClass class for how to further use this data. (Link to page comin
 </thead>
 <tbody>
 <tr>
-<td align="left"><code>subsession_id</code></td>
+<td align="left">subsession_id</td>
 <td align="left">Which subsession to return the related <code>subsession_id</code>(s) for.</td>
 </tr>
 </tbody>
 </table>
 <h2 id="private_results">private_results()</h2>
-<blockquote>
 <p>Returns private sessions that the driver has participated in.</p>
-</blockquote>
 <table>
 <thead>
 <tr>
@@ -967,27 +891,25 @@ See the LicenseClass class for how to further use this data. (Link to page comin
 </thead>
 <tbody>
 <tr>
-<td align="left"><code>cust_id</code></td>
+<td align="left">cust_id</td>
 <td align="left">Which driver’s hosted sessions to return.</td>
 </tr>
 <tr>
-<td align="left"><code>time_start_lower</code><br><code>time_start_upper</code></td>
+<td align="left">time_start_lower<br>time_start_upper</td>
 <td align="left">Filters results to between these times.<br><strong>Note</strong>: Both fields are required for this endpoint to return data.</td>
 </tr>
 <tr>
-<td align="left"><code>lower_bound=1</code><br><code>upper_bound=25</code></td>
+<td align="left">lower_bound=1<br>upper_bound=25</td>
 <td align="left">The first result of the query to return and the last result of the query to return.</td>
 </tr>
 <tr>
-<td align="left"><code>sort=Sort.session_name.value</code><br><code>order=Sort.ascending.value</code></td>
+<td align="left">sort=Sort.session_name.value<br>order=Sort.ascending.value</td>
 <td align="left">How to sort and order the data. The default is to sort the data alphabetically by <code>session_name</code>.<br>The <code>Sort</code> enum is from the <code>constants</code> module.</td>
 </tr>
 </tbody>
 </table>
 <h2 id="race_guide">race_guide()</h2>
-<blockquote>
 <p>Returns all data used by the race guide page for the active seasons. Filters are identical to those found when visiting the race guide with a browser.</p>
-</blockquote>
 <table>
 <thead>
 <tr>
@@ -997,47 +919,45 @@ See the LicenseClass class for how to further use this data. (Link to page comin
 </thead>
 <tbody>
 <tr>
-<td align="left"><code>rookie=None</code><br><code>class_d=None</code><br><code>class_c=None</code><br><code>class_b=None</code><br><code>class_a=None</code><br><code>class_pro=None</code><br><code>class_prowc=None</code></td>
+<td align="left">rookie=None<br>class_d=None<br>class_c=None<br>class_b=None<br>class_a=None<br>class_pro=None<br>class_prowc=None</td>
 <td align="left"><strong>Filters for license classes.</strong> <br>Setting to <code>0</code> will filter results to exclude series requiring that license.<br>Any combination is allowed.</td>
 </tr>
 <tr>
-<td align="left"><code>oval=None</code><br><code>road=None</code><br><code>dirt_oval=None</code><br><code>dirt_road=None</code></td>
+<td align="left">oval=None<br>road=None<br>dirt_oval=None<br>dirt_road=None</td>
 <td align="left"><strong>Filters for race categories.</strong><br> Setting to <code>0</code> will filter results to exclude the category from being returned.<br>Any combination is allowed.</td>
 </tr>
 <tr>
-<td align="left"><code>fixed_setup=None</code></td>
+<td align="left">fixed_setup=None</td>
 <td align="left">Set to <code>1</code> to display only fixed setup sessions. (None displays both. There is not an option to display only open setups)</td>
 </tr>
 <tr>
-<td align="left"><code>multiclass=None</code></td>
+<td align="left">multiclass=None</td>
 <td align="left">Set to <code>1</code> to display only multiclass sessions</td>
 </tr>
 <tr>
-<td align="left"><code>meets_mpr=None</code></td>
+<td align="left">meets_mpr=None</td>
 <td align="left">Set to <code>1</code> to display races that meet your MPR. (Restricted to loggedin member)</td>
 </tr>
 <tr>
-<td align="left"><code>populated=None</code></td>
+<td align="left">populated=None</td>
 <td align="left">Set to <code>1</code> to display only populated sessions.</td>
 </tr>
 <tr>
-<td align="left"><code>eligible=None</code></td>
+<td align="left">eligible=None</td>
 <td align="left">Set to <code>1</code> to dispaly only the series you are eligible for. (Restricted to logged in member)</td>
 </tr>
 <tr>
-<td align="left"><code>official=None</code></td>
+<td align="left">official=None</td>
 <td align="left">Set to <code>1</code> to return only official race sessions.</td>
 </tr>
 <tr>
-<td align="left"><code>time=now_five_min_floor()</code></td>
+<td align="left">time=now_five_min_floor()</td>
 <td align="left">The Race Guide uses the current time (in unix milliseconds) rounded down the previous 5 minute mark as the default value. A time in the future is allowed.</td>
 </tr>
 </tbody>
 </table>
 <h2 id="race_laps_all">race_laps_all()</h2>
-<blockquote>
 <p>Returns information about all laps of a race for <em>every</em> driver. The class of car can be set for multiclass races. To specify laps of a single driver, use race_laps_driver().</p>
-</blockquote>
 <table>
 <thead>
 <tr>
@@ -1047,23 +967,21 @@ See the LicenseClass class for how to further use this data. (Link to page comin
 </thead>
 <tbody>
 <tr>
-<td align="left"><code>subsession_id</code></td>
+<td align="left">subsession_id</td>
 <td align="left">Which subsession to return lap information for.</td>
 </tr>
 <tr>
-<td align="left"><code>car_class_id=None</code></td>
+<td align="left">car_class_id=None</td>
 <td align="left">For multiclass races, you can specify to return the lap data for a single class.</td>
 </tr>
 <tr>
-<td align="left"><code>sim_session_type=</code><br><code>SimSessionType.race.value</code></td>
+<td align="left">sim_session_type=<br>SimSessionType.race.value</td>
 <td align="left">Which segment of a race session to return results for. (Practice, Qualify, Race)<br> The <code>SimSessionType</code> enum is from the <code>constants</code> module.</td>
 </tr>
 </tbody>
 </table>
 <h2 id="season_from_session">season_from_session()</h2>
-<blockquote>
 <p>Returns a single <code>season_id</code> that the <code>session_id</code> was for.</p>
-</blockquote>
 <table>
 <thead>
 <tr>
@@ -1073,15 +991,13 @@ See the LicenseClass class for how to further use this data. (Link to page comin
 </thead>
 <tbody>
 <tr>
-<td align="left"><code>session_id</code></td>
+<td align="left">session_id</td>
 <td align="left">Which <code>session_id</code> to return a <code>season_id</code> for</td>
 </tr>
 </tbody>
 </table>
 <h2 id="subsession_data">subsession_data()</h2>
-<blockquote>
 <p>Returns extensive data about a session. This endpoint contains unique datapoints that are unavailable elsewhere. <br><strong>!Note:</strong> The segments of a session are not seperated (Practice, Qualify, Race). Results for each driver for each segment are listed concurrently. e.g If 25 drivers participate, there will be 75 <code>Driver</code> objects returned. 25 for each session segment.</p>
-</blockquote>
 <table>
 <thead>
 <tr>
@@ -1091,16 +1007,14 @@ See the LicenseClass class for how to further use this data. (Link to page comin
 </thead>
 <tbody>
 <tr>
-<td align="left"><code>subsession_id</code></td>
+<td align="left">subsession_id</td>
 <td align="left">Which subsession's data to return.</td>
 </tr>
 </tbody>
 </table>
 <h2 id="total_registered_all">total_registered_all()</h2>
-<blockquote>
 <p>Broken at the moment
 ~~Returns a list of every upcoming session and the number of drivers that have registered. This data is used in the small text next to each series name in /Series.do that shows number of registered drivers for that series.~~</p>
-</blockquote>
 <table>
 <thead>
 <tr>
@@ -1118,9 +1032,7 @@ See the LicenseClass class for how to further use this data. (Link to page comin
 <hr />
 <h1 id="global-data">Global Data</h1>
 <h2 id="car_class_by_id">car_class_by_id()</h2>
-<blockquote>
 <p>Returns a <code>CarClass</code> object from the given <code>car_class_id</code>.</p>
-</blockquote>
 <table>
 <thead>
 <tr>
@@ -1130,15 +1042,13 @@ See the LicenseClass class for how to further use this data. (Link to page comin
 </thead>
 <tbody>
 <tr>
-<td align="left"><code>car_class_id=0</code></td>
+<td align="left">car_class_id=0</td>
 <td align="left">Which car_class to retrieve. The default value of <code>0</code> returns a unique CarClass: <code>HostedAllCarsClass</code>.<br> Instead of returning <code>car</code> objects in the <code>cars_in_class</code> attribute, <code>HostedAllCarsClass</code> is a list of all CarClasses with attributes "name" and "id".</td>
 </tr>
 </tbody>
 </table>
 <h2 id="current_seasons">current_seasons()</h2>
-<blockquote>
 <p>Returns a Season object for every season.</p>
-</blockquote>
 <table>
 <thead>
 <tr>
@@ -1148,11 +1058,11 @@ See the LicenseClass class for how to further use this data. (Link to page comin
 </thead>
 <tbody>
 <tr>
-<td align="left"><code>only_active=1</code></td>
+<td align="left">only_active=1</td>
 <td align="left">Set to <code>0</code> to include all previous seasons <em>and</em> currently active.</td>
 </tr>
 <tr>
-<td align="left"><code>kwargs</code></td>
+<td align="left">kwargs</td>
 <td align="left">See table below for available boolean kwargs.</td>
 </tr>
 </tbody>
@@ -1192,9 +1102,7 @@ See the LicenseClass class for how to further use this data. (Link to page comin
 </table>
 
 <h2 id="world_records">world_records()</h2>
-<blockquote>
 <p>Returns laptimes with the requested paramaters. Filters can also be seen on the /worldrecords.jsp page on the membersite.</p>
-</blockquote>
 <table>
 <thead>
 <tr>
@@ -1204,23 +1112,23 @@ See the LicenseClass class for how to further use this data. (Link to page comin
 </thead>
 <tbody>
 <tr>
-<td align="left"><code>year</code></td>
+<td align="left">year</td>
 <td align="left">Which year to return lap records for.</td>
 </tr>
 <tr>
-<td align="left"><code>quarter</code></td>
+<td align="left">quarter</td>
 <td align="left">Which quarter/season to return lap records for.</td>
 </tr>
 <tr>
-<td align="left"><code>car_id</code></td>
+<td align="left">car_id</td>
 <td align="left">Which car to return lap records for.</td>
 </tr>
 <tr>
-<td align="left"><code>track_id</code></td>
+<td align="left">track_id</td>
 <td align="left">Which track to return lap records for.</td>
 </tr>
 <tr>
-<td align="left"><code>cust_id=None</code></td>
+<td align="left">cust_id=None</td>
 <td align="left">Only works if cust_id matches the logged in user. Otherwise does nothing.</td>
 </tr>
 </tbody>
@@ -1246,7 +1154,7 @@ See the LicenseClass class for how to further use this data. (Link to page comin
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../data/" title="About" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href=".." title="Home" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -1255,11 +1163,25 @@ See the LicenseClass class for how to further use this data. (Link to page comin
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                About
+                Home
               </div>
             </div>
           </a>
         
+        
+          <a href="../data/" title="Returned Data" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Returned Data
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
         
       </nav>
     </div>
@@ -1286,7 +1208,7 @@ See the LicenseClass class for how to further use this data. (Link to page comin
       <script>
         app = initialize({
           base: "..",
-          features: ["tabs"],
+          features: [{"toc": null, "permalink": true}],
           search: Object.assign({
             worker: "../assets/javascripts/worker/search.a68abb33.min.js"
           }, typeof search !== "undefined" && search)
