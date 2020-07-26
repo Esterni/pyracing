@@ -3,11 +3,20 @@ repo_url: https://github.com/esterni/pyracing
 repo_name: GitHub
 
 theme:
-  name: material
-  nav_style: dark
+  name: 'material'
   features:
-    - tabs
+    - toc:
+      permalink: true
 
 markdown_extensions:
   - admonition
   - codehilite
+  - pymdownx.details
+  - pymdownx.superfences
+
+nav:
+  - Home: index.md
+  - Class Methods: functions.md
+  - Returned Data: data.md
+  - Modules: modules.md
+  - Contributing: contributing.md
