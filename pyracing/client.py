@@ -574,11 +574,11 @@ class Client:
 
         To specify laps of a single driver, use race_laps_driver().
         """
-        payload = {'subsessionid': subsession_id, 'carclassid': car_class_id}
+        payload = {'subsessionid': subsession_id, 'carclassid': car_class_id, 'simsesnum': sim_session_type}
         url = ct.URL_LAPS_ALL
         response = await self._build_request(url, payload)
 
-        return [session_data.RaceLapsAll(x) for x in response.json]
+        return session_data.RaceLapsAll(response.json())
 
     async def race_laps_driver(
             self,
@@ -597,7 +597,7 @@ class Client:
         url = ct.URL_LAPS_SINGLE
         response = await self._build_request(url, payload)
 
-        return [session_data.RaceLapsDriver(x) for x in response.json()]
+        return session_data.RaceLapsDriver(response.json())
 
     async def season_from_session(self, session_id):
         """ Returns the season_id for a given session_id. That is this
@@ -611,7 +611,7 @@ class Client:
     async def season_standings(
             self,
             season_id,
-            race_week=None,
+            race_week=1,
             car_class_id=None,
             club_id=None,
             division=None,
