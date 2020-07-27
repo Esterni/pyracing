@@ -49,7 +49,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#client" class="md-skip">
           Skip to content
         </a>
       
@@ -200,10 +200,76 @@
       
 
 
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Data
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Data" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Data
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
   <li class="md-nav__item">
-    <a href="../data/" title="Returned Data" class="md-nav__link">
-      Returned Data
+    <a href="../All%20Data/career_stats/" title="CareerStats" class="md-nav__link">
+      CareerStats
     </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../All%20Data/driver_stats/" title="DriverStats" class="md-nav__link">
+      DriverStats
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../All%20Data/event_results/" title="EventResults" class="md-nav__link">
+      EventResults
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../All%20Data/season_standings/" title="SeasonStandings" class="md-nav__link">
+      SeasonStandings
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
   </li>
 
     
@@ -275,8 +341,7 @@
                   
                 
                 
-                <h1 id="_1"><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<h1 id="client">client<a class="headerlink" href="#client" title="Permanent link">&para;</a></h1>
+                <h1 id="client">client<a class="headerlink" href="#client" title="Permanent link">&para;</a></h1>
 <p>The <code>client</code> module contains the <code>Client()</code> class which makes up the bulk of pyracing.
 Along with Client.authenticate(), it holds the class methods to query all of iRacing's web-data.</p>
 <p>For a detailed description of each class method, see the <a href="https://github.com/Esterni/pyracing/wiki/List-of-functions">List of Functions</a> wiki page.</p>
@@ -288,19 +353,10 @@ Which enables using the name "dirt_oval" instead of remembering that <code>4</co
 input "Dirt Oval" with <code>constants.Category.dirt_oval.value</code> and the correct value of <code>4</code> will be
 used.</p>
 <h1 id="response_objects">response_objects<a class="headerlink" href="#response_objects" title="Permanent link">&para;</a></h1>
-<p>The <code>response_objects</code> sub-package is responsible for taking the JSON data returned from
+<p>The <code>response_objects</code> sub-package is nothing but a collection of objects. JSON data returned from
 iRacing endpoints and mapping them to instanced objects. When performing a query and
 assigning it to a variable, it will be of the object type unique to that data. This means that
 you don't have to parse any of the JSON data.</p>
-<p>Getting the strength_of_field of a session:
-<div class="highlight"><pre><span></span><code><span class="n">ir</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="s1">&#39;username&#39;</span><span class="p">,</span> <span class="s1">&#39;password&#39;</span><span class="p">)</span>
-
-<span class="n">session_data</span> <span class="o">=</span> <span class="k">await</span> <span class="n">ir</span><span class="o">.</span><span class="n">subsession_data</span><span class="p">(</span><span class="n">subsession_id</span><span class="p">,</span> <span class="n">cust_id</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">session_data</span><span class="o">.</span><span class="n">strength_of_field</span><span class="p">)</span>
-</code></pre></div>
-Result:
-<div class="highlight"><pre><span></span><code><span class="mi">3051</span>
-</code></pre></div></p>
                 
               
               
@@ -319,7 +375,7 @@ Result:
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../data/" title="Returned Data" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../All%20Data/season_standings/" title="SeasonStandings" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -328,7 +384,7 @@ Result:
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Returned Data
+                SeasonStandings
               </div>
             </div>
           </a>
