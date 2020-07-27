@@ -1,0 +1,14 @@
+:root {
+    --md-code-hl-string-color: hsl(17, 84%, 50%);
+    --md-code-hl-number-color: #b5cea8;
+    --md-code-hl-special-color: #C586C0;
+    --md-code-hl-function-color: #DCDCAA;
+    --md-code-hl-constant-color: #4FC1FF;
+    --md-code-hl-keyword-color: #C586C0;
+    --md-code-hl-name-color: #C8C8C8;
+    --md-code-hl-operator-color: #C586C0;
+    --md-code-hl-punctuation-color: #CE9178;
+    --md-code-hl-comment-color: #2c942c;
+    --md-code-hl-generic-color: #4EC9B0;
+    --md-code-hl-variable-color: #9CDCFE;
+ }
