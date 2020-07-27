@@ -988,7 +988,7 @@
 <p>While some of these endpoints reveal data that can't be found anywhere else, others will return such little information that you might wonder why they exist at all. <strong>Our primary goal is to provide accessibility to the data, not make sense of it..</strong></p>
 <div class="admonition warning error">
 <p class="admonition-title">Warning</p>
-<p>We do not currently offer error handling in the event of an invalid input.</p>
+<p>We do not currently offer error handling in the event of an invalid <em>input</em>. Data returned from iRacing is mapped into objects based on the specific dictionary key values that they give us. When a reponse is an empty dictionary (due to an invalid input to iRacing) you will recieve an error. We plan to modify this to return a None object with a warning instead so that the program won't crash.  </p>
 </div>
 <h2 id="driver-data">Driver Data<a class="headerlink" href="#driver-data" title="Permanent link">&para;</a></h2>
 <p>Data returned from these methods require a driver (cust_id) to be included in the query parameters. A good example is <code>event_results()</code>. It can return all kinds of different race results, but only results that are related to a driver in question. For all results of a series, go to <a href="#series_race_results">series_race_results()</a></p>
