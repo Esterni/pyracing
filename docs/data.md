@@ -2,16 +2,7 @@
 
 This document is to provide a baseline reference for this projects code style as well as give meaning to the names of the datapoints
 
-# Code Style
 
-This Repo follows the [PEP8 Styleguide.](https://www.python.org/dev/peps/pep-0008/)
-
-- Line lengths are 79 characters. <sup>1</sup>
-- Variable names use snake_case.
-- Class names use CamelCase. (CapitalizedWords)
-- Constants use ALL_CAPS.
-
-<sup>1</sup>Not required to submit a pull request, but it will be changed before a merge. :)
 
 # Datapoint Definitions
 Here we will layout terms that are unique to iRacing and how we, as users, often abbreviate them. The idea is to eliminate any guesswork as to what iRacing's internal names mean compared to what we might be familiar with as users of the service.
