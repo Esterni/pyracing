@@ -863,13 +863,13 @@
                   
                 
                 
-                <h1 id="which-function-for-x-data">Which function for X data?</h1>
+                <h1 id="which-function-for-x-data">Which function for X data?<a class="headerlink" href="#which-function-for-x-data" title="Permanent link">&para;</a></h1>
 <p>Every page on the iRacing Membersite receives its data, to be nicely displayed, from various URL endpoints in the form of <code>/GetSomeData</code> that is <em>usually</em> in JSON format.</p>
 <p>The functions below interact with 1 endpoint each and use the provided arguments as the parameters in the URL query string that we've found it accepts. It is then mapped into a class object for ease of use. (More details here)</p>
 <p><strong>Note</strong>: While some of these endpoints reveal data that can't be found anywhere else, others will return such little information that you might wonder why they exist at all. <strong>Our primary goal is to provide accessibility to the data, not make sense of it..</strong></p>
-<h2 id="driver-data">Driver Data</h2>
+<h2 id="driver-data">Driver Data<a class="headerlink" href="#driver-data" title="Permanent link">&para;</a></h2>
 <p>Data returned from these methods require a driver (cust_id) to be included in the query parameters. A good example is <code>event_results()</code>. It can return all kinds of different race results, but only results that are related to a driver in question. For all results of a series, go to <a href="#series_race_results">series_race_results()</a></p>
-<h3 id="career_stats">career_stats()</h3>
+<h3 id="career_stats">career_stats()<a class="headerlink" href="#career_stats" title="Permanent link">&para;</a></h3>
 <p>Returns a driver’s career stats as seen on iRacing's <a href="https://members.iracing.com/membersite/member/CareerStats.do">Career Profile</a>.</p>
 <table>
 <thead>
@@ -885,7 +885,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="driver_stats">driver_stats()</h3>
+<h3 id="driver_stats">driver_stats()<a class="headerlink" href="#driver_stats" title="Permanent link">&para;</a></h3>
 <p>Returns a list of drivers that match the given parameters. This is the backend source for iRacing's <a href="https://members.iracing.com/membersite/member/DriverLookup.do">Driver Stats Page</a>.</p>
 <p>This method provides functionality that the iRacing page does not. It search drivers by name. It is arguably the easiest method to obtain driver information.</p>
 <table>
@@ -958,7 +958,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="driver_status">driver_status()</h3>
+<h3 id="driver_status">driver_status()<a class="headerlink" href="#driver_status" title="Permanent link">&para;</a></h3>
 <p>Returns friends list for the person logged in. (gold star for least useful)</p>
 <table>
 <thead>
@@ -986,7 +986,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="event_results">event_results()</h3>
+<h3 id="event_results">event_results()<a class="headerlink" href="#event_results" title="Permanent link">&para;</a></h3>
 <p>Returns a list of event results that the driver has participated in. This is the backend data for iRacing's <a href="https://members.iracing.com/membersite/member/results.jsp">My Series Results</a>. Contains the summary information about the results of the event. For detailed information about a specific session, see: <a href="#subsession_data">subsession_data()</a>.</p>
 <table>
 <thead>
@@ -1062,7 +1062,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="irating">irating()</h3>
+<h3 id="irating">irating()<a class="headerlink" href="#irating" title="Permanent link">&para;</a></h3>
 <p>Utilizes the <code>stats_chart()</code> method to return a list of iRating values. Used in the membersite's <a href="https://members.iracing.com/membersite/member/CareerStats.do">Career Profile</a> charts.
 Accessing irating.current() will give the most recent irating of a user.</p>
 <table>
@@ -1083,7 +1083,7 @@ Accessing irating.current() will give the most recent irating of a user.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="last_races_stats">last_races_stats()</h3>
+<h3 id="last_races_stats">last_races_stats()<a class="headerlink" href="#last_races_stats" title="Permanent link">&para;</a></h3>
 <p>Returns a stat summary for the driver's last 10 races; used in the membersite's <a href="https://members.iracing.com/membersite/member/CareerStats.do">Career Profile</a> "Last 10 Races" table.</p>
 <table>
 <thead>
@@ -1099,7 +1099,7 @@ Accessing irating.current() will give the most recent irating of a user.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="last_series">last_series()</h3>
+<h3 id="last_series">last_series()<a class="headerlink" href="#last_series" title="Permanent link">&para;</a></h3>
 <p>Returns a summary of stats about a driver's last 3 series; Used in the membersite's <a href="https://members.iracing.com/membersite/member/CareerStats.do">Career Profile</a> "Last 3 Series" table.</p>
 <table>
 <thead>
@@ -1115,7 +1115,7 @@ Accessing irating.current() will give the most recent irating of a user.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="license_class">license_class()</h3>
+<h3 id="license_class">license_class()<a class="headerlink" href="#license_class" title="Permanent link">&para;</a></h3>
 <p>Utilizes the <code>stats_chart()</code> method to return a list of license values; Used in the membersite's <a href="https://members.iracing.com/membersite/member/CareerStats.do">Career Profile</a> charts.
 See the LicenseClass class for how to further use this data. (Link to page coming soon...)</p>
 <table>
@@ -1136,7 +1136,7 @@ See the LicenseClass class for how to further use this data. (Link to page comin
 </tr>
 </tbody>
 </table>
-<h3 id="member_cars_driven">member_cars_driven()</h3>
+<h3 id="member_cars_driven">member_cars_driven()<a class="headerlink" href="#member_cars_driven" title="Permanent link">&para;</a></h3>
 <p>Returns which cars (list of <code>car_id</code>s) the member has driven.</p>
 <table>
 <thead>
@@ -1152,7 +1152,7 @@ See the LicenseClass class for how to further use this data. (Link to page comin
 </tr>
 </tbody>
 </table>
-<h3 id="member_division">member_division()</h3>
+<h3 id="member_division">member_division()<a class="headerlink" href="#member_division" title="Permanent link">&para;</a></h3>
 <p>Returns which division the driver was in for the specified season_id. ("was" because a season_id can be a season that has concluded)</p>
 <table>
 <thead>
@@ -1172,7 +1172,7 @@ See the LicenseClass class for how to further use this data. (Link to page comin
 </tr>
 </tbody>
 </table>
-<h3 id="member_subsession_id_from_session">member_subsession_id_from_session()</h3>
+<h3 id="member_subsession_id_from_session">member_subsession_id_from_session()<a class="headerlink" href="#member_subsession_id_from_session" title="Permanent link">&para;</a></h3>
 <p>Returns which subsession_id that a member was in from a given session_id. This might be useful when you you know the session_id before the race session were split into subsessions, but otherwise subsession is usually included for the driver in other queries.</p>
 <table>
 <thead>
@@ -1192,7 +1192,7 @@ See the LicenseClass class for how to further use this data. (Link to page comin
 </tr>
 </tbody>
 </table>
-<h3 id="personal_bests">personal_bests()</h3>
+<h3 id="personal_bests">personal_bests()<a class="headerlink" href="#personal_bests" title="Permanent link">&para;</a></h3>
 <p>Returns the drivers best laptimes for the given car, as seen on the /CareerStats page.</p>
 <table>
 <thead>
@@ -1212,7 +1212,7 @@ See the LicenseClass class for how to further use this data. (Link to page comin
 </tr>
 </tbody>
 </table>
-<h3 id="race_laps_driver">race_laps_driver()</h3>
+<h3 id="race_laps_driver">race_laps_driver()<a class="headerlink" href="#race_laps_driver" title="Permanent link">&para;</a></h3>
 <p>Returns data for all laps completed of a single driver. sim_sess_id specifies the laps from practice, qual, or race.</p>
 <table>
 <thead>
@@ -1236,7 +1236,7 @@ See the LicenseClass class for how to further use this data. (Link to page comin
 </tr>
 </tbody>
 </table>
-<h3 id="stats_chart">stats_chart()</h3>
+<h3 id="stats_chart">stats_chart()<a class="headerlink" href="#stats_chart" title="Permanent link">&para;</a></h3>
 <p>Returns a list in the form of <code>time:value</code> for the race category specified.</p>
 <table>
 <thead>
@@ -1260,7 +1260,7 @@ See the LicenseClass class for how to further use this data. (Link to page comin
 </tr>
 </tbody>
 </table>
-<h3 id="ttrating">ttrating()</h3>
+<h3 id="ttrating">ttrating()<a class="headerlink" href="#ttrating" title="Permanent link">&para;</a></h3>
 <p>Utilizes the stats_chart class to return a list of ttrating values that are used in the /CareerStats charts.</p>
 <table>
 <thead>
@@ -1280,7 +1280,7 @@ See the LicenseClass class for how to further use this data. (Link to page comin
 </tr>
 </tbody>
 </table>
-<h3 id="yearly_stats">yearly_stats()</h3>
+<h3 id="yearly_stats">yearly_stats()<a class="headerlink" href="#yearly_stats" title="Permanent link">&para;</a></h3>
 <p>Returns the breakdown of career stats by year, as seen on the driver profile page.</p>
 <table>
 <thead>
@@ -1296,8 +1296,15 @@ See the LicenseClass class for how to further use this data. (Link to page comin
 </tr>
 </tbody>
 </table>
-<h2 id="series-data">Series Data</h2>
-<h3 id="active_op_counts">active_op_counts()</h3>
+<h2 id="series-data">Series Data<a class="headerlink" href="#series-data" title="Permanent link">&para;</a></h2>
+<p>Data returned from these methods return information about a series.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>On the topic of <code>series_id</code> and <code>season_id</code>:</p>
+<p><code>series_id</code> refers to the specific configuration for a series that does not change. e.g. The "Advanced Mazda MX-5 Cup Series" has a series id of 231. It refers to the car, license, caution types, incident limits, and grid size.</p>
+<p><code>season_id</code> refers to time period that a series will be active with a given track configuration. It is used to hold all the stats and races for a specific series during a season. The series referenced above had a season id of 2846 for the year 2020 quarter 3.</p>
+</div>
+<h3 id="active_op_counts">active_op_counts()<a class="headerlink" href="#active_op_counts" title="Permanent link">&para;</a></h3>
 <p>Returns a list of 'Open Practice' sessions that are currently active. By default only sessions with registered drivers are included. Use include_empty flag to see all sessions.</p>
 <table>
 <thead>
@@ -1321,7 +1328,7 @@ See the LicenseClass class for how to further use this data. (Link to page comin
 </tr>
 </tbody>
 </table>
-<h3 id="next_event">next_event()</h3>
+<h3 id="next_event">next_event()<a class="headerlink" href="#next_event" title="Permanent link">&para;</a></h3>
 <p>Returns the next event for a series, from the requested time.</p>
 <table>
 <thead>
@@ -1345,7 +1352,7 @@ See the LicenseClass class for how to further use this data. (Link to page comin
 </tr>
 </tbody>
 </table>
-<h3 id="next_session_times">next_session_times()</h3>
+<h3 id="next_session_times">next_session_times()<a class="headerlink" href="#next_session_times" title="Permanent link">&para;</a></h3>
 <p>Returns the next 5 sessions with all of their attributes: start time, registered drivers, session parameters, etc.</p>
 <table>
 <thead>
@@ -1361,7 +1368,7 @@ See the LicenseClass class for how to further use this data. (Link to page comin
 </tr>
 </tbody>
 </table>
-<h3 id="season_standings">season_standings()</h3>
+<h3 id="season_standings">season_standings()<a class="headerlink" href="#season_standings" title="Permanent link">&para;</a></h3>
 <p>Returns the championship point standings of a series. This is the same data found in /statsseries.jsp.</p>
 <table>
 <thead>
@@ -1401,7 +1408,7 @@ See the LicenseClass class for how to further use this data. (Link to page comin
 </tr>
 </tbody>
 </table>
-<h3 id="series_race_results">series_race_results()</h3>
+<h3 id="series_race_results">series_race_results()<a class="headerlink" href="#series_race_results" title="Permanent link">&para;</a></h3>
 <p>Returns summary info for the specified season_id and race_week. Results are restricted to a single week per query.</p>
 <table>
 <thead>
@@ -1421,7 +1428,7 @@ See the LicenseClass class for how to further use this data. (Link to page comin
 </tr>
 </tbody>
 </table>
-<h3 id="team_standings">team_standings()</h3>
+<h3 id="team_standings">team_standings()<a class="headerlink" href="#team_standings" title="Permanent link">&para;</a></h3>
 <p>(<strong>Not finished</strong>) Returns championship point standings of Teams.</p>
 <table>
 <thead>
@@ -1449,8 +1456,8 @@ See the LicenseClass class for how to further use this data. (Link to page comin
 </tr>
 </tbody>
 </table>
-<h2 id="session-data">Session Data</h2>
-<h3 id="all_subsessions">all_subsessions()</h3>
+<h2 id="session-data">Session Data<a class="headerlink" href="#session-data" title="Permanent link">&para;</a></h2>
+<h3 id="all_subsessions">all_subsessions()<a class="headerlink" href="#all_subsessions" title="Permanent link">&para;</a></h3>
 <p>Returns subsession IDs for any additional race splits to the one provided.</p>
 <table>
 <thead>
@@ -1466,7 +1473,7 @@ See the LicenseClass class for how to further use this data. (Link to page comin
 </tr>
 </tbody>
 </table>
-<h3 id="private_results">private_results()</h3>
+<h3 id="private_results">private_results()<a class="headerlink" href="#private_results" title="Permanent link">&para;</a></h3>
 <p>Returns private sessions that the driver has participated in.</p>
 <table>
 <thead>
@@ -1494,7 +1501,7 @@ See the LicenseClass class for how to further use this data. (Link to page comin
 </tr>
 </tbody>
 </table>
-<h3 id="race_guide">race_guide()</h3>
+<h3 id="race_guide">race_guide()<a class="headerlink" href="#race_guide" title="Permanent link">&para;</a></h3>
 <p>Returns all data used by the race guide page for the active seasons. Filters are identical to those found when visiting the race guide with a browser.</p>
 <table>
 <thead>
@@ -1542,7 +1549,7 @@ See the LicenseClass class for how to further use this data. (Link to page comin
 </tr>
 </tbody>
 </table>
-<h3 id="race_laps_all">race_laps_all()</h3>
+<h3 id="race_laps_all">race_laps_all()<a class="headerlink" href="#race_laps_all" title="Permanent link">&para;</a></h3>
 <p>Returns information about all laps of a race for <em>every</em> driver. The class of car can be set for multiclass races. To specify laps of a single driver, use race_laps_driver().</p>
 <table>
 <thead>
@@ -1566,7 +1573,7 @@ See the LicenseClass class for how to further use this data. (Link to page comin
 </tr>
 </tbody>
 </table>
-<h3 id="season_from_session">season_from_session()</h3>
+<h3 id="season_from_session">season_from_session()<a class="headerlink" href="#season_from_session" title="Permanent link">&para;</a></h3>
 <p>Returns a single <code>season_id</code> that the <code>session_id</code> was for.</p>
 <table>
 <thead>
@@ -1582,7 +1589,7 @@ See the LicenseClass class for how to further use this data. (Link to page comin
 </tr>
 </tbody>
 </table>
-<h3 id="subsession_data">subsession_data()</h3>
+<h3 id="subsession_data">subsession_data()<a class="headerlink" href="#subsession_data" title="Permanent link">&para;</a></h3>
 <p>Returns extensive data about a session. This endpoint contains unique datapoints that are unavailable elsewhere. <br><strong>!Note:</strong> The segments of a session are not seperated (Practice, Qualify, Race). Results for each driver for each segment are listed concurrently. e.g If 25 drivers participate, there will be 75 <code>Driver</code> objects returned. 25 for each session segment.</p>
 <table>
 <thead>
@@ -1598,7 +1605,7 @@ See the LicenseClass class for how to further use this data. (Link to page comin
 </tr>
 </tbody>
 </table>
-<h3 id="total_registered_all">total_registered_all()</h3>
+<h3 id="total_registered_all">total_registered_all()<a class="headerlink" href="#total_registered_all" title="Permanent link">&para;</a></h3>
 <p>Broken at the moment
 ~~Returns a list of every upcoming session and the number of drivers that have registered. This data is used in the small text next to each series name in /Series.do that shows number of registered drivers for that series.~~</p>
 <table>
@@ -1615,8 +1622,8 @@ See the LicenseClass class for how to further use this data. (Link to page comin
 </tr>
 </tbody>
 </table>
-<h2 id="global-data">Global Data</h2>
-<h3 id="car_class_by_id">car_class_by_id()</h3>
+<h2 id="global-data">Global Data<a class="headerlink" href="#global-data" title="Permanent link">&para;</a></h2>
+<h3 id="car_class_by_id">car_class_by_id()<a class="headerlink" href="#car_class_by_id" title="Permanent link">&para;</a></h3>
 <p>Returns a <code>CarClass</code> object from the given <code>car_class_id</code>.</p>
 <table>
 <thead>
@@ -1632,7 +1639,7 @@ See the LicenseClass class for how to further use this data. (Link to page comin
 </tr>
 </tbody>
 </table>
-<h3 id="current_seasons">current_seasons()</h3>
+<h3 id="current_seasons">current_seasons()<a class="headerlink" href="#current_seasons" title="Permanent link">&para;</a></h3>
 <p>Returns a Season object for every season.</p>
 <table>
 <thead>
@@ -1686,7 +1693,7 @@ See the LicenseClass class for how to further use this data. (Link to page comin
 </tr></p>
 </table>
 
-<h3 id="world_records">world_records()</h3>
+<h3 id="world_records">world_records()<a class="headerlink" href="#world_records" title="Permanent link">&para;</a></h3>
 <p>Returns laptimes with the requested paramaters. Filters can also be seen on the /worldrecords.jsp page on the membersite.</p>
 <table>
 <thead>
@@ -1790,7 +1797,7 @@ See the LicenseClass class for how to further use this data. (Link to page comin
       <script>
         app = initialize({
           base: "..",
-          features: [{"toc": null, "permalink": true}],
+          features: [],
           search: Object.assign({
             worker: "../assets/javascripts/worker/search.a68abb33.min.js"
           }, typeof search !== "undefined" && search)
