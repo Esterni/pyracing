@@ -4,19 +4,32 @@ repo_name: GitHub
 
 theme:
   name: 'material'
-  features:
-    - toc:
-      permalink: true
 
 markdown_extensions:
   - admonition
-  - codehilite
   - pymdownx.details
   - pymdownx.superfences
+  - pymdownx.tabbed
+  - pymdownx.highlight:
+      use_pygments: true
+  - toc:
+      permalink: true
 
 nav:
-  - Home: index.md
+  - Introduction: index.md
   - Class Methods: functions.md
-  - Returned Data: data.md
+  - Data:
+    - 'All-Data\career_stats.md'
+    - 'All-Data\driver_stats.md'
+    - 'All-Data\event_results.md'
+    - 'All-Data\season_standings.md'
+    - 'All-Data\subsession_data.md'
+    - 'All-Data\active_op_count.md'
+    - 'All-Data\world_records.md'
+    - 'All-Data\current_seasons.md'
+
   - Modules: modules.md
   - Contributing: contributing.md
+
+extra_css: 
+  - css\custom.css

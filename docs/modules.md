@@ -1,5 +1,3 @@
-#
-
 # client
 The `client` module contains the `Client()` class which makes up the bulk of pyracing.
 Along with Client.authenticate(), it holds the class methods to query all of iRacing's web-data.
@@ -16,19 +14,7 @@ input "Dirt Oval" with `constants.Category.dirt_oval.value` and the correct valu
 used.
 
 # response_objects
-The `response_objects` sub-package is responsible for taking the JSON data returned from
+The `response_objects` sub-package is nothing but a collection of objects. JSON data returned from
 iRacing endpoints and mapping them to instanced objects. When performing a query and
 assigning it to a variable, it will be of the object type unique to that data. This means that
 you don't have to parse any of the JSON data.
-
-Getting the strength_of_field of a session:
-```py
-ir = client.Client('username', 'password')
-
-session_data = await ir.subsession_data(subsession_id, cust_id=None)
-print(session_data.strength_of_field)
-```
-Result:
-```py
-3051
-```
