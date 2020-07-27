@@ -866,7 +866,11 @@
                 <h1 id="which-function-for-x-data">Which function for X data?<a class="headerlink" href="#which-function-for-x-data" title="Permanent link">&para;</a></h1>
 <p>Every page on the iRacing Membersite receives its data, to be nicely displayed, from various URL endpoints in the form of <code>/GetSomeData</code> that is <em>usually</em> in JSON format.</p>
 <p>The functions below interact with 1 endpoint each and use the provided arguments as the parameters in the URL query string that we've found it accepts. It is then mapped into a class object for ease of use. (More details here)</p>
-<p><strong>Note</strong>: While some of these endpoints reveal data that can't be found anywhere else, others will return such little information that you might wonder why they exist at all. <strong>Our primary goal is to provide accessibility to the data, not make sense of it..</strong></p>
+<p>While some of these endpoints reveal data that can't be found anywhere else, others will return such little information that you might wonder why they exist at all. <strong>Our primary goal is to provide accessibility to the data, not make sense of it..</strong></p>
+<div class="admonition warning error">
+<p class="admonition-title">Warning</p>
+<p>We do not currently offer error handling in the event of an invalid input.</p>
+</div>
 <h2 id="driver-data">Driver Data<a class="headerlink" href="#driver-data" title="Permanent link">&para;</a></h2>
 <p>Data returned from these methods require a driver (cust_id) to be included in the query parameters. A good example is <code>event_results()</code>. It can return all kinds of different race results, but only results that are related to a driver in question. For all results of a series, go to <a href="#series_race_results">series_race_results()</a></p>
 <h3 id="career_stats">career_stats()<a class="headerlink" href="#career_stats" title="Permanent link">&para;</a></h3>
