@@ -178,6 +178,12 @@ class ClientTest(unittest.TestCase):
         for record in response:
             self.assertIsInstance(record, historical_data.WorldRecords)
 
+    @async_test
+    async def test_event_results(self):
+        response = await client.event_results(499343, 3)
+        for result in response:
+            self.assertIsInstance(result, historical_data.EventResults)
+
 
 if __name__ == '__main__':
     unittest.main()
