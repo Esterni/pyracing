@@ -8,7 +8,7 @@ The functions below interact with 1 endpoint each and use the provided arguments
 While some of these endpoints reveal data that can't be found anywhere else, others will return such little information that you might wonder why they exist at all. **Our primary goal is to provide accessibility to the data, not make sense of it..**
 
 !!! Warning Error
-    We do not currently offer error handling in the event of an invalid input.
+    We do not currently offer error handling in the event of an invalid *input*. Data returned from iRacing is mapped into objects based on the specific dictionary key values that they give us. When a reponse is an empty dictionary (due to an invalid input to iRacing) you will recieve an error. We plan to modify this to return a None object with a warning instead so that the program won't crash.  
 
 ## Driver Data
 Data returned from these methods require a driver (cust_id) to be included in the query parameters. A good example is `event_results()`. It can return all kinds of different race results, but only results that are related to a driver in question. For all results of a series, go to [series_race_results()](#series_race_results)

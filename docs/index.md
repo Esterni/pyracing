@@ -55,6 +55,8 @@ async def main():
             
             for t in season.tracks:
                 print(f'    Week {t.race_week} will take place at {t.name} ({t.config})')
+                
+asyncio.run(main())
 ```
 
 ??? Info "Click Here For Code Breakdown"
