@@ -21,7 +21,7 @@ import time
 
 
 class Client:
-    def __init__(self, username: str, password: str, log=default_logger()):
+    def __init__(self, username: str, password: str, log=None):
         """ This class is used to interact with all iRacing endpoints that
         have been discovered so far. After creating an instance of Client
         it is required to call authenticate(), due to async limitations.
@@ -32,7 +32,7 @@ class Client:
         self.username = username
         self.password = password
         self.session = httpx.AsyncClient()
-        self.log = log
+        self.log = log if log else default_logger()
 
     async def _authenticate(self):
         """ Sends a POST request to iRacings login server, initiating a
@@ -67,7 +67,8 @@ class Client:
             self.log.info("No cookies in cookie jar.")
             await self._authenticate()
 
-        self.log.info(f'Request being sent to: {url} with params: {params}')
+        self.log.info(f'Request sent to: {url}')
+        self.log.debug(f'Request parameters: {params}')
 
         response = await self.session.get(
             url,
@@ -75,8 +76,8 @@ class Client:
             allow_redirects=False,
             timeout=10.0
         )
-        self.log.info(f'Request sent for URL: {response.url}')
-        self.log.info(f'Status code of response: {response.status_code}')
+        self.log.debug(f'URL query string: {response.url}'
+                       f'Status: {response.status_code}')
         self.log.debug(f'Contents of the response object: {response.__dict__}')
 
         if response.is_error or response.is_redirect:
