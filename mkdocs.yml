@@ -17,16 +17,16 @@ markdown_extensions:
 
 nav:
   - Introduction: index.md
-  - Class Methods: functions.md
-  - Data:
-    - 'All-Data\career_stats.md'
-    - 'All-Data\driver_stats.md'
-    - 'All-Data\event_results.md'
-    - 'All-Data\season_standings.md'
-    - 'All-Data\subsession_data.md'
-    - 'All-Data\active_op_count.md'
-    - 'All-Data\world_records.md'
-    - 'All-Data\current_seasons.md'
+  - List of Methods: functions.md
+  - Data Points:
+    - 'data-points\career_stats.md'
+    - 'data-points\driver_stats.md'
+    - 'data-points\event_results.md'
+    - 'data-points\season_standings.md'
+    - 'data-points\subsession_data.md'
+    - 'data-points\active_op_count.md'
+    - 'data-points\world_records.md'
+    - 'data-points\current_seasons.md'
 
   - Modules: modules.md
   - Contributing: contributing.md

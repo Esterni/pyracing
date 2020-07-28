@@ -1,5 +1,7 @@
 # career_stats
 
+Data points returned from `Client.career_stats()` in a CareerStats object.
+
 Attributes      | Type  | Example
 :---:           |  :---:  |  :---:
 category        | Str   |  'Road'
