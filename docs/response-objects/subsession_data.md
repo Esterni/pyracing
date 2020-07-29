@@ -1,156 +1,166 @@
 # subsession_data
 
-cat_id  
-caution_laps  
-caution_type  
-cautions  
-corners_total  
-driver_change_param_1  
-driver_change_param_2  
-driver_change_rule  
-driver_changes  
-event_type  
-fog_density  
-humidity  
-lap_avg  
-laps_completed  
-laps_for_qual_avg  
-laps_for_solo_avg  
-lead_changes  
-league_id  
-league_season_id  
-leave_marbles  
-max_weeks  
-points_type  
-private_session_id  
-race_week  
-reserve_status  
-rubber_practice  
-rubber_qualify  
-rubber_race  
-rubber_warmup  
-season_id  
-season_name  
-season_name_short  
-season_quarter  
-season_year  
-series_id  
-series_name  
-series_name_short  
-session_id  
-session_name  
-sim_ses_type  
-skies  
-special_event_type  
-special_event_type_text  
-strength_of_field  
-subsession_id  
-team_drivers_max  
-team_drivers_min  
-temp_unit  
-temp_value  
-time_of_day  
-time_start  
-time_start_sim  
-track  
-track_config  
-track_id  
-weather_initial  
-weather_ongoing  
-weather_type  
-wind_direction  
-wind_speed_unit  
-wind_speed_value  
+Data points returned from `Client.subsession_data()`
 
-## subsession_data
 
-car_class_id  
-car_class_name  
-car_class_name_short  
-car_color_1  
-car_color_2  
-car_color_3  
-car_id  
-car_num  
-car_num_font  
-car_num_slant  
-car_number_color_1  
-car_number_color_2  
-car_number_color_3  
-car_pattern  
-car_sponser_1  
-car_sponser_2  
-club_id  
-club_name  
-club_name_short  
-club_points  
-cpi_new  
-cpi_old  
-cust_id  
-damage_model  
-display_name  
-division  
-division_name  
-drop_race  
-event_type_name  
-group_id  
-heat_info_id  
-helm_color_1  
-helm_color_2  
-helm_color_3  
-helm_pattern  
-host_id  
-incidents  
-interval  
-interval_class  
-irating_new  
-irating_old  
-lap_avg  
-lap_best  
-lap_best_n  
-lap_qual_best  
-lap_qual_best_at  
-lap_qual_best_n  
-lap_qual_best_time  
-laps_best_n_num  
-laps_best_n_time  
-laps_comp  
-laps_led  
-laps_opt_comp  
-league_points  
-license_category  
-license_change_oval  
-license_change_road  
-license_class  
-license_level_new  
-license_level_old  
-multiplier  
-official  
-pct_fuel_fill_max  
-points_champ  
-points_champ_agg  
-pos  
-pos_finish  
-pos_finish_class  
-pos_start  
-reason_out  
-reason_out_id  
-restrict_results  
-sim_ses_name  
-sim_ses_num  
-sim_ses_type_name  
-sub_level_new  
-sub_level_old  
-suit_color_1  
-suit_color_2  
-suit_color_3  
-suit_pattern  
-time_session_start  
-track_cat_id  
-track_category  
-ttrating_new  
-ttrating_old  
-vehicle_key_id  
-weight_penalty_kg  
-wheel_chrome  
-wheel_color  
+## SubSessionData
+
+|       Attributes        | Type  |                   Example                   |
+| :---------------------: | :---: | :-----------------------------------------: |
+|         cat_id          |  int  |                      1                      |
+|      caution_laps       |  int  |                     18                      |
+|      caution_type       |  int  |                      3                      |
+|        cautions         |  int  |                      6                      |
+|      corners_total      |  int  |                      4                      |
+|  driver_change_param_1  |  int  |                     -1                      |
+|  driver_change_param_2  |  int  |                     -1                      |
+|   driver_change_rule    |  int  |                      0                      |
+|     driver_changes      |  int  |                      0                      |
+|       event_type        |  int  |                      5                      |
+|       fog_density       |  int  |                      0                      |
+|        humidity         |  int  |                     55                      |
+|         lap_avg         |  int  |                   696237                    |
+|     laps_completed      |  int  |                     50                      |
+|    laps_for_qual_avg    |  int  |                      2                      |
+|    laps_for_solo_avg    |  int  |                     10                      |
+|      lead_changes       |  int  |                      3                      |
+|        league_id        |  str  |                     ''                      |
+|    league_season_id     |  str  |                     ''                      |
+|      leave_marbles      |  int  |                      1                      |
+|        max_weeks        |  int  |                     13                      |
+|       points_type       |  str  |                    race                     |
+|   private_session_id    |  int  |                     -1                      |
+|        race_week        |  int  |                      7                      |
+|     reserve_status      |  str  |                     ''                      |
+|     rubber_practice     |  int  |                     -1                      |
+|     rubber_qualify      |  int  |                     -1                      |
+|       rubber_race       |  int  |                     -1                      |
+|      rubber_warmup      |  int  |                     -1                      |
+|        season_id        |  int  |                    2844                     |
+|       season_name       |  str  | INDYCAR+Series+-+Oval+-+2020+Season+3+Fixed |
+|    season_name_short    |  str  |             2020+Season+3+Fixed             |
+|     season_quarter      |  int  |                      3                      |
+|       season_year       |  int  |                    2020                     |
+|        series_id        |  int  |                     165                     |
+|       series_name       |  str  |        IndyCar+Series+-+Oval+-+Fixed        |
+|    series_name_short    |  str  |        IndyCar+Series+-+Oval+-+Fixed        |
+|       session_id        |  int  |                  135205454                  |
+|      session_name       |  str  |                     ''                      |
+|      sim_ses_type       |  int  |                      3                      |
+|          skies          |  int  |                      1                      |
+|   special_event_type    |  int  |                     -1                      |
+| special_event_type_text |  str  |                     ''                      |
+|    strength_of_field    |  int  |                    1517                     |
+|      subsession_id      |  int  |                  33679352                   |
+|    team_drivers_max     |  int  |                      1                      |
+|    team_drivers_min     |  int  |                      1                      |
+|        temp_unit        |  int  |                      0                      |
+|       temp_value        |  int  |                     78                      |
+|       time_of_day       |  int  |                      2                      |
+|       time_start        |  str  |           2020-07-29+20%3A15%3A00           |
+|     time_start_sim      |  str  |             2020-07-14+15%3A05              |
+|          track          |  str  |               Pocono+Raceway                |
+|      track_config       |  str  |                    N%2FA                    |
+|        track_id         |  int  |                     277                     |
+|     weather_initial     |  int  |                      0                      |
+|     weather_ongoing     |  int  |                      0                      |
+|      weather_type       |  int  |                      3                      |
+|     wind_direction      |  int  |                      0                      |
+|     wind_speed_unit     |  int  |                      0                      |
+|    wind_speed_value     |  int  |                      2                      |
+|         driver          | list  |            See [Driver](#driver)            |
+
+## Driver
+
+|      Attributes      | Type  |      Example      |
+| :------------------: | :---: | :---------------: |
+|     car_class_id     |  int  |        117        |
+|    car_class_name    |  str  |  'Dallara+IR18'   |
+| car_class_name_short |  str  |  'Dallara+IR18'   |
+|     car_color_1      |  str  |     'ffffff'      |
+|     car_color_2      |  str  |     'cccccc'      |
+|     car_color_3      |  str  |     '666666'      |
+|        car_id        |  int  |        99         |
+|       car_num        |  str  |       '23'        |
+|     car_num_font     |  int  |         0         |
+|    car_num_slant     |  int  |         0         |
+|  car_number_color_1  |  str  |     'ffffff'      |
+|  car_number_color_2  |  str  |     'cccccc'      |
+|  car_number_color_3  |  str  |     '666666'      |
+|     car_pattern      |  int  |         0         |
+|    car_sponser_1     |  int  |         0         |
+|    car_sponser_2     |  int  |         0         |
+|       club_id        |  int  |        17         |
+|      club_name       |  str  |    'Virginias'    |
+|   club_name_short    |  str  |    'Virginias'    |
+|     club_points      |  int  |         0         |
+|       cpi_new        | float |    18.8930492     |
+|       cpi_old        | float |    19.7769318     |
+|       cust_id        |  int  |      383175       |
+|     damage_model     |  int  |         0         |
+|     display_name     |  str  |  'Joseph+Lester'  |
+|       division       |  int  |         3         |
+|    division_name     |  str  | 'Bronze+Division' |
+|      drop_race       |  int  |         0         |
+|   event_type_name    |  str  |      'Race'       |
+|       group_id       |  int  |      383175       |
+|     heat_info_id     |  int  |        -1         |
+|     helm_color_1     |  str  |     'ffffff'      |
+|     helm_color_2     |  str  |     'fc1406'      |
+|     helm_color_3     |  str  |     '06baf5'      |
+|     helm_pattern     |  int  |         2         |
+|       host_id        |  str  |        ''         |
+|      incidents       |  int  |         0         |
+|       interval       |  int  |         0         |
+|    interval_class    |  int  |         0         |
+|     irating_new      |  int  |       1280        |
+|     irating_old      |  int  |       1316        |
+|       lap_avg        |  int  |      432343       |
+|       lap_best       |  int  |      432343       |
+|      lap_best_n      |  int  |         1         |
+|    lap_qual_best     |  int  |        -1         |
+|   lap_qual_best_at   |  int  |         0         |
+|   lap_qual_best_n    |  int  |        -1         |
+|  lap_qual_best_time  |  int  |        -1         |
+|   laps_best_n_num    |  int  |        -1         |
+|   laps_best_n_time   |  int  |        -1         |
+|      laps_comp       |  int  |         1         |
+|       laps_led       |  int  |         0         |
+|    laps_opt_comp     |  int  |         0         |
+|    league_points     |  str  |        ''         |
+|   license_category   |  str  |      'Oval'       |
+| license_change_oval  |  int  |        -1         |
+| license_change_road  |  int  |        -1         |
+|    license_class     |  int  |         3         |
+|  license_level_new   |  int  |        13         |
+|  license_level_old   |  int  |        13         |
+|      multiplier      |  int  |         1         |
+|       official       |  int  |         1         |
+|  pct_fuel_fill_max   |  int  |        -1         |
+|     points_champ     |  int  |         0         |
+|   points_champ_agg   |  int  |        24         |
+|         pos          |  int  |         0         |
+|      pos_finish      |  int  |         0         |
+|   pos_finish_class   |  int  |         0         |
+|      pos_start       |  int  |        -1         |
+|      reason_out      |  str  |     'Running'     |
+|    reason_out_id     |  int  |         0         |
+|   restrict_results   |  str  |        ''         |
+|     sim_ses_name     |  str  |    'PRACTICE'     |
+|     sim_ses_num      |  int  |        -2         |
+|  sim_ses_type_name   |  str  |  'Open+Practice'  |
+|    sub_level_new     |  int  |        126        |
+|    sub_level_old     |  int  |        133        |
+|     suit_color_1     |  str  |     'ffffff'      |
+|     suit_color_2     |  str  |     'fc1406'      |
+|     suit_color_3     |  str  |     '059fff'      |
+|     suit_pattern     |  int  |         1         |
+|  time_session_start  |  int  |   1596053700000   |
+|     track_cat_id     |  int  |         1         |
+|    track_category    |  str  |      'Oval'       |
+|     ttrating_new     |  int  |       1362        |
+|     ttrating_old     |  int  |       1362        |
+|    vehicle_key_id    |  int  |       5203        |
+|  weight_penalty_kg   |  int  |        -1         |
+|     wheel_chrome     |  int  |        -1         |
+|     wheel_color      |  str  |      'N%2FA'      |

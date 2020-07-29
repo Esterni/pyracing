@@ -1,39 +1,40 @@
 # driver_stats
-
-club_id  
-club_name  
-club_points  
-country_code  
-cust_id  
-display_name  
-field_size_avg  
-group_letter  
-group_name  
-helm_color_1  
-helm_color_2  
-helm_color_3  
-helm_face_type  
-helm_helmet_type  
-helm_pattern  
-incidents_avg  
-irating  
-irating_rank  
-laps  
-laps_led  
-license_class  
-license_class_id  
-license_class_rank  
-license_level  
-points  
-points_avg  
-pos_finish_avg  
-pos_start_avg  
-rank  
-region  
-row  
-starts  
-sub_level  
-top_25_percent  
-ttrating  
-ttrating_rank  
-wins  
+|     Attributes     | Type  |      Example      |
+| :----------------: | :---: | :---------------: |
+|      club_id       |  int  |        33         |
+|     club_name      |  str  |    'Northwest'    |
+|    club_points     |  int  |       1478        |
+|    country_code    |  str  |       'US'        |
+|      cust_id       |  int  |      435144       |
+|    display_name    |  str  | 'Jacob Anderson7' |
+|   field_size_avg   |  int  |        20         |
+|    group_letter    |  str  |        'A'        |
+|     group_name     |  str  |     'Class A'     |
+|    helm_color_1    |  str  |     '111111'      |
+|    helm_color_2    |  str  |     '65b82f'      |
+|    helm_color_3    |  str  |     '172c59'      |
+|   helm_face_type   |  int  |         0         |
+|  helm_helmet_type  |  int  |         0         |
+|    helm_pattern    |  int  |        65         |
+|   incidents_avg    | float |       5.19        |
+|      irating       |  int  |       2057        |
+|    irating_rank    |  int  |       14234       |
+|        laps        |  int  |       4818        |
+|      laps_led      |  int  |        101        |
+|   license_class    |  str  |     'A 3.20'      |
+|  license_class_id  |  int  |         5         |
+| license_class_rank |  int  |       13931       |
+|   license_level    |  int  |        19         |
+|       points       |  int  |       13124       |
+|     points_avg     |  int  |        47         |
+|   pos_finish_avg   |  int  |        10         |
+|   pos_start_avg    |  int  |        10         |
+|        rank        |  int  |       5581        |
+|       region       |  str  |    'Region 4'     |
+|        row         |  str  |        '1'        |
+|       starts       |  int  |        282        |
+|     sub_level      |  int  |        320        |
+|   top_25_percent   |  int  |        56         |
+|      ttrating      |  int  |       1378        |
+|   ttrating_rank    |  int  |       10484       |
+|        wins        |  int  |         5         |
