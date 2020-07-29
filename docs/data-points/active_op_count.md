@@ -2,8 +2,6 @@
 
 Object: OpenPractice
 
-```python
-
 
 allow_entry  
 cars_left  
