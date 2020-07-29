@@ -392,14 +392,81 @@
                 
                 
                 <h1 id="about">About<a class="headerlink" href="#about" title="Permanent link">&para;</a></h1>
-<p>This package is an API wrapper/client for retrieving data from iRacing. We use the term "wrapper" loosely because iRacing does not yet have an officially documented API. However, we've done our best to build something that might resemble an actual API.</p>
-<h1 id="asynchronous-programming">Asynchronous Programming<a class="headerlink" href="#asynchronous-programming" title="Permanent link">&para;</a></h1>
-<p>If you're new to asynchronous programming; Welcome to the club! Seriously. As the author of this package, I learned async just for this. It might involve a few days of some intense brain fuzz, but it's absolutely within reason to learn, even for a hobby project. We've made our examples with you in mind. If you need more resources on the topic, we recommend this <a href="https://realpython.com/async-io-python/#the-10000-foot-view-of-async-io">overview guide from RealPython</a>. Also see the <a href="contributing/">contibuting page</a> for contacting us; we're happy to help!</p>
+<p>This package is an asynchronous API wrapper that handles everything necessary for retrieving data from iRacing. We use the term "wrapper" loosely because iRacing does not yet have an officially documented API for us to wrap; This is more like "we pieced things together into something that resembles an API wrapper" kind of wrapper.</p>
 <div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>Shoutout to contributor/maintainer, <strong>Xander Riga</strong>, for the initial design and implementation of the overall async funtionality for this project. </p>
+<p class="admonition-title">Note From the Author</p>
+<p>We understand that many users of this package may be looking at it from more of a hobby perspective and that asynchronous programming can be a little daunting. If you fall into that category, you'll be relieved to know (maybe?) that we've writting this documentation with you in mind. If you have ideas for improvements, please visiting the <a href="contributing/">contibuting page</a> to join the discussion. </p>
+<p>We hope to provide an identical synchronous version in the future, but for now the design choice was made with discord bots in mind. If you'd like more resources on asyncio, we recommend the <a href="https://realpython.com/async-io-python/#the-10000-foot-view-of-async-io">overview guide of asyncio from RealPython</a>.</p>
 </div>
 <h1 id="basic-usage">Basic Usage<a class="headerlink" href="#basic-usage" title="Permanent link">&para;</a></h1>
+<p>This example will print the season track schedule for the Advanced Mazda series. </p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pyracing.client</span> <span class="kn">import</span> <span class="n">Client</span>
+<span class="kn">import</span> <span class="nn">asyncio</span>
+
+<span class="n">username</span> <span class="o">=</span> <span class="s1">&#39;iRacing username&#39;</span>
+<span class="n">password</span> <span class="o">=</span> <span class="s1">&#39;iRacing password&#39;</span>
+
+<span class="c1"># Authentication is automated and will be initiated on first request</span>
+<span class="n">ir</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
+
+<span class="c1"># Example async function with hardcoded results</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+
+    <span class="n">seasons_list</span> <span class="o">=</span> <span class="k">await</span> <span class="n">ir</span><span class="o">.</span><span class="n">current_seasons</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">season</span> <span class="ow">in</span> <span class="n">seasons_list</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">season</span><span class="o">.</span><span class="n">season_id</span> <span class="o">==</span> <span class="mi">2846</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Schedule for </span><span class="si">{</span><span class="n">season</span><span class="o">.</span><span class="n">series_name_short</span><span class="si">}</span><span class="s1">&#39;</span> 
+                    <span class="sa">f</span><span class="s1">&#39; (</span><span class="si">{</span><span class="n">season</span><span class="o">.</span><span class="n">season_year</span><span class="si">}</span><span class="s1"> S</span><span class="si">{</span><span class="n">season</span><span class="o">.</span><span class="n">season_quarter</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">season</span><span class="o">.</span><span class="n">tracks</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">Week </span><span class="si">{</span><span class="n">t</span><span class="o">.</span><span class="n">race_week</span><span class="si">}</span><span class="s1"> will take place at </span><span class="si">{</span><span class="n">t</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1"> (</span><span class="si">{</span><span class="n">t</span><span class="o">.</span><span class="n">config</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</code></pre></div>
+
+<details class="example"><summary>The Result</summary><div class="highlight"><pre><span></span><code>Schedule for Advanced Mazda MX-5 Cup Series (2020 S3)
+    Week 0 will take place at Road Atlanta (Full Course)
+    Week 1 will take place at Circuit Gilles Villeneuve ()
+    Week 2 will take place at Road America (Full Course)
+    Week 3 will take place at Lime Rock Park (Grand Prix)
+    Week 4 will take place at Barber Motorsports Park (Full Course)
+    Week 5 will take place at Suzuka International Racing Course (Grand Prix)
+    Week 6 will take place at Nürburgring Combined (Gesamtstrecke Short w/out Arena)
+    Week 7 will take place at Brands Hatch Circuit (Grand Prix)
+    Week 8 will take place at Autodromo Internazionale Enzo e Dino Ferrari (Grand Prix)
+    Week 9 will take place at Watkins Glen International (Boot)
+    Week 10 will take place at Sebring International Raceway (International)
+    Week 11 will take place at Autodromo Nazionale Monza (Grand Prix)
+    Week 12 will take place at Mount Panorama Circuit ()
+</code></pre></div>
+
+</details>
+<details class="info"><summary>Click Here For Code Breakdown</summary><p><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pyracing</span> <span class="kn">import</span> <span class="n">Client</span>
+</code></pre></div>
+The <code>Client</code> Class contains all that is necessary to begin accessing data from iRacing.
+<div class="highlight"><pre><span></span><code><span class="n">username</span> <span class="o">=</span> <span class="s1">&#39;iRacing username&#39;</span>
+<span class="n">password</span> <span class="o">=</span> <span class="s1">&#39;iRacing password&#39;</span>
+
+<span class="n">ir</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
+</code></pre></div>
+We create an instance of Client and assign it to <code>ir</code>.
+<div class="highlight"><pre><span></span><code><span class="n">list_of_season_objects</span> <span class="o">=</span> <span class="k">await</span> <span class="n">ir</span><span class="o">.</span><span class="n">current_seasons</span><span class="p">()</span>
+</code></pre></div>
+This is the core of retrieving data with pyracing. Here the <code>current_seasons()</code> method, with no parameters, returns data for all currently active seasons of iRacing. It returns a list of <a href="data-points/current_seasons/">Season objects</a>  </p>
+<details class="note"><summary>Using await</summary><p>Because this is asynchronous code, you <em>must</em> <code>await</code> the method. It tells the event_loop to leave the function and come back to it later while it sends the request. For more on asynchronous programming, we recommend the <a href="https://realpython.com/async-io-python/#where-does-async-io-fit-in">Complete Walkthrough from realpython.com</a></p>
+</details>
+<p><div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">season</span> <span class="ow">in</span> <span class="n">list_of_season_objects</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">season</span><span class="o">.</span><span class="n">series_id</span> <span class="o">==</span> <span class="mi">231</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Schedule for </span><span class="si">{</span><span class="n">season</span><span class="o">.</span><span class="n">series_name_short</span><span class="si">}</span><span class="s1">&#39;</span> <span class="c1"># Line continuation</span>
+                <span class="sa">f</span><span class="s1">&#39; (</span><span class="si">{</span><span class="n">season</span><span class="o">.</span><span class="n">season_year</span><span class="si">}</span><span class="s1"> S</span><span class="si">{</span><span class="n">season</span><span class="o">.</span><span class="n">season_quarter</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+</code></pre></div>
+Now that we have all of the data, the rest is figuring out what you want to do with it. In our example, we go through each season object and find the one that matches series_id of 231. Once we've found it, we print out the <code>series_name_short</code> for the series along with the season_year and season_quarter. This gives us the first line in the example below.</p>
+<p><div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">season</span><span class="o">.</span><span class="n">tracks</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;    Week </span><span class="si">{</span><span class="n">t</span><span class="o">.</span><span class="n">race_week</span><span class="si">}</span><span class="s1"> will take place at </span><span class="si">{</span><span class="n">t</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1"> (</span><span class="si">{</span><span class="n">t</span><span class="o">.</span><span class="n">config</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+</code></pre></div>
+In this case, our <code>season</code> object has a child object; <code>season.tracks</code> contains a list of the <code>track</code> objects with it's own set of attributes. Here, for each track that exists in <code>season.tracks</code> we nicely format a response that gives us the attributes we want for each track. Each track has a <code>t.race_week</code> for when that track will be active in the season, <code>t.name</code> for the full name of the track, and <code>t.config</code> for the configuration that will be used.</p>
+</details>
 <details class="warning"><summary>Running an async function</summary><div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Normal Execution</label><div class="tabbed-content">
 <p>With a non-Windows OS, running the following example is very straightforward.
 <div class="highlight"><pre><span></span><code><span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
@@ -416,79 +483,10 @@ The <code>asyncio.run()</code> function handles everything related to the event 
 - <code>loop = asyncio.new_event_loop()</code> Creates a new event_loop and sets it to <code>loop</code><br />
 - <code>asyncio.set_event_loop(loop)</code> Sets event loop for asyncio to use for the duration of the script. <br />
 - <code>fut = loop.create_task(main())</code> Creates a 'future' object (The task to run <code>main()</code>)<br />
-- <code>loop.run_until_complete(fut)</code> Finally says "run the event loop until <code>fut</code> has completed.  </p>
+- <code>loop.run_until_complete(fut)</code> Finally says "run the event loop until <code>fut</code> has completed.</p>
 </div>
 </div>
 </details>
-<h2 id="example-code">Example code<a class="headerlink" href="#example-code" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pyracing</span> <span class="kn">import</span> <span class="n">Client</span>
-<span class="kn">import</span> <span class="nn">asyncio</span>
-
-<span class="n">username</span> <span class="o">=</span> <span class="s1">&#39;iRacing username&#39;</span>
-<span class="n">password</span> <span class="o">=</span> <span class="s1">&#39;iRacing password&#39;</span>
-
-<span class="c1"># Authentication is automated and will be initiated on first request</span>
-<span class="n">ir</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
-
-<span class="c1"># Example async function with hardcoded results</span>
-<span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-
-    <span class="n">list_of_season_objects</span> <span class="o">=</span> <span class="k">await</span> <span class="n">ir</span><span class="o">.</span><span class="n">current_seasons</span><span class="p">()</span>
-
-    <span class="k">for</span> <span class="n">season</span> <span class="ow">in</span> <span class="n">list_of_season_objects</span><span class="p">:</span>
-
-        <span class="k">if</span> <span class="n">season</span><span class="o">.</span><span class="n">series_id</span> <span class="o">==</span> <span class="mi">231</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Schedule for </span><span class="si">{</span><span class="n">season</span><span class="o">.</span><span class="n">series_name_short</span><span class="si">}</span><span class="s1">&#39;</span> 
-                    <span class="sa">f</span><span class="s1">&#39; (</span><span class="si">{</span><span class="n">season</span><span class="o">.</span><span class="n">season_year</span><span class="si">}</span><span class="s1"> S</span><span class="si">{</span><span class="n">season</span><span class="o">.</span><span class="n">season_quarter</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
-
-            <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">season</span><span class="o">.</span><span class="n">tracks</span><span class="p">:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;    Week </span><span class="si">{</span><span class="n">t</span><span class="o">.</span><span class="n">race_week</span><span class="si">}</span><span class="s1"> will take place at </span><span class="si">{</span><span class="n">t</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1"> (</span><span class="si">{</span><span class="n">t</span><span class="o">.</span><span class="n">config</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
-
-<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
-</code></pre></div>
-
-<details class="info"><summary>Click Here For Code Breakdown</summary><p><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pyracing</span> <span class="kn">import</span> <span class="n">Client</span>
-</code></pre></div>
-The <code>Client</code> Class contains all that is necessary to begin accessing data from iRacing.
-<div class="highlight"><pre><span></span><code><span class="n">username</span> <span class="o">=</span> <span class="s1">&#39;iRacing username&#39;</span>
-<span class="n">password</span> <span class="o">=</span> <span class="s1">&#39;iRacing password&#39;</span>
-
-<span class="n">ir</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
-</code></pre></div>
-We create an instance of Client and assign it to <code>ir</code>.
-<div class="highlight"><pre><span></span><code><span class="c1"># Authentication is automated and initiated on first request</span>
-<span class="n">list_of_season_objects</span> <span class="o">=</span> <span class="k">await</span> <span class="n">ir</span><span class="o">.</span><span class="n">current_seasons</span><span class="p">()</span>
-</code></pre></div>
-This is the core of this package. The <code>current_seasons()</code> method, with no paramaters, will return all data for active seasons. Data is returned as a list of <code>season</code> objects; 1 object for each season returned. (<a href="All-Data/current_seasons.md"> see all attributes here</a>)  </p>
-<details class="note"><summary>Using await</summary><p>Because this is asynchronous code, you <em>must</em> <code>await</code> the method. It tells the event_loop to leave the function and come back to it later while it sends the request. For more on asynchronous programming, we recommend the <a href="https://realpython.com/async-io-python/#where-does-async-io-fit-in">Complete Walkthrough from realpython.com</a></p>
-</details>
-<p><div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">season</span> <span class="ow">in</span> <span class="n">list_of_season_objects</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">season</span><span class="o">.</span><span class="n">series_id</span> <span class="o">==</span> <span class="mi">231</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Schedule for </span><span class="si">{</span><span class="n">season</span><span class="o">.</span><span class="n">series_name_short</span><span class="si">}</span><span class="s1">&#39;</span> <span class="c1"># Line continuation</span>
-                <span class="sa">f</span><span class="s1">&#39; (</span><span class="si">{</span><span class="n">season</span><span class="o">.</span><span class="n">season_year</span><span class="si">}</span><span class="s1"> S</span><span class="si">{</span><span class="n">season</span><span class="o">.</span><span class="n">season_quarter</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
-</code></pre></div>
-Now that we have all of the data, the rest is figuring out what you want to do with it. In our example, we go through each season object and find the one that matches series_id of 231. Once we've found it, we print out the <code>series_name_short</code> for the series along with the season_year and season_quarter. This gives us the first line in the example below.</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">season</span><span class="o">.</span><span class="n">tracks</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;    Week </span><span class="si">{</span><span class="n">t</span><span class="o">.</span><span class="n">race_week</span><span class="si">}</span><span class="s1"> will take place at </span><span class="si">{</span><span class="n">t</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1"> (</span><span class="si">{</span><span class="n">t</span><span class="o">.</span><span class="n">config</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
-</code></pre></div>
-In this case, our <code>season</code> object has a child object; <code>season.tracks</code> contains a list of the <code>track</code> objects with it's own set of attributes. Here, for each track that exists in <code>season.tracks</code> we nicely format a response that gives us the attributes we want for each track. Each track has a <code>t.race_week</code> for when that track will be active in the season, <code>t.name</code> for the full name of the track, and <code>t.config</code> for the configuration that will be used. </p>
-</details>
-<p>The result will be
-<div class="highlight"><pre><span></span><code>Schedule for Advanced Mazda MX-5 Cup Series (2020 S3)
-    Week 0 will take place at Road Atlanta (Full Course)
-    Week 1 will take place at Circuit Gilles Villeneuve ()
-    Week 2 will take place at Road America (Full Course)
-    Week 3 will take place at Lime Rock Park (Grand Prix)
-    Week 4 will take place at Barber Motorsports Park (Full Course)
-    Week 5 will take place at Suzuka International Racing Course (Grand Prix)
-    Week 6 will take place at Nürburgring Combined (Gesamtstrecke Short w/out Arena)
-    Week 7 will take place at Brands Hatch Circuit (Grand Prix)
-    Week 8 will take place at Autodromo Internazionale Enzo e Dino Ferrari (Grand Prix)
-    Week 9 will take place at Watkins Glen International (Boot)
-    Week 10 will take place at Sebring International Raceway (International)
-    Week 11 will take place at Autodromo Nazionale Monza (Grand Prix)
-    Week 12 will take place at Mount Panorama Circuit ()
-</code></pre></div></p>
                 
               
               
