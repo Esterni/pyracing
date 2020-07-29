@@ -457,7 +457,7 @@ The <code>Client</code> Class contains all that is necessary to begin accessing 
 We create an instance of Client and assign it to <code>ir</code>.
 <div class="highlight"><pre><span></span><code><span class="n">list_of_season_objects</span> <span class="o">=</span> <span class="k">await</span> <span class="n">ir</span><span class="o">.</span><span class="n">current_seasons</span><span class="p">()</span>
 </code></pre></div>
-This is the core of retrieving data with pyracing. Here the <code>current_seasons()</code> method, with no parameters, returns data for all currently active seasons of iRacing. It returns a list of <a href="data-points/current_seasons.md">Season objects</a>  </p>
+This is the core of retrieving data with pyracing. Here the <code>current_seasons()</code> method, with no parameters, returns data for all currently active seasons of iRacing. It returns a list of <a href="response-objects/current_seasons/">Season objects</a>  </p>
 <details class="note"><summary>Using await</summary><p>Because this is asynchronous code, you <em>must</em> <code>await</code> the method. It tells the event_loop to leave the function and come back to it later while it sends the request. For more on asynchronous programming, we recommend the <a href="https://realpython.com/async-io-python/#where-does-async-io-fit-in">Complete Walkthrough from realpython.com</a></p>
 </details>
 <p><div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">season</span> <span class="ow">in</span> <span class="n">list_of_season_objects</span><span class="p">:</span>
