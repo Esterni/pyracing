@@ -11,7 +11,7 @@
       
       
       <link rel="shortcut icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.5.0">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.4.0">
     
     
       
@@ -19,7 +19,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.b5d04df8.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.fe0cca5b.min.css">
       
       
     
@@ -38,7 +38,7 @@
     
       
         
-<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-173984844-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}),document.addEventListener("DOMContentSwitch",function(){ga("send","pageview",document.location.pathname)})</script>
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-173984844-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}),document.addEventListener("DOMContentSwitch",function(){ga("send","pageview")})</script>
 <script async src="https://www.google-analytics.com/analytics.js"></script>
       
     
@@ -278,9 +278,42 @@
       
     
     
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        season_standings
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
     <a href="./" title="season_standings" class="md-nav__link md-nav__link--active">
       season_standings
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#seasonstandings" class="md-nav__link">
+    SeasonStandings
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -379,6 +412,23 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#seasonstandings" class="md-nav__link">
+    SeasonStandings
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -398,36 +448,169 @@
                 
                 
                 <h1 id="season_standings">season_standings<a class="headerlink" href="#season_standings" title="Permanent link">&para;</a></h1>
-<p>club_id<br />
-club_name<br />
-country<br />
-country_code<br />
-country_name<br />
-cust_id<br />
-display_name<br />
-division<br />
-dropped<br />
-helm_color_1<br />
-helm_color_2<br />
-helm_color_3<br />
-helm_pattern<br />
-incidents<br />
-irating<br />
-laps<br />
-laps_led<br />
-license_level_max<br />
-points<br />
-poles<br />
-pos<br />
-pos_finish_avg<br />
-pos_start_avg<br />
-rank<br />
-row<br />
-starts<br />
-sub_level<br />
-top_fives<br />
-week<br />
-wins  </p>
+<p>Data points returned from <code>Client.event_results()</code></p>
+<h2 id="seasonstandings">SeasonStandings<a class="headerlink" href="#seasonstandings" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th align="center">Attributes</th>
+<th align="center">Type</th>
+<th align="center">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">club_id</td>
+<td align="center">int</td>
+<td align="center">36</td>
+</tr>
+<tr>
+<td align="center">club_name</td>
+<td align="center">str</td>
+<td align="center">'UK and I'</td>
+</tr>
+<tr>
+<td align="center">country</td>
+<td align="center">str</td>
+<td align="center">'United Kingdom'</td>
+</tr>
+<tr>
+<td align="center">country_code</td>
+<td align="center">str</td>
+<td align="center">'GB'</td>
+</tr>
+<tr>
+<td align="center">country_name</td>
+<td align="center">str</td>
+<td align="center">'United+Kingdom'</td>
+</tr>
+<tr>
+<td align="center">cust_id</td>
+<td align="center">int</td>
+<td align="center">55441</td>
+</tr>
+<tr>
+<td align="center">display_name</td>
+<td align="center">str</td>
+<td align="center">'Mark Ussher'</td>
+</tr>
+<tr>
+<td align="center">division</td>
+<td align="center">int</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">dropped</td>
+<td align="center">int</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">helm_color_1</td>
+<td align="center">str</td>
+<td align="center">'0116bf'</td>
+</tr>
+<tr>
+<td align="center">helm_color_2</td>
+<td align="center">str</td>
+<td align="center">'ffffff'</td>
+</tr>
+<tr>
+<td align="center">helm_color_3</td>
+<td align="center">str</td>
+<td align="center">'46b8f4'</td>
+</tr>
+<tr>
+<td align="center">helm_pattern</td>
+<td align="center">int</td>
+<td align="center">14</td>
+</tr>
+<tr>
+<td align="center">incidents</td>
+<td align="center">int</td>
+<td align="center">65</td>
+</tr>
+<tr>
+<td align="center">irating</td>
+<td align="center">int</td>
+<td align="center">5619</td>
+</tr>
+<tr>
+<td align="center">laps</td>
+<td align="center">int</td>
+<td align="center">613</td>
+</tr>
+<tr>
+<td align="center">laps_led</td>
+<td align="center">int</td>
+<td align="center">308</td>
+</tr>
+<tr>
+<td align="center">license_level_max</td>
+<td align="center">int</td>
+<td align="center">20</td>
+</tr>
+<tr>
+<td align="center">points</td>
+<td align="center">int</td>
+<td align="center">1212</td>
+</tr>
+<tr>
+<td align="center">poles</td>
+<td align="center">int</td>
+<td align="center">9</td>
+</tr>
+<tr>
+<td align="center">pos</td>
+<td align="center">int</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">pos_finish_avg</td>
+<td align="center">int</td>
+<td align="center">6</td>
+</tr>
+<tr>
+<td align="center">pos_start_avg</td>
+<td align="center">int</td>
+<td align="center">3</td>
+</tr>
+<tr>
+<td align="center">rank</td>
+<td align="center">int</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">row</td>
+<td align="center">int</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">starts</td>
+<td align="center">int</td>
+<td align="center">16</td>
+</tr>
+<tr>
+<td align="center">sub_level</td>
+<td align="center">str</td>
+<td align="center">'4.87'</td>
+</tr>
+<tr>
+<td align="center">top_fives</td>
+<td align="center">int</td>
+<td align="center">12</td>
+</tr>
+<tr>
+<td align="center">week</td>
+<td align="center">int</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">wins</td>
+<td align="center">int</td>
+<td align="center">7</td>
+</tr>
+</tbody>
+</table>
                 
               
               
@@ -494,8 +677,8 @@ wins  </p>
       
     </div>
     
-      <script src="../../assets/javascripts/vendor.92ffa368.min.js"></script>
-      <script src="../../assets/javascripts/bundle.5123e3d4.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      <script src="../../assets/javascripts/vendor.d710d30a.min.js"></script>
+      <script src="../../assets/javascripts/bundle.b39636ac.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
       
       <script>
         app = initialize({

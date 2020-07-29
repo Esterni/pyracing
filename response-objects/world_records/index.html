@@ -11,7 +11,7 @@
       
       
       <link rel="shortcut icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.5.0">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.4.0">
     
     
       
@@ -19,7 +19,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.b5d04df8.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.fe0cca5b.min.css">
       
       
     
@@ -38,7 +38,7 @@
     
       
         
-<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-173984844-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}),document.addEventListener("DOMContentSwitch",function(){ga("send","pageview",document.location.pathname)})</script>
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-173984844-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}),document.addEventListener("DOMContentSwitch",function(){ga("send","pageview")})</script>
 <script async src="https://www.google-analytics.com/analytics.js"></script>
       
     
@@ -314,9 +314,42 @@
       
     
     
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        world_records
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
     <a href="./" title="world_records" class="md-nav__link md-nav__link--active">
       world_records
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#worldrecord" class="md-nav__link">
+    WorldRecord
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -379,6 +412,23 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#worldrecord" class="md-nav__link">
+    WorldRecord
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -398,41 +448,194 @@
                 
                 
                 <h1 id="world_records">world_records<a class="headerlink" href="#world_records" title="Permanent link">&para;</a></h1>
-<p>car_id<br />
-cat_id<br />
-category<br />
-club_id<br />
-club_name<br />
-country_code<br />
-cust_id<br />
-display_name<br />
-helm_color_1<br />
-helm_color_2<br />
-helm_color_3<br />
-helm_pattern<br />
-irating<br />
-license_class<br />
-license_class_id<br />
-license_level<br />
-practice<br />
-practice_start_time<br />
-practice_subsession_id<br />
-qualify<br />
-qualify_subsession_id<br />
-qualify_time_start<br />
-race<br />
-race_start_time<br />
-race_subsession_id<br />
-region<br />
-row<br />
-season_quarter<br />
-season_year<br />
-sub_level<br />
-timetrial<br />
-track_id<br />
-tt_start_time<br />
-tt_subsession_id<br />
-ttrating  </p>
+<p>Data points returned from <code>Client.event_results()</code></p>
+<h2 id="worldrecord">WorldRecord<a class="headerlink" href="#worldrecord" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th align="center">Attributes</th>
+<th align="center">Type</th>
+<th align="center">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">car_id</td>
+<td align="center">int</td>
+<td align="center">33</td>
+</tr>
+<tr>
+<td align="center">cat_id</td>
+<td align="center">int</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="center">category</td>
+<td align="center">str</td>
+<td align="center">'Road'</td>
+</tr>
+<tr>
+<td align="center">club_id</td>
+<td align="center">int</td>
+<td align="center">41</td>
+</tr>
+<tr>
+<td align="center">club_name</td>
+<td align="center">str</td>
+<td align="center">'Italy'</td>
+</tr>
+<tr>
+<td align="center">country_code</td>
+<td align="center">str</td>
+<td align="center">'IT'</td>
+</tr>
+<tr>
+<td align="center">cust_id</td>
+<td align="center">int</td>
+<td align="center">297304</td>
+</tr>
+<tr>
+<td align="center">display_name</td>
+<td align="center">str</td>
+<td align="center">'Marco Sanfilippo'</td>
+</tr>
+<tr>
+<td align="center">helm_color_1</td>
+<td align="center">str</td>
+<td align="center">'D4AF37'</td>
+</tr>
+<tr>
+<td align="center">helm_color_2</td>
+<td align="center">str</td>
+<td align="center">'FFFFFF'</td>
+</tr>
+<tr>
+<td align="center">helm_color_3</td>
+<td align="center">str</td>
+<td align="center">'000000'</td>
+</tr>
+<tr>
+<td align="center">helm_pattern</td>
+<td align="center">int</td>
+<td align="center">64</td>
+</tr>
+<tr>
+<td align="center">irating</td>
+<td align="center">int</td>
+<td align="center">4693</td>
+</tr>
+<tr>
+<td align="center">license_class</td>
+<td align="center">str</td>
+<td align="center">'A 4.99'</td>
+</tr>
+<tr>
+<td align="center">license_class_id</td>
+<td align="center">int</td>
+<td align="center">5</td>
+</tr>
+<tr>
+<td align="center">license_level</td>
+<td align="center">int</td>
+<td align="center">20</td>
+</tr>
+<tr>
+<td align="center">practice</td>
+<td align="center">str</td>
+<td align="center">'1:08.065'</td>
+</tr>
+<tr>
+<td align="center">practice_start_time</td>
+<td align="center">int</td>
+<td align="center">1563628621000</td>
+</tr>
+<tr>
+<td align="center">practice_subsession_id</td>
+<td align="center">int</td>
+<td align="center">27864149</td>
+</tr>
+<tr>
+<td align="center">qualify</td>
+<td align="center">str</td>
+<td align="center">'1:08.252'</td>
+</tr>
+<tr>
+<td align="center">qualify_subsession_id</td>
+<td align="center">int</td>
+<td align="center">27864491</td>
+</tr>
+<tr>
+<td align="center">qualify_time_start</td>
+<td align="center">int</td>
+<td align="center">1563631200000</td>
+</tr>
+<tr>
+<td align="center">race</td>
+<td align="center">str</td>
+<td align="center">'1:08.675'</td>
+</tr>
+<tr>
+<td align="center">race_start_time</td>
+<td align="center">int</td>
+<td align="center">1563631200000</td>
+</tr>
+<tr>
+<td align="center">race_subsession_id</td>
+<td align="center">int</td>
+<td align="center">27864491</td>
+</tr>
+<tr>
+<td align="center">region</td>
+<td align="center">str</td>
+<td align="center">'Region 6'</td>
+</tr>
+<tr>
+<td align="center">row</td>
+<td align="center">int</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">season_quarter</td>
+<td align="center">str</td>
+<td align="center">'3'</td>
+</tr>
+<tr>
+<td align="center">season_year</td>
+<td align="center">str</td>
+<td align="center">'2019'</td>
+</tr>
+<tr>
+<td align="center">sub_level</td>
+<td align="center">int</td>
+<td align="center">499</td>
+</tr>
+<tr>
+<td align="center">timetrial</td>
+<td align="center">str</td>
+<td align="center">''</td>
+</tr>
+<tr>
+<td align="center">track_id</td>
+<td align="center">int</td>
+<td align="center">319</td>
+</tr>
+<tr>
+<td align="center">tt_start_time</td>
+<td align="center">int</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">tt_subsession_id</td>
+<td align="center">int</td>
+<td align="center">''</td>
+</tr>
+<tr>
+<td align="center">ttrating</td>
+<td align="center">int</td>
+<td align="center">1350</td>
+</tr>
+</tbody>
+</table>
                 
               
               
@@ -499,8 +702,8 @@ ttrating  </p>
       
     </div>
     
-      <script src="../../assets/javascripts/vendor.92ffa368.min.js"></script>
-      <script src="../../assets/javascripts/bundle.5123e3d4.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      <script src="../../assets/javascripts/vendor.d710d30a.min.js"></script>
+      <script src="../../assets/javascripts/bundle.b39636ac.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
       
       <script>
         app = initialize({
