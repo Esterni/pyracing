@@ -1,7 +1,5 @@
 # client
 The `client` module contains the `Client()` class which makes up the bulk of pyracing.
-Along with Client.authenticate(), it holds the class methods to query all of iRacing's web-data.
-
 For a detailed description of each class method, see the [List of Functions](https://github.com/Esterni/pyracing/wiki/List-of-functions) wiki page.
 
 # constants

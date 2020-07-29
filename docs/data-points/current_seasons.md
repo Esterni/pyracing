@@ -1,49 +1,59 @@
 # current_seasons
-## parent object (season)
+Data points returned from `Client.current_seasons()`
 
-active  
-cat_id  
-category  
-date_end  
-date_start  
-is_lite  
-license_eligible  
-race_week  
-season_id  
-season_quarter  
-season_year  
-series_id  
-series_lic_group_id  
-series_name_short  
+## Season
 
-## child object (season.car)
+|     Attributes      |      Type       |            Example            |
+| :-----------------: | :-------------: | :---------------------------: |
+|       active        |     Boolean     |
+|       cat_id        |       Int       |
+|      category       |       Str       |
+|      date_end       |       Int       |
+|     date_start      |       Int       |
+|       is_lite       |     Boolean     |
+|  license_eligible   |     Boolean     |
+|      race_week      |       Int       |
+|      season_id      |       Int       |
+|   season_quarter    |       Int       |
+|     season_year     |       Int       |
+|      series_id      |       Int       |
+| series_lic_group_id |       Int       |
+|  series_name_short  |       Str       |
+|        cars         | List of Objects | See [Car Object](#car-object) |
+|       tracks        | List of Objects |  See [Track Object](#track)   |
 
-id  
-name  
-name_lower  
-pkg_id  
-sku  
+### Car
+| Attribute  | Type  | Example |
+| :--------: | :---: | :-----: |
+|     id     |  Int  |
+|    name    |  Str  |
+| name_lower |  Str  |
+|   pkg_id   |  Int  |
+|    sku     |  Int  |
 
-## child object (season.tracks)
+### Track
+|  Attribute  | Type  | Example |
+| :---------: | :---: | :-----: |
+|    name     |  Str  |
+| name_lower  |  Str  |
+|   pkg_id    |  Str  |
+|  priority   |  Int  |
+|  race_week  |  Int  |
+| time_of_day |  Int  |
+|   config    |  Str  |
 
-name  
-name_lower  
-pkg_id  
-priority  
-race_week  
-time_of_day  
-config  
+### CarClass
+| Attribute | Type  | Example |
+| :-------: | :---: | :-----: |
+|  custid   |  Int  |
+|    id     |  Int  |
+| lowername |  Str  |
+|   name    |  Str  |
+| rel_speed |  Int  |
+| shortname |  Str  |
 
-## child object (season.car_classes)
-
-custid  
-id  
-lowername  
-name  
-rel_speed  
-shortname  
-
-### grandchild object (season.car_classes.cars)
-
-id  
-name  
+#### CarClassCar
+| Attribute | Type  | Example |
+| :-------: | :---: | :-----: |
+|    id     |  Int  |
+|   name    |  Str  |
