@@ -55,7 +55,7 @@ Returns friends list for the person logged in. (gold star for least useful)
 | blacklisted=1 | Toggles display of blacklisted drivers in results.                                                                                                                                       |
 
 ### event_results()
-Returns a list of event results that the driver has participated in. This is the backend data for iRacing's [My Series Results](https://members.iracing.com/membersite/member/results.jsp). Contains the summary information about the results of the event. For detailed information about a specific session, see: [subsession_data()](#subsession_data).
+Returns a list of results that the driver has participated in. This is the backend data for iRacing's [My Series Results](https://members.iracing.com/membersite/member/results.jsp). Contains the summary information about the results of the event. For detailed information about a specific session, see: [subsession_data()](#subsession_data).
 
 | Args/Kwargs                                                                                                         | Description                                                                                                                                                                                                                 |
 | :------------------------------------------------------------------------------------------------------------------ | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
