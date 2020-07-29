@@ -17,19 +17,23 @@ markdown_extensions:
 
 nav:
   - Introduction: index.md
-  - List of Methods: functions.md
+  - List of Methods: methods.md
   - Data Points:
-    - 'data-points\career_stats.md'
-    - 'data-points\driver_stats.md'
-    - 'data-points\event_results.md'
-    - 'data-points\season_standings.md'
-    - 'data-points\subsession_data.md'
-    - 'data-points\active_op_count.md'
-    - 'data-points\world_records.md'
-    - 'data-points\current_seasons.md'
+    - 'response-objects\career_stats.md'
+    - 'response-objects\driver_stats.md'
+    - 'response-objects\event_results.md'
+    - 'response-objects\season_standings.md'
+    - 'response-objects\subsession_data.md'
+    - 'response-objects\active_op_count.md'
+    - 'response-objects\world_records.md'
+    - 'response-objects\current_seasons.md'
 
   - Modules: modules.md
   - Contributing: contributing.md
 
 extra_css: 
   - css\custom.css
+
+google_analytics:
+  - UA-173984844-1
+  - auto
