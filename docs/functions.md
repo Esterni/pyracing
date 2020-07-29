@@ -28,7 +28,7 @@ This method provides functionality that the iRacing page does not. It search dri
 
 | Args/Kwargs                                            | Description                                                                                                                                                    |
 | :----------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| search=`'null'`                                        | Useful for looking up a specific driver. (e.g. `'Driver Full Name5'`) <br> Also accepts partial names to return all matching drivers.                          |
+| search=`'null'`                                        | Useful for looking up a specific driver. (e.g. `'John Smitherson5'`) <br> Also accepts partial names to return all matching drivers.                           |
 | country=`'null'`                                       | Return only drivers from a given country. Accepted values can be found in the `CountryCode` enum from the `constants` module for convienence.                  |
 | category=Category.road.value                           | Selects the race discipline.<br>(The `Category` enum is from the `constants` module) <br>                                                                      |
 | class_low=None<br>class_high=None                      | Filters results by the driver's License Class.                                                                                                                 |
