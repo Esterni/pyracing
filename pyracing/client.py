@@ -60,12 +60,14 @@ class Client:
         else:
             self.log.info('Login successful')
 
-    async def _build_request(self, url, params):
+    async def _build_request(self, url, payload):
         """ Builds the final GET request from url and params
         """
         if not self.session.cookies.__bool__():
             self.log.info("No cookies in cookie jar.")
             await self._authenticate()
+
+        params = self.cleanup_payload(payload)
 
         self.log.info(f'Request being sent to: {url} with params: {params}')
 
@@ -782,3 +784,11 @@ class Client:
             return []
 
         return [career_stats.YearlyStats(x) for x in response.json()]
+    
+    @staticmethod
+    def cleanup_payload(payload):
+        for key in payload.copy():
+            if payload.get(key) is None:
+                delattr(payload, key)
+        
+        return payload
