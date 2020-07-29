@@ -3,7 +3,7 @@
 This package is an asynchronous API wrapper that handles everything necessary for retrieving data from iRacing. We use the term "wrapper" loosely because iRacing does not yet have an officially documented API for us to wrap; This is more like "we pieced things together into something that resembles an API wrapper" kind of wrapper.
 
 !!! Info "Note From the Author"
-    We understand that many users of this package may be looking at it from more of a hobby perspective and that asynchronous programming can be a little daunting. If you fall into that category, you'll be relieved to know (maybe?) that we've writting this documentation with you in mind. If you have ideas for improvements, please visiting the [contibuting page](contributing.md) to join the discussion. 
+    We understand that some users of this package will be looking to use this as a learning project and that asynchronous programming is a few steps ahead at the moment. If you fall into that category, you'll be relieved to know (maybe?) that we've writting this documentation with you in mind. If you get stuck, please see the [contibuting page](contributing.md) to join the discussion. We'd be happy to help!
 
     We hope to provide an identical synchronous version in the future, but for now the design choice was made with discord bots in mind. If you'd like more resources on asyncio, we recommend the [overview guide of asyncio from RealPython](https://realpython.com/async-io-python/#the-10000-foot-view-of-async-io).
 
@@ -79,7 +79,7 @@ asyncio.run(main())
     ```python
     list_of_season_objects = await ir.current_seasons()
     ```
-    This is the core of retrieving data with pyracing. Here the `current_seasons()` method, with no parameters, returns data for all currently active seasons of iRacing. It returns a list of [Season objects](data-points/current_seasons.md)  
+    This is the core of retrieving data with pyracing. Here the `current_seasons()` method, with no parameters, returns data for all currently active seasons of iRacing. It returns a list of [Season objects](response-objects/current_seasons.md)  
     
     ??? Note "Using await"
         Because this is asynchronous code, you *must* `await` the method. It tells the event_loop to leave the function and come back to it later while it sends the request. For more on asynchronous programming, we recommend the [Complete Walkthrough from realpython.com](https://realpython.com/async-io-python/#where-does-async-io-fit-in)
