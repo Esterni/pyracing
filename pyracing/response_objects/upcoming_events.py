@@ -1,5 +1,4 @@
-from ..helpers import datetime_from_iracing_timestamp
-
+from ..helpers import datetime_from_iracing_timestamp, parse_encode
 
 class NextEvent:
     def __init__(self, dict):
@@ -19,34 +18,34 @@ class TotalRegistered:
 class OpenPractice:
     def __init__(self, dict):
         self.allow_entry = dict['10']
-        self.cars_left = dict['23']
+        self.cars_left = parse_encode(dict['23'])
         self.cat_id = dict['27']
         self.count_group = dict['30']
-        self.count_registered = dict['45']
+        self.count_registered = parse_encode(dict['45'])
         self.count_total = dict['36']
         self.driver_change_param_1 = dict['7']
         self.driver_change_param_2 = dict['8']
         self.driver_change_rule = dict['28']
         self.driver_changes = dict['47']
-        self.drivers_connected = dict['42']
-        self.drivers_registered = dict['9']
+        self.drivers_connected = parse_encode(dict['42'])
+        self.drivers_registered = parse_encode(dict['9'])
         self.earth_rotation_speedup = dict['32']
-        self.farm_id = dict['25']
+        self.farm_id = parse_encode(dict['25'])
         self.fog_density = dict['13']
         self.humidity = dict['38']
         self.leave_marbles = dict['33']
-        self.pits = dict['6']
+        self.pits = parse_encode(dict['6'])
         self.pits_in_use = dict['35']
         self.pits_total = dict['48']
-        self.race_panel_img = dict['16']
-        self.rubber_practice = dict['12']
-        self.rubber_qualify = dict['39']
-        self.rubber_race = dict['15']
-        self.rubber_warmup = dict['14']
+        self.race_panel_img = parse_encode(dict['16'])
+        self.rubber_practice = parse_encode(dict['12'])
+        self.rubber_qualify = parse_encode(dict['39'])
+        self.rubber_race = parse_encode(dict['15'])
+        self.rubber_warmup = parse_encode(dict['14'])
         self.season_id = dict['21']
-        self.series_abbrv = dict['41']
+        self.series_abbrv = parse_encode(dict['41'])
         self.series_id = dict['17']
-        self.series_name = dict['11']
+        self.series_name = parse_encode(dict['11'])
         self.session_id = dict['5']
         self.skies = dict['26']
         self.subsession_id = dict['31']
@@ -56,11 +55,11 @@ class OpenPractice:
         self.temp_value = dict['3']
         self.time_of_day = dict['18']
         self.time_start = dict['46']
-        self.time_start_sim = dict['19']
+        self.time_start_sim = parse_encode(dict['19'])
         self.total_groups = dict['20']
-        self.track_config = dict['37']
+        self.track_config = parse_encode(dict['37'])
         self.track_id = dict['22']
-        self.track_name = dict['34']
+        self.track_name = parse_encode(dict['34'])
         self.weather_initial = dict['40']
         self.weather_ongoing = dict['29']
         self.weather_type = dict['24']
