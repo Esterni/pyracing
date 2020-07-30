@@ -16,7 +16,7 @@ class TotalRegistered:
         self.season_id = dict['seasonid']
 
 
-class ActiveOPCount:
+class OpenPractice:
     def __init__(self, dict):
         self.allow_entry = dict['10']
         self.cars_left = dict['23']

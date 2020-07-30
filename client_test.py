@@ -71,7 +71,7 @@ class ClientTest(unittest.TestCase):
     async def test_active_op_counts(self):
         response = await client.active_op_counts()
         for op_count in response:
-            self.assertIsInstance(op_count, upcoming_events.ActiveOPCount)
+            self.assertIsInstance(op_count, upcoming_events.OpenPractice)
 
     @async_test
     async def test_all_subsessions(self):
