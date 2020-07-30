@@ -60,7 +60,7 @@ class Client:
         else:
             self.log.info('Login successful')
 
-    async def _build_request(self, url, payload):
+    async def _build_request(self, url, params):
         """ Builds the final GET request from url and params
         """
         if not self.session.cookies.__bool__():
