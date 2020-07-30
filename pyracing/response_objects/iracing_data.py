@@ -11,12 +11,12 @@ class Car:
 # Common denominator for CarClass attributes across all data.
 class CarClass:
     def __init__(self, dict):
-        self.custid = dict['custid']
+        self.cust_id = dict['custid']
         self.id = dict['id']
-        self.lowername = dict['lowername']
+        self.name_lower = parse_encode(dict['lowername'])
         self.name = parse_encode(dict['name'])
         self.rel_speed = dict['relspeed']  # Speed ranking to other classes
-        self.shortname = parse_encode(dict['shortname'])
+        self.name_short = parse_encode(dict['shortname'])
         # Creating subclass from nested list
         self.cars = [Car(x) for x in dict['carsinclass']]
 
@@ -28,8 +28,8 @@ class Season:
         self.active = data.get('active')
         self.cat_id = data.get('catid')
         self.category = data.get('category')
-        self.date_end = data.get('end')
-        self.date_start = data.get('start')
+        self.date_end = datetime_from_iracing_timestamp(data.get('end'))
+        self.date_start = datetime_from_iracing_timestamp(data.get('start'))
         self.is_lite = data.get('islite')
         self.license_eligible = data.get('licenseEligible')
         self.race_week = data.get('raceweek')
@@ -60,7 +60,7 @@ class Season:
         def __init__(self, data):
             super().__init__(data)
             self.id = data['id']
-            self.name = data['name']
+            self.name = parse_encode(data['name'])
             self.name_lower = parse_encode(data['lowername'])
             self.pkg_id = data['pkgid']
             self.sku = data['sku']
@@ -92,9 +92,11 @@ class DriverStatus:
     def __init__(self, dict):
         status = dict['status']
 
-        self.name = status.get('name')
-        self.last_login = datetime_from_iracing_timestamp(status.get('lastLogin'))
-        self.last_seen = datetime_from_iracing_timestamp(status.get('lastSeen'))
+        self.name = parse_encode(status.get('name'))
+        self.last_login = datetime_from_iracing_timestamp(
+            status.get('lastLogin'))
+        self.last_seen = datetime_from_iracing_timestamp(
+            status.get('lastSeen'))
         self.broadcast = status.get('broadcast')
         self.driver_changes = status.get('driverChanges')
         self.users_max = status.get('maxUsers')

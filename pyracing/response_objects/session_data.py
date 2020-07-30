@@ -1,3 +1,4 @@
+from ..helpers import parse_encode
 
 
 class SubSessionData:
@@ -32,15 +33,15 @@ class SubSessionData:
         self.rubber_race = dict['rubberlevel_race']
         self.rubber_warmup = dict['rubberlevel_warmup']
         self.season_id = dict['seasonid']
-        self.season_name = dict['season_name']
-        self.season_name_short = dict['season_shortname']
+        self.season_name = parse_encode(dict['season_name'])
+        self.season_name_short = parse_encode(dict['season_shortname'])
         self.season_quarter = dict['season_quarter']
         self.season_year = dict['season_year']
         self.series_id = dict['seriesid']
-        self.series_name = dict['series_name']
-        self.series_name_short = dict['series_shortname']
+        self.series_name = parse_encode(dict['series_name'])
+        self.series_name_short = parse_encode(dict['series_shortname'])
         self.session_id = dict['sessionid']
-        self.session_name = dict['sessionname']
+        self.session_name = parse_encode(dict['sessionname'])
         self.sim_ses_type = dict['simsestype']
         self.skies = dict['weather_skies']
         self.special_event_type = dict['specialeventtype']
@@ -52,10 +53,10 @@ class SubSessionData:
         self.temp_unit = dict['weather_temp_units']
         self.temp_value = dict['weather_temp_value']
         self.time_of_day = dict['timeofday']
-        self.time_start = dict['start_time']
-        self.time_start_sim = dict['simulatedstarttime']
-        self.track = dict['track_name']
-        self.track_config = dict['track_config_name']
+        self.time_start = parse_encode(dict['start_time'])
+        self.time_start_sim = parse_encode(dict['simulatedstarttime'])
+        self.track = parse_encode(dict['track_name'])
+        self.track_config = parse_encode(dict['track_config_name'])
         self.track_id = dict['trackid']
         self.weather_initial = dict['weather_var_initial']
         self.weather_ongoing = dict['weather_var_ongoing']
@@ -64,13 +65,13 @@ class SubSessionData:
         self.wind_speed_unit = dict['weather_wind_speed_units']
         self.wind_speed_value = dict['weather_wind_speed_value']
 
-        self.driver = [self.Driver(x) for x in dict['rows']]
+        self.drivers = [self.Driver(x) for x in dict['rows']]
 
     class Driver:
         def __init__(self, dict):
             self.car_class_id = dict['carclassid']
-            self.car_class_name = dict['ccName']
-            self.car_class_name_short = dict['ccNameShort']
+            self.car_class_name = parse_encode(dict['ccName'])
+            self.car_class_name_short = parse_encode(dict['ccNameShort'])
             self.car_color_1 = dict['car_color1']
             self.car_color_2 = dict['car_color2']
             self.car_color_3 = dict['car_color3']
@@ -85,18 +86,18 @@ class SubSessionData:
             self.car_sponser_1 = dict['carsponsor1']
             self.car_sponser_2 = dict['carsponsor2']
             self.club_id = dict['clubid']
-            self.club_name = dict['clubname']
-            self.club_name_short = dict['clubshortname']
+            self.club_name = parse_encode(dict['clubname'])
+            self.club_name_short = parse_encode(dict['clubshortname'])
             self.club_points = dict['clubpoints']
             self.cpi_new = dict['newcpi']
             self.cpi_old = dict['oldcpi']
             self.cust_id = dict['custid']
             self.damage_model = dict['damage_model']
-            self.display_name = dict['displayname']
+            self.display_name = parse_encode(dict['displayname'])
             self.division = dict['division']
-            self.division_name = dict['divisionname']
+            self.division_name = parse_encode(dict['divisionname'])
             self.drop_race = dict['dropracepoints']
-            self.event_type_name = dict['evttypename']
+            self.event_type_name = parse_encode(dict['evttypename'])
             self.group_id = dict['groupid']
             self.heat_info_id = dict['heatinfoid']
             self.helm_color_1 = dict['helm_color1']
@@ -122,7 +123,7 @@ class SubSessionData:
             self.laps_led = dict['lapslead']
             self.laps_opt_comp = dict['optlapscomplete']
             self.league_points = dict['league_points']
-            self.license_category = dict['licensecategory']
+            self.license_category = parse_encode(dict['licensecategory'])
             self.license_change_oval = dict['license_change_oval']
             self.license_change_road = dict['license_change_road']
             self.license_class = dict['licensegroup']
@@ -137,12 +138,12 @@ class SubSessionData:
             self.pos_finish = dict['finishpos']
             self.pos_finish_class = dict['finishposinclass']
             self.pos_start = dict['startpos']
-            self.reason_out = dict['reasonout']
+            self.reason_out = parse_encode(dict['reasonout'])
             self.reason_out_id = dict['reasonoutid']
-            self.restrict_results = dict['restrictresults']
-            self.sim_ses_name = dict['simsesname']
+            self.restrict_results = parse_encode(dict['restrictresults'])
+            self.sim_ses_name = parse_encode(dict['simsesname'])
             self.sim_ses_num = dict['simsesnum']
-            self.sim_ses_type_name = dict['simsestypename']
+            self.sim_ses_type_name = parse_encode(dict['simsestypename'])
             self.sub_level_new = dict['newsublevel']
             self.sub_level_old = dict['oldsublevel']
             self.suit_color_1 = dict['suit_color1']
@@ -151,21 +152,21 @@ class SubSessionData:
             self.suit_pattern = dict['suit_pattern']
             self.time_session_start = dict['sessionstarttime']
             self.track_cat_id = dict['track_catid']
-            self.track_category = dict['track_category']
+            self.track_category = parse_encode(dict['track_category'])
             self.ttrating_new = dict['newttrating']
             self.ttrating_old = dict['oldttrating']
             self.vehicle_key_id = dict['vehiclekeyid']
             self.weight_penalty_kg = dict['weight_penalty_kg']
             self.wheel_chrome = dict['wheel_chrome']
-            self.wheel_color = dict['wheel_color']
+            self.wheel_color = parse_encode(dict['wheel_color'])
 
 
 # Race laps for all drivers of a session
 class RaceLapsAll:
     def __init__(self, dict):
         self.details = self.Details(dict['details'])
-        self.driver = [self.Driver(x) for x in dict['startgrid']]
-        self.lap_data = [self.LapData(x) for x in dict['lapdata']]
+        self.drivers = [self.Driver(x) for x in dict['startgrid']]
+        self.laps = [self.Lap(x) for x in dict['lapdata']]
 
     class Details:
         def __init__(self, dict):
@@ -173,30 +174,31 @@ class RaceLapsAll:
             self.date_unix_utc_ms = dict['eventDateUTCMilliSecs']
             self.driver_changes = dict['driverChanges']
             self.event_type = dict['eventType']
-            self.event_type_name = dict['eventTypeName']
+            self.event_type_name = parse_encode(dict['eventTypeName'])
             self.laps_for_qual_avg = dict['nLapsForQualAvg']
             self.laps_for_solo_avg = dict['nLapsForSoloAvg']
             self.official = dict['officialSession']
             self.private_session_id = dict['privateSessionID']
-            self.private_session_name = dict['privateSessionName']
-            self.race_panel_img = dict['race_panel_img']
+            self.private_session_name = parse_encode(
+                                        dict['privateSessionName'])
+            self.race_panel_img = parse_encode(dict['race_panel_img'])
             self.race_week = dict['raceWeek']
             self.season_id = dict['seasonID']
-            self.season_name = dict['seasonName']
-            self.season_name_short = dict['seasonShortName']
-            self.series_name = dict['seriesName']
-            self.series_name_short = dict['seriesShortName']
+            self.season_name = parse_encode(dict['seasonName'])
+            self.season_name_short = parse_encode(dict['seasonShortName'])
+            self.series_name = parse_encode(dict['seriesName'])
+            self.series_name_short = parse_encode(dict['seriesShortName'])
             self.session_id = dict['sessionId']
             self.subsession_id = dict['subSessionId']
-            self.track = dict['trackName']
-            self.track_config = dict['trackConfig']
+            self.track = parse_encode(dict['trackName'])
+            self.track_config = parse_encode(dict['trackConfig'])
             self.track_id = dict['trackid']
 
     class Driver:
         def __init__(self, dict):
             self.car_num = dict['carnum']
             self.cust_id = dict['custid']
-            self.display_name = dict['displayName']
+            self.display_name = parse_encode(dict['displayName'])
             self.friend = dict['friend']
             self.group_id = dict['groupid']
             self.helmet_color_1 = dict['helmetColor1']
@@ -213,7 +215,7 @@ class RaceLapsAll:
             self.pos_start = dict['startPos']
             self.watch = dict['watch']
 
-    class LapData:
+    class Lap:
         def __init__(self, dict):
             self.car_num = dict['carnum']
             self.cust_id = dict['custid']
@@ -227,9 +229,9 @@ class RaceLapsDriver:
     def __init__(self, dict):
         self.drivers = [self.Driver(x) for x in dict['drivers']]
         self.header = self.Header(dict['header'])
-        self.lap_data = [self.LapData(x) for x in dict['lapData']]
+        self.laps = [self.Lap(x) for x in dict['lapData']]
 
-    class LapData:
+    class Lap:
         def __init__(self, dict):
             self.cust_id = dict['custid']
             self.flags = dict['flags']
@@ -247,28 +249,28 @@ class RaceLapsDriver:
             self.date_unix_utc_ms = dict['eventDateUTCMilliSecs']
             self.event_date = dict['eventDate']
             self.event_type = dict['eventtype']
-            self.event_type_name = dict['eventTypeName']
+            self.event_type_name = parse_encode(dict['eventTypeName'])
             self.laps_for_qual = dict['nlapsforqual']
             self.laps_for_solo = dict['nlapsforsolo']
-            self.season_name = dict['seasonName']
-            self.season_name_short = dict['seasonShortName']
-            self.series_name = dict['seriesName']
-            self.series_name_short = dict['seriesShortName']
+            self.season_name = parse_encode(dict['seasonName'])
+            self.season_name_short = parse_encode(dict['seasonShortName'])
+            self.series_name = parse_encode(dict['seriesName'])
+            self.series_name_short = parse_encode(dict['seriesShortName'])
             self.session_id = dict['sessionId']
             self.subsession_id = dict['subSessionId']
             self.suit_color_1 = dict['suitColor1']
             self.suit_color_2 = dict['suitColor2']
             self.suit_color_3 = dict['suitColor3']
             self.suit_pattern = dict['suitPattern']
-            self.team_name = dict['teamName']
-            self.track_config = dict['trackConfig']
+            self.team_name = parse_encode(dict['teamName'])
+            self.track_config = parse_encode(dict['trackConfig'])
             self.track_id = dict['trackID']
-            self.track_name = dict['trackName']
+            self.track_name = parse_encode(dict['trackName'])
 
     class Driver:
         def __init__(self, dict):
             self.cust_id = dict['custid']
-            self.display_name = dict['displayname']
+            self.display_name = parse_encode(dict['displayname'])
             self.helm_color_1 = dict['helm_color1']
             self.helm_color_2 = dict['helm_color2']
             self.helm_color_3 = dict['helm_color3']
