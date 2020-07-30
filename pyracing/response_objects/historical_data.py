@@ -269,7 +269,7 @@ class SeriesRaceResults:
 
 class Team:
     def __init__(self, dict):
-        self.cars = parse_encode(dict['cars']))
+        self.cars = parse_encode(dict['cars'])
         self.class_finish_pos_avg = dict['avgclassfinishingposition']
         self.class_poles = dict['classpoles']
         self.class_size_of_field_avg = dict['avgclasssizeoffield']
