@@ -18,29 +18,7 @@ markdown_extensions:
 nav:
   - Introduction: index.md
   - List of Methods: methods.md
-  - Data Points:
-    - 'response-objects\active_op_count.md'
-    - 'response-objects\car_class.md'
-    - 'response-objects\career_stats.md'
-    - 'response-objects\current_seasons.md'
-    - 'response-objects\driver_stats.md'
-    - 'response-objects\event_results.md'
-    - 'response-objects\last_races_stats.md'
-    - 'response-objects\last_series.md'
-    - 'response-objects\next_event.md'
-    - 'response-objects\next_session_times.md'
-    - 'response-objects\personal_bests.md'
-    - 'response-objects\private_results.md'
-    - 'response-objects\race_guide.md'
-    - 'response-objects\race_laps_all.md'
-    - 'response-objects\race_laps_driver.md'
-    - 'response-objects\season_standings.md'
-    - 'response-objects\series_race_results.md'
-    - 'response-objects\subsession_data.md'
-    - 'response-objects\world_records.md'
-    - 'response-objects\yearly_stats.md'
-
-
+  - Data Points: datapoints.md
   - Modules: modules.md
   - Contributing: contributing.md
 
