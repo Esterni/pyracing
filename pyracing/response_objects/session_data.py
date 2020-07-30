@@ -165,7 +165,7 @@ class RaceLapsAll:
     def __init__(self, dict):
         self.details = self.Details(dict['details'])
         self.drivers = [self.Driver(x) for x in dict['startgrid']]
-        self.lap_data = [self.LapData(x) for x in dict['lapdata']]
+        self.lap_data = [self.Lap(x) for x in dict['lapdata']]
 
     class Details:
         def __init__(self, dict):
@@ -213,7 +213,7 @@ class RaceLapsAll:
             self.pos_start = dict['startPos']
             self.watch = dict['watch']
 
-    class LapData:
+    class Lap:
         def __init__(self, dict):
             self.car_num = dict['carnum']
             self.cust_id = dict['custid']
@@ -227,9 +227,9 @@ class RaceLapsDriver:
     def __init__(self, dict):
         self.drivers = [self.Driver(x) for x in dict['drivers']]
         self.header = self.Header(dict['header'])
-        self.lap_data = [self.LapData(x) for x in dict['lapData']]
+        self.lap_data = [self.Lap(x) for x in dict['lapData']]
 
-    class LapData:
+    class Lap:
         def __init__(self, dict):
             self.cust_id = dict['custid']
             self.flags = dict['flags']
