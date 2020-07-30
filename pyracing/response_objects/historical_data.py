@@ -158,11 +158,11 @@ class WorldRecords:
         self.practice_start_time = dict['8']
         self.practice_subsession_id = dict['13']
         self.qualify = parse_encode(dict['15'])
-        self.qualify_subsession_id = ['36']
+        self.qualify_subsession_id = dict['36']
         self.qualify_time_start = dict['21']
         self.race = parse_encode(dict['19'])
         self.race_start_time = dict['18']
-        self.race_subsession_id = ['11']
+        self.race_subsession_id = dict['11']
         self.region = parse_encode(dict['34'])
         self.row = dict['33']
         self.season_quarter = parse_encode(dict['12'])
@@ -171,7 +171,7 @@ class WorldRecords:
         self.timetrial = parse_encode(dict['37'])
         self.track_id = dict['5']
         self.tt_start_time = dict['25']
-        self.tt_subsession_id = ['1']
+        self.tt_subsession_id = dict['1']
         self.ttrating = dict['24']
         # Data not used in the 'r' dictionary. Only for webpage display.
         # self.custrow = dict['16']
