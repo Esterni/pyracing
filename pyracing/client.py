@@ -67,7 +67,6 @@ class Client:
             self.log.info("No cookies in cookie jar.")
             await self._authenticate()
 
-        params = self.cleanup_payload(payload)
 
         self.log.info(f'Request being sent to: {url} with params: {params}')
 
