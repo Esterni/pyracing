@@ -783,7 +783,6 @@ class Client:
 
         return [career_stats.YearlyStats(x) for x in response.json()]
     def cleanup_payload(payload):
-            if payload.get(key) is None:
                 delattr(payload, key)
         
         return payload
