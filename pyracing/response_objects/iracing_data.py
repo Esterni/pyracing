@@ -13,7 +13,7 @@ class CarClass:
     def __init__(self, dict):
         self.cust_id = dict['custid']
         self.id = dict['id']
-        self.name_lower = dict['lowername']
+        self.name_lower = parse_encode(dict['lowername'])
         self.name = parse_encode(dict['name'])
         self.rel_speed = dict['relspeed']  # Speed ranking to other classes
         self.name_short = parse_encode(dict['shortname'])
@@ -60,7 +60,7 @@ class Season:
         def __init__(self, data):
             super().__init__(data)
             self.id = data['id']
-            self.name = data['name']
+            self.name = parse_encode(data['name'])
             self.name_lower = parse_encode(data['lowername'])
             self.pkg_id = data['pkgid']
             self.sku = data['sku']
