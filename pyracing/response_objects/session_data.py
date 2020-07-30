@@ -146,9 +146,9 @@ class SubSessionData:
             self.sim_ses_type_name = parse_encode(dict['simsestypename'])
             self.sub_level_new = dict['newsublevel']
             self.sub_level_old = dict['oldsublevel']
-            self.suit_color_1 = parse_encode(dict['suit_color1'])
-            self.suit_color_2 = parse_encode(dict['suit_color2'])
-            self.suit_color_3 = parse_encode(dict['suit_color3'])
+            self.suit_color_1 = dict['suit_color1']
+            self.suit_color_2 = dict['suit_color2']
+            self.suit_color_3 = dict['suit_color3']
             self.suit_pattern = dict['suit_pattern']
             self.time_session_start = dict['sessionstarttime']
             self.track_cat_id = dict['track_catid']
