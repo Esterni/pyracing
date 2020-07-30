@@ -67,7 +67,6 @@ class Client:
             self.log.info("No cookies in cookie jar.")
             await self._authenticate()
 
-
         self.log.info(f'Request being sent to: {url} with params: {params}')
 
         response = await self.session.get(
