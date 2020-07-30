@@ -1,6 +1,6 @@
 # season_standings
 
-Data points returned from `Client.event_results()`
+Data points returned from `Client.season_standings()`
 
 ## SeasonStandings
 

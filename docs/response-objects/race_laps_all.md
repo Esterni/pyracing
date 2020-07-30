@@ -1,4 +1,5 @@
 # race_laps_all
+Data points returned from `Client.race_laps_all()`
 
 ## RaceLapsAll
 | Attributes |  Type  |         Example         |
