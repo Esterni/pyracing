@@ -783,5 +783,4 @@ class Client:
 
         return [career_stats.YearlyStats(x) for x in response.json()]
     def cleanup_payload(payload):
-        
         return payload
