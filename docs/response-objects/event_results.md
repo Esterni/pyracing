@@ -13,7 +13,7 @@ Data points returned from `Client.event_results()`
 |      date_start      |  str  |   '2020.06.20'    |
 |     display_name     |  str  | 'Jacob Anderson7' |
 |      event_type      |  int  |         5         |
-|      group_name      |  str  |     'Class+A'     |
+|      group_name      |  str  |     'Class A'     |
 |     helm_color_1     |  str  |     '111111'      |
 |     helm_color_2     |  str  |     '65b82f'      |
 |     helm_color_3     |  str  |     '172c59'      |

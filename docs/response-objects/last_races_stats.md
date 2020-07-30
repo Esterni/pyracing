@@ -19,4 +19,4 @@ Data points returned from `Client.last_races_stats()`
 |       track       |  str  | 'Autódromo José Carlos Pace' |
 |  winner_cust_id   |  int  |            19126             |
 |  winner_laps_led  |  int  |              20              |
-|    winner_name    |  str  |        'Charlie+Bass'        |
+|    winner_name    |  str  |        'Charlie Bass'        |

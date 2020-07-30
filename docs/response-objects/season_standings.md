@@ -10,7 +10,7 @@ Data points returned from `Client.season_standings()`
 |     club_name     |  str  |    'UK and I'    |
 |      country      |  str  | 'United Kingdom' |
 |   country_code    |  str  |       'GB'       |
-|   country_name    |  str  | 'United+Kingdom' |
+|   country_name    |  str  | 'United Kingdom' |
 |      cust_id      |  int  |      55441       |
 |   display_name    |  str  |  'Mark Ussher'   |
 |     division      |  int  |        0         |

@@ -28,7 +28,7 @@ Data points returned from `Client.current_seasons()`
 | Attribute  | Type  |         Example         |
 | :--------: | :---: | :---------------------: |
 |     id     |  int  |           67            |
-|    name    |  str  | 'Global+Mazda+MX-5+Cup' |
+|    name    |  str  | 'Global Mazda MX-5 Cup' |
 | name_lower |  str  | 'global mazda mx-5 cup' |
 |   pkg_id   |  int  |           182           |
 |    sku     |  int  |          10394          |
@@ -53,12 +53,12 @@ Data points returned from `Client.current_seasons()`
 
 |     Attribute     | Type  |        Example        |
 | :---------------: | :---: | :-------------------: |
-|      custid       |  int  |           0           |
+|      cust_id      |  int  |           0           |
 |        id         |  int  |          74           |
-|     lowername     |  str  | 'mazda+mx-5+cup+2016' |
+|    name_lower     |  str  | 'mazda mx-5 cup 2016' |
 |       name        |  str  | 'Mazda MX-5 Cup 2016' |
 |     rel_speed     |  int  |          33           |
-|     shortname     |  str  |    'MX5 Cup 2016'     |
+|    name_short     |  str  |    'MX5 Cup 2016'     |
 |       cars        | list  |    See [Car](#car)    |
 | tire_sets_dry_max |  int  |           0           |
 

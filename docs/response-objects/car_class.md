@@ -6,12 +6,12 @@ Data points returned from `Client.car_class()`
 
 | Attributes | Type  |          Example          |
 | :--------: | :---: | :-----------------------: |
-|   custid   |  int  |             0             |
+|  cust_id   |  int  |             0             |
 |     id     |  int  |             1             |
-| lowername  |  str  | 'skip+barber+race+series' |
+| name_lower |  str  | 'skip barber race series' |
 |    name    |  str  | 'Skip Barber Race Series' |
 | rel_speed  |  int  |            40             |
-| shortname  |  str  |          'SBRS'           |
+| name_short |  str  |          'SBRS'           |
 |    cars    | list  |      See [Car](#car)      |
 
 ### Car
