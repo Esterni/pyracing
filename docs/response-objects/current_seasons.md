@@ -22,6 +22,7 @@ Data points returned from `Client.current_seasons()`
 |        cars         | list  |      See [SeasonCar](#seasoncar)      |
 |       tracks        | list  |          See [Track](#track)          |
 |     car_classes     | list  | See [SeasonCarClass](#seasoncarclass) |
+
 ### SeasonCar
 
 | Attribute  | Type  |         Example         |

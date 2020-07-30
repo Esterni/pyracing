@@ -1,4 +1,9 @@
 # driver_stats
+
+Data points returned from `Client.driver_stats()`
+
+## DriverStats
+
 |     Attributes     | Type  |      Example      |
 | :----------------: | :---: | :---------------: |
 |      club_id       |  int  |        33         |
