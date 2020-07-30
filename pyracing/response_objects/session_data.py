@@ -64,7 +64,7 @@ class SubSessionData:
         self.wind_speed_unit = dict['weather_wind_speed_units']
         self.wind_speed_value = dict['weather_wind_speed_value']
 
-        self.driver = [self.Driver(x) for x in dict['rows']]
+        self.drivers = [self.Driver(x) for x in dict['rows']]
 
     class Driver:
         def __init__(self, dict):
@@ -164,7 +164,7 @@ class SubSessionData:
 class RaceLapsAll:
     def __init__(self, dict):
         self.details = self.Details(dict['details'])
-        self.driver = [self.Driver(x) for x in dict['startgrid']]
+        self.drivers = [self.Driver(x) for x in dict['startgrid']]
         self.lap_data = [self.LapData(x) for x in dict['lapdata']]
 
     class Details:
