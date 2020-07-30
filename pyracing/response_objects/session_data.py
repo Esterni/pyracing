@@ -26,7 +26,7 @@ class SubSessionData:
         self.points_type = parse_encode(dict['pointstype'])
         self.private_session_id = dict['privatesessionid']
         self.race_week = dict['race_week_num']
-        self.reserve_status = parse_encode(['rserv_status'])
+        self.reserve_status = parse_encode(dict['rserv_status'])
         self.rubber_practice = dict['rubberlevel_practice']
         self.rubber_qualify = dict['rubberlevel_qualify']
         self.rubber_race = dict['rubberlevel_race']
@@ -165,7 +165,7 @@ class RaceLapsAll:
     def __init__(self, dict):
         self.details = self.Details(dict['details'])
         self.drivers = [self.Driver(x) for x in dict['startgrid']]
-        self.lap_data = [self.Lap(x) for x in dict['lapdata']]
+        self.lap = [self.Lap(x) for x in dict['lapdata']]
 
     class Details:
         def __init__(self, dict):
@@ -227,7 +227,7 @@ class RaceLapsDriver:
     def __init__(self, dict):
         self.drivers = [self.Driver(x) for x in dict['drivers']]
         self.header = self.Header(dict['header'])
-        self.lap_data = [self.Lap(x) for x in dict['lapData']]
+        self.lap = [self.Lap(x) for x in dict['lapData']]
 
     class Lap:
         def __init__(self, dict):
