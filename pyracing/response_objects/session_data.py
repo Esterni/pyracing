@@ -79,7 +79,7 @@ class SubSessionData:
             self.car_num_font = dict['carnumberfont']
             self.car_num_slant = dict['carnumberslant']
             self.car_number_color_1 = parse_encode(dict['car_number_color1'])
-            self.car_number_color_2 = parse_encode(dict['car_number_color2)
+            self.car_number_color_2 = parse_encode(dict['car_number_color2'])
             self.car_number_color_3 = parse_encode(dict['car_number_color3'])
             self.car_pattern = dict['car_pattern']
             self.car_sponser_1 = dict['carsponsor1']
