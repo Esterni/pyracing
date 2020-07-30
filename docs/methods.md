@@ -11,10 +11,10 @@ While some of these endpoints reveal data that can't be found anywhere else, oth
     We do not currently offer error handling in the event of an invalid *input*. Data returned from iRacing is mapped into objects based on the specific dictionary key values that they give us. When a reponse is an empty dictionary (due to an invalid input to iRacing) you will recieve an error. We plan to modify this to return a None object with a warning instead so that the program won't crash.  
 
 ## Driver Data
-Data returned from these methods require a driver (cust_id) to be included in the query parameters. A good example is `event_results()`. It can return all kinds of different race results, but only results that are related to a driver in question. For all results of a series, go to [series_race_results()](#series_race_results)
+Data returned from these methods require a driver (cust_id) to be included in the query parameters. A good example is `event_results()`; It can return all kinds of different race results, but only ones related to a specific `cust_id`. For all results of a series, go to [series_race_results()](#series_race_results)
 
 ### career_stats()
-Returns a driver’s career stats as seen on iRacing's [Career Profile](https://members.iracing.com/membersite/member/CareerStats.do).
+Returns a list of [CareerStats objects](datapoints.md#careerstats_1) as seen on iRacing's [Career Profile](https://members.iracing.com/membersite/member/CareerStats.do).
 
 | Args/Kwargs | Description                            |
 | :---------- | :------------------------------------- |
@@ -22,7 +22,7 @@ Returns a driver’s career stats as seen on iRacing's [Career Profile](https://
 
 
 ### driver_stats()
-Returns a list of drivers that match the given parameters. This is the backend source for iRacing's [Driver Stats Page](https://members.iracing.com/membersite/member/DriverLookup.do).
+Returns a list of [DriverStats objects](datapoints.md#driverstats) that match the given parameters. This is the backend source for iRacing's [Driver Stats Page](https://members.iracing.com/membersite/member/DriverLookup.do).
 
 This method provides functionality that the iRacing page does not. It search drivers by name. It is arguably the easiest method to obtain driver information.
 
@@ -55,7 +55,7 @@ Returns friends list for the person logged in. (gold star for least useful)
 | blacklisted=1 | Toggles display of blacklisted drivers in results.                                                                                                                                       |
 
 ### event_results()
-Returns a list of results that the driver has participated in. This is the backend data for iRacing's [My Series Results](https://members.iracing.com/membersite/member/results.jsp). Contains the summary information about the results of the event. For detailed information about a specific session, see: [subsession_data()](#subsession_data).
+Returns a list of [EventResults objects](datapoints.md#eventresults) that the driver has participated in. This is the backend data for iRacing's [My Series Results](https://members.iracing.com/membersite/member/results.jsp). Contains the summary information about the results of the event. For detailed information about a specific session, see: [subsession_data()](#subsession_data).
 
 | Args/Kwargs                                                                                                         | Description                                                                                                                                                                                                                 |
 | :------------------------------------------------------------------------------------------------------------------ | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -87,7 +87,7 @@ Accessing irating.current() will give the most recent irating of a user.
 
 
 ### last_races_stats()
-Returns a stat summary for the driver's last 10 races; used in the membersite's [Career Profile](https://members.iracing.com/membersite/member/CareerStats.do) "Last 10 Races" table.
+Returns a list of [LastRacesStats objects](datapoints.md#lastracesstats) with each object representing a race for the driver's last 10 races; used in the membersite's [Career Profile](https://members.iracing.com/membersite/member/CareerStats.do) "Last 10 Races" table.
 
 | Args/Kwargs | Description                     |
 | :---------- | :------------------------------ |
@@ -95,7 +95,7 @@ Returns a stat summary for the driver's last 10 races; used in the membersite's 
 
 
 ### last_series()
-Returns a summary of stats about a driver's last 3 series; Used in the membersite's [Career Profile](https://members.iracing.com/membersite/member/CareerStats.do) "Last 3 Series" table.
+Returns a list of [LastSeries objects](datapoints.md#lastseries) each representing 1 of the driver's last 3 series; Used in the membersite's [Career Profile](https://members.iracing.com/membersite/member/CareerStats.do) "Last 3 Series" table.
 
 | Args/Kwargs | Description                      |
 | :---------- | :------------------------------- |
@@ -111,7 +111,7 @@ See the LicenseClass class for how to further use this data. (Link to page comin
 | category    | Selects the race discipline. The `Category` enum from `constants` module can be used here. |
 
 ### member_cars_driven()
-Returns which cars (list of `car_id`s) the member has driven.
+Returns a list of `car_id`s that the member has driven.
 
 | Args/Kwargs | Description                                    |
 | :---------- | :--------------------------------------------- |
@@ -137,7 +137,7 @@ Returns which subsession_id that a member was in from a given session_id. This m
 
 
 ### personal_bests()
-Returns the drivers best laptimes for the given car, as seen on the /CareerStats page.
+Returns a list of [PersonalBests objects](datapoints.md#personalbests) each representing a best laptime for every car/track/event_type combo, as seen on the /CareerStats page.
 
 | Args/Kwargs | Description                                    |
 | :---------- | :--------------------------------------------- |
@@ -146,7 +146,7 @@ Returns the drivers best laptimes for the given car, as seen on the /CareerStats
 
 
 ### race_laps_driver()
-Returns data for all laps completed of a single driver. sim_sess_id specifies the laps from practice, qual, or race.
+Returns a single [RaceLapsDriver object](datapoints.md#racelapsdriver) containing nested [Driver](datapoints.md#driver_2) data for all laps completed of a single driver. sim_sess_id specifies the laps from practice, qual, or race.
 
 | Args/Kwargs                                    | Description                                                                                                                                    |
 | :--------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------- |
