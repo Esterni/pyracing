@@ -782,7 +782,6 @@ class Client:
             return []
 
         return [career_stats.YearlyStats(x) for x in response.json()]
-    
     @staticmethod
     def cleanup_payload(payload):
         for key in payload.copy():
