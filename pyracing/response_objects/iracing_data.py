@@ -11,12 +11,12 @@ class Car:
 # Common denominator for CarClass attributes across all data.
 class CarClass:
     def __init__(self, dict):
-        self.custid = dict['custid']
+        self.cust_id = dict['custid']
         self.id = dict['id']
-        self.lowername = dict['lowername']
+        self.name_lower = dict['lowername']
         self.name = parse_encode(dict['name'])
         self.rel_speed = dict['relspeed']  # Speed ranking to other classes
-        self.shortname = parse_encode(dict['shortname'])
+        self.name_short = parse_encode(dict['shortname'])
         # Creating subclass from nested list
         self.cars = [Car(x) for x in dict['carsinclass']]
 
