@@ -8,7 +8,10 @@ from pyracing.response_objects import career_stats, chart_data, iracing_data, \
 import unittest
 
 dotenv.load_dotenv()
-client = pyracing.Client(os.getenv('IRACING_USERNAME'), os.getenv('IRACING_PASSWORD'))
+client = pyracing.Client(
+    os.getenv('IRACING_USERNAME'),
+    os.getenv('IRACING_PASSWORD')
+    )
 
 
 def async_test(f):
@@ -62,7 +65,10 @@ class ClientTest(unittest.TestCase):
 
     @async_test
     async def test_license_class(self):
-        response = await client.license_class(499343, constants.Category.road.value)
+        response = await client.license_class(
+            499343,
+            constants.Category.road.value
+            )
         self.assertIsInstance(response, chart_data.ChartData)
         for license_class in response.list:
             self.assertIsInstance(license_class, chart_data.LicenseClass)
@@ -103,7 +109,10 @@ class ClientTest(unittest.TestCase):
 
     @async_test
     async def test_member_subsession_id_from_session(self):
-        response = await client.member_subsession_id_from_session(499343, 134975301)
+        response = await client.member_subsession_id_from_session(
+            499343,
+            134975301
+            )
         self.assertIsInstance(response, int)
 
     @async_test
@@ -120,7 +129,10 @@ class ClientTest(unittest.TestCase):
     async def test_next_session_times(self):
         response = await client.next_session_times(2826)
         for session_time in response:
-            self.assertIsInstance(session_time, upcoming_events.NextSessionTimes)
+            self.assertIsInstance(
+                session_time,
+                upcoming_events.NextSessionTimes
+                )
 
     @async_test
     async def test_personal_bests(self):

@@ -1,5 +1,6 @@
 from ..helpers import parse_encode
 
+
 class SubSessionData:
     def __init__(self, dict):
         self.cat_id = dict['catid']
@@ -19,7 +20,7 @@ class SubSessionData:
         self.laps_for_qual_avg = dict['nlapsforqualavg']
         self.laps_for_solo_avg = dict['nlapsforsoloavg']
         self.lead_changes = dict['nleadchanges']
-        self.league_id = dict['leagueid'] 
+        self.league_id = dict['leagueid']
         self.league_season_id = dict['league_season_id']
         self.leave_marbles = dict['leavemarbles']
         self.max_weeks = dict['maxweeks']
@@ -178,7 +179,8 @@ class RaceLapsAll:
             self.laps_for_solo_avg = dict['nLapsForSoloAvg']
             self.official = dict['officialSession']
             self.private_session_id = dict['privateSessionID']
-            self.private_session_name = parse_encode(dict['privateSessionName'])
+            self.private_session_name = parse_encode(
+                                        dict['privateSessionName'])
             self.race_panel_img = parse_encode(dict['race_panel_img'])
             self.race_week = dict['raceWeek']
             self.season_id = dict['seasonID']

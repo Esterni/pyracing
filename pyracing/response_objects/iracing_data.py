@@ -93,8 +93,10 @@ class DriverStatus:
         status = dict['status']
 
         self.name = parse_encode(status.get('name'))
-        self.last_login = datetime_from_iracing_timestamp(status.get('lastLogin'))
-        self.last_seen = datetime_from_iracing_timestamp(status.get('lastSeen'))
+        self.last_login = datetime_from_iracing_timestamp(
+            status.get('lastLogin'))
+        self.last_seen = datetime_from_iracing_timestamp(
+            status.get('lastSeen'))
         self.broadcast = status.get('broadcast')
         self.driver_changes = status.get('driverChanges')
         self.users_max = status.get('maxUsers')

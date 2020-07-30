@@ -511,7 +511,8 @@ class Client:
         url = ct.URL_PRIVATE_RESULTS
         response = await self._build_request(url, payload)
 
-        return [historical_data.PrivateResults(x) for x in response.json()['rows']]
+        return [historical_data.PrivateResults(x) for
+                x in response.json()['rows']]
 
     async def race_guide(
             self,
@@ -574,7 +575,11 @@ class Client:
 
         To specify laps of a single driver, use race_laps_driver().
         """
-        payload = {'subsessionid': subsession_id, 'carclassid': car_class_id, 'simsesnum': sim_session_type}
+        payload = {
+            'subsessionid': subsession_id,
+            'carclassid': car_class_id,
+            'simsesnum': sim_session_type
+            }
         url = ct.URL_LAPS_ALL
         response = await self._build_request(url, payload)
 

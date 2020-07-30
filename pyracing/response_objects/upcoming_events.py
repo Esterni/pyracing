@@ -1,5 +1,6 @@
 from ..helpers import datetime_from_iracing_timestamp, parse_encode
 
+
 class NextEvent:
     def __init__(self, dict):
         self.driver_count = dict['drivercount']
@@ -74,7 +75,8 @@ class RaceGuide:
         self.eligible = dict['eligible']
         self.image = parse_encode(dict['image'])
         self.meets_participation_req = dict['mpr']
-        self.season_schedule = [self.Schedule(x) for x in dict['seasonSchedules']]
+        self.season_schedule = [self.Schedule(x) for
+                                x in dict['seasonSchedules']]
         self.series_id = dict['seriesID']
         self.series_name = parse_encode(dict['seriesName'])
 
@@ -88,7 +90,8 @@ class RaceGuide:
             self.open_practice_sessions = dict['openPracticeSessions']
             self.race = [self.Race(x) for x in dict['races']]
             self.season_id = dict['seasonID']
-            self.season_start_date = datetime_from_iracing_timestamp(dict['seasonStartDate'])
+            self.season_start_date = datetime_from_iracing_timestamp(
+                dict['seasonStartDate'])
 
         class Race:
             def __init__(self, dict):
@@ -108,14 +111,17 @@ class RaceGuide:
                 self.standing_start = dict['standingStart']
                 self.temp_unit = dict['weatherTempUnits']
                 self.temp_value = dict['weatherTempValue']
-                self.time_end = datetime_from_iracing_timestamp(dict['endTime'])
+                self.time_end = datetime_from_iracing_timestamp(
+                    dict['endTime'])
                 self.time_of_day = dict['timeOfDay']
-                self.time_start = datetime_from_iracing_timestamp(dict['startTime'])
+                self.time_start = datetime_from_iracing_timestamp(
+                    dict['startTime'])
                 self.time_start_sim = parse_encode(dict['simulatedstarttime'])
                 self.track = parse_encode(dict['trackName'])
                 self.track_config = parse_encode(dict['trackConfigName'])
                 self.track_id = dict['trackID']
-                self.track_race_guide_img = parse_encode(dict['trackRaceGuideImg'])
+                self.track_race_guide_img = parse_encode(
+                    dict['trackRaceGuideImg'])
                 self.weather_initial = dict['weatherVarInitial']
                 self.weather_ongoing = dict['weatherVarOngoing']
                 self.weather_type = dict['weatherType']
