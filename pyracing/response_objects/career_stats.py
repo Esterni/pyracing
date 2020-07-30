@@ -57,7 +57,7 @@ class LastRacesStats:
         self.track = parse_encode(dict['trackName'])
         self.winner_cust_id = dict['winnerID']
         self.winner_laps_led = dict['winnerLL']
-        self.winner_name = dict['winnerName']
+        self.winner_name = parse_encode(dict['winnerName'])
 
 
 class LastSeries:

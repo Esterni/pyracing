@@ -10,10 +10,10 @@ class EventResults:
         self.date_start = parse_encode(dict['44'])
         self.display_name = parse_encode(dict['48'])
         self.event_type = dict['37']
-        self.group_name = dict['19']
+        self.group_name = parse_encode(dict['19'])
         self.helm_color_1 = dict['1']
-        self.helm_color_2 = parse_encode(dict['14'])
-        self.helm_color_3 = parse_encode(dict['13'])
+        self.helm_color_2 = dict['14']
+        self.helm_color_3 = dict['13']
         self.helm_license_level = dict['24']
         self.helm_pattern = dict['46']
         self.incidents = dict['39']
@@ -44,9 +44,9 @@ class EventResults:
         self.time_start_raw = dict['11']
         self.track_id = dict['30']
         self.winner_display_name = parse_encode(dict['31'])
-        self.winner_helm_color_1 = parse_encode(dict['5'])
+        self.winner_helm_color_1 = dict['5']
         self.winner_helm_color_2 = dict['2']
-        self.winner_helm_color_3 = parse_encode(dict['4'])
+        self.winner_helm_color_3 = dict['4']
         self.winner_helm_pattern = dict['36']
         self.winner_license_level = dict['25']
         self.winners_group_id = dict['27']
@@ -59,15 +59,15 @@ class SeasonStandings:
         self.club_id = dict['6']
         self.club_name = parse_encode(dict['23'])
         self.country = parse_encode(dict['1'])
-        self.country_code = parse_encode(dict['4'])
-        self.country_name = dict['32']
+        self.country_code = dict['4']
+        self.country_name = parse_encode(dict['32'])
         self.cust_id = dict['28']
         self.display_name = parse_encode(dict['26'])
         self.division = dict['11']
         self.dropped = dict['5']
-        self.helm_color_1 = parse_encode(dict['25'])
-        self.helm_color_2 = parse_encode(dict['27'])
-        self.helm_color_3 = parse_encode(dict['22'])
+        self.helm_color_1 = dict['25']
+        self.helm_color_2 = dict['27']
+        self.helm_color_3 = dict['22']
         self.helm_pattern = dict['20']
         self.incidents = dict['13']
         self.irating = dict['3']
@@ -97,15 +97,15 @@ class DriverStats:
         self.club_id = dict['5']
         self.club_name = parse_encode(dict['29'])
         self.club_points = dict['21']
-        self.country_code = parse_encode(dict['4'])
+        self.country_code = dict['4']
         self.cust_id = dict['34']
         self.display_name = parse_encode(dict['32'])
         self.field_size_avg = dict['13']
-        self.group_letter = parse_encode(dict['39'])
+        self.group_letter = dict['39']
         self.group_name = parse_encode(dict['24'])
-        self.helm_color_1 = parse_encode(dict['31'])
-        self.helm_color_2 = parse_encode(dict['33'])
-        self.helm_color_3 = parse_encode(dict['28'])
+        self.helm_color_1 = dict['31']
+        self.helm_color_2 = dict['33']
+        self.helm_color_3 = dict['28']
         self.helm_face_type = dict['36']
         self.helm_helmet_type = dict['10']
         self.helm_pattern = dict['22']
@@ -143,12 +143,12 @@ class WorldRecords:
         self.category = parse_encode(dict['35'])
         self.club_id = dict['7']
         self.club_name = parse_encode(dict['27'])
-        self.country_code = parse_encode(dict['6'])
+        self.country_code = dict['6']
         self.cust_id = dict['31']
         self.display_name = parse_encode(dict['29'])
-        self.helm_color_1 = parse_encode(dict['28'])
-        self.helm_color_2 = parse_encode(dict['30'])
-        self.helm_color_3 = parse_encode(dict['26'])
+        self.helm_color_1 = dict['28']
+        self.helm_color_2 = dict['30']
+        self.helm_color_3 = dict['26']
         self.helm_pattern = dict['22']
         self.irating = dict['4']
         self.license_class = parse_encode(dict['3'])
@@ -165,8 +165,8 @@ class WorldRecords:
         self.race_subsession_id = dict['11']
         self.region = parse_encode(dict['34'])
         self.row = dict['33']
-        self.season_quarter = parse_encode(dict['12'])
-        self.season_year = parse_encode(dict['17'])
+        self.season_quarter = dict['12']
+        self.season_year = dict['17']
         self.sub_level = dict['32']
         self.timetrial = parse_encode(dict['37'])
         self.track_id = dict['5']
@@ -181,7 +181,7 @@ class WorldRecords:
 class PrivateResults:
     def __init__(self, dict):
         self.car_class_id = dict['carclassid']
-        self.car_ids = dict['carids']
+        self.car_ids = parse_encode(dict['carids'])
         self.cat_id = dict['catid']
         self.created = dict['created']
         self.drivers_max = dict['maxdrivers']
@@ -208,7 +208,7 @@ class PrivateResults:
         self.lic_level_min = dict['minliclevel']
         self.lonequalify = dict['lonequalify']
         self.multiclass = dict['multiclass']
-        self.pct_fuel_fills_max = dict['max_pct_fuel_fills']
+        self.pct_fuel_fills_max = parse_encode(dict['max_pct_fuel_fills'])
         self.pos_finish = dict['finishingposition']
         self.pos_finish_class = dict['classfinishingposition']
         self.pos_start = dict['startingposition']
@@ -230,7 +230,7 @@ class PrivateResults:
         self.session_fast_lap = dict['sessionfastlap']
         self.session_id = dict['sessionid']
         self.session_id_private = dict['privatesessionid']
-        self.session_name = dict['sessionname']
+        self.session_name = parse_encode(dict['sessionname'])
         self.skies = dict['weather_skies']
         self.subsession_id = dict['subsessionid']
         self.subsession_time_finished = dict['subsessionfinishedat']
@@ -246,7 +246,7 @@ class PrivateResults:
         self.wind_speed_unit = dict['weather_wind_speed_units']
         self.wind_speed_value = dict['weather_wind_speed_value']
         self.winner_display_name = parse_encode(dict['winner_displayname'])
-        self.winner_display_names = dict['winner_displaynames']
+        self.winner_display_names = parse_encode(dict['winner_displaynames'])
         self.winner_group_id = dict['winnersgroupid']
         self.winner_helmet_color_1 = dict['winner_helmet_color1']
         self.winner_helmet_color_2 = dict['winner_helmet_color2']
@@ -269,7 +269,7 @@ class SeriesRaceResults:
 
 class Team:
     def __init__(self, dict):
-        self.cars = dict['cars']
+        self.cars = parse_encode(dict['cars']))
         self.class_finish_pos_avg = dict['avgclassfinishingposition']
         self.class_poles = dict['classpoles']
         self.class_size_of_field_avg = dict['avgclasssizeoffield']
@@ -298,7 +298,7 @@ class Team:
         self.laps_comp = dict['lapscomplete']
         self.laps_led = dict['lapslead']
         self.license_level = dict['licenselevel']
-        self.name = dict['name']
+        self.name = parse_encode(dict['name'])
         self.pattern = dict['pattern']
         self.team_id = dict['teamid']
         self.team_ranking = dict['team_ranking']

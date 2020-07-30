@@ -28,8 +28,8 @@ class Season:
         self.active = data.get('active')
         self.cat_id = data.get('catid')
         self.category = data.get('category')
-        self.date_end = data.get('end')
-        self.date_start = data.get('start')
+        self.date_end = datetime_from_iracing_timestamp(data.get('end'))
+        self.date_start = datetime_from_iracing_timestamp(data.get('start'))
         self.is_lite = data.get('islite')
         self.license_eligible = data.get('licenseEligible')
         self.race_week = data.get('raceweek')
@@ -92,7 +92,7 @@ class DriverStatus:
     def __init__(self, dict):
         status = dict['status']
 
-        self.name = status.get('name')
+        self.name = parse_encode(status.get('name'))
         self.last_login = datetime_from_iracing_timestamp(status.get('lastLogin'))
         self.last_seen = datetime_from_iracing_timestamp(status.get('lastSeen'))
         self.broadcast = status.get('broadcast')
