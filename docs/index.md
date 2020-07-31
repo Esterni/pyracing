@@ -79,7 +79,7 @@ asyncio.run(main())
     ```python
     list_of_season_objects = await ir.current_seasons()
     ```
-    This is the core of retrieving data with pyracing. Here the `current_seasons()` method, with no parameters, returns data for all currently active seasons of iRacing. It returns a list of [Season objects](response-objects/current_seasons.md)  
+    This is the core of retrieving data with pyracing. Here the `current_seasons()` method, with no parameters, returns data for all currently active seasons of iRacing. It returns a list of [Season objects](datapoints.md#season)  
     
     ??? Note "Using await"
         Because this is asynchronous code, you *must* `await` the method. It tells the event_loop to leave the function and come back to it later while it sends the request. For more on asynchronous programming, we recommend the [Complete Walkthrough from realpython.com](https://realpython.com/async-io-python/#where-does-async-io-fit-in)
