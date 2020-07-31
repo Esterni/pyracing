@@ -7,6 +7,7 @@ from .response_objects import chart_data, session_data, upcoming_events
 from datetime import datetime
 import httpx
 import time
+import json
 
 
 # This module authenticates a session, builds a URL query from parameters,
@@ -733,7 +734,6 @@ class Client:
         url = ct.URL_SUBS_RESULTS
         return await self._build_request(url, payload)
 
-    # TODO Does not return JSON format. Find how to convert.
     async def total_registered_all(self):
         """ Returns a list of every upcoming session and the number of
         drivers that have registered. This data is used in the small text
@@ -744,7 +744,12 @@ class Client:
         url = ct.URL_TOTALREGISTERED
         response = await self._build_request(url, payload)
 
-        return [upcoming_events.TotalRegistered(x) for x in response.json()]
+        # Add missing double quotes for JSON accepted format.
+        t = response.text.replace('registered', '"registered"')
+        t = t.replace('seasonid', '"seasonid"')
+        loaded = json.loads(t)
+
+        return [upcoming_events.TotalRegistered(x) for x in loaded]
 
     async def world_records(
         self,
