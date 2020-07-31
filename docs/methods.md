@@ -11,9 +11,11 @@ While some of these endpoints reveal data that can't be found anywhere else, oth
     We do not currently offer error handling in the event of an invalid *input*. Data returned from iRacing is mapped into objects based on the specific dictionary key values that they give us. When a reponse is an empty dictionary (due to an invalid input to iRacing) you will recieve an error. We plan to modify this to return a None object with a warning instead so that the program won't crash.  
 
 ## Driver Data
+
 Data returned from these methods require a driver (cust_id) to be included in the query parameters. A good example is `event_results()`; It can return all kinds of different race results, but only ones related to a specific `cust_id`. For all results of a series, go to [series_race_results()](#series_race_results)
 
 ### career_stats()
+
 Returns a list of [CareerStats objects](datapoints.md#careerstats_1) as seen on iRacing's [Career Profile](https://members.iracing.com/membersite/member/CareerStats.do).
 
 | Args/Kwargs | Description                            |
@@ -22,6 +24,7 @@ Returns a list of [CareerStats objects](datapoints.md#careerstats_1) as seen on 
 
 
 ### driver_stats()
+
 Returns a list of [DriverStats objects](datapoints.md#driverstats) that match the given parameters. This is the backend source for iRacing's [Driver Stats Page](https://members.iracing.com/membersite/member/DriverLookup.do).
 
 This method provides functionality that the iRacing page does not. It search drivers by name. It is arguably the easiest method to obtain driver information.
@@ -45,6 +48,7 @@ This method provides functionality that the iRacing page does not. It search dri
 | cust_id=None                                           | Does not affect returned data                                                                                                                                  |
 
 ### driver_status()
+
 Returns friends list for the person logged in. (gold star for least useful)
 
 | Args/Kwargs   | Description                                                                                                                                                                              |
@@ -55,6 +59,7 @@ Returns friends list for the person logged in. (gold star for least useful)
 | blacklisted=1 | Toggles display of blacklisted drivers in results.                                                                                                                                       |
 
 ### event_results()
+
 Returns a list of [EventResults objects](datapoints.md#eventresults) that the driver has participated in. This is the backend data for iRacing's [My Series Results](https://members.iracing.com/membersite/member/results.jsp). Contains the summary information about the results of the event. For detailed information about a specific session, see: [subsession_data()](#subsession_data).
 
 | Args/Kwargs                                                                                                         | Description                                                                                                                                                                                                                 |
@@ -77,6 +82,7 @@ Returns a list of [EventResults objects](datapoints.md#eventresults) that the dr
 | points_champ_low=None<br>points_champ_high=None                                                                     | Filters results by driver's champ points awarded.                                                                                                                                                                           |
 
 ### irating()
+
 Utilizes the `stats_chart()` method to return a list of iRating values. Used in the membersite's [Career Profile](https://members.iracing.com/membersite/member/CareerStats.do) charts.
 Accessing irating.current() will give the most recent irating of a user.
 
@@ -87,6 +93,7 @@ Accessing irating.current() will give the most recent irating of a user.
 
 
 ### last_races_stats()
+
 Returns a list of [LastRacesStats objects](datapoints.md#lastracesstats) each representing a race for the driver's last 10 races; used in the membersite's [Career Profile](https://members.iracing.com/membersite/member/CareerStats.do) "Last 10 Races" table.
 
 | Args/Kwargs | Description                     |
@@ -95,6 +102,7 @@ Returns a list of [LastRacesStats objects](datapoints.md#lastracesstats) each re
 
 
 ### last_series()
+
 Returns a list of [LastSeries objects](datapoints.md#lastseries) each representing 1 of the driver's last 3 series; Used in the membersite's [Career Profile](https://members.iracing.com/membersite/member/CareerStats.do) "Last 3 Series" table.
 
 | Args/Kwargs | Description                      |
@@ -102,6 +110,7 @@ Returns a list of [LastSeries objects](datapoints.md#lastseries) each representi
 | cust_id     | Which driver’s series to return. |
 
 ### license_class()
+
 Utilizes the `stats_chart()` method to return a list of license values; Used in the membersite's [Career Profile](https://members.iracing.com/membersite/member/CareerStats.do) charts.
 See the LicenseClass class for how to further use this data. (Link to page coming soon...)
 
@@ -111,6 +120,7 @@ See the LicenseClass class for how to further use this data. (Link to page comin
 | category    | Selects the race discipline. The `Category` enum from `constants` module can be used here. |
 
 ### member_cars_driven()
+
 Returns a list of `car_id`s that the member has driven.
 
 | Args/Kwargs | Description                                    |
@@ -119,6 +129,7 @@ Returns a list of `car_id`s that the member has driven.
 
 
 ### member_division()
+
 Returns which division the driver was in for the specified season_id. ("was" because a season_id can be a season that has concluded)
 
 | Args/Kwargs | Description                                      |
@@ -128,6 +139,7 @@ Returns which division the driver was in for the specified season_id. ("was" bec
 
 
 ### member_subsession_id_from_session()
+
 Returns which subsession_id that a member was in from a given session_id. This might be useful when you you know the session_id before the race session were split into subsessions, but otherwise subsession is usually included for the driver in other queries.
 
 | Args/Kwargs | Description                                           |
@@ -137,6 +149,7 @@ Returns which subsession_id that a member was in from a given session_id. This m
 
 
 ### personal_bests()
+
 Returns a list of [PersonalBests objects](datapoints.md#personalbests) each representing a best laptime for every car/track/event_type combo, as seen on the /CareerStats page.
 
 | Args/Kwargs | Description                                    |
@@ -146,6 +159,7 @@ Returns a list of [PersonalBests objects](datapoints.md#personalbests) each repr
 
 
 ### race_laps_driver()
+
 Returns a single [RaceLapsDriver object](datapoints.md#racelapsdriver) containing nested [Driver](datapoints.md#driver_2) data for all laps completed of a single driver. sim_sess_id specifies the laps from practice, qual, or race.
 
 | Args/Kwargs                                    | Description                                                                                                                                    |
@@ -156,6 +170,7 @@ Returns a single [RaceLapsDriver object](datapoints.md#racelapsdriver) containin
 
 
 ### stats_chart()
+
 Returns a list in the form of `time:value` for the race category specified.
 
 | Args/Kwargs | Description                                                                                                                            |
@@ -166,6 +181,7 @@ Returns a list in the form of `time:value` for the race category specified.
 
 
 ### ttrating()
+
 Utilizes the stats_chart class to return a list of ttrating values that are used in the /CareerStats charts.
 
 | Args/Kwargs | Description                                                                                |
@@ -175,6 +191,7 @@ Utilizes the stats_chart class to return a list of ttrating values that are used
 
 
 ### yearly_stats()
+
 Returns a list of [YearlyStats objects](datapoints.md#yearlystats) breakdown of career stats by year, as seen on the driver profile page.
 
 | Args/Kwargs | Description                            |
@@ -182,6 +199,7 @@ Returns a list of [YearlyStats objects](datapoints.md#yearlystats) breakdown of 
 | cust_id     | Which driver’s Yearly Stats to return. |
 
 ## Series Data
+
 Data returned from these methods return information about a series.
 
 !!! note
@@ -193,6 +211,7 @@ Data returned from these methods return information about a series.
 
 
 ### active_op_counts()
+
 Returns a list of [OpenPractice objects](datapoints.md#openpractice) sessions that are currently active. By default only sessions with registered drivers are included. Use include_empty flag to see all sessions.
 
 | Args/Kwargs       | Description                                       |
@@ -203,6 +222,7 @@ Returns a list of [OpenPractice objects](datapoints.md#openpractice) sessions th
 
 
 ### next_event()
+
 Returns a [NextEvent object](datapoints.md#nextevent) for a series. 
 
 | Args/Kwargs                     | Description                                                                                                                               |
@@ -213,6 +233,7 @@ Returns a [NextEvent object](datapoints.md#nextevent) for a series.
 
 
 ### next_session_times()
+
 Returns a list of 5 [NextSessionTimes objects](datapoints.md#nextsessiontimes) each with summary information about the upcoming sessions for a season_id.
 
 | Args/Kwargs | Description                              |
@@ -221,6 +242,7 @@ Returns a list of 5 [NextSessionTimes objects](datapoints.md#nextsessiontimes) e
 
 
 ### season_standings()
+
 Returns a list of [SeasonStandings objects](datapoints.md#seasonstandings) each representing a driver in the championship point standings of a series. This is the same data found in /statsseries.jsp.
 
 | Args/Kwargs                                                 | Description                                                                                                                                                        |
@@ -234,6 +256,7 @@ Returns a list of [SeasonStandings objects](datapoints.md#seasonstandings) each 
 | sort=Sort.champ_points.value<br>order=Sort.descending.value | How to sort and order the data. The default is to sort the data with the most recent race as the first result. <br>The `Sort` enum is from the `constants` module. |
 
 ### series_race_results()
+
 Returns a list of [SeriesRaceResults objects](datapoints.md#seriesraceresults) each representing a session that contained at least 1 registered driver for the requested race_week info for the specified season_id and race_week.  
 Results are restricted to a single week per query.
 
@@ -244,6 +267,7 @@ Results are restricted to a single week per query.
 
 
 ### team_standings()
+
 (**Not finished**) Returns championship point standings of Teams.
 
 | Args/Kwargs    | Description                                                      |
@@ -256,6 +280,7 @@ Results are restricted to a single week per query.
 ## Session Data
 
 ### all_subsessions()
+
 Returns subsession IDs for any additional race splits to the one provided.
 
 | Args/Kwargs   | Description                                                    |
@@ -263,6 +288,7 @@ Returns subsession IDs for any additional race splits to the one provided.
 | subsession_id | Which subsession to return the related `subsession_id`(s) for. |
 
 ### private_results()
+
 Returns a list of [PrivateResults objects](datapoints.md#privateresults) each representing a hosted session result. 
 
 | Args/Kwargs                                                | Description                                                                                                                                          |
@@ -273,6 +299,7 @@ Returns a list of [PrivateResults objects](datapoints.md#privateresults) each re
 | sort=Sort.session_name.value<br>order=Sort.ascending.value | How to sort and order the data. The default is to sort the data alphabetically by `session_name`.<br>The `Sort` enum is from the `constants` module. |
 
 ### race_guide()
+
 Returns a [RaceGuide object](datapoints.md#raceguide) containing all data used by the race guide page for the active seasons. Filters are identical to those found when visiting the race guide with a browser.
 
 
@@ -290,6 +317,7 @@ Returns a [RaceGuide object](datapoints.md#raceguide) containing all data used b
 
 
 ### race_laps_all()
+
 Returns a [RaceLapsAll object](datapoints.md#racelapsall) with nested objects for all drivers and lap data from a session.  
 The class of car can be set for multiclass races. To specify laps of a single driver, use [race_laps_driver()](#race_laps_driver).
 
@@ -300,6 +328,7 @@ The class of car can be set for multiclass races. To specify laps of a single dr
 | sim_session_type=<br>SimSessionType.race.value | Which segment of a race session to return results for. (Practice, Qualify, Race)<br> The `SimSessionType` enum is from the `constants` module. |
 
 ### season_from_session()
+
 Returns a single `season_id` that the `session_id` was for.
 
 | Args/Kwargs | Description                                    |
@@ -307,6 +336,7 @@ Returns a single `season_id` that the `session_id` was for.
 | session_id  | Which `session_id` to return a `season_id` for |
 
 ### subsession_data()
+
 Returns a [SubsessionData object](datapoints.md#subsessiondata). This endpoint contains unique datapoints that are unavailable elsewhere. <br>**!Note:** The segments of a session are not seperated (Practice, Qualify, Race). Results for each driver for each segment are listed concurrently. e.g If 25 drivers participate, there will be 75 `Driver` objects returned. 25 for each session segment.
 
 | Args/Kwargs   | Description                        |
@@ -314,6 +344,7 @@ Returns a [SubsessionData object](datapoints.md#subsessiondata). This endpoint c
 | subsession_id | Which subsession's data to return. |
 
 ### total_registered_all()
+
 Broken at the moment
 ~~Returns a list of every upcoming session and the number of drivers that have registered. This data is used in the small text next to each series name in /Series.do that shows number of registered drivers for that series.~~
 
@@ -325,6 +356,7 @@ Broken at the moment
 
 
 ### car_class_by_id()
+
 Returns a [`CarClass` object](datapoints.md#carclass) from the given `car_class_id`.
 
 | Args/Kwargs    | Description                                                                                                                                                                                                                                                       |
@@ -333,6 +365,7 @@ Returns a [`CarClass` object](datapoints.md#carclass) from the given `car_class_
 
 
 ### current_seasons()
+
 Returns a Season object for every season.
 
 | Args/Kwargs   | Description                                                        |
@@ -376,7 +409,8 @@ Returns a Season object for every season.
 </table>
 
 ### world_records()
-Returns laptimes with the requested paramaters. Filters can also be seen on the /worldrecords.jsp page on the membersite.
+
+Returns a list of [WorldRecord objects](datapoints.md#worldrecord)] each representing a drivers collection of lap times across various car/track combo.
 
 | Args/Kwargs  | Description                                                               |
 | :----------- | :------------------------------------------------------------------------ |
