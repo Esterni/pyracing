@@ -10,15 +10,15 @@ class Car:
 
 # Common denominator for CarClass attributes across all data.
 class CarClass:
-    def __init__(self, dict):
-        self.cust_id = dict['custid']
-        self.id = dict['id']
-        self.name_lower = parse_encode(dict['lowername'])
-        self.name = parse_encode(dict['name'])
-        self.rel_speed = dict['relspeed']  # Speed ranking to other classes
-        self.name_short = parse_encode(dict['shortname'])
+    def __init__(self, data):
+        self.cust_id = data['custid']
+        self.id = data['id']
+        self.name_lower = parse_encode(data['lowername'])
+        self.name = parse_encode(data['name'])
+        self.rel_speed = data['relspeed']  # Speed ranking to other classes
+        self.name_short = parse_encode(data['shortname'])
         # Creating subclass from nested list
-        self.cars = [Car(x) for x in dict['carsinclass']]
+        self.cars = [Car(x) for x in data['carsinclass']]
 
 
 # I believe this maps what I would call a series, but
@@ -72,25 +72,25 @@ class Season:
 
 
 class MemberDivision:
-    def __init__(self, dict):
-        self.division = dict['division']
-        self.division_projected = dict['isProjected']
+    def __init__(self, data):
+        self.division = data['division']
+        self.division_projected = data['isProjected']
 
 
 class Helmet:
-    def __init__(self, dict):
-        self.c3 = dict.get('c3')
-        self.ll = dict.get('ll')
-        self.hp = dict.get('hp')
-        self.ht = dict.get('ht')
-        self.c1 = dict.get('c1')
-        self.ft = dict.get('ft')
-        self.c2 = dict.get('c2')
+    def __init__(self, data):
+        self.c3 = data.get('c3')
+        self.ll = data.get('ll')
+        self.hp = data.get('hp')
+        self.ht = data.get('ht')
+        self.c1 = data.get('c1')
+        self.ft = data.get('ft')
+        self.c2 = data.get('c2')
 
 
 class DriverStatus:
-    def __init__(self, dict):
-        status = dict['status']
+    def __init__(self, data):
+        status = data['status']
 
         self.name = parse_encode(status.get('name'))
         self.last_login = datetime_from_iracing_timestamp(
