@@ -87,7 +87,7 @@ Accessing irating.current() will give the most recent irating of a user.
 
 
 ### last_races_stats()
-Returns a list of [LastRacesStats objects](datapoints.md#lastracesstats) with each object representing a race for the driver's last 10 races; used in the membersite's [Career Profile](https://members.iracing.com/membersite/member/CareerStats.do) "Last 10 Races" table.
+Returns a list of [LastRacesStats objects](datapoints.md#lastracesstats) each representing a race for the driver's last 10 races; used in the membersite's [Career Profile](https://members.iracing.com/membersite/member/CareerStats.do) "Last 10 Races" table.
 
 | Args/Kwargs | Description                     |
 | :---------- | :------------------------------ |
@@ -175,7 +175,7 @@ Utilizes the stats_chart class to return a list of ttrating values that are used
 
 
 ### yearly_stats()
-Returns the breakdown of career stats by year, as seen on the driver profile page.
+Returns a list of [YearlyStats objects](datapoints.md#yearlystats) breakdown of career stats by year, as seen on the driver profile page.
 
 | Args/Kwargs | Description                            |
 | :---------- | :------------------------------------- |
@@ -193,7 +193,7 @@ Data returned from these methods return information about a series.
 
 
 ### active_op_counts()
-Returns a list of 'Open Practice' sessions that are currently active. By default only sessions with registered drivers are included. Use include_empty flag to see all sessions.
+Returns a list of [OpenPractice objects](datapoints.md#openpractice) sessions that are currently active. By default only sessions with registered drivers are included. Use include_empty flag to see all sessions.
 
 | Args/Kwargs       | Description                                       |
 | :---------------- | :------------------------------------------------ |
@@ -203,7 +203,7 @@ Returns a list of 'Open Practice' sessions that are currently active. By default
 
 
 ### next_event()
-Returns the next event for a series, from the requested time.
+Returns a [NextEvent object](datapoints.md#nextevent) for a series. 
 
 | Args/Kwargs                     | Description                                                                                                                               |
 | :------------------------------ | :---------------------------------------------------------------------------------------------------------------------------------------- |
@@ -213,7 +213,7 @@ Returns the next event for a series, from the requested time.
 
 
 ### next_session_times()
-Returns the next 5 sessions with all of their attributes: start time, registered drivers, session parameters, etc.
+Returns a list of 5 [NextSessionTimes objects](datapoints.md#nextsessiontimes) each with summary information about the upcoming sessions for a season_id.
 
 | Args/Kwargs | Description                              |
 | :---------- | :--------------------------------------- |
@@ -221,7 +221,7 @@ Returns the next 5 sessions with all of their attributes: start time, registered
 
 
 ### season_standings()
-Returns the championship point standings of a series. This is the same data found in /statsseries.jsp.
+Returns a list of [SeasonStandings objects](datapoints.md#seasonstandings) each representing a driver in the championship point standings of a series. This is the same data found in /statsseries.jsp.
 
 | Args/Kwargs                                                 | Description                                                                                                                                                        |
 | :---------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -234,7 +234,8 @@ Returns the championship point standings of a series. This is the same data foun
 | sort=Sort.champ_points.value<br>order=Sort.descending.value | How to sort and order the data. The default is to sort the data with the most recent race as the first result. <br>The `Sort` enum is from the `constants` module. |
 
 ### series_race_results()
-Returns summary info for the specified season_id and race_week. Results are restricted to a single week per query.
+Returns a list of [SeriesRaceResults objects](datapoints.md#seriesraceresults) each representing a session that contained at least 1 registered driver for the requested race_week info for the specified season_id and race_week.  
+Results are restricted to a single week per query.
 
 | Args/Kwargs | Description                                                                                              |
 | :---------- | :------------------------------------------------------------------------------------------------------- |
@@ -262,7 +263,7 @@ Returns subsession IDs for any additional race splits to the one provided.
 | subsession_id | Which subsession to return the related `subsession_id`(s) for. |
 
 ### private_results()
-Returns private sessions that the driver has participated in.
+Returns a list of [PrivateResults objects](datapoints.md#privateresults) each representing a hosted session result. 
 
 | Args/Kwargs                                                | Description                                                                                                                                          |
 | :--------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -272,7 +273,7 @@ Returns private sessions that the driver has participated in.
 | sort=Sort.session_name.value<br>order=Sort.ascending.value | How to sort and order the data. The default is to sort the data alphabetically by `session_name`.<br>The `Sort` enum is from the `constants` module. |
 
 ### race_guide()
-Returns all data used by the race guide page for the active seasons. Filters are identical to those found when visiting the race guide with a browser.
+Returns a [RaceGuide object](datapoints.md#raceguide) containing all data used by the race guide page for the active seasons. Filters are identical to those found when visiting the race guide with a browser.
 
 
 | Args/Kwargs                                                                                                       | Description                                                                                                                                                |
@@ -289,7 +290,8 @@ Returns all data used by the race guide page for the active seasons. Filters are
 
 
 ### race_laps_all()
-Returns information about all laps of a race for *every* driver. The class of car can be set for multiclass races. To specify laps of a single driver, use race_laps_driver().
+Returns a [RaceLapsAll object](datapoints.md#racelapsall) with nested objects for all drivers and lap data from a session.  
+The class of car can be set for multiclass races. To specify laps of a single driver, use [race_laps_driver()](#race_laps_driver).
 
 | Args/Kwargs                                    | Description                                                                                                                                    |
 | :--------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -305,7 +307,7 @@ Returns a single `season_id` that the `session_id` was for.
 | session_id  | Which `session_id` to return a `season_id` for |
 
 ### subsession_data()
-Returns extensive data about a session. This endpoint contains unique datapoints that are unavailable elsewhere. <br>**!Note:** The segments of a session are not seperated (Practice, Qualify, Race). Results for each driver for each segment are listed concurrently. e.g If 25 drivers participate, there will be 75 `Driver` objects returned. 25 for each session segment.
+Returns a [SubsessionData object](datapoints.md#subsessiondata). This endpoint contains unique datapoints that are unavailable elsewhere. <br>**!Note:** The segments of a session are not seperated (Practice, Qualify, Race). Results for each driver for each segment are listed concurrently. e.g If 25 drivers participate, there will be 75 `Driver` objects returned. 25 for each session segment.
 
 | Args/Kwargs   | Description                        |
 | :------------ | :--------------------------------- |
@@ -323,7 +325,7 @@ Broken at the moment
 
 
 ### car_class_by_id()
-Returns a `CarClass` object from the given `car_class_id`.
+Returns a [`CarClass` object](datapoints.md#carclass) from the given `car_class_id`.
 
 | Args/Kwargs    | Description                                                                                                                                                                                                                                                       |
 | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
