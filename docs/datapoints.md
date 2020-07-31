@@ -714,7 +714,7 @@ Data points returned from [`Client.subsession_data()`](methods.md#subsession_dat
 |     wind_direction      |  int  |                      0                      |
 |     wind_speed_unit     |  int  |                      0                      |
 |    wind_speed_value     |  int  |                      2                      |
-|         driver          | list  |            See [Driver](#driver)            |
+|         drivers         | list  |            See [Driver](#driver)            |
 
 #### Driver
 
@@ -818,7 +818,7 @@ Data points returned from [`Client.race_laps_all()`](methods.md#race_laps_all)
 | :--------: | :----: | :---------------------: |
 |  details   | object | See [Details](#details) |
 |   driver   |  list  |  See [Driver](#driver)  |
-|  lap_data  |  list  | See [LapData](#lapdata) |
+|    laps    |  list  | See [LapData](#lapdata) |
 
 #### Details
 |      Attributes      | Type  |                  Example                   |
@@ -885,7 +885,7 @@ Data points returned from [`Client.race_laps_driver()`](methods.md#race_laps_dri
 | :--------: | :----: | :-------------------: |
 |  drivers   |  list  | See [Driver](#driver) |
 |   header   | object | See [Header](#header) |
-|  lap_data  |  list  |  See [Lap](#lapdata)  |
+|    laps    |  list  |  See [Lap](#lapdata)  |
 
 #### Driver
 |    Attributes    | Type  |      Example      |
