@@ -6,7 +6,7 @@
 ### CareerStats
 
 
-Data points returned from `Client.career_stats()`
+Data points returned from [`Client.career_stats()`](methods.md#career_stats)
 
 |   Attributes   | Type  | Example |
 | :------------: | :---: | :-----: |
@@ -28,7 +28,7 @@ Data points returned from `Client.career_stats()`
 
 ### YearlyStats
 
-Data points returned from `Client.yearly_stats()`
+Data points returned from [`Client.yearly_stats()`](methods.md#yearly_stats)
 
 |   Attributes   | Type  | Example |
 | :------------: | :---: | :-----: |
@@ -51,7 +51,7 @@ Data points returned from `Client.yearly_stats()`
 
 ### LastRacesStats
 
-Data points returned from `Client.last_races_stats()`
+Data points returned from [`Client.last_races_stats()`](methods.md#last_races_stats)
 
 |    Attributes     | Type  |           Example            |
 | :---------------: | :---: | :--------------------------: |
@@ -74,7 +74,7 @@ Data points returned from `Client.last_races_stats()`
 
 ### LastSeries
 
-Data points returned from `Client.last_series()`
+Data points returned from [`Client.last_series()`](methods.md#last_series)
 
 |    Attributes     | Type  |                   Example                   |
 | :---------------: | :---: | :-----------------------------------------: |
@@ -100,7 +100,7 @@ Data points returned from `Client.last_series()`
 
 ### PersonalBests
 
-Data points returned from `Client.personal_bests()`
+Data points returned from [`Client.personal_bests()`](methods.md#personal_bests)
 
 |  Attributes  | Type  |                    Example                     |
 | :----------: | :---: | :--------------------------------------------: |
@@ -114,7 +114,7 @@ Data points returned from `Client.personal_bests()`
 
 ### DriverStats
 
-Data points returned from `Client.driver_stats()`
+Data points returned from [`Client.driver_stats()`](methods.md#driver_stats)
 
 |     Attributes     | Type  |      Example      |
 | :----------------: | :---: | :---------------: |
@@ -158,7 +158,7 @@ Data points returned from `Client.driver_stats()`
 
 ### EventResults
 
-Data points returned from `Client.event_results()`
+Data points returned from [`Client.event_results()`](methods.md#event_results)
 
 |      Attributes      | Type  |      Example      |
 | :------------------: | :---: | :---------------: |
@@ -212,7 +212,7 @@ Data points returned from `Client.event_results()`
 
 ### PrivateResults
 
-Data points returned from `Client.private_results()`
+Data points returned from [`Client.private_results()`](methods.md#private_results)
 
 |        Attributes        | Type  |                                  Example                                   |
 | :----------------------: | :---: | :------------------------------------------------------------------------: |
@@ -292,7 +292,7 @@ Data points returned from `Client.private_results()`
 
 ### SeasonStandings
 
-Data points returned from `Client.season_standings()`
+Data points returned from [`Client.season_standings()`](methods.md#season_standings)
 
 |    Attributes     | Type  |     Example      |
 | :---------------: | :---: | :--------------: |
@@ -329,7 +329,7 @@ Data points returned from `Client.season_standings()`
 
 ### SeriesRaceResults
 
-Data points returned from `Client.series_race_results()`
+Data points returned from [`Client.series_race_results()`](methods.md#series_race_results)
 
 |    Attributes     | Type  |    Example    |
 | :---------------: | :---: | :-----------: |
@@ -344,7 +344,7 @@ Data points returned from `Client.series_race_results()`
 
 ### WorldRecord
 
-Data points returned from `Client.world_records()`
+Data points returned from [`Client.world_records()`](methods.md#world_records)
 
 |       Attributes       | Type  |      Example       |
 | :--------------------: | :---: | :----------------: |
@@ -388,7 +388,7 @@ Data points returned from `Client.world_records()`
 
 ### Season
 
-Data points returned from `Client.current_seasons()`
+Data points returned from [`Client.current_seasons()`](methods.md#current_seasons)
 
 |     Attributes      | Type  |                Example                |
 | :-----------------: | :---: | :-----------------------------------: |
@@ -458,7 +458,7 @@ Data points returned from `Client.current_seasons()`
 
 ### CarClass
 
-Data points returned from `Client.car_class()`
+Data points returned from [`Client.car_class()`](methods.md#car_class)
 
 | Attributes | Type  |          Example          |
 | :--------: | :---: | :-----------------------: |
@@ -475,7 +475,7 @@ Data points returned from `Client.car_class()`
 
 ### OpenPractice
 
-Data points returned from `Client.active_op_counts()`
+Data points returned from [`Client.active_op_counts()`](methods.md#active_op_counts)
 
 |       Attributes       | Type  |            Example            |
 | :--------------------: | :---: | :---------------------------: |
@@ -532,7 +532,7 @@ Data points returned from `Client.active_op_counts()`
 
 ### NextEvent
 
-Data points returned from `Client.next_event()`
+Data points returned from [`Client.next_event()`](methods.md#next_event)
 
 |  Attributes  |       Type        |       Example       |
 | :----------: | :---------------: | :-----------------: |
@@ -543,7 +543,7 @@ Data points returned from `Client.next_event()`
 
 ### NextSessionTimes
 
-Data points returned from `Client.next_session_times()`
+Data points returned from [`Client.next_session_times()`](methods.md#next_session_times)
 
 |       Attributes       |       Type        |                                               Example                                                |
 | :--------------------: | :---------------: | :--------------------------------------------------------------------------------------------------: |
@@ -582,7 +582,7 @@ Data points returned from `Client.next_session_times()`
 
 ### RaceGuide
 
-Data points returned from `Client.race_guide()`
+Data points returned from [`Client.race_guide()`](methods.md#race_guide)
 
 |       Attributes        | Type  |                   Example                    |
 | :---------------------: | :---: | :------------------------------------------: |
@@ -594,7 +594,7 @@ Data points returned from `Client.race_guide()`
 |        series_id        |  int  |                     116                      |
 |       series_name       |  str  |               'Carburetor Cup'               |
 
-### Schedule
+#### Schedule
 
 |       Attributes       |   Type   |       Example       |
 | :--------------------: | :------: | :-----------------: |
@@ -608,7 +608,7 @@ Data points returned from `Client.race_guide()`
 |       season_id        |   int    |        2867         |
 |   season_start_date    | datetime | 2020-06-09 00:00:00 |
 
-### Race
+##### Race
 
 |       Attributes        |       Type        |             Example              |
 | :---------------------: | :---------------: | :------------------------------: |
@@ -649,7 +649,7 @@ Data points returned from `Client.race_guide()`
 
 ### SubSessionData
 
-Data points returned from `Client.subsession_data()`
+Data points returned from [`Client.subsession_data()`](methods.md#subsession_data)
 
 |       Attributes        | Type  |                   Example                   |
 | :---------------------: | :---: | :-----------------------------------------: |
@@ -716,7 +716,7 @@ Data points returned from `Client.subsession_data()`
 |    wind_speed_value     |  int  |                      2                      |
 |         driver          | list  |            See [Driver](#driver)            |
 
-### Driver
+#### Driver
 
 |      Attributes      | Type  |     Example     |
 | :------------------: | :---: | :-------------: |
@@ -812,7 +812,7 @@ Data points returned from `Client.subsession_data()`
 |     wheel_color      |  str  |       N/A       |
 
 ### RaceLapsAll
-Data points returned from `Client.race_laps_all()`
+Data points returned from [`Client.race_laps_all()`](methods.md#race_laps_all)
 
 | Attributes |  Type  |         Example         |
 | :--------: | :----: | :---------------------: |
@@ -820,7 +820,7 @@ Data points returned from `Client.race_laps_all()`
 |   driver   |  list  |  See [Driver](#driver)  |
 |  lap_data  |  list  | See [LapData](#lapdata) |
 
-### Details
+#### Details
 |      Attributes      | Type  |                  Example                   |
 | :------------------: | :---: | :----------------------------------------: |
 |         date         |  str  |                 2020-06-20                 |
@@ -846,7 +846,7 @@ Data points returned from `Client.race_laps_all()`
 |     track_config     |  str  |                 Grand Prix                 |
 |       track_id       |  int  |                    149                     |
 
-### Driver
+#### Driver
 |   Attributes   | Type  |   Example    |
 | :------------: | :---: | :----------: |
 |    car_num     |  str  |      9       |
@@ -868,7 +868,7 @@ Data points returned from `Client.race_laps_all()`
 |   pos_start    |  int  |      0       |
 |     watch      |  int  |      0       |
 
-### LapData
+#### LapData
 | Attributes | Type  | Example |
 | :--------: | :---: | :-----: |
 |  car_num   |  str  |   '9'   |
@@ -879,7 +879,7 @@ Data points returned from `Client.race_laps_all()`
 
 ### RaceLapsDriver
 
-Data points returned from `Client.race_laps_driver()`
+Data points returned from [`Client.race_laps_driver()`](methods.md#race_laps_driver)
 
 | Attributes |  Type  |        Example        |
 | :--------: | :----: | :-------------------: |
@@ -887,7 +887,7 @@ Data points returned from `Client.race_laps_driver()`
 |   header   | object | See [Header](#header) |
 |  lap_data  |  list  |  See [Lap](#lapdata)  |
 
-### Driver
+#### Driver
 |    Attributes    | Type  |      Example      |
 | :--------------: | :---: | :---------------: |
 |     cust_id      |  int  |      435144       |
@@ -905,7 +905,7 @@ Data points returned from `Client.race_laps_driver()`
 | laps_n_best_time |  int  |        -1         |
 |  license_level   |  int  |        19         |
 
-### Header
+#### Header
 |    Attributes     | Type  |                  Example                  |
 | :---------------: | :---: | :---------------------------------------: |
 |    car_color_1    |  str  |                  111111                   |
@@ -930,12 +930,12 @@ Data points returned from `Client.race_laps_driver()`
 |   suit_color_2    |  str  |                  000000                   |
 |   suit_color_3    |  str  |                  32713a                   |
 |   suit_pattern    |  int  |                     1                     |
-|     team_name     |  str  |`''`
+|     team_name     |  str  |                   `''`                    |
 |   track_config    |  str  |                Grand Prix                 |
 |     track_id      |  int  |                    212                    |
 |    track_name     |  str  |        Autódromo José Carlos Pace         |
 
-### LapData
+#### LapData
 | Attributes | Type  | Example |
 | :--------: | :---: | :-----: |
 |  cust_id   |  int  | 435144  |
