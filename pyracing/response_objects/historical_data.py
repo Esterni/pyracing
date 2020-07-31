@@ -40,7 +40,7 @@ class EventResults:
         self.time_start = parse_encode(dict['35'])
         self.track_config = parse_encode(dict['28'])
         self.track_id = dict['4']
-        self.track_name = parse_encode( dict['26'])
+        self.track_name = parse_encode(dict['26'])
         self.winner_display_name = parse_encode(dict['6'])
         self.winners_group_id = dict['1']
         # Another instance of not in dict
