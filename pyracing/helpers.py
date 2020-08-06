@@ -36,7 +36,7 @@ def parse_encode(string):
 
     return urllib.parse.unquote(string).replace('+', ' ')
 
-def text_to_json(string, substrings):
+def text_to_json_stream(string, substrings):
     """ Adds missing quotes around substrings to produce valid JSON
     """
     for ss in substrings:
