@@ -35,3 +35,11 @@ def parse_encode(string):
         return ''
 
     return urllib.parse.unquote(string).replace('+', ' ')
+
+def text_to_json(string, substrings):
+    """ Adds missing quotes around substrings to produce valid JSON
+    """
+    for ss in substrings:
+        string = string.replace(ss, f'"{ss}"')
+
+    return string
