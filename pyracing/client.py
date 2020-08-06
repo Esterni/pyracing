@@ -1,6 +1,6 @@
 from . import constants as ct
 
-from .helpers import default_logger, now_five_min_floor
+from .helpers import default_logger, now_five_min_floor, text_to_json_stream
 from .response_objects import career_stats, iracing_data, historical_data
 from .response_objects import chart_data, session_data, upcoming_events
 
@@ -580,7 +580,7 @@ class Client:
             'subsessionid': subsession_id,
             'carclassid': car_class_id,
             'simsesnum': sim_session_type
-            }
+        }
         url = ct.URL_LAPS_ALL
         response = await self._build_request(url, payload)
 
@@ -745,8 +745,7 @@ class Client:
         response = await self._build_request(url, payload)
 
         # Add missing double quotes for JSON accepted format.
-        t = response.text.replace('registered', '"registered"')
-        t = t.replace('seasonid', '"seasonid"')
+        t = text_to_json_stream(response.text, ["seasonid", "registered"])
         loaded = json.loads(t)
 
         return [upcoming_events.TotalRegistered(x) for x in loaded]

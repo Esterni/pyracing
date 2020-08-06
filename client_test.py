@@ -185,6 +185,12 @@ class ClientTest(unittest.TestCase):
         self.assertIsInstance(response, session_data.SubSessionData)
 
     @async_test
+    async def test_total_registered_all(self):
+        response = await client.total_registered_all()
+        for session in response:
+            self.assertIsInstance(session, upcoming_events.TotalRegistered)
+
+    @async_test
     async def test_world_records(self):
         response = await client.world_records(2019, 1, 1, 1)
         for record in response:
