@@ -43,3 +43,4 @@ def text_to_json_stream(string, substrings):
         string = string.replace(ss, f'"{ss}"')
 
     return string
+    
