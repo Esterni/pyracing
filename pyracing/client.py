@@ -380,7 +380,7 @@ class Client:
         get_irating().current() will give the most recent irating of a cust_id
         """
         chart_type = ct.ChartType.irating.value
-        response = await self.stats_chart(cust_id, category, chart_type)
+        response = await self._stats_chart(cust_id, category, chart_type)
         ir_list = []
         for irating in response.json():
             ir_list.append(
@@ -397,7 +397,7 @@ class Client:
         that are used in the /CareerStats charts.
         """
         chart_type = ct.ChartType.ttrating.value
-        response = await self.stats_chart(cust_id, category, chart_type)
+        response = await self._stats_chart(cust_id, category, chart_type)
 
         ttrating_list = []
         for ttrating in response.json():
@@ -416,7 +416,7 @@ class Client:
         for how to further use this data.
         """
         chart_type = ct.ChartType.license_class.value
-        response = await self.stats_chart(cust_id, category, chart_type)
+        response = await self._stats_chart(cust_id, category, chart_type)
 
         license_class_list = []
         for license_class in response.json():
@@ -430,10 +430,13 @@ class Client:
             type=chart_type,
             content=license_class_list)
 
-    async def stats_chart(self, cust_id, category, chart_type):
+    async def _stats_chart(self, cust_id, category, chart_type):
         """ Returns a list in the form of time:value for the race category
         specified. chart_type changes values between iRating, ttRating, or
         Safety Rating. Category chooses 1 of the 4 disciplines.
+        *NOTE* if you are using this, you should use `irating`, `ttrating`
+        or `license_class` instead. This is used by those methods for the
+        specific types of each of them.
         """
         payload = {
             'custId': cust_id,
