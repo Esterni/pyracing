@@ -586,7 +586,7 @@ class Client:
             'subsessionid': subsession_id,
             'carclassid': car_class_id,
             'simsesnum': sim_session_type
-            }
+        }
         url = ct.URL_LAPS_ALL
         response = await self._build_request(url, payload)
 
