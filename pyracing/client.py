@@ -377,16 +377,20 @@ class Client:
     async def irating(self, cust_id, category):
         """ Utilizes the stats_chart class to return a list of iRating values
         that are used in the /CareerStats charts. Accessing
-        get_irating().current will give the most recent irating of a cust_id
+        get_irating().current() will give the most recent irating of a cust_id
         """
         chart_type = ct.ChartType.irating.value
         response = await self.stats_chart(cust_id, category, chart_type)
-        ir_list = [chart_data.IRating(x) for x in response.json()]
+        ir_list = []
+        for irating in response.json():
+            ir_list.append(
+                chart_data.IRating(timestamp=irating[0], value=irating[1])
+            )
 
         return chart_data.ChartData(
-            category,
-            ct.ChartType.irating.value,
-            ir_list)
+            category=category,
+            type=chart_type,
+            content=ir_list)
 
     async def last_races_stats(self, cust_id):
         """ Returns stat summary for the driver's last 10 races as seen
@@ -677,9 +681,17 @@ class Client:
         """
         chart_type = ct.ChartType.ttrating.value
         response = await self.stats_chart(cust_id, category, chart_type)
-        ttrating_list = [chart_data.TTRating(x) for x in response.json()]
 
-        return chart_data.ChartData(category, chart_type, ttrating_list)
+        ttrating_list = []
+        for ttrating in response.json():
+            ttrating_list.append(
+                chart_data.TTRating(timestamp=ttrating[0], value=ttrating[1])
+            )
+
+        return chart_data.ChartData(
+            category=category,
+            type=chart_type,
+            content=ttrating_list)
 
     async def license_class(self, cust_id, category):
         """ Utilizes the stats_chart class to return a list of license values
@@ -688,10 +700,18 @@ class Client:
         """
         chart_type = ct.ChartType.license_class.value
         response = await self.stats_chart(cust_id, category, chart_type)
-        license_class_list = [chart_data.LicenseClass(x) for
-                              x in response.json()]
 
-        return chart_data.ChartData(category, chart_type, license_class_list)
+        license_class_list = []
+        for license_class in response.json():
+            license_class_list.append(
+                chart_data.LicenseClass(
+                    timestamp=license_class[0], license_number=license_class[1]
+                ))
+
+        return chart_data.ChartData(
+            category=category,
+            type=chart_type,
+            content=license_class_list)
 
     async def stats_chart(self, cust_id, category, chart_type):
         """ Returns a list in the form of time:value for the race category
