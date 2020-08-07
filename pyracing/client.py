@@ -468,13 +468,20 @@ class Client:
     async def next_session_times(self, season_id):
         """ Returns the next 5 sessions with all of their attributes:\n
         starttime, registered drivers, session parameters, etc.
+
+        Response contains dict if sessions are scheduled, otherwise an
+        empty list.
         """
         payload = {'season': season_id}
         url = ct.URL_SESSION_TIMES
         response = await self._build_request(url, payload)
 
-        return [upcoming_events.NextSessionTimes(x) for
-                x in response.json()["d"]["r"]]
+        d = response.json()["d"]
+
+        if isinstance(d, dict):
+            return [upcoming_events.NextSessionTimes(x)for x in d["r"]]
+        else:
+            return []
 
     async def personal_bests(self, cust_id, car_id):
         """ Returns the drivers best laptimes for the given car_id, as seen on
