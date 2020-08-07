@@ -392,6 +392,57 @@ class Client:
             type=chart_type,
             content=ir_list)
 
+    async def ttrating(self, cust_id, category):
+        """ Utilizes the stats_chart class to return a list of ttrating values
+        that are used in the /CareerStats charts.
+        """
+        chart_type = ct.ChartType.ttrating.value
+        response = await self.stats_chart(cust_id, category, chart_type)
+
+        ttrating_list = []
+        for ttrating in response.json():
+            ttrating_list.append(
+                chart_data.TTRating(timestamp=ttrating[0], value=ttrating[1])
+            )
+
+        return chart_data.ChartData(
+            category=category,
+            type=chart_type,
+            content=ttrating_list)
+
+    async def license_class(self, cust_id, category):
+        """ Utilizes the stats_chart class to return a list of license values
+        that are used in the /CareerStats charts. See the LicenseClass class
+        for how to further use this data.
+        """
+        chart_type = ct.ChartType.license_class.value
+        response = await self.stats_chart(cust_id, category, chart_type)
+
+        license_class_list = []
+        for license_class in response.json():
+            license_class_list.append(
+                chart_data.LicenseClass(
+                    timestamp=license_class[0], license_number=license_class[1]
+                ))
+
+        return chart_data.ChartData(
+            category=category,
+            type=chart_type,
+            content=license_class_list)
+
+    async def stats_chart(self, cust_id, category, chart_type):
+        """ Returns a list in the form of time:value for the race category
+        specified. chart_type changes values between iRating, ttRating, or
+        Safety Rating. Category chooses 1 of the 4 disciplines.
+        """
+        payload = {
+            'custId': cust_id,
+            'catId': category,
+            'chartType': chart_type
+        }
+        url = ct.URL_STATS_CHART
+        return await self._build_request(url, payload)
+
     async def last_races_stats(self, cust_id):
         """ Returns stat summary for the driver's last 10 races as seen
         on the /CareerStats page.
@@ -674,57 +725,6 @@ class Client:
 
         return [historical_data.SeriesRaceResults(x) for
                 x in response.json()['d']]
-
-    async def ttrating(self, cust_id, category):
-        """ Utilizes the stats_chart class to return a list of ttrating values
-        that are used in the /CareerStats charts.
-        """
-        chart_type = ct.ChartType.ttrating.value
-        response = await self.stats_chart(cust_id, category, chart_type)
-
-        ttrating_list = []
-        for ttrating in response.json():
-            ttrating_list.append(
-                chart_data.TTRating(timestamp=ttrating[0], value=ttrating[1])
-            )
-
-        return chart_data.ChartData(
-            category=category,
-            type=chart_type,
-            content=ttrating_list)
-
-    async def license_class(self, cust_id, category):
-        """ Utilizes the stats_chart class to return a list of license values
-        that are used in the /CareerStats charts. See the LicenseClass class
-        for how to further use this data.
-        """
-        chart_type = ct.ChartType.license_class.value
-        response = await self.stats_chart(cust_id, category, chart_type)
-
-        license_class_list = []
-        for license_class in response.json():
-            license_class_list.append(
-                chart_data.LicenseClass(
-                    timestamp=license_class[0], license_number=license_class[1]
-                ))
-
-        return chart_data.ChartData(
-            category=category,
-            type=chart_type,
-            content=license_class_list)
-
-    async def stats_chart(self, cust_id, category, chart_type):
-        """ Returns a list in the form of time:value for the race category
-        specified. chart_type changes values between iRating, ttRating, or
-        Safety Rating. Category chooses 1 of the 4 disciplines.
-        """
-        payload = {
-            'custId': cust_id,
-            'catId': category,
-            'chartType': chart_type
-        }
-        url = ct.URL_STATS_CHART
-        return await self._build_request(url, payload)
 
     async def subsession_data(self, subsession_id, cust_id=None):
         """ Returns extensive data about a session. This endpoint contains
