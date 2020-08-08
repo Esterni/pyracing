@@ -1,171 +1,176 @@
-from ..helpers import datetime_from_iracing_timestamp
+from ..helpers import datetime_from_iracing_timestamp, parse_encode
 
 
 class NextEvent:
-    def __init__(self, dict):
-        self.driver_count = dict['drivercount']
-        self.season_id = dict['seasonid']
-        self.session_id = dict['sessionid']
-        self.time_start = datetime_from_iracing_timestamp(dict['start_time'])
+    def __init__(self, data):
+        self.driver_count = data['drivercount']
+        self.season_id = data['seasonid']
+        self.session_id = data['sessionid']
+        self.time_start = datetime_from_iracing_timestamp(data['start_time'])
 
 
 # Needs to have fix applied to data before
 class TotalRegistered:
-    def __init__(self, dict):
-        self.registered = dict['registered']
-        self.season_id = dict['seasonid']
+    def __init__(self, data):
+        self.registered = data['registered']
+        self.season_id = data['seasonid']
 
 
-class ActiveOPCount:
-    def __init__(self, dict):
-        self.allow_entry = dict['10']
-        self.cars_left = dict['23']
-        self.cat_id = dict['27']
-        self.count_group = dict['30']
-        self.count_registered = dict['45']
-        self.count_total = dict['36']
-        self.driver_change_param_1 = dict['7']
-        self.driver_change_param_2 = dict['8']
-        self.driver_change_rule = dict['28']
-        self.driver_changes = dict['47']
-        self.drivers_connected = dict['42']
-        self.drivers_registered = dict['9']
-        self.earth_rotation_speedup = dict['32']
-        self.farm_id = dict['25']
-        self.fog_density = dict['13']
-        self.humidity = dict['38']
-        self.leave_marbles = dict['33']
-        self.pits = dict['6']
-        self.pits_in_use = dict['35']
-        self.pits_total = dict['48']
-        self.race_panel_img = dict['16']
-        self.rubber_practice = dict['12']
-        self.rubber_qualify = dict['39']
-        self.rubber_race = dict['15']
-        self.rubber_warmup = dict['14']
-        self.season_id = dict['21']
-        self.series_abbrv = dict['41']
-        self.series_id = dict['17']
-        self.series_name = dict['11']
-        self.session_id = dict['5']
-        self.skies = dict['26']
-        self.subsession_id = dict['31']
-        self.team_drivers_max = dict['43']
-        self.team_drivers_min = dict['4']
-        self.temp_unit = dict['1']
-        self.temp_value = dict['3']
-        self.time_of_day = dict['18']
-        self.time_start = dict['46']
-        self.time_start_sim = dict['19']
-        self.total_groups = dict['20']
-        self.track_config = dict['37']
-        self.track_id = dict['22']
-        self.track_name = dict['34']
-        self.weather_initial = dict['40']
-        self.weather_ongoing = dict['29']
-        self.weather_type = dict['24']
-        self.wind_direction = dict['2']
-        self.wind_speed_unit = dict['49']
-        self.wind_speed_value = dict['44']
+class OpenPractice:
+    def __init__(self, data):
+        self.allow_entry = data['10']
+        self.cars_left = data['23']
+        self.cat_id = data['27']
+        self.count_group = data['30']
+        self.count_registered = parse_encode(data['45'])
+        self.count_total = data['36']
+        self.driver_change_param_1 = data['7']
+        self.driver_change_param_2 = data['8']
+        self.driver_change_rule = data['28']
+        self.driver_changes = data['47']
+        self.drivers_connected = data['42']
+        self.drivers_registered = data['9']
+        self.earth_rotation_speedup = data['32']
+        self.farm_id = data['25']
+        self.fog_density = data['13']
+        self.humidity = data['38']
+        self.leave_marbles = data['33']
+        self.pits = parse_encode(data['6'])
+        self.pits_in_use = data['35']
+        self.pits_total = data['48']
+        self.race_panel_img = parse_encode(data['16'])
+        self.rubber_practice = data['12']
+        self.rubber_qualify = data['39']
+        self.rubber_race = data['15']
+        self.rubber_warmup = data['14']
+        self.season_id = data['21']
+        self.series_abbrv = parse_encode(data['41'])
+        self.series_id = data['17']
+        self.series_name = parse_encode(data['11'])
+        self.session_id = data['5']
+        self.skies = data['26']
+        self.subsession_id = data['31']
+        self.team_drivers_max = data['43']
+        self.team_drivers_min = data['4']
+        self.temp_unit = data['1']
+        self.temp_value = data['3']
+        self.time_of_day = data['18']
+        self.time_start = parse_encode(data['46'])
+        self.time_start_sim = parse_encode(data['19'])
+        self.total_groups = data['20']
+        self.track_config = parse_encode(data['37'])
+        self.track_id = data['22']
+        self.track_name = parse_encode(data['34'])
+        self.weather_initial = data['40']
+        self.weather_ongoing = data['29']
+        self.weather_type = data['24']
+        self.wind_direction = data['2']
+        self.wind_speed_unit = data['49']
+        self.wind_speed_value = data['44']
 
 
 class RaceGuide:
-    def __init__(self, dict):
-        self.cat_id = dict['catID']
-        self.eligible = dict['eligible']
-        self.image = dict['image']
-        self.meets_participation_req = dict['mpr']
-        self.season_schedule = [self.Schedule(x) for x in dict['seasonSchedules']]
-        self.series_id = dict['seriesID']
-        self.series_name = dict['seriesName']
+    def __init__(self, data):
+        self.cat_id = data['catID']
+        self.eligible = data['eligible']
+        self.image = parse_encode(data['image'])
+        self.meets_participation_req = data['mpr']
+        self.season_schedule = [self.Schedule(x) for
+                                x in data['seasonSchedules']]
+        self.series_id = data['seriesID']
+        self.series_name = parse_encode(data['seriesName'])
 
     class Schedule:
-        def __init__(self, dict):
-            self.car_class_ids = dict['carClasses']
-            self.fixed_setup = dict['fixedSetup']
-            self.license_class = dict['licenseGroup']
-            self.multi_class = dict['multiClass']
-            self.open_practice_drivers = dict['openPracticeDrivers']
-            self.open_practice_sessions = dict['openPracticeSessions']
-            self.race = [self.Race(x) for x in dict['races']]
-            self.season_id = dict['seasonID']
-            self.season_start_date = dict['seasonStartDate']
+        def __init__(self, data):
+            self.car_class_ids = data['carClasses']
+            self.fixed_setup = data['fixedSetup']
+            self.license_class = data['licenseGroup']
+            self.multi_class = data['multiClass']
+            self.open_practice_drivers = data['openPracticeDrivers']
+            self.open_practice_sessions = data['openPracticeSessions']
+            self.race = [self.Race(x) for x in data['races']]
+            self.season_id = data['seasonID']
+            self.season_start_date = datetime_from_iracing_timestamp(
+                data['seasonStartDate'])
 
         class Race:
-            def __init__(self, dict):
-                self.earth_rotation_speedup = dict['earth_rotation_speedup']
-                self.event_type = dict['evttype']
-                self.fog_density = dict['weatherFogDensity']
-                self.humidity = dict['weatherRelativeHumidity']
-                self.race_lap_limit = dict['raceLapLimit']
-                self.race_time_limit_minutes = dict['raceTimeLimitMinutes']
-                self.race_week = dict['raceWeekNum']
-                self.reg_count = dict['regCount']
-                self.reg_count_pre = dict['preRegCount']
-                self.session_id = dict['sessionID']
-                self.session_type_id = dict['sessionTypeID']
-                self.skies = dict['weatherSkies']
-                self.special_event_type = dict['specialeventtype']
-                self.standing_start = dict['standingStart']
-                self.temp_unit = dict['weatherTempUnits']
-                self.temp_value = dict['weatherTempValue']
-                self.time_end = dict['endTime']
-                self.time_of_day = dict['timeOfDay']
-                self.time_start = dict['startTime']
-                self.time_start_sim = dict['simulatedstarttime']
-                self.track = dict['trackName']
-                self.track_config = dict['trackConfigName']
-                self.track_id = dict['trackID']
-                self.track_race_guide_img = dict['trackRaceGuideImg']
-                self.weather_initial = dict['weatherVarInitial']
-                self.weather_ongoing = dict['weatherVarOngoing']
-                self.weather_type = dict['weatherType']
-                self.wind_direction = dict['weatherWindDir']
-                self.wind_speed_unit = dict['weatherWindSpeedUnits']
-                self.wind_speed_value = dict['weatherWindSpeedValue']
+            def __init__(self, data):
+                self.earth_rotation_speedup = data['earth_rotation_speedup']
+                self.event_type = data['evttype']
+                self.fog_density = data['weatherFogDensity']
+                self.humidity = data['weatherRelativeHumidity']
+                self.race_lap_limit = data['raceLapLimit']
+                self.race_time_limit_minutes = data['raceTimeLimitMinutes']
+                self.race_week = data['raceWeekNum']
+                self.reg_count = data['regCount']
+                self.reg_count_pre = data['preRegCount']
+                self.session_id = data['sessionID']
+                self.session_type_id = data['sessionTypeID']
+                self.skies = data['weatherSkies']
+                self.special_event_type = data['specialeventtype']
+                self.standing_start = data['standingStart']
+                self.temp_unit = data['weatherTempUnits']
+                self.temp_value = data['weatherTempValue']
+                self.time_end = datetime_from_iracing_timestamp(
+                    data['endTime'])
+                self.time_of_day = data['timeOfDay']
+                self.time_start = datetime_from_iracing_timestamp(
+                    data['startTime'])
+                self.time_start_sim = parse_encode(data['simulatedstarttime'])
+                self.track = parse_encode(data['trackName'])
+                self.track_config = parse_encode(data['trackConfigName'])
+                self.track_id = data['trackID']
+                self.track_race_guide_img = parse_encode(
+                    data['trackRaceGuideImg'])
+                self.weather_initial = data['weatherVarInitial']
+                self.weather_ongoing = data['weatherVarOngoing']
+                self.weather_type = data['weatherType']
+                self.wind_direction = data['weatherWindDir']
+                self.wind_speed_unit = data['weatherWindSpeedUnits']
+                self.wind_speed_value = data['weatherWindSpeedValue']
 
                 # raceWeekCars returns a dictionary of {weeks} >
                 # each week has a dictionary of {car_id} >
                 # each car has a dictionary of {car attributes}
-                self.race_week_cars = dict['raceWeekCars']
+                self.race_week_cars = data['raceWeekCars']
 
                 # rubberSettings contains a dictionary of {rubber attributes}
-                self.rubber_settings = dict['rubberSettings']
+                self.rubber_settings = data['rubberSettings']
 
 
 class NextSessionTimes:
-    def __init__(self, dict):
-        self.earth_rotation_speedup = dict['14']
-        self.event_type_id = dict['10']
-        self.fog_density = dict['33']
-        self.group_count = dict['12']
-        self.humidity = dict['9']
-        self.leave_marbles = dict['15']
-        self.max_to_display = dict['1']
-        self.race_week = dict['32']
-        self.race_week_cars = dict['26']
-        self.reg_count = dict['16']
-        self.rubber_practice = dict['13']
-        self.rubber_qualify = dict['24']
-        self.rubber_race = dict['23']
-        self.rubber_warmup = dict['20']
-        self.season_id = dict['31']
-        self.session_id = dict['7']
-        self.skies = dict['5']
-        self.special_event_type = dict['22']
-        self.temp_unit = dict['19']
-        self.temp_value = dict['21']
-        self.time_of_day = dict['27']
-        self.time_start = dict['6']
-        self.time_start_sim = dict['29']
-        self.total_count = dict['17']
-        self.total_groups = dict['30']
-        self.track_id = dict['3']
-        self.weather_initial = dict['8']
-        self.weather_ongoing = dict['25']
-        self.weather_type = dict['28']
-        self.wind_direction = dict['11']
-        self.wind_speed_unit = dict['2']
-        self.wind_speed_value = dict['4']
+    def __init__(self, data):
+        self.earth_rotation_speedup = data['14']
+        self.event_type_id = data['10']
+        self.fog_density = data['33']
+        self.group_count = data['12']
+        self.humidity = data['9']
+        self.leave_marbles = data['15']
+        self.max_to_display = data['1']
+        self.race_week = data['32']
+        self.race_week_cars = data['26']
+        self.reg_count = data['16']
+        self.rubber_practice = data['13']
+        self.rubber_qualify = data['24']
+        self.rubber_race = data['23']
+        self.rubber_warmup = data['20']
+        self.season_id = data['31']
+        self.session_id = data['7']
+        self.skies = data['5']
+        self.special_event_type = data['22']
+        self.temp_unit = data['19']
+        self.temp_value = data['21']
+        self.time_of_day = data['27']
+        self.time_start = datetime_from_iracing_timestamp(data['6'])
+        self.time_start_sim = parse_encode(data['29'])
+        self.total_count = data['17']
+        self.total_groups = data['30']
+        self.track_id = data['3']
+        self.weather_initial = data['8']
+        self.weather_ongoing = data['25']
+        self.weather_type = data['28']
+        self.wind_direction = data['11']
+        self.wind_speed_unit = data['2']
+        self.wind_speed_value = data['4']
         # Used outside of d dict; Holds refresh time of data
         # self.reloadtime = dict['18']

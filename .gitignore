@@ -16,3 +16,4 @@ build
 dist
 *.egg-info
 ir_webstats_rc/NewClient/cookie
+/.vs
