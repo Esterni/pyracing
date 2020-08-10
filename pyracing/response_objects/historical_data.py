@@ -1,4 +1,4 @@
-from ..helpers import parse_encode
+from pyracing.helpers import parse_encode
 
 
 class EventResults:
