@@ -1,6 +1,8 @@
 import asyncio
 import dotenv
+import logging
 import os
+import sys
 from pyracing import client as pyracing
 from pyracing import constants
 from pyracing.response_objects import career_stats, chart_data, iracing_data, \
@@ -11,7 +13,14 @@ dotenv.load_dotenv()
 client = pyracing.Client(
     os.getenv('IRACING_USERNAME'),
     os.getenv('IRACING_PASSWORD')
-    )
+)
+
+logging.basicConfig(
+    stream=sys.stdout,
+    level=logging.INFO,
+    datefmt="%Y-%m-%d %H:%M:%S",
+    format="%(asctime)s;%(levelname)s;%(message)s"
+)
 
 
 def async_test(f):

@@ -1,6 +1,7 @@
 from . import constants as ct
 
-from .helpers import default_logger, now_five_min_floor
+from pyracing import logger
+from .helpers import now_five_min_floor
 from .response_objects import career_stats, iracing_data, historical_data
 from .response_objects import chart_data, session_data, upcoming_events
 
@@ -21,7 +22,7 @@ import time
 
 
 class Client:
-    def __init__(self, username: str, password: str, log=default_logger()):
+    def __init__(self, username: str, password: str):
         """ This class is used to interact with all iRacing endpoints that
         have been discovered so far. After creating an instance of Client
         it is required to call authenticate(), due to async limitations.
@@ -32,13 +33,12 @@ class Client:
         self.username = username
         self.password = password
         self.session = httpx.AsyncClient()
-        self.log = log
 
     async def _authenticate(self):
         """ Sends a POST request to iRacings login server, initiating a
         persistent connection stored in self.session
         """
-        self.log.info('Authenticating...')
+        logger.info('Authenticating...')
 
         login_data = {
             'username': self.username,
@@ -50,7 +50,7 @@ class Client:
         auth_post = await self.session.post(ct.URL_LOGIN2, data=login_data)
 
         if 'failedlogin' in str(auth_post.url):
-            self.log.warning('Login Failed. Please check credentials')
+            logger.warning('Login Failed. Please check credentials')
             raise UserWarning(
                 'The login POST request was redirected to /failedlogin, '
                 'indicating an authentication failure. If credentials are '
@@ -58,16 +58,16 @@ class Client:
                 'visiting members.iracing.com'
             )
         else:
-            self.log.info('Login successful')
+            logger.info('Login successful')
 
     async def _build_request(self, url, params):
         """ Builds the final GET request from url and params
         """
         if not self.session.cookies.__bool__():
-            self.log.info("No cookies in cookie jar.")
+            logger.info("No cookies in cookie jar.")
             await self._authenticate()
 
-        self.log.info(f'Request being sent to: {url} with params: {params}')
+        logger.info(f'Request being sent to: {url} with params: {params}')
 
         response = await self.session.get(
             url,
@@ -75,12 +75,12 @@ class Client:
             allow_redirects=False,
             timeout=10.0
         )
-        self.log.info(f'Request sent for URL: {response.url}')
-        self.log.info(f'Status code of response: {response.status_code}')
-        self.log.debug(f'Contents of the response object: {response.__dict__}')
+        logger.info(f'Request sent for URL: {response.url}')
+        logger.info(f'Status code of response: {response.status_code}')
+        logger.debug(f'Contents of the response object: {response.__dict__}')
 
         if response.is_error or response.is_redirect:
-            self.log.info(
+            logger.info(
                 'Request was redirected, indicating that the cookies are '
                 'invalid. Initiating authentication and retrying the request.'
             )
