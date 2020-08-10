@@ -1,4 +1,4 @@
-from ..helpers import datetime_from_iracing_timestamp, parse_encode
+from pyracing.helpers import datetime_from_iracing_timestamp, parse_encode
 
 
 class NextEvent:

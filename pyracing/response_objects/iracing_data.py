@@ -1,4 +1,4 @@
-from ..helpers import parse_encode, datetime_from_iracing_timestamp
+from pyracing.helpers import parse_encode, datetime_from_iracing_timestamp
 
 
 # Common denominator for Car attributes across all data.
