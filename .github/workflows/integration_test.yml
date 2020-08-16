@@ -3,8 +3,6 @@ name: Integration Test
 on:
   push:
     branches: master
-    tags:
-      - "*"
   schedule:
     # 4 AM Central Daylight Time
     - cron: '0 9 * * *'
