@@ -6,9 +6,32 @@ The goal of this project is to provide access to iRacing stats in a manner that 
 The contributors of this project use Discord as the primary means of communication; The [iRacing Open Wheel server](https://discord.gg/UwnhM7w) was created by the author of this project and hosts the channels for discussion there. When joining, please ask Jacob Anderson for the role to see the appropriate channels. 
 
 # Documentation & Discussion
+
 All documentation for this project is available through the [Github Pages project site](https://esterni.github.io/pyracing/).
 
+# Dependencies
 
+* [httpx](https://www.python-httpx.org/) = 0.13.x
 
-# Dependancies
-[httpx](https://www.python-httpx.org/) = 0.13.x
+# Running Tests
+
+Before running tests, you have to prepare the environment variables.
+This is different for windows and linux.
+
+**Windows**
+```
+set "IRACING_USERNAME=user@example.com"
+set "IRACING_PASSWORD=hunter2"
+```
+
+**Linux**
+```
+set IRACING_USERNAME="user@example.com"
+set IRACING_PASSWORD="hunter2"
+```
+
+Running the tests is the same on both systems:
+
+```
+python -m unitttest discover integration_tests/ -p "*_test.py"
+```
