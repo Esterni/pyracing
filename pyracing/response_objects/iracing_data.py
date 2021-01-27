@@ -48,6 +48,7 @@ class Season:
     class Track:
         def __init__(self, data):
             self.name = parse_encode(data['name'])
+            self.id = data.get('id')
             self.name_lower = parse_encode(data['lowername'])
             self.pkg_id = data['pkgid']
             self.priority = data['priority']
