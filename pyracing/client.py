@@ -257,7 +257,7 @@ class Client:
         the main /DriverLookup page on iRacing.
         """
         payload = {
-            'search': str(search).replace(' ', '+'),
+            'search': search,
             'friend': friend,
             'watched': watched,
             'recent': recent,
