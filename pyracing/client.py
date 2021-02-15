@@ -10,6 +10,7 @@ from pyracing.response_objects import (
     session_data,
     upcoming_events,
 )
+from .exceptions.authentication_error import AuthenticationError
 
 from datetime import datetime
 import httpx
@@ -61,7 +62,7 @@ class Client:
                 'indicating an authentication failure. If credentials are '
                 'correct, check that a captcha is not required by manually '
                 'visiting members.iracing.com')
-            raise UserWarning(auth_response.read())
+            raise AuthenticationError('Login Failed', auth_response)
         else:
             logger.info('Login successful')
 
