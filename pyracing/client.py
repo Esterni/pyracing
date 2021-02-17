@@ -370,9 +370,12 @@ class Client:
         url = ct.URL_RESULTS
         response = await self._build_request(url, payload)
 
-        # TODO Consider "try:" for a TypeError for response of {"m":{},"d":[]}
-        return [historical_data.EventResults(x) for
-                x in response.json()["d"]["r"]]
+        event_result_dict = response.json()['d']
+        if event_result_dict:
+            return [historical_data.EventResults(x)
+                    for x in response.json()["d"]["r"]]
+        else:
+            return []
 
     async def irating(self, cust_id, category) -> \
             chart_data.ChartData[chart_data.IRating]:
