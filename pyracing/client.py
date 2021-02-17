@@ -10,6 +10,7 @@ from pyracing.response_objects import (
     session_data,
     upcoming_events,
 )
+from .exceptions.authentication_error import AuthenticationError
 
 from datetime import datetime
 import httpx
@@ -53,16 +54,15 @@ class Client:
             'todaysdate': ''  # Unknown purpose, but exists as a hidden form.
         }
 
-        auth_post = await self.session.post(ct.URL_LOGIN2, data=login_data)
+        auth_response = await self.session.post(ct.URL_LOGIN2, data=login_data)
 
-        if 'failedlogin' in str(auth_post.url):
-            logger.warning('Login Failed. Please check credentials')
-            raise UserWarning(
+        if 'failedlogin' in str(auth_response.url):
+            logger.warning(
                 'The login POST request was redirected to /failedlogin, '
                 'indicating an authentication failure. If credentials are '
                 'correct, check that a captcha is not required by manually '
-                'visiting members.iracing.com'
-            )
+                'visiting members.iracing.com')
+            raise AuthenticationError('Login Failed', auth_response)
         else:
             logger.info('Login successful')
 
@@ -96,10 +96,10 @@ class Client:
         return response
 
     async def active_op_counts(
-        self,
-        count_max=250,
-        include_empty='n',
-        cust_id=None
+            self,
+            count_max=250,
+            include_empty='n',
+            cust_id=None
     ):
         """ Returns session information for all 'open practice' sessions that
         are currently active. By default this only includes sessions with
@@ -635,10 +635,10 @@ class Client:
                 x in response.json()['series']]
 
     async def race_laps_all(
-        self,
-        subsession_id,
-        car_class_id=None,
-        sim_session_type=ct.SimSessionType.race.value
+            self,
+            subsession_id,
+            car_class_id=None,
+            sim_session_type=ct.SimSessionType.race.value
     ):
         """ Returns information about all laps of a race for *every*
         driver. The class of car can be set for multiclass races.
@@ -649,7 +649,7 @@ class Client:
             'subsessionid': subsession_id,
             'carclassid': car_class_id,
             'simsesnum': sim_session_type
-            }
+        }
         url = ct.URL_LAPS_ALL
         response = await self._build_request(url, payload)
 
@@ -782,14 +782,14 @@ class Client:
         return [upcoming_events.TotalRegistered(x) for x in response.json()]
 
     async def world_records(
-        self,
-        year,
-        quarter,
-        car_id,
-        track_id,
-        result_num_low=1,
-        result_num_high=25,
-        cust_id=None
+            self,
+            year,
+            quarter,
+            car_id,
+            track_id,
+            result_num_low=1,
+            result_num_high=25,
+            cust_id=None
     ):
         """ Returns laptimes with the requested paramaters. Filters can also
         be seen on the /worldrecords.jsp page on the membersite.
