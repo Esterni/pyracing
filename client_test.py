@@ -6,7 +6,7 @@ import sys
 from pyracing import client as pyracing
 from pyracing import constants
 from pyracing.response_objects import career_stats, chart_data, iracing_data, \
-    upcoming_events, historical_data, session_data
+    upcoming_events, historical_data, session_data, league_data
 import unittest
 
 dotenv.load_dotenv()
@@ -204,6 +204,11 @@ class ClientTest(unittest.TestCase):
         response = await client.event_results(499343, 3)
         for result in response:
             self.assertIsInstance(result, historical_data.EventResults)
+
+    @async_test
+    async def test_league_standings(self):
+        response = await client.league_standings(724, 61454)
+        self.assertIsInstance(response, league_data.SeasonStandings)
 
 
 if __name__ == '__main__':

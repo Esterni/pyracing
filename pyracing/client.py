@@ -9,6 +9,7 @@ from pyracing.response_objects import (
     iracing_data,
     session_data,
     upcoming_events,
+    league_data
 )
 from .exceptions.authentication_error import AuthenticationError
 
@@ -822,3 +823,17 @@ class Client:
             return []
 
         return [career_stats.YearlyStats(x) for x in response.json()]
+
+    async def league_standings(self, league_id, league_season_id):
+        """Get the standings for a league in a given season"""
+        payload = {
+            'leagueID': league_id,
+            'leagueSeasonID': league_season_id
+        }
+        url = ct.URL_LEAGUE_SEASON_STANDINGS
+        response = await self._build_request(url, payload)
+
+        if not response.json():
+            return []
+
+        return league_data.SeasonStandings(response.json())
