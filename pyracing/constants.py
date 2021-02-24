@@ -98,8 +98,9 @@ URL_ALL_SUBSESSIONS = (mSite + '/GetAllSubsessions')
 #                    '&subject=Email%20Subject'
 #                    '&text=Test%20for%20coding%20purposes'
 #                    '&leagueID=1056')
-# URL_LEAGUE_SEASONS = (mSite + '/GetLeagueSeasons'
-#                       'leagueID=1056')
+
+# Only parameter is a leagueID
+URL_LEAGUE_SEASONS = (mSite + '/GetLeagueSeasons')
 # URL_LEAGUE_CALENDAR_SEASON = (mSite + '/GetLeagueCalendarBySeason'
 #                               'leagueID=1056'
 #                               '&leagueSeasonID=46493')
