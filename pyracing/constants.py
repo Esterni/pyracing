@@ -106,11 +106,12 @@ URL_ALL_SUBSESSIONS = (mSite + '/GetAllSubsessions')
 # URL_LEAGUE_SEASON_TEAM_STANDINGS = (mSite + '/GetLeagueSeasonTeamStandings'
 #                                     'leagueID=1056'
 #                                     '&leagueSeasonID=46493')
-# URL_LEAGUE_SEASON_STANDINGS = (mSite + '/GetLeagueSeasonStandings'
-#                                'leagueID=1056'
-#                                '&leagueSeasonID=46493'
-#                                '&carClassID=1450'
-#                                '&carID=0')
+
+
+# Parameters: leagueID, leagueSeasonID, carClassID, carID
+# only first 2 required
+URL_LEAGUE_SEASON_STANDINGS = (mSite + '/GetLeagueSeasonStandings')
+
 # URL_LEAGUE_ICALENDAR_SUBSCRIBE = (mSite + '/GetICalendarForLeague'
 #                                   'leagueId=1056'
 #                                   '&leagueSeasonId=46493')

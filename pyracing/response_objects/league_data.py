@@ -1,0 +1,50 @@
+from pyracing.helpers import parse_encode
+
+
+class SeasonStandings:
+    def __init__(self, data):
+        self.cars = [SeasonCar(x) for x in data['cars']]
+        self.drivers = [SeasonDriver(x) for x in data['standings']['rows']]
+        self.car_classes = [SeasonCarClass(x) for x in data['carclasses']]
+
+
+class SeasonCar:
+    def __init__(self, data):
+        self.id = data['carid']
+        self.name = parse_encode(data['car_name'])
+        self.team_car = data.get('team_car')
+        self.car_class_id = data.get('carclassid')
+        # If you search for all cars, this will be Hosted All Cars
+        self.short_name = parse_encode(data.get('shortname'))
+
+
+class SeasonCarClass:
+    def __init__(self, data):
+        self.car_class_id = data['carclassid']
+        self.name = parse_encode(data['name'])
+        self.cars = [SeasonCar(x) for x in data.get('cars_in_class')]
+
+
+class SeasonDriver:
+    def __init__(self, data):
+        self.wins = data['wins']
+        self.base_points = data['base_points']
+        self.total_points = data['total_points']
+        self.position = data['avg_start']
+        self.display_name = parse_encode(data['displayname'])
+        self.cust_id = data.get('custid')
+        self.avg_finish = data.get('avg_finish')
+        self.avg_start = data.get('avg_start')
+        self.driver_nickname = parse_encode(data.get('driver_nickname'))
+        self.pattern = data.get('pattern')
+        self.helmet_type = data.get('helmettype')
+        self.license_level = data.get('licenselevel')
+        self.total_adjustments = data.get('total_adjustments')
+        self.color3 = data.get('color3')
+        self.color2 = data.get('color2')
+        self.color1 = data.get('color1')
+        self.car_number = data.get('car_number')
+        self.positive_adjustments = data.get('positive_adjustments')
+        self.negative_adjustments = data.get('negative_adjustments')
+        self.rn = data.get('rn')
+        self.facetype = data.get('facetype')
