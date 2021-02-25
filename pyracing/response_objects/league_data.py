@@ -48,3 +48,14 @@ class SeasonDriver:
         self.negative_adjustments = data.get('negative_adjustments')
         self.rn = data.get('rn')
         self.facetype = data.get('facetype')
+
+
+class LeagueSeason:
+    def __init__(self, data):
+        self.season_id = data['1']
+        self.league_points_system_description = parse_encode(data['13'])
+        self.league_points_system_name = parse_encode(data['2'])
+        self.league_points_system_id = data['5']
+        self.active = data['6']
+        self.league_season_name = data['8']
+        self.league_id = data['10']

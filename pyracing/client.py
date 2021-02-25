@@ -837,3 +837,15 @@ class Client:
             return []
 
         return league_data.SeasonStandings(response.json())
+
+    async def league_seasons(self, league_id):
+        """Get the season for a league"""
+        payload = {'leagueID': league_id}
+
+        url = ct.URL_LEAGUE_SEASONS
+        response = await self._build_request(url, payload)
+
+        if not response.json() or not response.json()['d']:
+            return []
+
+        return [league_data.LeagueSeason(x) for x in response.json()['d']['r']]
