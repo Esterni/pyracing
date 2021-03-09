@@ -216,6 +216,11 @@ class ClientTest(unittest.TestCase):
         for season in response:
             self.assertIsInstance(season, league_data.LeagueSeason)
 
+    @async_test
+    async def test_league(self):
+        response = await client.league(724)
+        self.assertIsInstance(response, league_data.League)
+
 
 if __name__ == '__main__':
     unittest.main()

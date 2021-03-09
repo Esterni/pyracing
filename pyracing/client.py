@@ -824,6 +824,20 @@ class Client:
 
         return [career_stats.YearlyStats(x) for x in response.json()]
 
+    async def league(self, league_id):
+        """Get details about a given league"""
+        payload = {
+            'leagueid': league_id
+        }
+        url = ct.URL_LEAGUE
+        response = await self._build_request(url, payload)
+
+        # -1 cust_id means it could not be found
+        if not response.json() or response.json()['custID'] == -1:
+            return None
+
+        return league_data.League(response.json())
+
     async def league_standings(self, league_id, league_season_id):
         """Get the standings for a league in a given season"""
         payload = {

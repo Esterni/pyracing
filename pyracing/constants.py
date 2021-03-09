@@ -113,6 +113,9 @@ URL_LEAGUE_SEASONS = (mSite + '/GetLeagueSeasons')
 # only first 2 required
 URL_LEAGUE_SEASON_STANDINGS = (mSite + '/GetLeagueSeasonStandings')
 
+# Required param leagueid
+URL_LEAGUE = (mSite + '/GetLeague')
+
 # URL_LEAGUE_ICALENDAR_SUBSCRIBE = (mSite + '/GetICalendarForLeague'
 #                                   'leagueId=1056'
 #                                   '&leagueSeasonId=46493')

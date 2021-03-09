@@ -50,6 +50,24 @@ class SeasonDriver:
         self.facetype = data.get('facetype')
 
 
+class League:
+    def __init__(self, data):
+        self.league_id = data['leagueID']
+        self.name = parse_encode(data['name'])
+        self.created_date = data['createdDate']
+        self.message = parse_encode(data['message'])
+        self.url = parse_encode(data['url'])
+        self.rules = parse_encode(data['rules'])
+        self.about = parse_encode(data['about'])
+        self.cust_id = data['custID']
+        self.recruiting = data['recruiting']
+        self.hidden = data.get('hidden')
+        self.private_wall = data.get('privateWall')
+        self.private_results = data.get('privateResults')
+        self.private_schedule = data.get('privateSchedule')
+        self.private_roster = data.get('privateRoster')
+
+
 class LeagueSeason:
     def __init__(self, data):
         self.season_id = data['1']
