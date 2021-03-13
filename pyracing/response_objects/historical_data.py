@@ -42,7 +42,7 @@ class EventResults:
         self.time_start = parse_encode(data['37'])
         self.track_config_name = parse_encode(data['29'])
         self.track_id = data['5']
-        self.track_name = parse_encode( data['27'])
+        self.track_name = parse_encode(data['27'])
         self.winner_display_name = parse_encode(data['7'])
         self.winners_group_id = data['2']
 
