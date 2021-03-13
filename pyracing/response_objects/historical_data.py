@@ -3,55 +3,48 @@ from pyracing.helpers import parse_encode
 
 class EventResults:
     def __init__(self, data):
-        self.car_class_id = data['29']
-        self.car_id = data['32']
-        self.category_id = data['33']
-        self.cust_id = data['23']
-        self.date_start = parse_encode(data['44'])
-        self.display_name = parse_encode(data['48'])
-        self.event_type = data['37']
-        self.group_name = parse_encode(data['19'])
-        self.helm_color_1 = data['1']
-        self.helm_color_2 = data['14']
-        self.helm_color_3 = data['13']
-        self.helm_license_level = data['24']
-        self.helm_pattern = data['46']
-        self.incidents = data['39']
-        self.lap_best = parse_encode(data['38'])
+        self.car_class_id = data['2']
+        self.car_id = data['11']
+        self.car_name = parse_encode(data['13'])
+        self.cat_id = data['12']
+        self.category = parse_encode(data['40'])
+        self.cust_id = data['38']
+        self.display_name = parse_encode(data['37'])
+        self.drop_race_points = data['31']
+        self.evt_type_name = parse_encode(data['39'])
+        self.evt_type = data['17']
+        self.finished_at = data['10']
+        self.group_name = parse_encode(data['33'])
+        self.incidents = data['20']
         self.lap_best_subsession = parse_encode(data['7'])
-        self.lap_qual_best = parse_encode(data['6'])
-        self.license_group = data['35']
-        self.official_session = data['18']
-        self.points_champ = data['40']
-        self.points_champ_sort = data['43']
-        self.points_club = data['16']
-        self.points_club_sort = data['47']
-        self.points_drop_race = data['17']
+        self.lap_best = parse_encode(data['18'])
+        self.lap_qual_best = parse_encode(data['5'])
+        self.license_group = data['15']
+        self.official_session = data['32']
+        self.points_champ = data['21']
+        self.points_club = data['29']
         self.pos_finish = data['3']
-        self.pos_start = data['12']
-        self.race_week = data['8']
-        self.rank_session = data['28']
-        self.row_number = data['26']
-        self.season_id = data['22']
-        self.season_quarter = data['34']
-        self.season_year = data['42']
-        self.series_id = data['20']
+        self.pos_start = data['23']
+        self.race_week = data['8'] + 1
+        self.season_id = data['36']
+        self.season_quarter = data['14']
+        self.season_year = data['24']
+        self.series_id = data['34']
+        self.series_name_short = parse_encode(data['30'])
+        self.series_name = parse_encode(data['19'])
         self.session_id = data['9']
-        self.strength_of_field = data['45']
-        self.subsession_id = data['41']
-        self.time_finished = data['10']
-        self.time_start = parse_encode(data['21'])
-        self.time_start_raw = data['11']
-        self.track_id = data['30']
-        self.winner_display_name = parse_encode(data['31'])
-        self.winner_helm_color_1 = data['5']
-        self.winner_helm_color_2 = data['2']
-        self.winner_helm_color_3 = data['4']
-        self.winner_helm_pattern = data['36']
-        self.winner_license_level = data['25']
-        self.winners_group_id = data['27']
-        # Another instance of not in dict
-        # self.rowcount = dict['15']
+        self.start_date = data['25']
+        self.strength_of_field = data['27']
+        self.subsession_id = data['22']
+        self.time_start_raw = data['16']
+        self.time_start = parse_encode(data['35'])
+        self.track_config = parse_encode(data['28'])
+        self.track_id = data['4']
+        self.track_name = parse_encode( data['26'])
+        self.winner_display_name = parse_encode(data['6'])
+        self.winners_group_id = data['1']
+        # Another instance of not in data
+        # self.rowcount = data['15']
 
 
 class SeasonStandings:
