@@ -30,7 +30,7 @@ class SeasonDriver:
         self.wins = data['wins']
         self.base_points = data['base_points']
         self.total_points = data['total_points']
-        self.position = data['avg_start']
+        self.position = data['pos']
         self.display_name = parse_encode(data['displayname'])
         self.cust_id = data.get('custid')
         self.avg_finish = data.get('avg_finish')
