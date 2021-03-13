@@ -295,38 +295,9 @@ class Client:
             self,
             cust_id,
             quarter,
-            show_races=1,
-            show_quals=None,
-            show_tts=None,
-            show_ops=None,
-            show_official=1,
-            show_unofficial=None,
-            show_rookie=1,
-            show_class_d=1,
-            show_class_c=1,
-            show_class_b=1,
-            show_class_a=1,
-            show_pro=1,
-            show_prowc=1,
-            result_num_low=1,
-            result_num_high=25,
-            sort=ct.Sort.start_time.value,
-            order=ct.Sort.descending.value,
-            data_format='json',
-            category=ct.Category.road.value,
             year=datetime.today().year,
-            race_week=None,
-            track_id=None,
-            car_class=None,
-            car_id=None,
-            start_low=None,
-            start_high=None,
-            finish_low=None,
-            finish_high=None,
-            incidents_low=None,
-            incidents_high=None,
-            points_champ_low=None,
-            points_champ_high=None
+            from_epoch=None,
+            to_epoch=None
     ):
         """ Returns a list with an EventResults object for each of a driver's
         past events that meet the selected criteria. Default is to show the
@@ -334,39 +305,10 @@ class Client:
         """
         payload = {
             'custid': cust_id,
-            'showraces': show_races,
-            'showquals': show_quals,
-            'showtts': show_tts,
-            'showops': show_ops,
-            'showofficial': show_official,
-            'showunofficial': show_unofficial,
-            'showrookie': show_rookie,
-            'showclassd': show_class_d,
-            'showclassc': show_class_c,
-            'showclassb': show_class_b,
-            'showclassa': show_class_a,
-            'showpro': show_pro,
-            'showprowc': show_prowc,
-            'lowerbound': result_num_low,
-            'upperbound': result_num_high,
-            'sort': sort,
-            'order': order,
-            'format': data_format,
-            'category[]': category,
             'seasonyear': year,
             'seasonquarter': quarter,
-            'raceweek': race_week,
-            'trackid': track_id,
-            'carclassid': car_class,
-            'carid': car_id,
-            'start_low': start_low,
-            'start_high': start_high,
-            'finish_low': finish_low,
-            'finish_high': finish_high,
-            'incidents_low': incidents_low,
-            'incidents_high': incidents_high,
-            'champpoints_low': points_champ_low,
-            'champpoints_high': points_champ_high
+            'starttime_low': from_epoch,
+            'starttime_high': to_epoch
         }
         url = ct.URL_RESULTS
         response = await self._build_request(url, payload)
@@ -374,7 +316,7 @@ class Client:
         event_result_dict = response.json()['d']
         if event_result_dict:
             return [historical_data.EventResults(x)
-                    for x in response.json()["d"]["r"]]
+                    for x in response.json()["d"]]
         else:
             return []
 
