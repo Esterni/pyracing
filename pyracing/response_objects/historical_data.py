@@ -138,44 +138,46 @@ class DriverStats:
 
 class WorldRecords:
     def __init__(self, data):
-        self.car_id = data['9']
-        self.cat_id = data['10']
-        self.category = parse_encode(data['35'])
+        self.car_id = data['10']
+        self.cat_id = data['11']
+        self.category = parse_encode(data['37'])
         self.club_id = data['7']
-        self.club_name = parse_encode(data['27'])
+        self.club_name = parse_encode(data['28'])
         self.country_code = data['6']
-        self.cust_id = data['31']
-        self.display_name = parse_encode(data['29'])
-        self.helm_color_1 = data['28']
-        self.helm_color_2 = data['30']
-        self.helm_color_3 = data['26']
-        self.helm_pattern = data['22']
+        self.cust_id = data['32']
+        self.display_name = parse_encode(data['30'])
+        self.helm_color_1 = data['29']
+        self.helm_color_2 = data['31']
+        self.helm_color_3 = data['27']
+        self.helm_face_type = data['34']
+        self.helm_helmet_type = data['9']
+        self.helm_pattern = data['23']
         self.irating = data['4']
         self.license_class = parse_encode(data['3'])
-        self.license_class_id = data['14']
-        self.license_level = data['23']
+        self.license_class_id = data['15']
+        self.license_level = data['24']
         self.practice = parse_encode(data['2'])
         self.practice_start_time = data['8']
-        self.practice_subsession_id = data['13']
-        self.qualify = parse_encode(data['15'])
-        self.qualify_subsession_id = data['36']
-        self.qualify_time_start = data['21']
-        self.race = parse_encode(data['19'])
-        self.race_start_time = data['18']
-        self.race_subsession_id = data['11']
-        self.region = parse_encode(data['34'])
-        self.row = data['33']
-        self.season_quarter = data['12']
-        self.season_year = data['17']
-        self.sub_level = data['32']
-        self.timetrial = parse_encode(data['37'])
+        self.practice_subsession_id = data['14']
+        self.qualify = parse_encode(data['16'])
+        self.qualify_subsession_id = data['38']
+        self.qualify_time_start = data['22']
+        self.race = parse_encode(data['20'])
+        self.race_start_time = data['19']
+        self.race_subsession_id = data['12']
+        self.region = parse_encode(data['36'])
+        self.row = data['35']
+        self.season_quarter = data['13']
+        self.season_year = data['18']
+        self.sub_level = data['33']
+        self.timetrial = parse_encode(data['39'])
         self.track_id = data['5']
-        self.tt_start_time = data['25']
+        self.tt_start_time = data['26']
         self.tt_subsession_id = data['1']
-        self.ttrating = data['24']
+        self.ttrating = data['25']
         # Data not used in the 'r' dictionary. Only for webpage display.
-        # self.custrow = dict['16']
-        # self.rowcount = dict['20']
+        # self.custrow = dict['17']
+        # self.rowcount = dict['21']
 
 
 class PrivateResults:
