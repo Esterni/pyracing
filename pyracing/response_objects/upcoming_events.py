@@ -148,7 +148,8 @@ class NextSessionTimes:
         self.leave_marbles = data['15']
         self.max_to_display = data['1']
         self.race_week = data['32']
-        self.race_week_cars = data['26']
+        self.race_week_cars = [self.RaceWeekCars(x)
+                               for x in data['26'].items()]
         self.reg_count = data['16']
         self.rubber_practice = data['13']
         self.rubber_qualify = data['24']
@@ -174,3 +175,11 @@ class NextSessionTimes:
         self.wind_speed_value = data['4']
         # Used outside of d dict; Holds refresh time of data
         # self.reloadtime = dict['18']
+
+    class RaceWeekCars:
+        def __init__(self, data):
+            self.car_id = data[0]
+            self.max_percent_fuel_fill = data[1]["maxPctFuelFill"]
+            self.weight_penalty_kg = data[1]["weightPenaltyKG"]
+            self.max_dry_tire_sets = data[1]["max_dry_tire_sets"]
+            self.power_adjust_percent = data[1]["powerAdjustPct"]
