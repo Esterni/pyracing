@@ -70,10 +70,18 @@ class League:
 
 class LeagueSeason:
     def __init__(self, data):
-        self.season_id = data['1']
-        self.league_points_system_description = parse_encode(data['13'])
-        self.league_points_system_name = parse_encode(data['2'])
-        self.league_points_system_id = data['5']
-        self.active = data['6']
-        self.league_season_name = parse_encode(data['8'])
-        self.league_id = data['10']
+        self.season_id = data['league_season_id']
+        self.league_points_system_description = parse_encode(data['league_points_system_desc'])
+        self.league_points_system_name = parse_encode(data['league_points_system_name'])
+        self.league_points_system_id = data['league_points_system_id']
+        self.active = data['active']
+        self.league_season_name = parse_encode(data['league_season_name'])
+        self.league_id = data['leagueid']
+        # Additional attributes
+        # data['hidden']
+        # data['rowcount']
+        # data['use_lmt']
+        # data['nextrace']
+        # data['rn']
+        # data['previousrace']
+        # data['keep_weeks']
