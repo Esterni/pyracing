@@ -51,11 +51,6 @@ class Client:
                 'response from the API, and is therefore temporarily not working.')
             return None
         
-        if not isinstance(mapping, dict):
-            logger.warning('The mapping you provided does not appear to be a '
-                'dictionary. Check if you are calling the '
-                '_rename_numerical_keys method correctly.')
-        
         for numerical_key in list(mapping):
             if numerical_key in response_item:
                 readable_key = mapping.get(numerical_key)
