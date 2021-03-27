@@ -46,10 +46,10 @@ class Client:
         """ Returns a version of 'response_item' where all numerical keys have 
         been renamed to readable strings by applying 'mapping'.
         """
-        if not isinstance(response_item, dict):
-            logger.warning('The response_item you provided does not appear to be a '
-                'dictionary. Check if you are calling the '
-                '_rename_numerical_keys method correctly.')
+        if not isinstance(response_item, dict) or not isinstance(mapping, dict):
+            logger.warning('The method you called appears to have received an unexpected '
+                'response from the API, and is therefore temporarily not working.')
+            return None
         
         if not isinstance(mapping, dict):
             logger.warning('The mapping you provided does not appear to be a '
