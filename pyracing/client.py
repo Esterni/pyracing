@@ -51,14 +51,13 @@ class Client:
                 'response from the API, and is therefore temporarily not working.')
             return None
         
-        for numerical_key in list(mapping):
-            if numerical_key in response_item:
-                readable_key = mapping.get(numerical_key)
-                value = response_item.get(numerical_key)
-                
-                if readable_key:
-                    response_item[readable_key] = value
-                    del response_item[numerical_key]
+        for numerical_key in mapping:
+            readable_key = mapping.get(numerical_key)
+            value = response_item.get(numerical_key)
+
+            if readable_key and value:
+                response_item[readable_key] = value
+                del response_item[numerical_key]
         
         return response_item
     
