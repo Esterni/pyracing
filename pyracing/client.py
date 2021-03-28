@@ -134,16 +134,16 @@ class Client:
         }
         response = await self._build_request(url, payload)
         
-        if not response.json():
-            return []
+        if response.json():
+            mapping = response.json().get('m')
+            response_items = response.json().get('d')
         
-        mapping = response.json().get('m')
-        response_items = response.json().get('d')
-        
-        if mapping and response_items:
-            renamed_items = [self._rename_numerical_keys(ri, mapping) for ri in response_items]
-            
-            return [upcoming_events.OpenPractice(x) for x in renamed_items]
+            if mapping and response_items:
+                renamed_items = [self._rename_numerical_keys(ri, mapping) for ri in response_items]
+                
+                return [upcoming_events.OpenPractice(x) for x in renamed_items]
+    
+        return []
     
     async def all_subsessions(self, subsession_id):
         """ If the given SubSessionID is one of many race splits, this
@@ -316,17 +316,17 @@ class Client:
         url = ct.URL_DRIVER_STATS
         response = await self._build_request(url, payload)
         
-        if not response.json():
-            return []
+        if response.json():
+            mapping = response.json().get('m')
+            response_items = response.json().get('d').get('r')
         
-        mapping = response.json().get('m')
-        response_items = response.json().get('d').get('r')
+            if mapping and response_items:
+                renamed_items = [self._rename_numerical_keys(ri, mapping) for ri in response_items]
+                
+                return [historical_data.DriverStats(x) for x in renamed_items]
+
+        return []
         
-        if mapping and response_items:
-            renamed_items = [self._rename_numerical_keys(ri, mapping) for ri in response_items]
-            
-            return [historical_data.DriverStats(x) for x in renamed_items]
-    
     async def event_results(
             self,
             cust_id,
@@ -407,16 +407,16 @@ class Client:
         url = ct.URL_RESULTS
         response = await self._build_request(url, payload)
         
-        if not response.json():
-            return []
+        if response.json():
+            mapping = response.json().get('m')
+            response_items = response.json().get('d').get('r')
         
-        mapping = response.json().get('m')
-        response_items = response.json().get('d').get('r')
-        
-        if mapping and response_items:
-            renamed_items = [self._rename_numerical_keys(ri, mapping) for ri in response_items]
-            
-            return [historical_data.EventResults(x) for x in renamed_items]
+            if mapping and response_items:
+                renamed_items = [self._rename_numerical_keys(ri, mapping) for ri in response_items]
+                
+                return [historical_data.EventResults(x) for x in renamed_items]
+    
+        return []
     
     async def irating(self, cust_id, category) -> \
             chart_data.ChartData[chart_data.IRating]:
@@ -584,16 +584,16 @@ class Client:
         url = ct.URL_SESSION_TIMES
         response = await self._build_request(url, payload)
         
-        if not response.json():
-            return []
+        if response.json():
+            mapping = response.json().get('m')
+            response_items = response.json().get('d').get('r')
         
-        mapping = response.json().get('m')
-        response_items = response.json().get('d').get('r')
-        
-        if mapping and response_items:
-            renamed_items = [self._rename_numerical_keys(ri, mapping) for ri in response_items]
-            
-            return [upcoming_events.NextSessionTimes(x) for x in renamed_items]
+            if mapping and response_items:
+                renamed_items = [self._rename_numerical_keys(ri, mapping) for ri in response_items]
+                
+                return [upcoming_events.NextSessionTimes(x) for x in renamed_items]
+    
+        return []
     
     async def personal_bests(self, cust_id, car_id):
         """ Returns the drivers best laptimes for the given car_id, as seen on
@@ -765,17 +765,17 @@ class Client:
         url = ct.URL_SEASON_STANDINGS
         response = await self._build_request(url, payload)
         
-        if not response.json():
-            return []
+        if response.json():
+            mapping = response.json().get('m')
+            response_items = response.json().get('d').get('r')
         
-        mapping = response.json().get('m')
-        response_items = response.json().get('d').get('r')
-        
-        if mapping and response_items:
-            renamed_items = [self._rename_numerical_keys(ri, mapping) for ri in response_items]
-            
-            return [historical_data.SeasonStandings(x) for x in renamed_items]
+            if mapping and response_items:
+                renamed_items = [self._rename_numerical_keys(ri, mapping) for ri in response_items]
+                
+                return [historical_data.SeasonStandings(x) for x in renamed_items]
     
+        return []
+        
     async def series_race_results(self, season_id, race_week=1):
         """ Returns the race results for a season_id. race_week can be
         specified to reduce the size of data returned.
@@ -789,17 +789,17 @@ class Client:
         url = ct.URL_SERIES_RACERESULTS
         response = await self._build_request(url, payload)
         
-        if not response.json():
-            return []
+        if response.json():
+            mapping = response.json().get('m')
+            response_items = response.json().get('d')
         
-        mapping = response.json().get('m')
-        response_items = response.json().get('d')
-        
-        if response_items:
-            renamed_items = [self._rename_numerical_keys(ri, mapping) for ri in response_items]
-            
-            return [historical_data.SeriesRaceResults(x) for x in renamed_items]
+            if response_items:
+                renamed_items = [self._rename_numerical_keys(ri, mapping) for ri in response_items]
+                
+                return [historical_data.SeriesRaceResults(x) for x in renamed_items]
     
+        return []
+        
     async def subsession_data(self, subsession_id, cust_id=None):
         """ Returns extensive data about a session. This endpoint contains
         data points about a session that are unavailable anywhere else.
@@ -872,17 +872,17 @@ class Client:
         url = ct.URL_WORLD_RECORDS
         response = await self._build_request(url, payload)
         
-        if not response.json():
-            return []
+        if response.json():
+            mapping = response.json().get('m')
+            response_items = response.json().get('d').get('r')
         
-        mapping = response.json().get('m')
-        response_items = response.json().get('d').get('r')
-        
-        if mapping and response_items:
-            renamed_items = [self._rename_numerical_keys(ri, mapping) for ri in response_items]
-            
-            return [historical_data.WorldRecords(x) for x in renamed_items]
+            if mapping and response_items:
+                renamed_items = [self._rename_numerical_keys(ri, mapping) for ri in response_items]
+                
+                return [historical_data.WorldRecords(x) for x in renamed_items]
     
+        return []
+        
     async def yearly_stats(self, cust_id):
         """ Returns the breakdown of career stats by year, as seen on the
         /CareerStats driver profile.
@@ -931,13 +931,13 @@ class Client:
         url = ct.URL_LEAGUE_SEASONS
         response = await self._build_request(url, payload)
         
-        if not response.json():
-            return []
+        if response.json():
+            mapping = response.json().get('m')
+            response_items = response.json().get('d').get('r')
         
-        mapping = response.json().get('m')
-        response_items = response.json().get('d').get('r')
-        
-        if mapping and response_items:
-            renamed_items = [self._rename_numerical_keys(ri, mapping) for ri in response_items]
-            
-            return [league_data.LeagueSeason(x) for x in renamed_items]
+            if mapping and response_items:
+                renamed_items = [self._rename_numerical_keys(ri, mapping) for ri in response_items]
+                
+                return [league_data.LeagueSeason(x) for x in renamed_items]
+    
+        return []
