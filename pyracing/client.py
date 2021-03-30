@@ -55,7 +55,7 @@ class Client:
             readable_key = mapping.get(numerical_key)
             value = response_item.get(numerical_key)
 
-            if readable_key and value:
+            if readable_key:
                 response_item[readable_key] = value
                 del response_item[numerical_key]
         
