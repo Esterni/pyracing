@@ -52,12 +52,13 @@ class Client:
             return None
         
         for numerical_key in mapping:
-            readable_key = mapping.get(numerical_key)
-            value = response_item.get(numerical_key)
+            if numerical_key in response_item:
+                readable_key = mapping.get(numerical_key)
+                value = response_item.get(numerical_key)
 
-            if readable_key:
-                response_item[readable_key] = value
-                del response_item[numerical_key]
+                if readable_key:
+                    response_item[readable_key] = value
+                    del response_item[numerical_key]
         
         return response_item
     
@@ -317,13 +318,16 @@ class Client:
         response = await self._build_request(url, payload)
         
         if response.json():
-            mapping = response.json().get('m')
-            response_items = response.json().get('d').get('r')
+            mapping = response.json().get('m')        
+            response_data = response.json().get('d')
         
-            if mapping and response_items:
-                renamed_items = [self._rename_numerical_keys(ri, mapping) for ri in response_items]
+            if mapping and response_data:
+                response_items = response_data.get('r')
+        
+                if response_items:
+                    renamed_items = [self._rename_numerical_keys(ri, mapping) for ri in response_items]
                 
-                return [historical_data.DriverStats(x) for x in renamed_items]
+                    return [historical_data.DriverStats(x) for x in renamed_items]
 
         return []
         
@@ -409,12 +413,15 @@ class Client:
         
         if response.json():
             mapping = response.json().get('m')
-            response_items = response.json().get('d').get('r')
+            response_data = response.json().get('d')
         
-            if mapping and response_items:
-                renamed_items = [self._rename_numerical_keys(ri, mapping) for ri in response_items]
-                
-                return [historical_data.EventResults(x) for x in renamed_items]
+            if mapping and response_data:
+                response_items = response_data.get('r')
+        
+                if response_items:
+                    renamed_items = [self._rename_numerical_keys(ri, mapping) for ri in response_items]
+                    
+                    return [historical_data.EventResults(x) for x in renamed_items]
     
         return []
     
@@ -586,12 +593,15 @@ class Client:
         
         if response.json():
             mapping = response.json().get('m')
-            response_items = response.json().get('d').get('r')
+            response_data = response.json().get('d')
+
+            if mapping and response_data:
+                response_items = response_data.get('r')
         
-            if mapping and response_items:
-                renamed_items = [self._rename_numerical_keys(ri, mapping) for ri in response_items]
-                
-                return [upcoming_events.NextSessionTimes(x) for x in renamed_items]
+                if response_items:
+                    renamed_items = [self._rename_numerical_keys(ri, mapping) for ri in response_items]
+                    
+                    return [upcoming_events.NextSessionTimes(x) for x in renamed_items]
     
         return []
     
@@ -767,12 +777,15 @@ class Client:
         
         if response.json():
             mapping = response.json().get('m')
-            response_items = response.json().get('d').get('r')
+            response_data = response.json().get('d')
+
+            if mapping and response_data:
+                response_items = response_data.get('r')
         
-            if mapping and response_items:
-                renamed_items = [self._rename_numerical_keys(ri, mapping) for ri in response_items]
-                
-                return [historical_data.SeasonStandings(x) for x in renamed_items]
+                if response_items:
+                    renamed_items = [self._rename_numerical_keys(ri, mapping) for ri in response_items]
+                    
+                    return [historical_data.SeasonStandings(x) for x in renamed_items]
     
         return []
         
@@ -874,12 +887,15 @@ class Client:
         
         if response.json():
             mapping = response.json().get('m')
-            response_items = response.json().get('d').get('r')
+            response_data = response.json().get('d')
+
+            if mapping and response_data:
+                response_items = response_data.get('r')
         
-            if mapping and response_items:
-                renamed_items = [self._rename_numerical_keys(ri, mapping) for ri in response_items]
-                
-                return [historical_data.WorldRecords(x) for x in renamed_items]
+                if response_items:
+                    renamed_items = [self._rename_numerical_keys(ri, mapping) for ri in response_items]
+                    
+                    return [historical_data.WorldRecords(x) for x in renamed_items]
     
         return []
         
@@ -933,11 +949,14 @@ class Client:
         
         if response.json():
             mapping = response.json().get('m')
-            response_items = response.json().get('d').get('r')
+            response_data = response.json().get('d')
+
+            if mapping and response_data:
+                response_items = response_data.get('r')
         
-            if mapping and response_items:
-                renamed_items = [self._rename_numerical_keys(ri, mapping) for ri in response_items]
-                
-                return [league_data.LeagueSeason(x) for x in renamed_items]
+                if response_items:
+                    renamed_items = [self._rename_numerical_keys(ri, mapping) for ri in response_items]
+                    
+                    return [league_data.LeagueSeason(x) for x in renamed_items]
     
         return []
