@@ -142,7 +142,7 @@ class Client:
             if mapping and response_items:
                 renamed_items = [self._rename_numerical_keys(ri, mapping) for ri in response_items]
                 
-                return [upcoming_events.OpenPractice(x) for x in renamed_items]
+                return [upcoming_events.OpenPractice(x) for x in renamed_items if x]
     
         return []
     
@@ -327,7 +327,7 @@ class Client:
                 if response_items:
                     renamed_items = [self._rename_numerical_keys(ri, mapping) for ri in response_items]
                 
-                    return [historical_data.DriverStats(x) for x in renamed_items]
+                    return [historical_data.DriverStats(x) for x in renamed_items if x]
 
         return []
         
@@ -421,7 +421,7 @@ class Client:
                 if response_items:
                     renamed_items = [self._rename_numerical_keys(ri, mapping) for ri in response_items]
                     
-                    return [historical_data.EventResults(x) for x in renamed_items]
+                    return [historical_data.EventResults(x) for x in renamed_items if x]
     
         return []
     
@@ -601,7 +601,7 @@ class Client:
                 if response_items:
                     renamed_items = [self._rename_numerical_keys(ri, mapping) for ri in response_items]
                     
-                    return [upcoming_events.NextSessionTimes(x) for x in renamed_items]
+                    return [upcoming_events.NextSessionTimes(x) for x in renamed_items if x]
     
         return []
     
@@ -785,7 +785,7 @@ class Client:
                 if response_items:
                     renamed_items = [self._rename_numerical_keys(ri, mapping) for ri in response_items]
                     
-                    return [historical_data.SeasonStandings(x) for x in renamed_items]
+                    return [historical_data.SeasonStandings(x) for x in renamed_items if x]
     
         return []
         
@@ -809,7 +809,7 @@ class Client:
             if mapping and response_items:
                 renamed_items = [self._rename_numerical_keys(ri, mapping) for ri in response_items]
                 
-                return [historical_data.SeriesRaceResults(x) for x in renamed_items]
+                return [historical_data.SeriesRaceResults(x) for x in renamed_items if x]
     
         return []
         
@@ -895,7 +895,7 @@ class Client:
                 if response_items:
                     renamed_items = [self._rename_numerical_keys(ri, mapping) for ri in response_items]
                     
-                    return [historical_data.WorldRecords(x) for x in renamed_items]
+                    return [historical_data.WorldRecords(x) for x in renamed_items if x]
     
         return []
         
@@ -957,6 +957,6 @@ class Client:
                 if response_items:
                     renamed_items = [self._rename_numerical_keys(ri, mapping) for ri in response_items]
                     
-                    return [league_data.LeagueSeason(x) for x in renamed_items]
+                    return [league_data.LeagueSeason(x) for x in renamed_items if x]
     
         return []
