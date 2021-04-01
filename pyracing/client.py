@@ -806,7 +806,7 @@ class Client:
             mapping = response.json().get('m')
             response_items = response.json().get('d')
         
-            if response_items:
+            if mapping and response_items:
                 renamed_items = [self._rename_numerical_keys(ri, mapping) for ri in response_items]
                 
                 return [historical_data.SeriesRaceResults(x) for x in renamed_items]
