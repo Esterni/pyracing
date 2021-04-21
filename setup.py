@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name='pyracing',
+    name='pyracing_bullethell',
     version='0.1.1',
     author='Jacob Anderson & Xander Riga',
     description='A complete overhaul of ir_webstats; pyracing is an API '
@@ -13,7 +13,7 @@ setuptools.setup(
                 'through objects instead of dictionaries.',
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url='https://github.com/Esterni/pyracing',
+    url='https://github.com/bULLETHELL/pyracing.git',
     project_urls={
         "Documentation": "https://esterni.github.io/pyracing/"
     },
