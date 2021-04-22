@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name='pyracing_bullethell',
-    version='0.1.1',
+    version='0.1.3',
     author='Jacob Anderson & Xander Riga',
     description='A complete overhaul of ir_webstats; pyracing is an API '
                 'wrapper for simracing service "iRacing" that queries known '

@@ -523,6 +523,8 @@ class Client:
         return [iracing_data.DriverStatus(x) for
                 x in response.json()["searchRacers"]]
 
+        #return response.json()["searchRacers"]
+
     async def next_event(
             self,
             series_id,

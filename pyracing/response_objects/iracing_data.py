@@ -91,29 +91,28 @@ class Helmet:
 
 class DriverStatus:
     def __init__(self, data):
-        self.name = parse_encode(data.get('name'))
-        self.last_login = datetime_from_iracing_timestamp(
-            data.get('lastLogin'))
-        self.last_seen = datetime_from_iracing_timestamp(
-            data.get('lastSeen'))
         self.broadcast = data.get('broadcast')
         self.driver_changes = data.get('driverChanges')
+        self.last_login = datetime_from_iracing_timestamp(
+            data.get('lastLogin'))
         self.users_max = data.get('maxUsers')
-        self.has_grid = data.get('hasGrid')
-        self.private_session = data.get('privateSession')
-        self.series_id = data.get('seriesId')
-        self.reg_open = data.get('regOpen')
-        self.spotter_access = data.get('spotterAccess')
-        self.season_id = data.get('seasonId')
-        self.helmet = Helmet(data['helmet'])
-        self.in_grid = data.get('inGrid')
-        self.start_time = data.get('startTime')
-        self.subsession_status = data.get('subSessionStatus')
         self.track_id = data.get('trackId')
         self.session_status = data.get('sessionStatus')
         self.session_type_id = data.get('sessionTypeId')
+        self.private_session = data.get('privateSession')
+        self.series_id = data.get('seriesId')
+        self.reg_open = data.get('regOpen')
         self.cat_id = data.get('catId')
         self.event_type_id = data.get('eventTypeId')
+        self.spotter_access = data.get('spotterAccess')
+        self.last_seen = datetime_from_iracing_timestamp(
+            data.get('lastSeen'))
+        self.season_id = data.get('seasonId')
+        self.helmet = Helmet(data['helmet'])
         self.private_session_id = data.get('privateSessionId')
         self.cust_id = data.get('custid')
+        self.name = parse_encode(data.get('name'))
+        self.trusted_as_spotter = data.get('trustedAsSpotter')
+        self.start_time = data.get('startTime')
         self.user_role = data.get('userRole')
+        self.subsession_status = data.get('subSessionStatus')
