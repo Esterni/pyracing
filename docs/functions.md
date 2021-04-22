@@ -45,14 +45,11 @@ friend=None<br>watched=None<br>recent=None            | Accepts a `cust_id` to f
 cust_id=None                                          | Does not affect returned data
 
 ### driver_status()
-Returns friends list for the person logged in. (gold star for least useful)
+Returns a list of driver statuses determined by the provided search_terms argument. 
 
 | Args/Kwargs| Description |
 |:---|:---|
-cust_id=None| Returns the status info of the provided cust_id. If logged in while also providing **your** custid, it will also return the status info of your friends and studied/blacklisted drivers.
-friends=1| Toggles display of friends in results.
-studied=1| Toggles display of studied drivers in results.
-blacklisted=1| Toggles display of blacklisted drivers in results.
+search_terms='null'| Return status info of the provided search term. Can be used to search for status info of specific drivers using name ie. `'John Anderson5'`. You can also search for drivers with their cust_id ie. `111111`.
 
 ### event_results()
 Returns a list of event results that the driver has participated in. This is the backend data for iRacing's [My Series Results](https://members.iracing.com/membersite/member/results.jsp). Contains the summary information about the results of the event. For detailed information about a specific session, see: [subsession_data()](#subsession_data).
