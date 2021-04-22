@@ -507,23 +507,16 @@ class Client:
         response = await self._build_request(url, payload)
         return response.json()
 
-    async def driver_status(
-            self,
-            search_terms='null'
-    ):
+    async def driver_status(self, search_terms='null'):
         """ Returns information about the member's current status. If logged
         in while also providing your custid, it will return the same info for
         your friends along with studied, and blacklisted drivers.
         """
-        payload = {
-            'searchTerms': search_terms
-        }
+        payload = {'searchTerms': search_terms}
         url = ct.URL_DRIVER_STATUS
         response = await self._build_request(url, payload)
         return [iracing_data.DriverStatus(x) for
                 x in response.json()["searchRacers"]]
-
-        #return response.json()["searchRacers"]
 
     async def next_event(
             self,
