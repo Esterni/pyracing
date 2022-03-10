@@ -84,6 +84,12 @@ class Client:
                 'correct, check that a captcha is not required by manually '
                 'visiting members.iracing.com')
             raise AuthenticationError('Login Failed', auth_response)
+        elif str(auth_response.url) == ct.URL_MAINTENANCE:
+            logger.warning(
+                'The login POST request was redirected to the iRacing '
+                'maintenance page. Try again once iRacing has come '
+                'back up from maintenance.')
+            raise AuthenticationError('Login Failed', auth_response)
         else:
             logger.info('Login successful')
 
