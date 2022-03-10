@@ -11,6 +11,7 @@ URL_LOGIN = 'https://members.iracing.com/membersite/login.jsp'
 URL_LOGIN2 = 'https://members.iracing.com/membersite/Login'
 URL_LOGOUT = 'https://members.iracing.com/membersite/LogOut'
 URL_HOME = 'https://members.iracing.com/membersite/member/Home.do'
+URL_MAINTENANCE = 'https://members.iracing.com/maintenance/index.html'
 
 # THE BIG ONES
 URL_DRIVER_STATS = (mStats + '/GetDriverStats')
