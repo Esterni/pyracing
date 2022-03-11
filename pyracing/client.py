@@ -946,6 +946,68 @@ class Client:
 
         url = ct.URL_LEAGUE_SEASONS
         response = await self._build_request(url, payload)
+
+
+    async def getCompletedSessionInfo(self, sessID):
+        payload = {
+                'subsessionID': sessID,
+        }
+        mSite = 'https://members.iracing.com/membersite/member'
+        url = (mSite + '/GetSubsessionResults')
+        web_fb = await self.ir._build_request(url, payload)
+        print(web_fb)
+        return session_data.SubSessionData(web_fb.json())
+
+
+        async def getCalendarBySeason(self, seasonID, leagueID):
+        payload = {
+                'leagueID': leagueID,
+                'leagueSeasonID': seasonID,
+        }
+        mSite = 'https://members.iracing.com/membersite/member'
+        url = (mSite + '/GetLeagueCalendarBySeason')
+        web_fb = await self.ir._build_request(url, payload)
+        return web_fb.json()["rows"]
+
+
+
+
+    async def getActiveSessions(self, leagueID):
+        payload = {
+                'ts': 0,
+                'leagueID': leagueID,
+                'startRow':1,
+                'stopRow': 20
+        }
+        mSite = 'https://members.iracing.com/membersite/member'
+        url = (mSite + '/GetLeagueSessions')
+        web_fb = await self.ir._build_request(url, payload)
+        return web_fb.json()["rows"]
+
+    async def get_league_seasons(self, leagueID):
+        payload = {
+                'leagueID': leagueID,
+                'getInactiveSeasons':1
+        }
+        mSite = 'https://members.iracing.com/membersite/member'
+        url = (mSite + '/GetLeagueSeasons')
+        web_fb = await self.ir._build_request(url, payload)
+        return [league_data.LeagueSeason(x) for x in web_fb.json()['d']['r']]
+
+   async def get_league_members(self, leagueID):
+        payload = {
+                    'leagueid': leagueID,
+                    'lowerBound': 100,
+                    'upperBound': 100 
+                }                 
+        mSite = 'https://members.iracing.com/membersite/member'
+        URL_LEAGUE_MEMBERS = (mSite + '/GetLeagueMembers')
+        url = URL_LEAGUE_MEMBERS
+        membersWeb = await self.ir._build_request(url, payload)
+        return membersWeb.json()
+
+
+
         
         if response.json():
             mapping = response.json().get('m')
