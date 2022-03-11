@@ -940,13 +940,6 @@ class Client:
 
         return league_data.SeasonStandings(response.json())
 
-    async def league_seasons(self, league_id):
-        """Get the season for a league"""
-        payload = {'leagueID': league_id}
-
-        url = ct.URL_LEAGUE_SEASONS
-        response = await self._build_request(url, payload)
-
 
     async def getCompletedSessionInfo(self, sessID):
         payload = {
@@ -958,15 +951,14 @@ class Client:
         print(web_fb)
         return session_data.SubSessionData(web_fb.json())
 
-
-        async def getCalendarBySeason(self, seasonID, leagueID):
+    async def getCalendarBySeason(self, seasonID, leagueID):
         payload = {
                 'leagueID': leagueID,
                 'leagueSeasonID': seasonID,
         }
         mSite = 'https://members.iracing.com/membersite/member'
         url = (mSite + '/GetLeagueCalendarBySeason')
-        web_fb = await self.ir._build_request(url, payload)
+        web_fb = await self._build_request(url, payload)
         return web_fb.json()["rows"]
 
 
@@ -981,20 +973,11 @@ class Client:
         }
         mSite = 'https://members.iracing.com/membersite/member'
         url = (mSite + '/GetLeagueSessions')
-        web_fb = await self.ir._build_request(url, payload)
+        web_fb = await self._build_request(url, payload)
         return web_fb.json()["rows"]
 
-    async def get_league_seasons(self, leagueID):
-        payload = {
-                'leagueID': leagueID,
-                'getInactiveSeasons':1
-        }
-        mSite = 'https://members.iracing.com/membersite/member'
-        url = (mSite + '/GetLeagueSeasons')
-        web_fb = await self.ir._build_request(url, payload)
-        return [league_data.LeagueSeason(x) for x in web_fb.json()['d']['r']]
 
-   async def get_league_members(self, leagueID):
+    async def get_league_members(self, leagueID):
         payload = {
                     'leagueid': leagueID,
                     'lowerBound': 100,
@@ -1003,12 +986,19 @@ class Client:
         mSite = 'https://members.iracing.com/membersite/member'
         URL_LEAGUE_MEMBERS = (mSite + '/GetLeagueMembers')
         url = URL_LEAGUE_MEMBERS
-        membersWeb = await self.ir._build_request(url, payload)
+        membersWeb = await self._build_request(url, payload)
         return membersWeb.json()
 
 
+    async def league_seasons(self, league_id):
+        """Get the season for a league"""
+        payload = {'leagueID': league_id,
+                   'getInactiveSeasons':1
+        }
 
-        
+        url = ct.URL_LEAGUE_SEASONS
+        response = await self._build_request(url, payload)
+
         if response.json():
             mapping = response.json().get('m')
             response_data = response.json().get('d')
