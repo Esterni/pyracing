@@ -959,8 +959,10 @@ class Client:
         mSite = 'https://members.iracing.com/membersite/member'
         url = (mSite + '/GetLeagueCalendarBySeason')
         web_fb = await self._build_request(url, payload)
-        #return web_fb.json()["rows"]
-        return web_fb.json()
+        try:
+            return web_fb.json()["rows"]
+        except:
+            return web_fb.json()
 
 
 
