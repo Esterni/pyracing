@@ -947,7 +947,7 @@ class Client:
         }
         mSite = 'https://members.iracing.com/membersite/member'
         url = (mSite + '/GetSubsessionResults')
-        web_fb = await self.ir._build_request(url, payload)
+        web_fb = await self._build_request(url, payload)
         print(web_fb)
         return session_data.SubSessionData(web_fb.json())
 
