@@ -99,7 +99,7 @@ class Client:
         response = await self.session.get(
             url,
             params=params,
-            allow_redirects=False,
+            #allow_redirects=False,
             timeout=10.0
         )
         logger.info(f'Request sent for URL: {response.url}')
