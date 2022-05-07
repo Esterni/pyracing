@@ -1,7 +1,10 @@
 from pyracing import constants as ct
 
 from pyracing import logger
-from pyracing.helpers import now_five_min_floor
+from pyracing.helpers import (
+    encode_password,
+    now_five_min_floor
+)
 from pyracing.response_objects import (
     career_stats,
     chart_data,
@@ -39,7 +42,7 @@ class Client:
         is to store then in your OS environment and call with os.getenv().
         """
         self.username = username
-        self.password = password
+        self.password = encode_password(username,password)
         self.session = httpx.AsyncClient()
 
     def _rename_numerical_keys(self, response_item, mapping):
