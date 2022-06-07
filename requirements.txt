@@ -1,2 +1,2 @@
-httpx==0.13.3
+httpx==0.23.0
 python-dotenv==0.14.0

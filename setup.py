@@ -25,5 +25,5 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     zip_safe=False,
-    install_requires=['httpx>=0.13.3,<0.14']
+    install_requires=['httpx>=0.13.3,<0.24']
 )
