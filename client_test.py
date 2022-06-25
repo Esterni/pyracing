@@ -127,7 +127,8 @@ class ClientTest(unittest.TestCase):
     @async_test
     async def test_driver_status(self):
         response = await client.driver_status(499343)
-        self.assertIsInstance(response, iracing_data.DriverStatus)
+        for driver_status in response:
+            self.assertIsInstance(driver_status, iracing_data.DriverStatus)
 
     @async_test
     async def test_next_event(self):
