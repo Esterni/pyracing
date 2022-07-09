@@ -969,3 +969,21 @@ class Client:
                     return [league_data.LeagueSeason(x) for x in renamed_items if x]
     
         return []
+
+    async def open_sessions(self, season_id):
+        """Get the open subsessions in a given season"""
+        payload = {'season': season_id}
+
+        url = ct.URL_OPEN_SESSIONS
+        response = await self._build_request(url, payload)
+
+        if response.json():
+            mapping = response.json().get('m')
+            response_items = response.json().get('d')
+
+            if mapping and response_items:
+                renamed_items = [self._rename_numerical_keys(ri, mapping) for ri in response_items]
+
+                return [session_data.OpenSubSession(x) for x in renamed_items if x]
+
+        return []

@@ -146,6 +146,8 @@ URL_LEAGUE = (mSite + '/GetLeague')
 URL_DRIVER_STATUS = (mSite + '/GetDriverStatus')
 URL_MEM_DIVISION = (mSite + '/GetMembersDivision')
 
+# OPEN_SESSIONS
+URL_OPEN_SESSIONS = (mSite + '/GetOpenSessions')
 
 class License(Enum):
     R = 1
