@@ -798,6 +798,98 @@ class Client:
     
         return []
         
+    async def season_tt_standings(
+            self,
+            season_id,
+            race_week=1,
+            car_class_id=None,
+            club_id=None,
+            division=None,
+            result_num_low=1,
+            result_num_high=25,
+            sort=ct.Sort.champ_points.value,
+            order=ct.Sort.descending.value
+    ):
+        """ Returns the championship point standings of a time trial series.
+        """
+        payload = {
+            'seasonid': season_id,
+            'carclassid': car_class_id,
+            'clubid': club_id,
+            # -1 for all weeks, or the week number to get a specific week.
+            # 0 indexed in iRacing, so the user passes the week number and we
+            # subtract one to get the 0 indexed position
+            'raceweek': race_week if race_week == -1 else race_week - 1,
+            'division': division,
+            'start': result_num_low,
+            'end': result_num_high,
+            'sort': sort,
+            'order': order
+        }
+
+        url = ct.URL_SEASON_TT_STANDINGS
+        response = await self._build_request(url, payload)
+
+        if response.json():
+            mapping = response.json().get('m')
+            response_data = response.json().get('d')
+
+            if mapping and response_data:
+                response_items = response_data.get('r')
+
+                if response_items:
+                    renamed_items = [self._rename_numerical_keys(ri, mapping) for ri in response_items]
+
+                    return [historical_data.SeasonTTStandings(x) for x in renamed_items if x]
+
+        return []
+
+    async def season_tt_results(
+            self,
+            season_id,
+            race_week=1,
+            car_class_id=None,
+            club_id=None,
+            division=None,
+            result_num_low=1,
+            result_num_high=25,
+            sort=ct.Sort.champ_points.value,
+            order=ct.Sort.descending.value
+    ):
+        """ Returns the championship point standings of a time trial series.
+        """
+        payload = {
+            'seasonid': season_id,
+            'carclassid': car_class_id,
+            'clubid': club_id,
+            # -1 for all weeks, or the week number to get a specific week.
+            # 0 indexed in iRacing, so the user passes the week number and we
+            # subtract one to get the 0 indexed position
+            'raceweek': race_week if race_week == -1 else race_week - 1,
+            'division': division,
+            'start': result_num_low,
+            'end': result_num_high,
+            'sort': sort,
+            'order': order
+        }
+
+        url = ct.URL_SEASON_TT_RESULTS
+        response = await self._build_request(url, payload)
+
+        if response.json():
+            mapping = response.json().get('m')
+            response_data = response.json().get('d')
+
+            if mapping and response_data:
+                response_items = response_data.get('r')
+
+                if response_items:
+                    renamed_items = [self._rename_numerical_keys(ri, mapping) for ri in response_items]
+
+                    return [historical_data.SeasonTTResults(x) for x in renamed_items if x]
+
+        return []
+
     async def series_race_results(self, season_id, race_week=1):
         """ Returns the race results for a season_id. race_week can be
         specified to reduce the size of data returned.
