@@ -91,6 +91,55 @@ class SeasonStandings:
         # self.custrow = dict['custrow']
         # self.rowcount = dict['rowcount']
 
+class SeasonTTStandings:
+    def __init__(self, data):
+        self.club_id = data['clubid']
+        self.club_name = parse_encode(data['clubname'])
+        self.cust_id = data['custid']
+        self.display_name = parse_encode(data['displayname'])
+        self.division = data['division']
+        self.dropped = data['dropped']
+        self.helm_color_1 = data['helmcolor1']
+        self.helm_color_2 = data['helmcolor2']
+        self.helm_color_3 = data['helmcolor3']
+        self.helm_pattern = data['helmpattern']
+        self.license_level_max = data['maxlicenselevel']
+        self.points = data['points']
+        self.pos = data['pos']
+        self.rank = data['rank']
+        self.row = data['rn']
+        self.starts = data['starts']
+        self.sub_level = parse_encode(data['sublevel'])
+        self.week = data['week']
+        self.wins = data['wins']
+
+        # Used only on webpage to highlight the member in relaton to others
+        # self.custrow = dict['custrow']
+        # self.rowcount = dict['rowcount']
+
+class SeasonTTResults:
+    def __init__(self, data):
+        self.club_id = data['clubid']
+        self.cust_id = data['custid']
+        self.display_name = parse_encode(data['displayname'])
+        self.division = data['division']
+        self.helm_color_1 = data['helmcolor1']
+        self.helm_color_2 = data['helmcolor2']
+        self.helm_color_3 = data['helmcolor3']
+        self.helm_pattern = data['helmpattern']
+        self.license_level_max = data['maxlicenselevel']
+        self.points = data['points']
+        self.pos = data['pos']
+        self.rank = data['rank']
+        self.row = data['rn']
+        self.starts = data['starts']
+        self.sub_level = parse_encode(data['sublevel'])
+        self.best_time_formatted = data['besttimeformatted']
+        self.best_time = data['besttime']
+
+        # Used only on webpage to highlight the member in relaton to others
+        # self.custrow = dict['custrow']
+        # self.rowcount = dict['rowcount']
 
 class DriverStats:
     def __init__(self, data):

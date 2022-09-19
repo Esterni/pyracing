@@ -19,6 +19,8 @@ URL_SUBS_RESULTS = (mSite + '/GetSubsessionResults')
 URL_CURRENT_SEASONS = (mSite + '/GetSeasons')
 URL_SEASON_STANDINGS = (mStats + '/GetSeasonStandings')
 URL_SERIES_RACERESULTS = (mStats + '/GetSeriesRaceResults')
+URL_SEASON_TT_STANDINGS = (mStats + '/GetSeasonTTStandings')
+URL_SEASON_TT_RESULTS = (mStats + '/GetSeasonTTResults')
 
 # RECENT HISTORICAL
 URL_LASTRACE_STATS = (mStats + '/GetLastRacesStats')
