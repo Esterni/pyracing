@@ -107,6 +107,8 @@ class Client:
             #allow_redirects=False,
             timeout=10.0
         )
+
+        print(response.request)
         logger.info(f'Request sent for URL: {response.url}')
         logger.info(f'Status code of response: {response.status_code}')
         logger.debug(f'Contents of the response object: {response.__dict__}')
@@ -953,7 +955,6 @@ class Client:
         mSite = 'https://members.iracing.com/membersite/member'
         url = (mSite + '/GetSubsessionResults')
         web_fb = await self._build_request(url, payload)
-        print(web_fb)
         return session_data.SubSessionData(web_fb.json())
 
     async def getCalendarBySeason(self, seasonID, leagueID):
@@ -987,12 +988,13 @@ class Client:
     async def get_league_members(self, leagueID):
         payload = {
                     'leagueid': leagueID,
-                    'lowerBound': 100,
+                    'lowerBound': 0,
                     'upperBound': 100 
                 }                 
         mSite = 'https://members.iracing.com/membersite/member'
         URL_LEAGUE_MEMBERS = (mSite + '/GetLeagueMembers')
         url = URL_LEAGUE_MEMBERS
+
         membersWeb = await self._build_request(url, payload)
         return membersWeb.json()
 
