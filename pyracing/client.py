@@ -108,7 +108,7 @@ class Client:
             timeout=10.0
         )
 
-        print(response.request)
+        #print(response.request)
         logger.info(f'Request sent for URL: {response.url}')
         logger.info(f'Status code of response: {response.status_code}')
         logger.debug(f'Contents of the response object: {response.__dict__}')
