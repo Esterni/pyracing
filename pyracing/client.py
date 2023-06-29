@@ -108,7 +108,7 @@ class Client:
         response = await self.session.get(
             url,
             params=params,
-            allow_redirects=False,
+            follow_redirects=False,
             timeout=10.0
         )
         logger.info(f'Request sent for URL: {response.url}')
@@ -433,7 +433,73 @@ class Client:
                     return [historical_data.EventResults(x) for x in renamed_items if x]
     
         return []
-    
+
+    async def search_results(
+            self,
+            cust_id,
+            series_id=None,
+            category=[1, 2, 3, 4],
+            event_type=5,
+            year=None,
+            quarter=None,
+            start_low=None,
+            start_high=None
+    ):
+        """ Returns a list with a SearchResults object for each of a driver's
+        past events that meet the selected criteria. You must provide either a year
+        and quarter or a time range with starttime_low and starttime_high. Default
+        is to return results from race events in any category and any series.
+        """
+        if year is not None and quarter is not None:
+            payload = {
+                'custid': cust_id,
+                'seriesid': series_id,
+                'catid': category,
+                'evttype': event_type,
+                'seasonyear': year,
+                'seasonquarter': quarter,
+                'starttime_low': None,
+                'starttime_high': None
+            }
+        elif start_low is not None and start_high is not None:
+            payload = {
+                'custid': cust_id,
+                'seriesid': series_id,
+                'catid': category,
+                'evttype': event_type,
+                'seasonyear': None,
+                'seasonquarter': None,
+                'starttime_low': start_low,
+                'starttime_high': start_high
+            }
+        else:
+            logger.warning("You must either supply year and quarter or start_low and start_high.")
+            return []
+        url = ct.URL_SEARCH_RESULTS
+        response = await self._build_request(url, payload)
+
+        if response.json():
+            mapping = response.json().get('m')
+            response_data = response.json().get('d')
+
+            if mapping and response_data:
+                renamed_items = [self._rename_numerical_keys(ri, mapping) for ri in response_data]
+
+                return [historical_data.SearchResults(x) for x in renamed_items if x]
+
+        return []
+
+        # if 'd' not in response.json():
+        #     return []
+
+        # event_result_dict = response.json()['d']
+
+        # if event_result_dict:
+        #     return [historical_data.SearchResults(x)
+        #             for x in response.json()['d']]
+        # else:
+        #     return []
+
     async def irating(self, cust_id, category) -> \
             chart_data.ChartData[chart_data.IRating]:
         """ Utilizes the stats_chart class to return a list of iRating values
@@ -649,8 +715,11 @@ class Client:
         url = ct.URL_PRIVATE_RESULTS
         response = await self._build_request(url, payload)
 
-        return [historical_data.PrivateResults(x) for
+        if 'rows' in response.json():
+            return [historical_data.PrivateResults(x) for
                 x in response.json()['rows']]
+        else:
+            return []
 
     async def race_guide(
             self,
@@ -834,7 +903,10 @@ class Client:
         response = await self._build_request(url, payload)
 
         # Returns a single dictionary
-        return session_data.SubSessionData(response.json())
+        if response.json():
+            return session_data.SubSessionData(response.json())
+        else:
+            return []
 
     # TODO Be bothered to finish this one
     async def team_standings(

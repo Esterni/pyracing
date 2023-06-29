@@ -24,6 +24,7 @@ URL_SERIES_RACERESULTS = (mStats + '/GetSeriesRaceResults')
 URL_LASTRACE_STATS = (mStats + '/GetLastRacesStats')
 URL_LAST_SERIES = (mStats + '/GetLastSeries')
 URL_RESULTS = (mStats + '/GetResults')
+URL_SEARCH_RESULTS = (mStats + '/SearchSeriesResults')
 URL_WORLD_RECORDS = (mStats + '/GetWorldRecords')
 
 # UPCOMING SESSIONS
