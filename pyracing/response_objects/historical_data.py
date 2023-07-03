@@ -54,6 +54,52 @@ class EventResults:
         # self.rowcount = dict['rowcount']
 
 
+class SearchResults:
+    def __init__(self, data):
+        self.car_class_id = data['carclassid']
+        self.car_id = data['carid']
+        self.car_name = parse_encode(data['car_name'])
+        self.category_name = parse_encode(data['category'])
+        self.category_id = data['catid']
+        self.cust_id = data['custid']
+        self.date_start = parse_encode(data['start_date'])
+        self.display_name = parse_encode(data['displayname'])
+        self.event_type = data['evttype']
+        self.event_type_name = parse_encode(data['evttypename'])
+        self.group_name = parse_encode(data['groupname'])
+        self.incidents = data['incidents']
+        self.lap_best = parse_encode(data['bestlaptime'])
+        self.lap_best_subsession = parse_encode(data['subsession_bestlaptime'])
+        self.lap_qual_best = parse_encode(data['bestquallaptime'])
+        self.license_group = data['licensegroup']
+        self.official_session = data['officialsession']
+        self.points_champ = data['champpoints']
+        self.points_club = data['clubpoints']
+        self.points_drop_race = data['dropracepoints']
+        self.pos_finish = data['finishing_position']
+        self.pos_finish_class = data['class_finishing_position']
+        self.pos_start = data['starting_position']
+        self.pos_start_class = data['class_starting_position']
+        self.race_week = data['race_week_num']
+        self.season_id = data['seasonid']
+        self.season_quarter = data['seasonid']
+        self.season_year = data['season_year']
+        self.series_id = data['seriesid']
+        self.series_name = parse_encode(data['series_name'])
+        self.series_name_short = parse_encode(data['series_shortname'])
+        self.session_id = data['sessionid']
+        self.strength_of_field = data['strengthoffield']
+        self.subsession_id = data['subsessionid']
+        self.time_finished = data['finishedat']
+        self.time_start = parse_encode(data['start_time'])
+        self.time_start_raw = data['raw_start_time']
+        self.track_id = data['trackid']
+        self.track_name = parse_encode(data['track_name'])
+        self.track_config_name = parse_encode(data['config_name'])
+        self.winner_display_name = parse_encode(data['winnerdisplayname'])
+        self.winners_group_id = data['winnersgroupid']
+
+
 class SeasonStandings:
     def __init__(self, data):
         self.club_id = data['clubid']

@@ -179,8 +179,7 @@ class RaceLapsAll:
             self.laps_for_solo_avg = data['nLapsForSoloAvg']
             self.official = data['officialSession']
             self.private_session_id = data['privateSessionID']
-            self.private_session_name = parse_encode(
-                                        data['privateSessionName'])
+            self.private_session_name = parse_encode(data['privateSessionName'])
             self.race_panel_img = parse_encode(data['race_panel_img'])
             self.race_week = data['raceWeek']
             self.season_id = data['seasonID']
