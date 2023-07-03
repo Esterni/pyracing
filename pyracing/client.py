@@ -790,7 +790,10 @@ class Client:
         url = ct.URL_LAPS_ALL
         response = await self._build_request(url, payload)
 
-        return session_data.RaceLapsAll(response.json())
+        if response.json()['details'] and response.json()['startgrid'] and response.json()['lapdata']:
+            return session_data.RaceLapsAll(response.json())
+        else:
+            return None
 
     async def race_laps_driver(
             self,
