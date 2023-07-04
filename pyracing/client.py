@@ -33,7 +33,7 @@ import time
 
 
 class Client:
-    def __init__(self, username: str, password: str):
+    def __init__(self, username: str, password: str, timeout=10.0):
         """ This class is used to interact with all iRacing endpoints that
         have been discovered so far. After creating an instance of Client
         it is required to call authenticate(), due to async limitations.
@@ -43,6 +43,7 @@ class Client:
         """
         self.username = username
         self.password = encode_password(username,password)
+        self.timeout = timeout
         self.session = httpx.AsyncClient()
 
     def _rename_numerical_keys(self, response_item, mapping):
@@ -109,7 +110,7 @@ class Client:
             url,
             params=params,
             allow_redirects=False,
-            timeout=10.0
+            timeout=self.timeout
         )
         logger.info(f'Request sent for URL: {response.url}')
         logger.info(f'Status code of response: {response.status_code}')
