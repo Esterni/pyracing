@@ -76,6 +76,7 @@ class SubSessionData:
             self.car_color_2 = data['car_color2']
             self.car_color_3 = data['car_color3']
             self.car_id = data['carid']
+            self.car_name = str(data['car_name']).replace('+', '')
             self.car_num = data['carnum']
             self.car_num_font = data['carnumberfont']
             self.car_num_slant = data['carnumberslant']
